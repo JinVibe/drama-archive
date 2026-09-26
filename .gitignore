@@ -1,0 +1,50 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Node (apps/web, apps/mcp-server)
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# Java (apps/domain-api)
+build/
+.gradle/
+target/
+*.class
+
+# Python (apps/ai-api, data-platform, evals)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Airflow local runtime
+data-platform/logs/
+data-platform/plugins/
+airflow.cfg
+webserver_config.py
+
+# Docker volumes / local data
+.docker-data/
+*.log
+
+# OpenTofu
+.terraform/
+*.tfstate
+*.tfstate.*
