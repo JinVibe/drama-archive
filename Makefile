@@ -37,3 +37,7 @@ airflow-cli:
 
 dag-errors:
 	docker compose run --rm airflow-cli dags list-import-errors
+
+# Pipeline unit tests + lint, run inside the Airflow image (same Python/deps as production)
+test-data:
+	docker compose run --rm --entrypoint bash -v ./data-platform:/workspace -w /workspace airflow-cli -c "pip install -q pytest ruff && ruff check . && pytest -q"

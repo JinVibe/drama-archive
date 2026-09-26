@@ -1,0 +1,10 @@
+{
+  "source_code": "manual",
+  "items": [
+    {
+      "external_id": "smoke-test",
+      "entity_type": "DRAMA",
+      "url": "https://httpbin.org/json"
+    }
+  ]
+}

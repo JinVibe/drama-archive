@@ -1,0 +1,12 @@
+{
+  "source_manual_pool": {
+    "slots": 2,
+    "description": "Hand-curated manifest fetches",
+    "include_deferred": false
+  },
+  "source_tvn_pool": {
+    "slots": 1,
+    "description": "tvN official site fetches (be polite)",
+    "include_deferred": false
+  }
+}

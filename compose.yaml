@@ -32,6 +32,8 @@ x-airflow-common: &airflow-common
     - ./data-platform/dags:/opt/airflow/dags
     - ./data-platform/src:/opt/airflow/src
     - ./data-platform/logs:/opt/airflow/logs
+    - ./data-platform/config:/opt/airflow/config:ro
+    - ./data-platform/manifests:/opt/airflow/manifests:ro
   depends_on:
     postgres:
       condition: service_healthy
@@ -161,11 +163,11 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
-  # Runs metadata migrations once and exits.
+  # Runs metadata migrations and (re)declares pools once, then exits.
   airflow-init:
     <<: *airflow-common
     entrypoint: /bin/bash
-    command: -c "airflow db migrate"
+    command: -c "airflow db migrate && airflow pools import /opt/airflow/config/pools.json"
     depends_on:
       postgres:
         condition: service_healthy
