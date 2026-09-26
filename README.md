@@ -63,6 +63,47 @@ Phase 6  MCP + observability + production hardening
 
 GraphRAG, MCP, Neo4j가 앞 단계의 데이터 품질보다 먼저 나오지 않는다. 이 프로젝트에서 가장 중요한 기반은 **정확한 canonical entity와 source provenance**다.
 
+## 로컬 개발
+
+요구사항: Docker Desktop, GNU make (선택).
+
+```sh
+cp .env.example .env
+make up            # postgres(pgvector) + flyway 마이그레이션 + redis + object storage(RustFS) + 버킷 생성
+make airflow-up    # Airflow 3 (http://localhost:8080, 로컬은 로그인 없음)
+make test-data     # data-platform ruff + pytest (Airflow 이미지 안에서 실행)
+make dag-check     # DAG import 오류 검사 (CI와 동일)
+make down          # 중지 / make clean 은 볼륨까지 삭제
+```
+
+첫 파이프라인 smoke test:
+
+```sh
+docker compose run --rm airflow-cli dags unpause ingest_source_records__manual
+docker compose run --rm airflow-cli dags trigger ingest_source_records__manual
+# 결과: source_record 행 1개 + 버킷 안 raw 스냅샷 1개. 다시 실행해도 늘어나지 않는다.
+```
+
+디렉터리:
+
+```text
+apps/            web · domain-api · ai-api · mcp-server (아직 placeholder)
+data-platform/   Airflow DAG + 파이프라인 코드 + 테스트
+db/migrations/   Flyway 마이그레이션 (canonical schema)
+evals/           평가 데이터셋/러너
+infra/           IaC (별도 관리)
+docs/            설계 문서
+```
+
+## 진행 상태
+
+- [x] Phase 0 — canonical schema + provenance (`db/migrations` V1~V6)
+- [ ] Phase 1 — Airflow ingestion + data quality
+  - [x] DM-201 Airflow local stack
+  - [x] DM-202 raw snapshot DAG (`ingest_source_records__{source}`)
+  - [ ] DM-203 normalize · DM-204 entity resolution · DM-205 quality gate · DM-206 gold publish
+- [ ] Phase 2 이후
+
 ## 현재 문서 기준
 
 2026-09-26 기준으로 작성했다.
