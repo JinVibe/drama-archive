@@ -1,0 +1,32 @@
+[project]
+name = "dramamemory-data"
+version = "0.1.0"
+description = "DramaMemory data platform: ingestion, normalization, entity resolution, quality, graph sync"
+requires-python = ">=3.12"
+# Runtime deps are provided by the apache/airflow image (boto3, httpx, pydantic,
+# postgres/amazon providers). Pin here only what tests need outside Airflow.
+dependencies = [
+    "httpx>=0.28",
+    "pydantic>=2.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "dags", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -35,7 +35,8 @@ venv/
 *.egg-info/
 
 # Airflow local runtime
-data-platform/logs/
+data-platform/logs/*
+!data-platform/logs/.gitkeep
 data-platform/plugins/
 airflow.cfg
 webserver_config.py

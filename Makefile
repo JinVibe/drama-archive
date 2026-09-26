@@ -24,3 +24,16 @@ ps:
 # Destroys volumes. Use when you need a clean database.
 clean:
 	docker compose down -v
+
+# Airflow (api-server on :8080, no login locally)
+airflow-up:
+	docker compose up -d airflow-apiserver airflow-scheduler airflow-dag-processor airflow-triggerer
+
+airflow-down:
+	docker compose stop airflow-apiserver airflow-scheduler airflow-dag-processor airflow-triggerer
+
+airflow-cli:
+	docker compose run --rm airflow-cli $(ARGS)
+
+dag-errors:
+	docker compose run --rm airflow-cli dags list-import-errors
