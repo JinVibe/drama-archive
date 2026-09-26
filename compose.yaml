@@ -26,7 +26,7 @@ x-airflow-common: &airflow-common
     PYTHONPATH: /opt/airflow/src
     # Connections used by DAGs (docs/AIRFLOW_DAGS.md). Same names in every environment.
     AIRFLOW_CONN_DRAMAMEMORY_POSTGRES: postgresql://${POSTGRES_USER:-dramamemory}:${POSTGRES_PASSWORD:-dramamemory}@postgres:5432/${POSTGRES_DB:-dramamemory}
-    AIRFLOW_CONN_DRAMAMEMORY_S3: '{"conn_type":"aws","login":"${MINIO_ROOT_USER:-minioadmin}","password":"${MINIO_ROOT_PASSWORD:-minioadmin}","extra":{"endpoint_url":"http://minio:9000","region_name":"us-east-1"}}'
+    AIRFLOW_CONN_DRAMAMEMORY_S3: '{"conn_type":"aws","login":"${S3_ACCESS_KEY:-dramamemory}","password":"${S3_SECRET_KEY:-dramamemory}","extra":{"endpoint_url":"http://objectstore:9000","region_name":"us-east-1"}}'
     DRAMAMEMORY_RAW_BUCKET: ${RAW_BUCKET:-dramamemory-raw}
   volumes:
     - ./data-platform/dags:/opt/airflow/dags
@@ -79,34 +79,40 @@ services:
       timeout: 3s
       retries: 10
 
-  minio:
-    image: minio/minio:latest
-    command: server /data --console-address ":9001"
+  # S3-compatible object storage for raw snapshots (local only; production uses S3).
+  # RustFS replaces MinIO, whose public images are no longer distributed.
+  objectstore:
+    image: rustfs/rustfs:1.0.0
     environment:
-      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
-      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY:-dramamemory}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_KEY:-dramamemory}
+      RUSTFS_CONSOLE_ENABLE: "true"
     ports:
-      - "${MINIO_PORT:-9000}:9000"
-      - "${MINIO_CONSOLE_PORT:-9001}:9001"
+      - "${S3_PORT:-9000}:9000"
+      - "${S3_CONSOLE_PORT:-9001}:9001"
     volumes:
-      - minio-data:/data
+      - objectstore-data:/data
     healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:9000/health/live || exit 1"]
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 20
+      start_period: 10s
 
   # Creates the raw snapshot bucket once and exits.
-  minio-init:
-    image: minio/mc:latest
+  objectstore-init:
+    image: amazon/aws-cli:latest
     depends_on:
-      minio:
+      objectstore:
         condition: service_healthy
-    entrypoint: >
-      /bin/sh -c "
-      mc alias set local http://minio:9000 ${MINIO_ROOT_USER:-minioadmin} ${MINIO_ROOT_PASSWORD:-minioadmin} &&
-      mc mb --ignore-existing local/${RAW_BUCKET:-dramamemory-raw}
-      "
+    environment:
+      AWS_ACCESS_KEY_ID: ${S3_ACCESS_KEY:-dramamemory}
+      AWS_SECRET_ACCESS_KEY: ${S3_SECRET_KEY:-dramamemory}
+      AWS_DEFAULT_REGION: us-east-1
+    entrypoint: /bin/sh
+    command: >
+      -c "aws --endpoint-url http://objectstore:9000 s3api head-bucket --bucket ${RAW_BUCKET:-dramamemory-raw} 2>/dev/null
+      || aws --endpoint-url http://objectstore:9000 s3 mb s3://${RAW_BUCKET:-dramamemory-raw}"
 
   # ---------------------------------------------------------------------------
   # Airflow 3 (LocalExecutor). Metadata DB = "airflow" database in the same
@@ -175,4 +181,4 @@ services:
 
 volumes:
   postgres-data:
-  minio-data:
+  objectstore-data:

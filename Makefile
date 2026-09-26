@@ -1,10 +1,10 @@
 .PHONY: up down migrate migrate-info logs ps clean
 
-# Local stack (postgres + migrations + redis + minio)
+# Local stack (postgres + migrations + redis + object storage)
 up:
-	docker compose up -d postgres redis minio
+	docker compose up -d postgres redis objectstore
 	docker compose run --rm migrate
-	docker compose run --rm minio-init
+	docker compose run --rm objectstore-init
 
 down:
 	docker compose down
