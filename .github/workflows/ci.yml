@@ -1,0 +1,91 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  data-platform:
+    name: data-platform lint + unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: data-platform
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: pip install "ruff>=0.8" "pytest>=8.3" "httpx>=0.28" "pydantic>=2.10"
+      - name: Lint
+        run: ruff check .
+      - name: Unit tests
+        run: pytest -q
+
+  dag-import:
+    name: Airflow DAG import check
+    runs-on: ubuntu-latest
+    container:
+      image: apache/airflow:3.3.0-python3.12
+      options: --user root
+    env:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////tmp/ci.db
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse DAGs
+        working-directory: data-platform
+        env:
+          PYTHONPATH: src
+        run: |
+          python - <<'EOF'
+          from airflow.models import DagBag
+          bag = DagBag("dags")
+          assert not bag.import_errors, bag.import_errors
+          assert bag.dag_ids, "no DAGs found"
+          print("DAGs:", sorted(bag.dag_ids))
+          EOF
+
+  migrations:
+    name: Flyway migration check
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: dramamemory
+          POSTGRES_PASSWORD: dramamemory
+          POSTGRES_DB: dramamemory
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U dramamemory"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply migrations from scratch
+        run: |
+          docker run --rm --network host \
+            -v "$PWD/db/migrations:/flyway/sql:ro" \
+            flyway/flyway:11 \
+            -url=jdbc:postgresql://localhost:5432/dramamemory \
+            -user=dramamemory -password=dramamemory \
+            -locations=filesystem:/flyway/sql -connectRetries=10 \
+            migrate
+      - name: Validate applied state matches files
+        run: |
+          docker run --rm --network host \
+            -v "$PWD/db/migrations:/flyway/sql:ro" \
+            flyway/flyway:11 \
+            -url=jdbc:postgresql://localhost:5432/dramamemory \
+            -user=dramamemory -password=dramamemory \
+            -locations=filesystem:/flyway/sql \
+            validate

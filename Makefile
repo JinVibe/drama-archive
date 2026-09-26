@@ -41,3 +41,7 @@ dag-errors:
 # Pipeline unit tests + lint, run inside the Airflow image (same Python/deps as production)
 test-data:
 	docker compose run --rm --entrypoint bash -v ./data-platform:/workspace -w /workspace airflow-cli -c "pip install -q pytest ruff && ruff check . && pytest -q"
+
+# Same DAG import check CI runs
+dag-check:
+	docker run --rm -v "$(CURDIR)/data-platform:/workspace" -w /workspace -e PYTHONPATH=/workspace/src -e AIRFLOW__CORE__LOAD_EXAMPLES=false -e AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////tmp/ci.db --entrypoint python apache/airflow:3.3.0-python3.12 -c "from airflow.models import DagBag; b=DagBag('dags'); assert not b.import_errors, b.import_errors; print(sorted(b.dag_ids))"
