@@ -118,7 +118,8 @@ docs/            설계 문서
 - [ ] Phase 3 / M2 — pgvector Hybrid Search + AI memory search (`apps/ai-api`) + golden query 평가
   - [x] DM-601/602 V11 `embedding vector(1024)` + HNSW, `embedding_refresh` DAG (search.documents asset → ai-api `/internal/embed`, 배치 체크포인트)
   - [x] `apps/ai-api` FastAPI — BGE-M3 로컬 임베딩, 질의 분석(연도/연대/쯤/방송사 → 필터), FTS+trigram+vector **RRF**, `/v1/search?mode=hybrid|lexical|vector`
-  - [x] DM-901/902 `evals/retrieval` 골든 질의셋(37개, 7 클래스) + 러너(Recall@K/MRR/NDCG, 클래스별, 회귀 게이트) — 보고서 `evals/retrieval/reports/`
+  - [x] DM-901/902 `evals/retrieval` 골든 질의셋(120개, 7 클래스) + 러너(Recall@K/MRR/NDCG, 클래스별, 회귀 게이트) — 24편 기준 hybrid recall@5 0.99 / MRR 0.97 vs lexical 0.55 / 0.56 (`evals/retrieval/reports/latest.json`)
+  - [x] seed 24편 (tvN 2016 전편 + KBS/SBS/MBC/JTBC 10편, **공식 출처 검증 전 초안**) · ER 동명이인(김원석 PD/작가) 리뷰 큐 → 수동 결정으로 검증
   - [x] web `/search` → ai-api hybrid, ai-api 장애 시 domain-api lexical로 degrade
   - [ ] DM-605 reranker 실험 · DM-701~706 AI memory search(LLM 생성·근거 UI·abstention) · 카탈로그 확대 후 골든셋 200+
 

@@ -33,7 +33,15 @@ Personal    사용자 시청 기록
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 골든 37 질의 / 7 클래스, lexical·vector·hybrid 비교 보고서 | `evals/retrieval/` |
 
-첫 측정(3편 카탈로그, 자세한 수치는 `evals/retrieval/reports/latest.json`): lexical recall@1 0.49 → hybrid 0.95+. 단, 문서가 3개라 recall@5는 자명하게 1.0이므로 **recall@1·MRR만 유의미**하다. 카탈로그를 늘린 뒤 골든셋 200+로 재측정하는 것이 다음 조건.
+측정 (24편 카탈로그, 골든 120질의 / 7클래스, `evals/retrieval/reports/latest.json`):
+
+| retriever | recall@1 | recall@5 | MRR | p50 |
+|---|---|---|---|---|
+| lexical (domain-api, FTS AND + trigram) | 0.524 | 0.554 | 0.562 | 10ms |
+| vector only (BGE-M3) | 0.754 | 0.914 | 0.861 | 70ms |
+| **hybrid (FTS AND + FTS OR + trigram + vector, RRF)** | **0.889** | **0.992** | **0.968** | 80ms |
+
+평가가 잡아낸 결함과 수정: ① 제목 속 숫자(`응답하라 1988`, `88년 쌍문동`)를 연도 필터로 오해 → 조건으로 0건이면 **조건을 풀고 재검색**(`relaxed`) ② `노희경 작가`처럼 문서에 없는 단어 하나로 AND-FTS 전체 실패 → **OR-FTS 리스트** 추가. 남은 실패 1건(`군인이랑 의사가 전쟁터에서 사랑하는 드라마` → 닥터스 우선)은 reranker(DM-605) 후보. 카탈로그 확대 시 골든셋 200+로 재측정.
 
 ---
 
