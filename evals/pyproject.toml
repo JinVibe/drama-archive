@@ -1,0 +1,19 @@
+[project]
+name = "dramamemory-evals"
+version = "0.1.0"
+description = "Golden query sets and evaluation runners (stdlib only)"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "ruff>=0.8"]
+
+[tool.pytest.ini_options]
+testpaths = ["retrieval"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

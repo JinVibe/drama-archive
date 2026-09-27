@@ -1,0 +1,37 @@
+{"id": "q001", "class": "entity_lookup", "query": "도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q002", "class": "entity_lookup", "query": "시그널", "expected": ["signal"]}
+{"id": "q003", "class": "entity_lookup", "query": "또 오해영", "expected": ["another-miss-oh"]}
+{"id": "q004", "class": "entity_lookup", "query": "또오해영", "expected": ["another-miss-oh"]}
+{"id": "q005", "class": "entity_lookup", "query": "goblin", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q006", "class": "entity_lookup", "query": "쓸쓸하고 찬란하신 도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q007", "class": "entity_lookup", "query": "도깨", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q008", "class": "entity_lookup", "query": "another miss oh", "expected": ["another-miss-oh"]}
+{"id": "q010", "class": "person", "query": "공유 나온 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q011", "class": "person", "query": "김혜수 이제훈", "expected": ["signal"]}
+{"id": "q012", "class": "person", "query": "서현진 에릭", "expected": ["another-miss-oh"]}
+{"id": "q013", "class": "person", "query": "김은숙 작가 판타지", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q014", "class": "person", "query": "이동욱 저승사자", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q015", "class": "person", "query": "김은희 작가 형사물", "expected": ["signal"]}
+{"id": "q020", "class": "character", "query": "김신 지은탁", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q021", "class": "character", "query": "박해영 형사", "expected": ["signal"]}
+{"id": "q022", "class": "character", "query": "오해영 두 명 나오는 드라마", "expected": ["another-miss-oh"]}
+{"id": "q030", "class": "ost", "query": "Stay With Me 찬열 펀치", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q031", "class": "ost", "query": "첫눈처럼 너에게 가겠다", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q032", "class": "ost", "query": "벤 꿈처럼", "expected": ["another-miss-oh"]}
+{"id": "q033", "class": "ost", "query": "에일리 OST 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q034", "class": "ost", "query": "스테이 위드 미 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q040", "class": "semantic_memory", "query": "불멸의 삶을 사는 남자와 인간 신부", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q041", "class": "semantic_memory", "query": "무전기로 과거 형사랑 교신하는 드라마", "expected": ["signal"]}
+{"id": "q042", "class": "semantic_memory", "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디", "expected": ["another-miss-oh"]}
+{"id": "q043", "class": "semantic_memory", "query": "저승사자랑 같이 사는 도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q044", "class": "semantic_memory", "query": "장기 미제 사건 수사 과거 현재", "expected": ["signal"]}
+{"id": "q045", "class": "semantic_memory", "query": "미래가 보이는 남자 로코", "expected": ["another-miss-oh"]}
+{"id": "q046", "class": "semantic_memory", "query": "기억상실 저승사자 호텔 사장 여자", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q050", "class": "temporal", "query": "2016년 겨울 tvN 판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q051", "class": "temporal", "query": "2016년 초 tvN 스릴러", "expected": ["signal"]}
+{"id": "q052", "class": "temporal", "query": "2016년쯤 봤던 로맨틱 코미디", "expected": ["another-miss-oh"]}
+{"id": "q053", "class": "temporal", "query": "2016년 tvN 드라마", "expected": ["guardian-the-lonely-and-great-god", "signal", "another-miss-oh"]}
+{"id": "q054", "class": "temporal", "query": "2010년대 중반 범죄 스릴러", "expected": ["signal"]}
+{"id": "q060", "class": "genre", "query": "판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q061", "class": "genre", "query": "범죄 스릴러", "expected": ["signal"]}
+{"id": "q062", "class": "genre", "query": "로맨스 코미디", "expected": ["another-miss-oh"]}
