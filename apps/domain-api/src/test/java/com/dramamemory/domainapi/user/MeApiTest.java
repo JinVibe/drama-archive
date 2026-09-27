@@ -101,6 +101,11 @@ class MeApiTest {
         mvc.perform(get("/api/v1/me").cookie(c))
                 .andExpect(jsonPath("$.userId").value(userId.toString()))
                 .andExpect(jsonPath("$.anonymous").value(true));
+        mvc.perform(get("/api/v1/me/dramas/101").cookie(c))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("WATCHING"));
+        mvc.perform(get("/api/v1/me/dramas/103").cookie(c)).andExpect(status().isNotFound());
+        mvc.perform(get("/api/v1/me/dramas/101")).andExpect(status().isNotFound());
         mvc.perform(get("/api/v1/me/dramas").cookie(c))
                 .andExpect(jsonPath("$.items", hasSize(2)))
                 .andExpect(jsonPath("$.items[0].drama.id").value(102))

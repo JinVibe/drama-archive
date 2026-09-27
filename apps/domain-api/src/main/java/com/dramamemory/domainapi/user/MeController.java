@@ -52,6 +52,14 @@ public class MeController {
                 .orElse(new DramaStates(List.of()));
     }
 
+    /** State for one drama: 404 both when there is no session and when nothing is recorded. */
+    @GetMapping("/dramas/{dramaId}")
+    public DramaState one(@PathVariable long dramaId, HttpServletRequest req, HttpServletResponse res) {
+        return sessions.current(req, res)
+                .flatMap(u -> watched.find(u.id(), dramaId))
+                .orElseThrow(() -> new NotFoundException("state", Long.toString(dramaId)));
+    }
+
     @PutMapping("/dramas/{dramaId}/status")
     @Transactional
     public DramaState put(@PathVariable long dramaId, @Valid @RequestBody UpdateState body,

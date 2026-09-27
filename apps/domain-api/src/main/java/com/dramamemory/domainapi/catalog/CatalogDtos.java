@@ -24,6 +24,8 @@ public final class CatalogDtos {
 
     public record Page<T>(List<T> items, int page, int size, long total) {}
 
+    public record YearCount(int year, long count) {}
+
     public record Credit(
             long personId,
             String slug,

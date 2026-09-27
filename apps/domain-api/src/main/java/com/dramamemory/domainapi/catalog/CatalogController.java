@@ -5,6 +5,7 @@ import com.dramamemory.domainapi.catalog.CatalogDtos.DramaDetail;
 import com.dramamemory.domainapi.catalog.CatalogDtos.DramaSummary;
 import com.dramamemory.domainapi.catalog.CatalogDtos.Page;
 import com.dramamemory.domainapi.catalog.CatalogDtos.PersonDetail;
+import com.dramamemory.domainapi.catalog.CatalogDtos.YearCount;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import java.util.List;
@@ -32,6 +33,12 @@ public class CatalogController {
     @GetMapping("/broadcasters")
     public List<Broadcaster> broadcasters() {
         return catalog.broadcasters();
+    }
+
+    /** Years that have at least one published drama, newest first — drives the home page and sitemap. */
+    @GetMapping("/years")
+    public List<YearCount> years() {
+        return catalog.years();
     }
 
     @GetMapping("/years/{year}")

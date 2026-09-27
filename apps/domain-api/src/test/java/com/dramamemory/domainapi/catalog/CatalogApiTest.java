@@ -112,6 +112,14 @@ class CatalogApiTest {
     }
 
     @Test
+    void years_lists_years_with_published_dramas_newest_first() throws Exception {
+        mvc.perform(get("/api/v1/years"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[?(@.year == 2016)].count").value(2))
+                .andExpect(jsonPath("$[?(@.year == 2017)]").doesNotExist());
+    }
+
+    @Test
     void year_archive_lists_published_dramas_of_that_year_only() throws Exception {
         mvc.perform(get("/api/v1/years/2016"))
                 .andExpect(status().isOk())

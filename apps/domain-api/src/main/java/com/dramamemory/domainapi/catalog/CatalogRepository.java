@@ -10,6 +10,7 @@ import com.dramamemory.domainapi.catalog.CatalogDtos.Ost;
 import com.dramamemory.domainapi.catalog.CatalogDtos.Page;
 import com.dramamemory.domainapi.catalog.CatalogDtos.PersonDetail;
 import com.dramamemory.domainapi.catalog.CatalogDtos.WatchLink;
+import com.dramamemory.domainapi.catalog.CatalogDtos.YearCount;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.OffsetDateTime;
@@ -51,6 +52,17 @@ public class CatalogRepository {
     }
 
     // ------------------------------------------------------------------ year archive
+
+    public List<YearCount> years() {
+        return jdbc.sql("""
+                        SELECT EXTRACT(YEAR FROM start_date)::int AS year, count(*) AS n
+                          FROM drama
+                         WHERE status = 'PUBLISHED' AND start_date IS NOT NULL
+                         GROUP BY 1 ORDER BY 1 DESC
+                        """)
+                .query((rs, i) -> new YearCount(rs.getInt("year"), rs.getLong("n")))
+                .list();
+    }
 
     private static final String SUMMARY_SELECT = """
             SELECT d.id, d.slug, d.title_ko, d.title_en, d.start_date, d.end_date, d.episode_count,
