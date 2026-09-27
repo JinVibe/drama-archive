@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { api } from "@/lib/api";
+import { JsonLd } from "@/components/JsonLd";
+import { MemoryNote } from "@/components/MemoryNote";
 import { WatchButtons } from "@/components/WatchButtons";
+import { dramaJsonLd } from "@/lib/seo";
 import { CREDIT_LABEL, LINK_LABEL, fmtDate, fmtRange, genreLabel, yearOf } from "@/lib/format";
 
 export async function generateMetadata({ params }: PageProps<"/dramas/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const d = await api.drama(slug);
   const year = yearOf(d.startDate);
+  const title = `${d.titleKo}${year ? ` (${year})` : ""}`;
+  const description =
+    d.synopsis ??
+    `${d.broadcaster?.nameKo ?? ""} ${year ?? ""} 드라마 ${d.titleKo} — 출연진, OST, 공식 다시보기`;
   return {
-    title: `${d.titleKo}${year ? ` (${year})` : ""}`,
-    description:
-      d.synopsis ??
-      `${d.broadcaster?.nameKo ?? ""} ${year ?? ""} 드라마 ${d.titleKo} — 출연진, OST, 공식 다시보기`,
+    title,
+    description,
     alternates: { canonical: `/dramas/${d.slug}` },
+    openGraph: { title, description, type: "video.tv_show", url: `/dramas/${d.slug}` },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -26,6 +33,7 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
 
   return (
     <article className="space-y-8">
+      <JsonLd data={dramaJsonLd(d)} />
       <header className="space-y-3">
         <p className="text-sm text-muted">
           {year && (
@@ -61,6 +69,7 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
           </ul>
         )}
         <WatchButtons dramaId={d.id} />
+        <MemoryNote dramaId={d.id} />
       </header>
 
       {d.synopsis && <p className="max-w-3xl leading-relaxed">{d.synopsis}</p>}

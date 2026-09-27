@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { api } from "@/lib/api";
+import { JsonLd } from "@/components/JsonLd";
 import { CREDIT_LABEL, fmtDate, yearOf } from "@/lib/format";
+import { personJsonLd } from "@/lib/seo";
 
 export async function generateMetadata({ params }: PageProps<"/persons/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -19,6 +21,7 @@ export default async function PersonPage({ params }: PageProps<"/persons/[slug]"
 
   return (
     <article className="space-y-6">
+      <JsonLd data={personJsonLd(p)} />
       <header>
         <h1 className="text-3xl font-semibold tracking-tight">{p.nameKo}</h1>
         <p className="text-sm text-muted">

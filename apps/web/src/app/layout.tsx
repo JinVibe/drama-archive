@@ -6,8 +6,10 @@ import "./globals.css";
 const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
   title: { default: "DramaMemory", template: "%s · DramaMemory" },
   description: "내가 살아온 시절의 한국 드라마를 연도·배우·OST로 다시 만나는 추억 아카이브",
+  openGraph: { siteName: "DramaMemory", locale: "ko_KR", type: "website" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
