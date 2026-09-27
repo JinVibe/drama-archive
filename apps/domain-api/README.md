@@ -30,6 +30,18 @@ Errors are RFC 9457 problem details.
 | GET | `/api/v1/me/dramas/{id}/note`, PUT, DELETE | private one-line memory note (1–500 chars) |
 | GET | `/api/v1/me/timeline` | counts by status, watched-by-year, broadcaster/genre ratios, top actors |
 
+## Admin (DM-104 review queue)
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/v1/admin/review` | staging records in REVIEW with each undecided entity, its signals and the existing canonical candidate (name, birth date, works) |
+| POST | `/api/v1/admin/review/{stagingId}/decide` | `{decisions:[{kind, key, decision: AUTO_MERGE\|CREATE_NEW, canonicalId?}]}` → written into `resolution` as `method=MANUAL`; status becomes RESOLVED when nothing is left to review |
+| GET | `/api/v1/admin/problems` | PARSE_FAILED / REJECTED records with their issues (read-only) |
+
+Guarded by `X-Admin-Token` = `ADMIN_TOKEN` (constant-time compare). Empty token → 503, never open.
+Interim until OAuth + RBAC (ARCHITECTURE §12). Publishing stays with the `publish_gold_catalog`
+DAG, which now also runs every 15 minutes so admin decisions land without an asset event.
+
 ## Search (v1, lexical)
 
 `GET /api/v1/search?q=&size=` — full-text (`simple` config, title/alias weight A, body weight B) and

@@ -20,6 +20,9 @@ server:
   port: ${PORT:8081}
 
 dramamemory:
+  admin:
+    # Shared secret for /api/v1/admin/* (X-Admin-Token). Empty disables the admin API.
+    token: ${ADMIN_TOKEN:}
   session:
     cookie-name: dm_uid
     # >= 32 bytes. Rotating it logs every browser out. Never use the default outside local dev.
