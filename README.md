@@ -110,6 +110,9 @@ docs/            설계 문서
   - [ ] DM-104 admin review queue UI · DM-207 link validator · DM-208 backfill
   - [ ] 실제 방송사 collector/parser (약관 확인 후) — 지금은 curated `dramamemory.drama.v1` JSON만
 - [ ] Phase 2 — 공개 아카이브 + watched timeline
+  - [x] `apps/domain-api` Spring Boot 4 / Java 17 스캐폴드 + 공개 read API (`/api/v1/broadcasters`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`)
+  - [ ] DM-401 guest-first auth · DM-402 watched state · DM-403 timeline (ADR-011)
+  - [ ] `apps/web` Next.js
 
 ## 현재 문서 기준
 
