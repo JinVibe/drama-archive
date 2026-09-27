@@ -97,7 +97,7 @@ def test_parse_rejects_non_json():
 
 
 def test_registry():
-    assert registered_sources() == ["local_seed", "manual"]
+    assert registered_sources() == ["local_seed", "manual", "wikidata"]
     version, fn = parser_for("manual")
     assert version == PARSER_VERSION and fn is parse
     with pytest.raises(KeyError):

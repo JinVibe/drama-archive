@@ -46,6 +46,7 @@ def content_hash(body: bytes) -> str:
 
 _EXTENSION_BY_CONTENT_TYPE = {
     "application/json": "json",
+    "application/sparql-results+json": "json",
     "text/html": "html",
     "application/xml": "xml",
     "text/xml": "xml",

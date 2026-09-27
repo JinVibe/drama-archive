@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from dramamemory_data.normalization.models import NormalizedDrama
-from dramamemory_data.parsers import dramamemory_json
+from dramamemory_data.parsers import dramamemory_json, wikidata_sparql
 
 Parser = Callable[[bytes], NormalizedDrama]
 
@@ -21,6 +21,7 @@ class ParseError(ValueError):
 _REGISTRY: dict[str, tuple[str, Parser]] = {
     "manual": (dramamemory_json.PARSER_VERSION, dramamemory_json.parse),
     "local_seed": (dramamemory_json.PARSER_VERSION, dramamemory_json.parse),
+    "wikidata": (wikidata_sparql.PARSER_VERSION, wikidata_sparql.parse),
     # "tvn_official": added once site terms are confirmed and an HTML parser exists.
 }
 
