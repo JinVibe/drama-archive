@@ -30,3 +30,7 @@ src = ["src", "dags", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# Cypher/SQL text blocks are clearer unwrapped.
+"src/dramamemory_data/graph/projection.py" = ["E501"]

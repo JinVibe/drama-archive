@@ -9,6 +9,11 @@
     "description": "tvN official site fetches (be polite)",
     "include_deferred": false
   },
+  "neo4j_write_pool": {
+    "slots": 1,
+    "description": "Graph materialization writes (one writer at a time)",
+    "include_deferred": false
+  },
   "embedding_api_pool": {
     "slots": 1,
     "description": "Calls to ai-api /internal/embed (CPU-bound model, one at a time)",
