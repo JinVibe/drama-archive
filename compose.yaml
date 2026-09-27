@@ -136,6 +136,17 @@ services:
       retries: 10
       start_period: 30s
 
+  web:
+    build: ./apps/web
+    environment:
+      DOMAIN_API_URL: http://domain-api:8081
+      SITE_URL: ${SITE_URL:-http://localhost:3000}
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    depends_on:
+      domain-api:
+        condition: service_healthy
+
   # Serves curated seed JSON to the local_seed ingestion source (local only).
   seed:
     image: nginx:1.27-alpine

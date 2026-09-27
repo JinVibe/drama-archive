@@ -113,7 +113,8 @@ docs/            설계 문서
   - [x] `apps/domain-api` Spring Boot 4 / Java 17 스캐폴드 + 공개 read API (`/api/v1/broadcasters`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`)
   - [x] DM-401 익명 세션(서명 쿠키) + identity 연결/병합 서비스 + 90일 정리 DAG · DM-402 watched state (`/api/v1/me/...`)
   - [ ] DM-401 카카오/네이버/구글 OAuth 콜백 (provider 앱 등록 후) · DM-403 timeline · DM-404 memory note
-  - [ ] `apps/web` Next.js
+  - [x] `apps/web` Next.js 16 — `/`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`, `/my`, sitemap, 봤어요 버튼 (`/api/*` 런타임 프록시로 쿠키 first-party)
+  - [ ] DM-307 SEO 마무리(OG 이미지, JSON-LD) · DM-405 share card
 
 ## 현재 문서 기준
 

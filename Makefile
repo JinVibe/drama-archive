@@ -52,3 +52,10 @@ api-test:
 
 api-up:
 	docker compose up -d --build domain-api
+
+# web (Next.js, :3000)
+web-dev:
+	cd apps/web && DOMAIN_API_URL=http://localhost:8081 npm run dev
+
+web-up:
+	docker compose up -d --build web
