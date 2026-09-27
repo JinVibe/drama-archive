@@ -461,6 +461,8 @@ threshold 예:
 
 ## 10. Search Projection
 
+> **구현 메모 (V10)**: 실제 마이그레이션은 `(entity_type, entity_id)`를 UNIQUE로 두고 `document_version`을 갱신 시 증가시킨다(같은 엔티티의 여러 버전을 보관하지 않음). `aliases` 컬럼을 분리해 title/alias는 weight A, body는 weight B로 FTS에 넣고, 한국어 부분 일치는 `pg_trgm`(`word_similarity`)으로 보완한다. FTS와 trigram 결과는 **RRF(k=60)** 로 결합한다. `embedding` 컬럼은 임베딩 모델(차원) 확정 후 DM-601 마이그레이션에서 추가한다. 질의 로그는 `search_query_log`(사용자 식별자 없음, zero-result 인덱스).
+
 `search_document`
 
 ```sql
