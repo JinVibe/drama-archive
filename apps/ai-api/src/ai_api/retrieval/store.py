@@ -69,6 +69,10 @@ SELECT sd.id, 0.0 AS score
  LIMIT %(limit)s
 """
 
+DOC_IDS_FOR_DRAMAS_SQL = """
+SELECT entity_id, id FROM search_document WHERE entity_type = 'DRAMA' AND entity_id = ANY(%(ids)s)
+"""
+
 DOCS_SQL = """
 SELECT id, entity_id, title, aliases, body, metadata
   FROM search_document WHERE id = ANY(%(ids)s)
@@ -117,6 +121,13 @@ class SearchStore:
 
     def filter_only(self, filters: dict[str, Any], limit: int) -> list[Candidate]:
         return self._candidates(FILTER_SQL, {"limit": limit, **filters})
+
+    def doc_ids_for_dramas(self, drama_ids: list[int]) -> dict[int, int]:
+        if not drama_ids:
+            return {}
+        with self.pool.connection() as conn:
+            rows = conn.execute(DOC_IDS_FOR_DRAMAS_SQL, {"ids": drama_ids}).fetchall()
+        return {int(r[0]): int(r[1]) for r in rows}
 
     def docs(self, ids: list[int]) -> dict[int, Doc]:
         if not ids:

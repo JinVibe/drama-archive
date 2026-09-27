@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 from ai_api.config import Settings, settings
 from ai_api.db import make_pool
 from ai_api.embedder import Embedder, build_embedder
+from ai_api.graph.queries import GraphClient, Neo4jRunner
 from ai_api.retrieval.hybrid import HybridRetriever, SearchResult
 from ai_api.retrieval.store import SearchStore
 
@@ -19,6 +20,7 @@ log = logging.getLogger("ai_api")
 class State:
     embedder: Embedder | None = None
     retriever: HybridRetriever | None = None
+    graph: GraphClient | None = None
     pool = None
     ready: bool = False
 
@@ -40,8 +42,18 @@ async def lifespan(app: FastAPI):
             f"embedder dim {state.embedder.dim} != configured {s.embedding_dim}; "
             "search_document.embedding column would not match"
         )
+    runner: Neo4jRunner | None = None
+    if s.neo4j_uri:
+        runner = Neo4jRunner(s.neo4j_uri, s.neo4j_user, s.neo4j_password)
+        try:
+            runner.open()
+            state.graph = GraphClient(runner)
+            log.info("graph enabled uri=%s", s.neo4j_uri)
+        except Exception as exc:  # graph is optional (ARCHITECTURE §11: Neo4j outage -> SQL/vector)
+            log.warning("graph disabled: %s", exc)
+            runner = None
     state.retriever = HybridRetriever(
-        SearchStore(state.pool), state.embedder,
+        SearchStore(state.pool), state.embedder, graph=state.graph,
         rrf_k=s.rrf_k, candidates=s.candidates_per_list, retrieval_version=s.retrieval_version,
     )
     state.ready = True
@@ -49,6 +61,8 @@ async def lifespan(app: FastAPI):
     yield
     state.ready = False
     state.pool.close()
+    if runner is not None:
+        runner.close()
 
 
 app = FastAPI(title="DramaMemory AI Query API", version="0.1.0", lifespan=lifespan)
@@ -85,11 +99,17 @@ class PlanOut(BaseModel):
     signals: dict[str, str]
 
 
+class GraphOut(BaseModel):
+    mode: str
+    persons: list[dict[str, Any]]
+
+
 class SearchOut(BaseModel):
     query: str
     plan: PlanOut
     strategy: str
     relaxed: bool
+    graph: GraphOut | None = None
     lists: dict[str, int]
     total: int
     hits: list[HitOut]
@@ -104,6 +124,7 @@ def _to_out(r: SearchResult) -> SearchOut:
         plan=PlanOut(text=r.plan.text, year_from=r.plan.year_from, year_to=r.plan.year_to,
                      broadcaster=r.plan.broadcaster, signals=r.plan.signals),
         strategy=r.strategy, relaxed=r.relaxed, lists=r.lists, total=len(r.hits),
+        graph=GraphOut(mode=r.graph.mode, persons=r.graph.persons) if r.graph else None,
         hits=[HitOut(**h.__dict__) for h in r.hits],
         latency_ms=r.latency_ms, retrieval_version=r.retrieval_version,
         embedding_model=r.embedding_model,
@@ -120,13 +141,40 @@ def retriever() -> HybridRetriever:
 def search(
     q: str = Query(min_length=1, max_length=300),
     size: int = Query(10, ge=1, le=50),
-    mode: str = Query("hybrid", pattern="^(hybrid|lexical|vector)$"),
+    mode: str = Query("hybrid", pattern="^(hybrid|lexical|vector|nograph)$"),
     r: HybridRetriever = Depends(retriever),
 ) -> SearchOut:
     """Retrieval only (no generation): ranked dramas with evidence per retriever.
-    `mode` exists for evaluation (lexical baseline vs vector vs hybrid)."""
-    result = r.search(q, limit=size, use_vector=mode != "lexical", use_lexical=mode != "vector")
+    `mode` exists for evaluation: lexical / vector / nograph (lexical+vector) / hybrid (all)."""
+    result = r.search(
+        q, limit=size,
+        use_vector=mode != "lexical", use_lexical=mode != "vector",
+        use_graph=mode == "hybrid",
+    )
     return _to_out(result)
+
+
+# ---------------------------------------------------------------------------- graph
+def graph() -> GraphClient:
+    if state.graph is None:
+        raise HTTPException(503, "graph read model unavailable")
+    return state.graph
+
+
+@app.get("/v1/graph/dramas/{drama_id}/related")
+def related_dramas(
+    drama_id: int, limit: int = Query(10, ge=1, le=50), g: GraphClient = Depends(graph)
+):
+    """Other dramas connected through cast/crew and through OST artists (GRAPH_MODEL §8)."""
+    return {"drama_id": drama_id, **g.related(drama_id, limit=limit)}
+
+
+@app.get("/v1/graph/persons/{person_id}/collaborators")
+def collaborators(
+    person_id: int, limit: int = Query(10, ge=1, le=50), g: GraphClient = Depends(graph)
+):
+    """Co-stars ranked by shared work count. A count, not a claim about real relationships."""
+    return {"person_id": person_id, "collaborators": g.collaborators(person_id, limit=limit)}
 
 
 # ---------------------------------------------------------------------------- internal

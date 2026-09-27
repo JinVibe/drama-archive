@@ -11,6 +11,7 @@ dependencies = [
     "psycopg[binary,pool]>=3.2",
     "pgvector>=0.3",
     "numpy>=1.26",
+    "neo4j>=5.28",
 ]
 
 [project.optional-dependencies]
@@ -44,3 +45,7 @@ src = ["src", "tests"]
 select = ["E", "F", "I", "B", "UP"]
 # FastAPI dependency injection idiom.
 ignore = ["B008"]
+
+[tool.ruff.lint.per-file-ignores]
+# Cypher text blocks are clearer unwrapped.
+"src/ai_api/graph/queries.py" = ["E501"]

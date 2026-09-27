@@ -23,6 +23,25 @@ model lives in exactly one process.
    filters: FTS (`websearch_to_tsquery`, simple), trigram (title/aliases), vector (pgvector cosine, HNSW).
 3. `retrieval/fusion.py` — RRF (k=60). Raw scores are never added.
 
+## Graph (Neo4j read model)
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/v1/graph/dramas/{id}/related?limit=` | other dramas via shared cast/crew (`via` = who connects them) and via shared OST artists |
+| GET | `/v1/graph/persons/{id}/collaborators?limit=` | co-stars by number of shared dramas |
+
+`graph/queries.py` holds every Cypher statement (parameterized, `LIMIT` ≤ 50, 3 s timeout,
+read-mode sessions); no raw Cypher is accepted from callers (GRAPH_MODEL §13-§14). The graph is
+optional: if `AI_API_NEO4J_URI` is empty or Neo4j is down, search runs without the graph list and the
+graph endpoints answer 503.
+
+In retrieval, `retrieval/graph_candidates.py` looks up person names found in the query
+(particles like 랑/이랑/와 stripped): one person → their works, two or more → works they share.
+That list joins RRF as `graph`; `mode=nograph` disables it for evaluation.
+
+Neo4j Community has a single user, so the "read-only account for the query API" from
+GRAPH_MODEL §14 needs Enterprise or a proxy; locally both services use the same credentials.
+
 ## Embeddings
 
 `BAAI/bge-m3` (1024-dim, normalized) via sentence-transformers on CPU; weights are downloaded on

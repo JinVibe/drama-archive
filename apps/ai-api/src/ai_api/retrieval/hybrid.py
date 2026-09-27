@@ -9,14 +9,19 @@ No LLM on this path. Generation (DM-704) consumes the output of this module.
 
 from __future__ import annotations
 
+import logging
 import time
 from dataclasses import dataclass, field
 from typing import Any
 
 from ai_api.embedder import Embedder
+from ai_api.graph.queries import GraphClient
 from ai_api.retrieval.fusion import rrf
+from ai_api.retrieval.graph_candidates import GraphMatch, graph_candidates
 from ai_api.retrieval.query import QueryPlan, analyze
 from ai_api.retrieval.store import Doc, SearchStore
+
+log = logging.getLogger("ai_api.retrieval")
 
 
 @dataclass
@@ -37,6 +42,7 @@ class SearchResult:
     lists: dict[str, int]           # list name -> candidate count
     hits: list[Hit]
     relaxed: bool = False           # constraints dropped after they produced nothing
+    graph: GraphMatch | None = None # people matched in the graph, if any
     latency_ms: dict[str, int] = field(default_factory=dict)
     retrieval_version: str = ""
     embedding_model: str | None = None
@@ -44,19 +50,22 @@ class SearchResult:
 
 class HybridRetriever:
     def __init__(self, store: SearchStore, embedder: Embedder | None, *,
+                 graph: GraphClient | None = None,
                  rrf_k: int = 60, candidates: int = 50, retrieval_version: str = "hybrid-v1"):
         self.store = store
         self.embedder = embedder
+        self.graph = graph
         self.rrf_k = rrf_k
         self.candidates = candidates
         self.retrieval_version = retrieval_version
 
     def search(self, query: str, limit: int = 10, *, use_vector: bool = True,
-               use_lexical: bool = True) -> SearchResult:
+               use_lexical: bool = True, use_graph: bool = True) -> SearchResult:
         plan = analyze(query)
         lists: dict[str, list] = {}
         latency: dict[str, int] = {}
         relaxed = False
+        graph_match: GraphMatch | None = None
 
         def timed(name, fn):
             t = time.perf_counter()
@@ -74,6 +83,16 @@ class HybridRetriever:
                 vec = self.embedder.embed([p.text])[0]
                 latency["embed"] = latency.get("embed", 0) + int((time.perf_counter() - t) * 1000)
                 timed("vector", lambda: self.store.vector(vec, filters, self.candidates))
+            if use_graph and self.graph is not None and p.text:
+                nonlocal graph_match
+                t = time.perf_counter()
+                try:
+                    cands, graph_match = self._graph_list(p.text)
+                except Exception as exc:  # graph is optional: never fail the search
+                    log.warning("graph candidates failed for %r: %s", p.text, exc)
+                    cands, graph_match = [], GraphMatch(mode=f"error:{type(exc).__name__}")
+                lists["graph"] = cands
+                latency["graph"] = int((time.perf_counter() - t) * 1000)
             if not any(lists.values()) and p.has_constraints and not p.text:
                 timed("filter", lambda: self.store.filter_only(filters, self.candidates))
 
@@ -101,12 +120,26 @@ class HybridRetriever:
             lists={k: len(v) for k, v in lists.items()}, hits=hits, latency_ms=latency,
             retrieval_version=self.retrieval_version,
             embedding_model=self.embedder.model_id if self.embedder else None,
+            graph=graph_match,
         )
+
+    def _graph_list(self, text: str):
+        # Two round trips: names -> dramas (graph), dramas -> document ids (postgres).
+        _, match = graph_candidates(self.graph, text, doc_id_by_drama={}, limit=self.candidates)
+        if not match.dramas:
+            return [], match
+        id_map = self.store.doc_ids_for_dramas([int(d["id"]) for d in match.dramas])
+        return graph_candidates(self.graph, text, doc_id_by_drama=id_map, limit=self.candidates)
 
 
 def _strategy(lists: dict[str, list]) -> str:
     lexical = bool(lists.get("fts") or lists.get("fts_any") or lists.get("trigram"))
     vector = bool(lists.get("vector"))
+    graph = bool(lists.get("graph"))
+    if graph and (lexical or vector):
+        return "hybrid+graph"
+    if graph:
+        return "graph"
     if lexical and vector:
         return "hybrid"
     if lexical:

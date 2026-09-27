@@ -24,6 +24,11 @@ class Settings(BaseSettings):
     rrf_k: int = 60
     candidates_per_list: int = 50
 
+    # Neo4j read model. Empty uri = graph features off (search still works without it).
+    neo4j_uri: str = ""
+    neo4j_user: str = "neo4j"
+    neo4j_password: str = ""
+
     # Shared secret for /internal/* (embedding refresh from Airflow). Empty = open (local only).
     internal_token: str = ""
 

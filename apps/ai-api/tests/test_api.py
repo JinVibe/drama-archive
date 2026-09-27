@@ -11,7 +11,7 @@ from ai_api.retrieval.query import analyze
 class StubRetriever:
     retrieval_version = "test"
 
-    def search(self, query, limit=10, *, use_vector=True, use_lexical=True):
+    def search(self, query, limit=10, *, use_vector=True, use_lexical=True, use_graph=True):
         plan = analyze(query)
         hits = [Hit(drama_id=4, title="도깨비", metadata={"slug": "goblin"}, score=0.03,
                     ranks={"fts": 1}, scores={"fts": 0.5})]
