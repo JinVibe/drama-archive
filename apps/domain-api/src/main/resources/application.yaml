@@ -19,6 +19,14 @@ spring:
 server:
   port: ${PORT:8081}
 
+dramamemory:
+  session:
+    cookie-name: dm_uid
+    # >= 32 bytes. Rotating it logs every browser out. Never use the default outside local dev.
+    cookie-secret: ${SESSION_COOKIE_SECRET:local-dev-only-session-secret-change-me-0000}
+    cookie-secure: ${SESSION_COOKIE_SECURE:false}
+    cookie-max-age: 365d
+
 management:
   endpoints:
     web:
