@@ -1,134 +1,145 @@
 {
-  "generated_at": "2026-09-27T10:44:29.803932+00:00",
+  "generated_at": "2026-09-27T11:48:31.825209+00:00",
   "golden_set": "C:/Users/82108/Desktop/harness_project/drama-archive/evals/retrieval/golden_queries.jsonl",
-  "n_queries": 37,
+  "n_queries": 120,
   "targets": {
     "lexical": {
       "overall": {
-        "recall@1": 0.4864864864864865,
-        "recall@3": 0.4864864864864865,
-        "recall@5": 0.4864864864864865,
-        "recall@10": 0.4864864864864865,
-        "mrr": 0.4864864864864865,
-        "ndcg@1": 0.4864864864864865,
-        "ndcg@3": 0.4864864864864865,
-        "ndcg@5": 0.4864864864864865,
-        "ndcg@10": 0.4864864864864865,
-        "latency_p50_ms": 26.810699957422912,
-        "latency_p95_ms": 33.422600012272596,
+        "recall@1": 0.5238888888888888,
+        "recall@3": 0.5508333333333333,
+        "recall@5": 0.5541666666666667,
+        "recall@10": 0.5541666666666667,
+        "mrr": 0.5625,
+        "ndcg@1": 0.5583333333333333,
+        "ndcg@3": 0.5539893025779025,
+        "ndcg@5": 0.5539893025779025,
+        "ndcg@10": 0.5539893025779025,
+        "latency_p50_ms": 23.237649991642684,
+        "latency_p95_ms": 31.93880000617355,
         "errors": 0,
-        "n": 37
+        "n": 120
       },
       "by_class": {
         "character": {
-          "recall@1": 0.3333333333333333,
-          "recall@3": 0.3333333333333333,
-          "recall@5": 0.3333333333333333,
-          "recall@10": 0.3333333333333333,
-          "mrr": 0.3333333333333333,
-          "ndcg@1": 0.3333333333333333,
-          "ndcg@3": 0.3333333333333333,
-          "ndcg@5": 0.3333333333333333,
-          "ndcg@10": 0.3333333333333333,
-          "latency_p50_ms": 22.84749993123114,
-          "latency_p95_ms": 31.34009998757392,
+          "recall@1": 0.75,
+          "recall@3": 0.75,
+          "recall@5": 0.75,
+          "recall@10": 0.75,
+          "mrr": 0.75,
+          "ndcg@1": 0.75,
+          "ndcg@3": 0.75,
+          "ndcg@5": 0.75,
+          "ndcg@10": 0.75,
+          "latency_p50_ms": 28.600199962966144,
+          "latency_p95_ms": 31.232699984684587,
           "errors": 0,
-          "n": 3
+          "n": 12
         },
         "entity_lookup": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 10.302850045263767,
-          "latency_p95_ms": 81.07379998546094,
+          "recall@1": 0.9583333333333334,
+          "recall@3": 0.9583333333333334,
+          "recall@5": 0.9583333333333334,
+          "recall@10": 0.9583333333333334,
+          "mrr": 0.9583333333333334,
+          "ndcg@1": 0.9583333333333334,
+          "ndcg@3": 0.9583333333333334,
+          "ndcg@5": 0.9583333333333334,
+          "ndcg@10": 0.9583333333333334,
+          "latency_p50_ms": 15.843600034713745,
+          "latency_p95_ms": 32.01339999213815,
           "errors": 0,
-          "n": 8
+          "n": 24
         },
         "genre": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 21.98249998036772,
-          "latency_p95_ms": 30.69299994967878,
-          "errors": 0,
-          "n": 3
-        },
-        "ost": {
-          "recall@1": 0.6,
-          "recall@3": 0.6,
-          "recall@5": 0.6,
-          "recall@10": 0.6,
-          "mrr": 0.6,
-          "ndcg@1": 0.6,
-          "ndcg@3": 0.6,
-          "ndcg@5": 0.6,
-          "ndcg@10": 0.6,
-          "latency_p50_ms": 8.299599983729422,
-          "latency_p95_ms": 29.89549993071705,
-          "errors": 0,
-          "n": 5
-        },
-        "person": {
-          "recall@1": 0.5,
-          "recall@3": 0.5,
-          "recall@5": 0.5,
-          "recall@10": 0.5,
-          "mrr": 0.5,
-          "ndcg@1": 0.5,
-          "ndcg@3": 0.5,
-          "ndcg@5": 0.5,
-          "ndcg@10": 0.5,
-          "latency_p50_ms": 19.18164995731786,
-          "latency_p95_ms": 33.422600012272596,
-          "errors": 0,
-          "n": 6
-        },
-        "semantic_memory": {
-          "recall@1": 0.0,
-          "recall@3": 0.0,
-          "recall@5": 0.0,
-          "recall@10": 0.0,
-          "mrr": 0.0,
-          "ndcg@1": 0.0,
-          "ndcg@3": 0.0,
-          "ndcg@5": 0.0,
-          "ndcg@10": 0.0,
-          "latency_p50_ms": 30.47350002452731,
-          "latency_p95_ms": 32.2192000458017,
+          "recall@1": 0.29047619047619044,
+          "recall@3": 0.49047619047619045,
+          "recall@5": 0.5476190476190477,
+          "recall@10": 0.5476190476190477,
+          "mrr": 0.7142857142857143,
+          "ndcg@1": 0.7142857142857143,
+          "ndcg@3": 0.5832037026840308,
+          "ndcg@5": 0.5832037026840308,
+          "ndcg@10": 0.5832037026840308,
+          "latency_p50_ms": 29.17849994264543,
+          "latency_p95_ms": 31.393400044180453,
           "errors": 0,
           "n": 7
         },
-        "temporal": {
-          "recall@1": 0.0,
-          "recall@3": 0.0,
-          "recall@5": 0.0,
-          "recall@10": 0.0,
-          "mrr": 0.0,
-          "ndcg@1": 0.0,
-          "ndcg@3": 0.0,
-          "ndcg@5": 0.0,
-          "ndcg@10": 0.0,
-          "latency_p50_ms": 30.016200034879148,
-          "latency_p95_ms": 30.612200032919645,
+        "ost": {
+          "recall@1": 0.5833333333333334,
+          "recall@3": 0.6666666666666666,
+          "recall@5": 0.6666666666666666,
+          "recall@10": 0.6666666666666666,
+          "mrr": 0.625,
+          "ndcg@1": 0.5833333333333334,
+          "ndcg@3": 0.6359108127976215,
+          "ndcg@5": 0.6359108127976215,
+          "ndcg@10": 0.6359108127976215,
+          "latency_p50_ms": 15.710600011516362,
+          "latency_p95_ms": 31.93880000617355,
           "errors": 0,
-          "n": 5
+          "n": 12
+        },
+        "person": {
+          "recall@1": 0.6851851851851852,
+          "recall@3": 0.7037037037037037,
+          "recall@5": 0.7037037037037037,
+          "recall@10": 0.7037037037037037,
+          "mrr": 0.7037037037037037,
+          "ndcg@1": 0.7037037037037037,
+          "ndcg@3": 0.7037037037037037,
+          "ndcg@5": 0.7037037037037037,
+          "ndcg@10": 0.7037037037037037,
+          "latency_p50_ms": 23.95449997857213,
+          "latency_p95_ms": 32.23430004436523,
+          "errors": 0,
+          "n": 27
+        },
+        "semantic_memory": {
+          "recall@1": 0.037037037037037035,
+          "recall@3": 0.037037037037037035,
+          "recall@5": 0.037037037037037035,
+          "recall@10": 0.037037037037037035,
+          "mrr": 0.037037037037037035,
+          "ndcg@1": 0.037037037037037035,
+          "ndcg@3": 0.037037037037037035,
+          "ndcg@5": 0.037037037037037035,
+          "ndcg@10": 0.037037037037037035,
+          "latency_p50_ms": 8.338900050148368,
+          "latency_p95_ms": 32.34080004040152,
+          "errors": 0,
+          "n": 27
+        },
+        "temporal": {
+          "recall@1": 0.21212121212121213,
+          "recall@3": 0.2424242424242424,
+          "recall@5": 0.2424242424242424,
+          "recall@10": 0.2424242424242424,
+          "mrr": 0.2727272727272727,
+          "ndcg@1": 0.2727272727272727,
+          "ndcg@3": 0.25139642154442016,
+          "ndcg@5": 0.25139642154442016,
+          "ndcg@10": 0.25139642154442016,
+          "latency_p50_ms": 29.594800085760653,
+          "latency_p95_ms": 30.753199942409992,
+          "errors": 0,
+          "n": 11
         }
       },
       "failures": [
         {
-          "id": "q010",
+          "id": "q019",
+          "class": "entity_lookup",
+          "query": "디어마이프렌즈",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q030",
           "class": "person",
           "query": "공유 나온 드라마",
           "expected": [
@@ -139,7 +150,7 @@
           "error": null
         },
         {
-          "id": "q013",
+          "id": "q033",
           "class": "person",
           "query": "김은숙 작가 판타지",
           "expected": [
@@ -150,18 +161,75 @@
           "error": null
         },
         {
-          "id": "q015",
+          "id": "q034",
           "class": "person",
-          "query": "김은희 작가 형사물",
+          "query": "김은숙 작가 군인",
           "expected": [
-            "signal"
+            "descendants-of-the-sun"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "q021",
+          "id": "q035",
+          "class": "person",
+          "query": "김고은 나온 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "cheese-in-the-trap"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q041",
+          "class": "person",
+          "query": "전도연 변호사",
+          "expected": [
+            "the-good-wife"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q043",
+          "class": "person",
+          "query": "노희경 작가",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q045",
+          "class": "person",
+          "query": "조진웅 나온 드라마",
+          "expected": [
+            "signal",
+            "entourage"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q046",
+          "class": "person",
+          "query": "지창욱 윤아",
+          "expected": [
+            "the-k2"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q061",
           "class": "character",
           "query": "박해영 형사",
           "expected": [
@@ -172,7 +240,7 @@
           "error": null
         },
         {
-          "id": "q022",
+          "id": "q062",
           "class": "character",
           "query": "오해영 두 명 나오는 드라마",
           "expected": [
@@ -183,7 +251,18 @@
           "error": null
         },
         {
-          "id": "q033",
+          "id": "q071",
+          "class": "character",
+          "query": "차영빈 매니저 김은갑",
+          "expected": [
+            "entourage"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q083",
           "class": "ost",
           "query": "에일리 OST 드라마",
           "expected": [
@@ -194,7 +273,7 @@
           "error": null
         },
         {
-          "id": "q034",
+          "id": "q084",
           "class": "ost",
           "query": "스테이 위드 미 드라마",
           "expected": [
@@ -205,7 +284,29 @@
           "error": null
         },
         {
-          "id": "q040",
+          "id": "q090",
+          "class": "ost",
+          "query": "첸 펀치 에브리타임",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q091",
+          "class": "ost",
+          "query": "거미 OST 군인 의사",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q100",
           "class": "semantic_memory",
           "query": "불멸의 삶을 사는 남자와 인간 신부",
           "expected": [
@@ -216,7 +317,7 @@
           "error": null
         },
         {
-          "id": "q041",
+          "id": "q101",
           "class": "semantic_memory",
           "query": "무전기로 과거 형사랑 교신하는 드라마",
           "expected": [
@@ -227,7 +328,7 @@
           "error": null
         },
         {
-          "id": "q042",
+          "id": "q102",
           "class": "semantic_memory",
           "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디",
           "expected": [
@@ -238,7 +339,7 @@
           "error": null
         },
         {
-          "id": "q043",
+          "id": "q103",
           "class": "semantic_memory",
           "query": "저승사자랑 같이 사는 도깨비",
           "expected": [
@@ -249,7 +350,7 @@
           "error": null
         },
         {
-          "id": "q044",
+          "id": "q104",
           "class": "semantic_memory",
           "query": "장기 미제 사건 수사 과거 현재",
           "expected": [
@@ -260,7 +361,7 @@
           "error": null
         },
         {
-          "id": "q045",
+          "id": "q105",
           "class": "semantic_memory",
           "query": "미래가 보이는 남자 로코",
           "expected": [
@@ -271,18 +372,227 @@
           "error": null
         },
         {
-          "id": "q046",
+          "id": "q106",
           "class": "semantic_memory",
-          "query": "기억상실 저승사자 호텔 사장 여자",
+          "query": "군인이랑 의사가 전쟁터에서 사랑하는 드라마",
           "expected": [
-            "guardian-the-lonely-and-great-god"
+            "descendants-of-the-sun"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "q050",
+          "id": "q107",
+          "class": "semantic_memory",
+          "query": "88년 쌍문동 골목 이웃들 이야기",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q108",
+          "class": "semantic_memory",
+          "query": "웹툰 속으로 들어가는 드라마",
+          "expected": [
+            "w-two-worlds"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q109",
+          "class": "semantic_memory",
+          "query": "인어가 서울에 와서 사기꾼이랑 사랑에 빠지는 이야기",
+          "expected": [
+            "the-legend-of-the-blue-sea"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q110",
+          "class": "semantic_memory",
+          "query": "남장하고 궁에 들어간 여자 내시",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q111",
+          "class": "semantic_memory",
+          "query": "치매 걸린 변호사 아들의 죽음",
+          "expected": [
+            "memory"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q112",
+          "class": "semantic_memory",
+          "query": "노년의 친구들 인생 이야기",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q113",
+          "class": "semantic_memory",
+          "query": "귀신 보는 남자랑 여고생 귀신",
+          "expected": [
+            "bring-it-on-ghost"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q114",
+          "class": "semantic_memory",
+          "query": "여대생 다섯 명 셰어하우스",
+          "expected": [
+            "age-of-youth"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q115",
+          "class": "semantic_memory",
+          "query": "노량진 고시생 혼자 술 마시는 드라마",
+          "expected": [
+            "drinking-solo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q116",
+          "class": "semantic_memory",
+          "query": "재벌 사촌 삼형제 저택 가난한 여고생",
+          "expected": [
+            "cinderella-and-four-knights"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q117",
+          "class": "semantic_memory",
+          "query": "경호원이 대선후보 숨겨진 딸 지키는 액션",
+          "expected": [
+            "the-k2"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q118",
+          "class": "semantic_memory",
+          "query": "톱스타랑 친구들 연예계 이야기 미드 리메이크",
+          "expected": [
+            "entourage"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q119",
+          "class": "semantic_memory",
+          "query": "남편 검사 스캔들 변호사 복귀",
+          "expected": [
+            "the-good-wife"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q120",
+          "class": "semantic_memory",
+          "query": "위기협상팀 심리전 범인",
+          "expected": [
+            "pied-piper"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q121",
+          "class": "semantic_memory",
+          "query": "기억 잃은 재벌 3세랑 시골 처녀",
+          "expected": [
+            "shopping-king-louie"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q122",
+          "class": "semantic_memory",
+          "query": "시한부 드라마 작가와 톱스타",
+          "expected": [
+            "fantastic"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q124",
+          "class": "semantic_memory",
+          "query": "기상캐스터 기자 삼각관계",
+          "expected": [
+            "jealousy-incarnate"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q125",
+          "class": "semantic_memory",
+          "query": "문제아 소녀가 의사 돼서 스승 다시 만남",
+          "expected": [
+            "doctors"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q126",
+          "class": "semantic_memory",
+          "query": "캠퍼스 선배 속을 알 수 없는 완벽남",
+          "expected": [
+            "cheese-in-the-trap"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q130",
           "class": "temporal",
           "query": "2016년 겨울 tvN 판타지 로맨스",
           "expected": [
@@ -293,34 +603,22 @@
           "error": null
         },
         {
-          "id": "q051",
+          "id": "q131",
           "class": "temporal",
           "query": "2016년 초 tvN 스릴러",
           "expected": [
-            "signal"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "q052",
-          "class": "temporal",
-          "query": "2016년쯤 봤던 로맨틱 코미디",
-          "expected": [
-            "another-miss-oh"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "q053",
-          "class": "temporal",
-          "query": "2016년 tvN 드라마",
-          "expected": [
-            "guardian-the-lonely-and-great-god",
             "signal",
+            "pied-piper"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q132",
+          "class": "temporal",
+          "query": "2016년쯤 봤던 로맨틱 코미디 오해영",
+          "expected": [
             "another-miss-oh"
           ],
           "got": [],
@@ -328,11 +626,126 @@
           "error": null
         },
         {
-          "id": "q054",
+          "id": "q133",
           "class": "temporal",
-          "query": "2010년대 중반 범죄 스릴러",
+          "query": "2016년 JTBC 드라마",
           "expected": [
-            "signal"
+            "age-of-youth",
+            "fantastic",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "fantastic",
+            "age-of-youth"
+          ],
+          "strategy": "FTS",
+          "error": null
+        },
+        {
+          "id": "q134",
+          "class": "temporal",
+          "query": "2016년 MBC 드라마",
+          "expected": [
+            "w-two-worlds",
+            "shopping-king-louie"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q136",
+          "class": "temporal",
+          "query": "2016년 SBS 의학 드라마",
+          "expected": [
+            "doctors"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q137",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러 tvN",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q138",
+          "class": "temporal",
+          "query": "2015년 tvN 드라마",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q139",
+          "class": "temporal",
+          "query": "16년 여름 MBC 판타지",
+          "expected": [
+            "w-two-worlds"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q152",
+          "class": "genre",
+          "query": "법정 드라마",
+          "expected": [
+            "the-good-wife",
+            "memory"
+          ],
+          "got": [
+            "the-good-wife"
+          ],
+          "strategy": "FTS",
+          "error": null
+        },
+        {
+          "id": "q154",
+          "class": "genre",
+          "query": "의학 드라마",
+          "expected": [
+            "doctors"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q155",
+          "class": "genre",
+          "query": "청춘 드라마",
+          "expected": [
+            "age-of-youth",
+            "cheese-in-the-trap",
+            "reply-1988"
+          ],
+          "got": [
+            "age-of-youth"
+          ],
+          "strategy": "FTS",
+          "error": null
+        },
+        {
+          "id": "q156",
+          "class": "genre",
+          "query": "가족 드라마",
+          "expected": [
+            "reply-1988",
+            "dear-my-friends",
+            "memory"
           ],
           "got": [],
           "strategy": "NONE",
@@ -340,146 +753,21 @@
         }
       ]
     },
-    "hybrid": {
-      "overall": {
-        "recall@1": 0.954954954954955,
-        "recall@3": 1.0,
-        "recall@5": 1.0,
-        "recall@10": 1.0,
-        "mrr": 0.9864864864864865,
-        "ndcg@1": 0.972972972972973,
-        "ndcg@3": 0.9900251284749043,
-        "ndcg@5": 0.9900251284749043,
-        "ndcg@10": 0.9900251284749043,
-        "latency_p50_ms": 76.11569995060563,
-        "latency_p95_ms": 100.72149999905378,
-        "errors": 0,
-        "n": 37
-      },
-      "by_class": {
-        "character": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 75.78259997535497,
-          "latency_p95_ms": 83.67839991115034,
-          "errors": 0,
-          "n": 3
-        },
-        "entity_lookup": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 79.4286000309512,
-          "latency_p95_ms": 122.82379996031523,
-          "errors": 0,
-          "n": 8
-        },
-        "genre": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 80.06289997138083,
-          "latency_p95_ms": 91.91900002770126,
-          "errors": 0,
-          "n": 3
-        },
-        "ost": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 75.05640003364533,
-          "latency_p95_ms": 85.1819000672549,
-          "errors": 0,
-          "n": 5
-        },
-        "person": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 74.55835002474487,
-          "latency_p95_ms": 80.25910006836057,
-          "errors": 0,
-          "n": 6
-        },
-        "semantic_memory": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 81.69280004221946,
-          "latency_p95_ms": 100.72149999905378,
-          "errors": 0,
-          "n": 7
-        },
-        "temporal": {
-          "recall@1": 0.6666666666666667,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.9,
-          "ndcg@1": 0.8,
-          "ndcg@3": 0.9261859507142916,
-          "ndcg@5": 0.9261859507142916,
-          "ndcg@10": 0.9261859507142916,
-          "latency_p50_ms": 73.51369992829859,
-          "latency_p95_ms": 76.11569995060563,
-          "errors": 0,
-          "n": 5
-        }
-      },
-      "failures": []
-    },
     "vector": {
       "overall": {
-        "recall@1": 0.9009009009009009,
-        "recall@3": 1.0,
-        "recall@5": 1.0,
-        "recall@10": 1.0,
-        "mrr": 0.9594594594594594,
-        "ndcg@1": 0.918918918918919,
-        "ndcg@3": 0.9700753854247128,
-        "ndcg@5": 0.9700753854247128,
-        "ndcg@10": 0.9700753854247128,
-        "latency_p50_ms": 69.80089994613081,
-        "latency_p95_ms": 104.62410002946854,
+        "recall@1": 0.7541666666666667,
+        "recall@3": 0.8877777777777778,
+        "recall@5": 0.9141666666666667,
+        "recall@10": 0.9608333333333333,
+        "mrr": 0.860760582010582,
+        "ndcg@1": 0.8,
+        "ndcg@3": 0.8553096235229084,
+        "ndcg@5": 0.8668358816953009,
+        "ndcg@10": 0.8831766812343252,
+        "latency_p50_ms": 69.83860000036657,
+        "latency_p95_ms": 90.15800000634044,
         "errors": 0,
-        "n": 37
+        "n": 120
       },
       "by_class": {
         "character": {
@@ -492,10 +780,10 @@
           "ndcg@3": 1.0,
           "ndcg@5": 1.0,
           "ndcg@10": 1.0,
-          "latency_p50_ms": 72.31650000903755,
-          "latency_p95_ms": 91.63240005727857,
+          "latency_p50_ms": 73.29139998182654,
+          "latency_p95_ms": 94.49889999814332,
           "errors": 0,
-          "n": 3
+          "n": 12
         },
         "entity_lookup": {
           "recall@1": 1.0,
@@ -507,88 +795,424 @@
           "ndcg@3": 1.0,
           "ndcg@5": 1.0,
           "ndcg@10": 1.0,
-          "latency_p50_ms": 63.29065002501011,
-          "latency_p95_ms": 85.07510006893426,
+          "latency_p50_ms": 67.18849996104836,
+          "latency_p95_ms": 113.77259995788336,
           "errors": 0,
-          "n": 8
+          "n": 24
         },
         "genre": {
-          "recall@1": 0.6666666666666666,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.8333333333333334,
-          "ndcg@1": 0.6666666666666666,
-          "ndcg@3": 0.8769765845238192,
-          "ndcg@5": 0.8769765845238192,
-          "ndcg@10": 0.8769765845238192,
-          "latency_p50_ms": 74.16769990231842,
-          "latency_p95_ms": 86.69030002783984,
-          "errors": 0,
-          "n": 3
-        },
-        "ost": {
-          "recall@1": 0.8,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.9,
-          "ndcg@1": 0.8,
-          "ndcg@3": 0.9261859507142916,
-          "ndcg@5": 0.9261859507142916,
-          "ndcg@10": 0.9261859507142916,
-          "latency_p50_ms": 70.59770007617772,
-          "latency_p95_ms": 87.52559998538345,
-          "errors": 0,
-          "n": 5
-        },
-        "person": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 61.18750001769513,
-          "latency_p95_ms": 78.6512999329716,
-          "errors": 0,
-          "n": 6
-        },
-        "semantic_memory": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 69.80089994613081,
-          "latency_p95_ms": 90.70459997747093,
+          "recall@1": 0.38095238095238093,
+          "recall@3": 0.719047619047619,
+          "recall@5": 0.8857142857142858,
+          "recall@10": 0.9714285714285714,
+          "mrr": 0.8571428571428571,
+          "ndcg@1": 0.7142857142857143,
+          "ndcg@3": 0.7360304920318804,
+          "ndcg@5": 0.8168335799431882,
+          "ndcg@10": 0.8648281655975135,
+          "latency_p50_ms": 63.69860004633665,
+          "latency_p95_ms": 80.69919992703944,
           "errors": 0,
           "n": 7
         },
+        "ost": {
+          "recall@1": 0.25,
+          "recall@3": 0.4166666666666667,
+          "recall@5": 0.5,
+          "recall@10": 0.8333333333333334,
+          "mrr": 0.398478835978836,
+          "ndcg@1": 0.25,
+          "ndcg@3": 0.3551549589285763,
+          "ndcg@5": 0.391044672101359,
+          "ndcg@10": 0.4986780480821355,
+          "latency_p50_ms": 71.24304998433217,
+          "latency_p95_ms": 87.75940001942217,
+          "errors": 0,
+          "n": 12
+        },
+        "person": {
+          "recall@1": 0.7407407407407407,
+          "recall@3": 0.8703703703703703,
+          "recall@5": 0.9074074074074074,
+          "recall@10": 0.9444444444444444,
+          "mrr": 0.8398589065255733,
+          "ndcg@1": 0.7777777777777778,
+          "ndcg@3": 0.8358678927231721,
+          "ndcg@5": 0.8501957744725994,
+          "ndcg@10": 0.862541453484945,
+          "latency_p50_ms": 68.35039996076375,
+          "latency_p95_ms": 84.99080000910908,
+          "errors": 0,
+          "n": 27
+        },
+        "semantic_memory": {
+          "recall@1": 0.8148148148148148,
+          "recall@3": 0.9629629629629629,
+          "recall@5": 0.9629629629629629,
+          "recall@10": 0.9629629629629629,
+          "mrr": 0.8888888888888888,
+          "ndcg@1": 0.8148148148148148,
+          "ndcg@3": 0.9082858894179937,
+          "ndcg@5": 0.9082858894179937,
+          "ndcg@10": 0.9082858894179937,
+          "latency_p50_ms": 75.34890004899353,
+          "latency_p95_ms": 95.94040003139526,
+          "errors": 0,
+          "n": 27
+        },
         "temporal": {
-          "recall@1": 0.6666666666666667,
+          "recall@1": 0.6212121212121212,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9,
-          "ndcg@1": 0.8,
-          "ndcg@3": 0.9261859507142916,
-          "ndcg@5": 0.9261859507142916,
-          "ndcg@10": 0.9261859507142916,
-          "latency_p50_ms": 98.97559997625649,
-          "latency_p95_ms": 110.87299999780953,
+          "mrr": 0.893939393939394,
+          "ndcg@1": 0.8181818181818182,
+          "ndcg@3": 0.9209936139610416,
+          "ndcg@5": 0.9209936139610416,
+          "ndcg@10": 0.9209936139610416,
+          "latency_p50_ms": 62.530399998649955,
+          "latency_p95_ms": 84.17819999158382,
           "errors": 0,
-          "n": 5
+          "n": 11
         }
       },
-      "failures": []
+      "failures": [
+        {
+          "id": "q034",
+          "class": "person",
+          "query": "김은숙 작가 군인",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "guardian-the-lonely-and-great-god",
+            "cheese-in-the-trap",
+            "the-k2",
+            "signal",
+            "age-of-youth"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q043",
+          "class": "person",
+          "query": "노희경 작가",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [
+            "another-miss-oh",
+            "drinking-solo",
+            "the-good-wife",
+            "cheese-in-the-trap",
+            "memory"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q052",
+          "class": "person",
+          "query": "이응복 연출",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "entourage",
+            "reply-1988",
+            "guardian-the-lonely-and-great-god",
+            "love-in-the-moonlight",
+            "memory"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q083",
+          "class": "ost",
+          "query": "에일리 OST 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "another-miss-oh",
+            "love-in-the-moonlight",
+            "memory",
+            "age-of-youth",
+            "reply-1988"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q087",
+          "class": "ost",
+          "query": "오혁 소녀",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "another-miss-oh",
+            "bring-it-on-ghost",
+            "fantastic",
+            "dear-my-friends",
+            "the-k2"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q088",
+          "class": "ost",
+          "query": "걱정말아요 그대 이적",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "another-miss-oh",
+            "guardian-the-lonely-and-great-god",
+            "shopping-king-louie",
+            "signal",
+            "age-of-youth"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q089",
+          "class": "ost",
+          "query": "다비치 This Love",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "dear-my-friends",
+            "love-in-the-moonlight",
+            "fantastic",
+            "another-miss-oh",
+            "guardian-the-lonely-and-great-god"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q090",
+          "class": "ost",
+          "query": "첸 펀치 에브리타임",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "entourage",
+            "dear-my-friends",
+            "cheese-in-the-trap",
+            "age-of-youth",
+            "bring-it-on-ghost"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q091",
+          "class": "ost",
+          "query": "거미 OST 군인 의사",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "doctors",
+            "bring-it-on-ghost",
+            "w-two-worlds",
+            "love-in-the-moonlight",
+            "memory"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q106",
+          "class": "semantic_memory",
+          "query": "군인이랑 의사가 전쟁터에서 사랑하는 드라마",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "doctors",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "the-k2",
+            "fantastic"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "fantastic",
+            "w-two-worlds",
+            "jealousy-incarnate",
+            "love-in-the-moonlight",
+            "another-miss-oh"
+          ],
+          "strategy": "vector",
+          "error": null
+        }
+      ]
+    },
+    "hybrid": {
+      "overall": {
+        "recall@1": 0.8891666666666667,
+        "recall@3": 0.9883333333333333,
+        "recall@5": 0.9916666666666667,
+        "recall@10": 0.9916666666666667,
+        "mrr": 0.9680555555555556,
+        "ndcg@1": 0.95,
+        "ndcg@3": 0.9741065771726197,
+        "ndcg@5": 0.9741065771726197,
+        "ndcg@10": 0.9741065771726197,
+        "latency_p50_ms": 79.85295000253245,
+        "latency_p95_ms": 102.85110003314912,
+        "errors": 0,
+        "n": 120
+      },
+      "by_class": {
+        "character": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 75.22435003193095,
+          "latency_p95_ms": 98.06079999543726,
+          "errors": 0,
+          "n": 12
+        },
+        "entity_lookup": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 74.2527000256814,
+          "latency_p95_ms": 91.01299999747425,
+          "errors": 0,
+          "n": 24
+        },
+        "genre": {
+          "recall@1": 0.48095238095238096,
+          "recall@3": 0.9428571428571428,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 74.84470005147159,
+          "latency_p95_ms": 88.66819995455444,
+          "errors": 0,
+          "n": 7
+        },
+        "ost": {
+          "recall@1": 0.8333333333333334,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9027777777777778,
+          "ndcg@1": 0.8333333333333334,
+          "ndcg@3": 0.9275774794642881,
+          "ndcg@5": 0.9275774794642881,
+          "ndcg@10": 0.9275774794642881,
+          "latency_p50_ms": 87.13614993030205,
+          "latency_p95_ms": 96.75899997819215,
+          "errors": 0,
+          "n": 12
+        },
+        "person": {
+          "recall@1": 0.9074074074074074,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9753086419753086,
+          "ndcg@1": 0.9629629629629629,
+          "ndcg@3": 0.9814814814814815,
+          "ndcg@5": 0.9814814814814815,
+          "ndcg@10": 0.9814814814814815,
+          "latency_p50_ms": 78.818199923262,
+          "latency_p95_ms": 99.01560004800558,
+          "errors": 0,
+          "n": 27
+        },
+        "semantic_memory": {
+          "recall@1": 0.8888888888888888,
+          "recall@3": 0.9629629629629629,
+          "recall@5": 0.9629629629629629,
+          "recall@10": 0.9629629629629629,
+          "mrr": 0.9259259259259259,
+          "ndcg@1": 0.8888888888888888,
+          "ndcg@3": 0.9356244261904784,
+          "ndcg@5": 0.9356244261904784,
+          "ndcg@10": 0.9356244261904784,
+          "latency_p50_ms": 90.01539996825159,
+          "latency_p95_ms": 115.99700001534075,
+          "errors": 0,
+          "n": 27
+        },
+        "temporal": {
+          "recall@1": 0.8030303030303031,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 72.44760007597506,
+          "latency_p95_ms": 98.43210002873093,
+          "errors": 0,
+          "n": 11
+        }
+      },
+      "failures": [
+        {
+          "id": "q106",
+          "class": "semantic_memory",
+          "query": "군인이랑 의사가 전쟁터에서 사랑하는 드라마",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "doctors",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "the-k2",
+            "fantastic"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        }
+      ]
     }
   }
 }

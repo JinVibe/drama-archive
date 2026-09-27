@@ -6,32 +6,115 @@
 {"id": "q006", "class": "entity_lookup", "query": "쓸쓸하고 찬란하신 도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
 {"id": "q007", "class": "entity_lookup", "query": "도깨", "expected": ["guardian-the-lonely-and-great-god"]}
 {"id": "q008", "class": "entity_lookup", "query": "another miss oh", "expected": ["another-miss-oh"]}
-{"id": "q010", "class": "person", "query": "공유 나온 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q011", "class": "person", "query": "김혜수 이제훈", "expected": ["signal"]}
-{"id": "q012", "class": "person", "query": "서현진 에릭", "expected": ["another-miss-oh"]}
-{"id": "q013", "class": "person", "query": "김은숙 작가 판타지", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q014", "class": "person", "query": "이동욱 저승사자", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q015", "class": "person", "query": "김은희 작가 형사물", "expected": ["signal"]}
-{"id": "q020", "class": "character", "query": "김신 지은탁", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q021", "class": "character", "query": "박해영 형사", "expected": ["signal"]}
-{"id": "q022", "class": "character", "query": "오해영 두 명 나오는 드라마", "expected": ["another-miss-oh"]}
-{"id": "q030", "class": "ost", "query": "Stay With Me 찬열 펀치", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q031", "class": "ost", "query": "첫눈처럼 너에게 가겠다", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q032", "class": "ost", "query": "벤 꿈처럼", "expected": ["another-miss-oh"]}
-{"id": "q033", "class": "ost", "query": "에일리 OST 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q034", "class": "ost", "query": "스테이 위드 미 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q040", "class": "semantic_memory", "query": "불멸의 삶을 사는 남자와 인간 신부", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q041", "class": "semantic_memory", "query": "무전기로 과거 형사랑 교신하는 드라마", "expected": ["signal"]}
-{"id": "q042", "class": "semantic_memory", "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디", "expected": ["another-miss-oh"]}
-{"id": "q043", "class": "semantic_memory", "query": "저승사자랑 같이 사는 도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q044", "class": "semantic_memory", "query": "장기 미제 사건 수사 과거 현재", "expected": ["signal"]}
-{"id": "q045", "class": "semantic_memory", "query": "미래가 보이는 남자 로코", "expected": ["another-miss-oh"]}
-{"id": "q046", "class": "semantic_memory", "query": "기억상실 저승사자 호텔 사장 여자", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q050", "class": "temporal", "query": "2016년 겨울 tvN 판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q051", "class": "temporal", "query": "2016년 초 tvN 스릴러", "expected": ["signal"]}
-{"id": "q052", "class": "temporal", "query": "2016년쯤 봤던 로맨틱 코미디", "expected": ["another-miss-oh"]}
-{"id": "q053", "class": "temporal", "query": "2016년 tvN 드라마", "expected": ["guardian-the-lonely-and-great-god", "signal", "another-miss-oh"]}
-{"id": "q054", "class": "temporal", "query": "2010년대 중반 범죄 스릴러", "expected": ["signal"]}
-{"id": "q060", "class": "genre", "query": "판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "q061", "class": "genre", "query": "범죄 스릴러", "expected": ["signal"]}
-{"id": "q062", "class": "genre", "query": "로맨스 코미디", "expected": ["another-miss-oh"]}
+{"id": "q009", "class": "entity_lookup", "query": "응팔", "expected": ["reply-1988"]}
+{"id": "q010", "class": "entity_lookup", "query": "응답하라 1988", "expected": ["reply-1988"]}
+{"id": "q011", "class": "entity_lookup", "query": "치인트", "expected": ["cheese-in-the-trap"]}
+{"id": "q012", "class": "entity_lookup", "query": "치즈인더트랩", "expected": ["cheese-in-the-trap"]}
+{"id": "q013", "class": "entity_lookup", "query": "태후", "expected": ["descendants-of-the-sun"]}
+{"id": "q014", "class": "entity_lookup", "query": "태양의 후예", "expected": ["descendants-of-the-sun"]}
+{"id": "q015", "class": "entity_lookup", "query": "구르미", "expected": ["love-in-the-moonlight"]}
+{"id": "q016", "class": "entity_lookup", "query": "더블유", "expected": ["w-two-worlds"]}
+{"id": "q017", "class": "entity_lookup", "query": "푸바전", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "q018", "class": "entity_lookup", "query": "K2", "expected": ["the-k2"]}
+{"id": "q019", "class": "entity_lookup", "query": "디어마이프렌즈", "expected": ["dear-my-friends"]}
+{"id": "q020", "class": "entity_lookup", "query": "굿 와이프", "expected": ["the-good-wife"]}
+{"id": "q021", "class": "entity_lookup", "query": "쇼핑왕루이", "expected": ["shopping-king-louie"]}
+{"id": "q022", "class": "entity_lookup", "query": "descendants of the sun", "expected": ["descendants-of-the-sun"]}
+{"id": "q023", "class": "entity_lookup", "query": "마녀 보감", "expected": ["mirror-of-the-witch"]}
+{"id": "q024", "class": "entity_lookup", "query": "신데렐라와 네명의 기사", "expected": ["cinderella-and-four-knights"]}
+{"id": "q030", "class": "person", "query": "공유 나온 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q031", "class": "person", "query": "김혜수 이제훈", "expected": ["signal"]}
+{"id": "q032", "class": "person", "query": "서현진 에릭", "expected": ["another-miss-oh"]}
+{"id": "q033", "class": "person", "query": "김은숙 작가 판타지", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q034", "class": "person", "query": "김은숙 작가 군인", "expected": ["descendants-of-the-sun"]}
+{"id": "q035", "class": "person", "query": "김고은 나온 드라마", "expected": ["guardian-the-lonely-and-great-god", "cheese-in-the-trap"]}
+{"id": "q036", "class": "person", "query": "박보검 사극", "expected": ["love-in-the-moonlight"]}
+{"id": "q037", "class": "person", "query": "박보검 혜리", "expected": ["reply-1988"]}
+{"id": "q038", "class": "person", "query": "송중기 송혜교", "expected": ["descendants-of-the-sun"]}
+{"id": "q039", "class": "person", "query": "전지현 이민호", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "q040", "class": "person", "query": "이종석 한효주", "expected": ["w-two-worlds"]}
+{"id": "q041", "class": "person", "query": "전도연 변호사", "expected": ["the-good-wife"]}
+{"id": "q042", "class": "person", "query": "고현정 김혜자 나문희", "expected": ["dear-my-friends"]}
+{"id": "q043", "class": "person", "query": "노희경 작가", "expected": ["dear-my-friends"]}
+{"id": "q044", "class": "person", "query": "서강준 이광수", "expected": ["entourage"]}
+{"id": "q045", "class": "person", "query": "조진웅 나온 드라마", "expected": ["signal", "entourage"]}
+{"id": "q046", "class": "person", "query": "지창욱 윤아", "expected": ["the-k2"]}
+{"id": "q047", "class": "person", "query": "공효진 조정석", "expected": ["jealousy-incarnate"]}
+{"id": "q048", "class": "person", "query": "김래원 박신혜", "expected": ["doctors"]}
+{"id": "q049", "class": "person", "query": "이성민 알츠하이머", "expected": ["memory"]}
+{"id": "q050", "class": "person", "query": "옥택연 김소현", "expected": ["bring-it-on-ghost"]}
+{"id": "q051", "class": "person", "query": "박은빈 한예리", "expected": ["age-of-youth"]}
+{"id": "q052", "class": "person", "query": "이응복 연출", "expected": ["guardian-the-lonely-and-great-god", "descendants-of-the-sun"]}
+{"id": "q053", "class": "person", "query": "김유정 박보검", "expected": ["love-in-the-moonlight"]}
+{"id": "q054", "class": "person", "query": "신하균 조윤희", "expected": ["pied-piper"]}
+{"id": "q055", "class": "person", "query": "서인국 남지현", "expected": ["shopping-king-louie"]}
+{"id": "q056", "class": "person", "query": "윤시윤 김새론", "expected": ["mirror-of-the-witch"]}
+{"id": "q060", "class": "character", "query": "김신 지은탁", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q061", "class": "character", "query": "박해영 형사", "expected": ["signal"]}
+{"id": "q062", "class": "character", "query": "오해영 두 명 나오는 드라마", "expected": ["another-miss-oh"]}
+{"id": "q063", "class": "character", "query": "유시진 강모연", "expected": ["descendants-of-the-sun"]}
+{"id": "q064", "class": "character", "query": "성덕선 최택 김정환", "expected": ["reply-1988"]}
+{"id": "q065", "class": "character", "query": "유정 선배 홍설", "expected": ["cheese-in-the-trap"]}
+{"id": "q066", "class": "character", "query": "강철 오연주", "expected": ["w-two-worlds"]}
+{"id": "q067", "class": "character", "query": "심청 허준재", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "q068", "class": "character", "query": "표나리 기상캐스터", "expected": ["jealousy-incarnate"]}
+{"id": "q069", "class": "character", "query": "홍라온 이영 세자", "expected": ["love-in-the-moonlight"]}
+{"id": "q070", "class": "character", "query": "김제하 고안나", "expected": ["the-k2"]}
+{"id": "q071", "class": "character", "query": "차영빈 매니저 김은갑", "expected": ["entourage"]}
+{"id": "q080", "class": "ost", "query": "Stay With Me 찬열 펀치", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q081", "class": "ost", "query": "첫눈처럼 너에게 가겠다", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q082", "class": "ost", "query": "벤 꿈처럼", "expected": ["another-miss-oh"]}
+{"id": "q083", "class": "ost", "query": "에일리 OST 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q084", "class": "ost", "query": "스테이 위드 미 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q085", "class": "ost", "query": "윤미래 Always", "expected": ["descendants-of-the-sun"]}
+{"id": "q086", "class": "ost", "query": "거미 OST 사극", "expected": ["love-in-the-moonlight"]}
+{"id": "q087", "class": "ost", "query": "오혁 소녀", "expected": ["reply-1988"]}
+{"id": "q088", "class": "ost", "query": "걱정말아요 그대 이적", "expected": ["reply-1988"]}
+{"id": "q089", "class": "ost", "query": "다비치 This Love", "expected": ["descendants-of-the-sun"]}
+{"id": "q090", "class": "ost", "query": "첸 펀치 에브리타임", "expected": ["descendants-of-the-sun"]}
+{"id": "q091", "class": "ost", "query": "거미 OST 군인 의사", "expected": ["descendants-of-the-sun"]}
+{"id": "q100", "class": "semantic_memory", "query": "불멸의 삶을 사는 남자와 인간 신부", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q101", "class": "semantic_memory", "query": "무전기로 과거 형사랑 교신하는 드라마", "expected": ["signal"]}
+{"id": "q102", "class": "semantic_memory", "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디", "expected": ["another-miss-oh"]}
+{"id": "q103", "class": "semantic_memory", "query": "저승사자랑 같이 사는 도깨비", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q104", "class": "semantic_memory", "query": "장기 미제 사건 수사 과거 현재", "expected": ["signal"]}
+{"id": "q105", "class": "semantic_memory", "query": "미래가 보이는 남자 로코", "expected": ["another-miss-oh"]}
+{"id": "q106", "class": "semantic_memory", "query": "군인이랑 의사가 전쟁터에서 사랑하는 드라마", "expected": ["descendants-of-the-sun"]}
+{"id": "q107", "class": "semantic_memory", "query": "88년 쌍문동 골목 이웃들 이야기", "expected": ["reply-1988"]}
+{"id": "q108", "class": "semantic_memory", "query": "웹툰 속으로 들어가는 드라마", "expected": ["w-two-worlds"]}
+{"id": "q109", "class": "semantic_memory", "query": "인어가 서울에 와서 사기꾼이랑 사랑에 빠지는 이야기", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "q110", "class": "semantic_memory", "query": "남장하고 궁에 들어간 여자 내시", "expected": ["love-in-the-moonlight"]}
+{"id": "q111", "class": "semantic_memory", "query": "치매 걸린 변호사 아들의 죽음", "expected": ["memory"]}
+{"id": "q112", "class": "semantic_memory", "query": "노년의 친구들 인생 이야기", "expected": ["dear-my-friends"]}
+{"id": "q113", "class": "semantic_memory", "query": "귀신 보는 남자랑 여고생 귀신", "expected": ["bring-it-on-ghost"]}
+{"id": "q114", "class": "semantic_memory", "query": "여대생 다섯 명 셰어하우스", "expected": ["age-of-youth"]}
+{"id": "q115", "class": "semantic_memory", "query": "노량진 고시생 혼자 술 마시는 드라마", "expected": ["drinking-solo"]}
+{"id": "q116", "class": "semantic_memory", "query": "재벌 사촌 삼형제 저택 가난한 여고생", "expected": ["cinderella-and-four-knights"]}
+{"id": "q117", "class": "semantic_memory", "query": "경호원이 대선후보 숨겨진 딸 지키는 액션", "expected": ["the-k2"]}
+{"id": "q118", "class": "semantic_memory", "query": "톱스타랑 친구들 연예계 이야기 미드 리메이크", "expected": ["entourage"]}
+{"id": "q119", "class": "semantic_memory", "query": "남편 검사 스캔들 변호사 복귀", "expected": ["the-good-wife"]}
+{"id": "q120", "class": "semantic_memory", "query": "위기협상팀 심리전 범인", "expected": ["pied-piper"]}
+{"id": "q121", "class": "semantic_memory", "query": "기억 잃은 재벌 3세랑 시골 처녀", "expected": ["shopping-king-louie"]}
+{"id": "q122", "class": "semantic_memory", "query": "시한부 드라마 작가와 톱스타", "expected": ["fantastic"]}
+{"id": "q123", "class": "semantic_memory", "query": "저주받은 공주 허준 조선", "expected": ["mirror-of-the-witch"]}
+{"id": "q124", "class": "semantic_memory", "query": "기상캐스터 기자 삼각관계", "expected": ["jealousy-incarnate"]}
+{"id": "q125", "class": "semantic_memory", "query": "문제아 소녀가 의사 돼서 스승 다시 만남", "expected": ["doctors"]}
+{"id": "q126", "class": "semantic_memory", "query": "캠퍼스 선배 속을 알 수 없는 완벽남", "expected": ["cheese-in-the-trap"]}
+{"id": "q130", "class": "temporal", "query": "2016년 겨울 tvN 판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q131", "class": "temporal", "query": "2016년 초 tvN 스릴러", "expected": ["signal", "pied-piper"]}
+{"id": "q132", "class": "temporal", "query": "2016년쯤 봤던 로맨틱 코미디 오해영", "expected": ["another-miss-oh"]}
+{"id": "q133", "class": "temporal", "query": "2016년 JTBC 드라마", "expected": ["age-of-youth", "fantastic", "mirror-of-the-witch"]}
+{"id": "q134", "class": "temporal", "query": "2016년 MBC 드라마", "expected": ["w-two-worlds", "shopping-king-louie"]}
+{"id": "q135", "class": "temporal", "query": "2016년 KBS 사극", "expected": ["love-in-the-moonlight"]}
+{"id": "q136", "class": "temporal", "query": "2016년 SBS 의학 드라마", "expected": ["doctors"]}
+{"id": "q137", "class": "temporal", "query": "2010년대 중반 범죄 스릴러 tvN", "expected": ["signal", "pied-piper"]}
+{"id": "q138", "class": "temporal", "query": "2015년 tvN 드라마", "expected": ["reply-1988"]}
+{"id": "q139", "class": "temporal", "query": "16년 여름 MBC 판타지", "expected": ["w-two-worlds"]}
+{"id": "q140", "class": "temporal", "query": "2016년 SBS 인어", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "q150", "class": "genre", "query": "판타지 로맨스", "expected": ["guardian-the-lonely-and-great-god", "the-legend-of-the-blue-sea", "w-two-worlds", "bring-it-on-ghost", "mirror-of-the-witch"]}
+{"id": "q151", "class": "genre", "query": "범죄 스릴러", "expected": ["signal", "pied-piper"]}
+{"id": "q152", "class": "genre", "query": "법정 드라마", "expected": ["the-good-wife", "memory"]}
+{"id": "q153", "class": "genre", "query": "사극 로맨스", "expected": ["love-in-the-moonlight", "mirror-of-the-witch"]}
+{"id": "q154", "class": "genre", "query": "의학 드라마", "expected": ["doctors"]}
+{"id": "q155", "class": "genre", "query": "청춘 드라마", "expected": ["age-of-youth", "cheese-in-the-trap", "reply-1988"]}
+{"id": "q156", "class": "genre", "query": "가족 드라마", "expected": ["reply-1988", "dear-my-friends", "memory"]}
