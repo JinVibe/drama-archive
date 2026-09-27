@@ -24,6 +24,7 @@ type Result = {
   hits: Hit[];
   latencyMs: number;
   plan?: Plan;
+  relaxed?: boolean;
 };
 
 const AI_API = process.env.AI_API_URL ?? "http://localhost:8090";
@@ -51,6 +52,7 @@ async function search(q: string): Promise<Result> {
         total: b.total,
         latencyMs: Date.now() - started,
         plan: b.plan,
+        relaxed: b.relaxed,
         hits: b.hits.map((h: { drama_id: number; title: string; metadata: Meta; ranks: Record<string, number> }) => ({
           dramaId: h.drama_id,
           title: h.title,
@@ -116,6 +118,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
           <p className="text-sm text-muted">
             {result.total}건 · {result.latencyMs}ms
             {plan && <span className="ml-2">이해한 조건: {plan}</span>}
+            {result.relaxed && <span className="ml-2">(조건에 맞는 작품이 없어 조건 없이 검색했어요)</span>}
             <span className="ml-2 text-xs">
               [{result.engine === "ai" ? "AI 검색" : "기본 검색"} · {result.strategy}]
             </span>
