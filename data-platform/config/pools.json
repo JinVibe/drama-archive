@@ -8,5 +8,10 @@
     "slots": 1,
     "description": "tvN official site fetches (be polite)",
     "include_deferred": false
+  },
+  "embedding_api_pool": {
+    "slots": 1,
+    "description": "Calls to ai-api /internal/embed (CPU-bound model, one at a time)",
+    "include_deferred": false
   }
 }
