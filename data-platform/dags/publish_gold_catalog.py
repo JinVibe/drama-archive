@@ -1,6 +1,8 @@
 """DAG `publish_gold_catalog` — docs/AIRFLOW_DAGS.md §8 (quality gate) + §9 (publish).
 
-Runs when silver.resolved updates.
+Runs when silver.resolved updates, and every 15 minutes regardless so that
+records resolved by an admin in the review queue (DM-104) get published
+without anyone emitting an asset event.
 
     quality_gate  : per-record checks; ERROR -> REJECTED. Batch-level gate blocks
                     the run when most of the batch is broken.
@@ -14,6 +16,8 @@ from __future__ import annotations
 
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.sdk import Asset, dag, task
+from airflow.timetables.assets import AssetOrTimeSchedule
+from airflow.timetables.trigger import CronTriggerTimetable
 
 from dramamemory_data import staging
 from dramamemory_data.publish.gold import publish_record
@@ -34,7 +38,10 @@ def _taxonomy(cur) -> tuple[set[str], set[str]]:
 
 @dag(
     dag_id="publish_gold_catalog",
-    schedule=[RESOLVED_ASSET],
+    schedule=AssetOrTimeSchedule(
+        timetable=CronTriggerTimetable("*/15 * * * *", timezone="UTC"),
+        assets=[RESOLVED_ASSET],
+    ),
     catchup=False,
     max_active_runs=1,
     tags=["gold", "publish"],
