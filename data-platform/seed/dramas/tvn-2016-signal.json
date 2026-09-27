@@ -1,0 +1,22 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-signal",
+  "title_ko": "시그널",
+  "title_en": "Signal",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-01-22",
+  "end_date": "2016-03-12",
+  "episode_count": 16,
+  "genres": ["thriller", "crime", "fantasy"],
+  "synopsis": "과거와 현재를 잇는 낡은 무전기로 장기 미제 사건을 함께 추적하는 형사들의 이야기.",
+  "credits": [
+    {"person": {"external_id": "lee-je-hoon", "name_ko": "이제훈", "name_en": "Lee Je-hoon", "birth_date": "1984-07-04"}, "type": "ACTOR", "character": "박해영", "billing_order": 1, "main": true},
+    {"person": {"external_id": "kim-hye-soo", "name_ko": "김혜수", "name_en": "Kim Hye-soo", "birth_date": "1970-09-05"}, "type": "ACTOR", "character": "차수현", "billing_order": 2, "main": true},
+    {"person": {"external_id": "cho-jin-woong", "name_ko": "조진웅", "name_en": "Cho Jin-woong", "birth_date": "1976-03-03"}, "type": "ACTOR", "character": "이재한", "billing_order": 3, "main": true},
+    {"person": {"external_id": "kim-won-seok", "name_ko": "김원석", "name_en": "Kim Won-seok"}, "type": "DIRECTOR"},
+    {"person": {"external_id": "kim-eun-hee", "name_ko": "김은희", "name_en": "Kim Eun-hee"}, "type": "WRITER"}
+  ],
+  "ost": [],
+  "links": []
+}

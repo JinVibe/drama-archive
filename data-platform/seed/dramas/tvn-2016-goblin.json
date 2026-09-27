@@ -1,0 +1,29 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-goblin",
+  "title_ko": "도깨비",
+  "title_en": "Guardian: The Lonely and Great God",
+  "aliases": ["쓸쓸하고 찬란하神 도깨비", "Goblin"],
+  "broadcaster": "tvN",
+  "start_date": "2016.12.02",
+  "end_date": "2017.01.21",
+  "episode_count": 16,
+  "runtime_minutes": 80,
+  "genres": ["fantasy", "romance"],
+  "synopsis": "불멸의 삶을 끝내기 위해 인간 신부가 필요한 도깨비와 기억상실증에 걸린 저승사자가 한 집에 살게 되면서 벌어지는 이야기.",
+  "credits": [
+    {"person": {"external_id": "gong-yoo", "name_ko": "공유", "name_en": "Gong Yoo", "birth_date": "1979-07-10"}, "type": "ACTOR", "character": "김신", "billing_order": 1, "main": true},
+    {"person": {"external_id": "kim-go-eun", "name_ko": "김고은", "name_en": "Kim Go-eun", "birth_date": "1991-07-02"}, "type": "ACTOR", "character": "지은탁", "billing_order": 2, "main": true},
+    {"person": {"external_id": "lee-dong-wook", "name_ko": "이동욱", "name_en": "Lee Dong-wook", "birth_date": "1981-11-06"}, "type": "ACTOR", "character": "저승사자", "billing_order": 3, "main": true},
+    {"person": {"external_id": "yoo-in-na", "name_ko": "유인나", "name_en": "Yoo In-na", "birth_date": "1982-06-05"}, "type": "ACTOR", "character": "써니", "billing_order": 4, "main": true},
+    {"person": {"external_id": "yook-sung-jae", "name_ko": "육성재", "name_en": "Yook Sung-jae", "birth_date": "1995-05-02"}, "type": "ACTOR", "character": "유덕화", "billing_order": 5, "main": true},
+    {"person": {"external_id": "lee-eung-bok", "name_ko": "이응복", "name_en": "Lee Eung-bok"}, "type": "DIRECTOR"},
+    {"person": {"external_id": "kim-eun-sook", "name_ko": "김은숙", "name_en": "Kim Eun-sook"}, "type": "WRITER"}
+  ],
+  "ost": [
+    {"external_id": "goblin-ost-stay-with-me", "title": "Stay With Me", "artists": ["찬열", "펀치"], "part_no": 1, "release_date": "2016-12-03"},
+    {"external_id": "goblin-ost-beautiful", "title": "Beautiful", "artists": ["크러쉬"], "part_no": 4, "release_date": "2016-12-10"},
+    {"external_id": "goblin-ost-i-will-go-to-you", "title": "첫눈처럼 너에게 가겠다", "artists": ["에일리"], "part_no": 9, "release_date": "2017-01-07"}
+  ],
+  "links": []
+}

@@ -1,0 +1,22 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-another-oh-hae-young",
+  "title_ko": "또 오해영",
+  "title_en": "Another Miss Oh",
+  "aliases": ["또오해영"],
+  "broadcaster": "tvN",
+  "start_date": "2016년 5월 2일",
+  "end_date": "2016년 6월 28일",
+  "episode_count": 18,
+  "genres": ["romance", "comedy"],
+  "synopsis": "같은 이름을 가진 두 오해영과, 미래를 보게 된 남자 박도경이 얽히는 로맨틱 코미디.",
+  "credits": [
+    {"person": {"external_id": "eric-mun", "name_ko": "에릭", "name_en": "Eric Mun", "birth_date": "1979-02-16"}, "type": "ACTOR", "character": "박도경", "billing_order": 1, "main": true},
+    {"person": {"external_id": "seo-hyun-jin", "name_ko": "서현진", "name_en": "Seo Hyun-jin", "birth_date": "1985-02-27"}, "type": "ACTOR", "character": "오해영", "billing_order": 2, "main": true},
+    {"person": {"external_id": "jeon-hye-bin", "name_ko": "전혜빈", "name_en": "Jeon Hye-bin", "birth_date": "1983-09-27"}, "type": "ACTOR", "character": "오해영", "billing_order": 3, "main": true}
+  ],
+  "ost": [
+    {"external_id": "aoh-ost-like-a-dream", "title": "꿈처럼", "artists": ["벤"], "part_no": 1}
+  ],
+  "links": []
+}
