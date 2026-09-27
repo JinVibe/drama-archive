@@ -465,6 +465,33 @@ GraphRAG가 baseline보다 개선하지 못하는 class에는 사용하지 않�
 
 ---
 
+# 17a. DAG: `anonymous_user_cleanup`
+
+## Schedule
+
+daily.
+
+## 목적
+
+[ADR-011](ADR/ADR-011-guest-first-auth.md) §6 보유기간 정책. 익명 사용자는 마지막 활동 후 90일이 지나면 삭제한다.
+
+## Tasks
+
+```text
+select_expired_anonymous_users
+  (anonymous = true AND status = 'ACTIVE' AND last_active_at < now() - interval '90 days')
+ → delete_in_batches        -- user_drama_state / memory_note / consent는 cascade
+ → record_metrics           -- deleted_count, oldest_remaining
+```
+
+## 규칙
+
+- 로그인 사용자(`anonymous = false`)는 절대 대상이 아니다.
+- `MERGED` 계정은 병합 시점에 이미 정리되므로 대상이 아니다.
+- 배치 크기를 제한해 online write path에 lock 영향이 없게 한다.
+
+---
+
 # 18. DAG Dependency Example
 
 ```python

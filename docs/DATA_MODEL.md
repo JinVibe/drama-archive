@@ -245,18 +245,58 @@ OFFICIAL_OST
 
 ## 7. User Model
 
+인증 방식은 [ADR-011 Guest-first Authentication](ADR/ADR-011-guest-first-auth.md)을 따른다. 익명 사용자와 로그인 사용자는 같은 `app_user` 행이며, `user_identity` 유무로 구분한다.
+
 ### `app_user`
 
 ```sql
 CREATE TABLE app_user (
-  id            UUID PRIMARY KEY,
-  display_name  VARCHAR(80),
-  created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+  id              UUID PRIMARY KEY,
+  display_name    VARCHAR(80),
+  anonymous       BOOLEAN NOT NULL DEFAULT true,
+  status          VARCHAR(20) NOT NULL DEFAULT 'ACTIVE',   -- ACTIVE / MERGED / DELETED
+  merged_into_id  UUID REFERENCES app_user(id),
+  last_active_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  upgraded_at     TIMESTAMPTZ,                              -- 익명 → 로그인 승격 시각
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 ```
 
-인증 provider 정보는 별도 테이블로 분리한다.
+`anonymous = true`이고 `last_active_at`이 90일 이전이면 `anonymous_user_cleanup` DAG가 삭제한다.
+
+### `user_identity`
+
+소셜 provider 연결. 이메일·프로필 이미지는 저장하지 않는다.
+
+```sql
+CREATE TABLE user_identity (
+  user_id           UUID NOT NULL REFERENCES app_user(id) ON DELETE CASCADE,
+  provider          VARCHAR(30) NOT NULL,      -- 'kakao', 'naver', 'google', 'email'
+  provider_subject  VARCHAR(255) NOT NULL,     -- provider가 발급한 고유 ID
+  email             VARCHAR(255),              -- 선택 동의 시에만
+  linked_at         TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (provider, provider_subject),
+  UNIQUE (user_id, provider)
+);
+```
+
+### `user_consent`
+
+동의 시각과 약관 버전을 남긴다.
+
+```sql
+CREATE TABLE user_consent (
+  user_id       UUID NOT NULL REFERENCES app_user(id) ON DELETE CASCADE,
+  consent_type  VARCHAR(40) NOT NULL,    -- 'TERMS', 'PRIVACY', 'AGE_14_PLUS', 'MARKETING'
+  version       VARCHAR(20) NOT NULL,    -- 약관 문서 버전
+  granted       BOOLEAN NOT NULL,
+  recorded_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, consent_type, version)
+);
+```
+
+`TERMS`, `PRIVACY`, `AGE_14_PLUS`는 소셜 연결 시 필수. `MARKETING`은 선택이며 거부해도 이용 가능하다.
 
 ### `user_drama_state`
 

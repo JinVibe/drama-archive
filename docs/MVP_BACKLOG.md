@@ -110,6 +110,17 @@ Acceptance:
 
 ## DM-401 Authentication — P1
 
+[ADR-011](ADR/ADR-011-guest-first-auth.md) Guest-first.
+
+Acceptance:
+
+- 로그인 없이 봤어요 클릭 시 익명 `app_user` + 서명 쿠키 발급
+- 카카오/네이버/구글 로그인으로 기존 익명 계정에 identity 연결 (기록 유지)
+- 이미 연결된 provider면 §7 병합 규칙대로 합치고 익명 계정은 MERGED
+- 필수 동의 3개(약관/처리방침/14세 이상)만, 마케팅은 선택. `user_consent`에 버전 기록
+- `anonymous_user_cleanup` DAG: 90일 무활동 익명 계정 삭제
+- 개인정보처리방침·이용약관 초안 `docs/legal/` (배포 전 필수)
+
 ## DM-402 Watched state — P1
 
 ## DM-403 Timeline — P1
