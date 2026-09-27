@@ -118,3 +118,15 @@
 {"id": "q154", "class": "genre", "query": "의학 드라마", "expected": ["doctors"]}
 {"id": "q155", "class": "genre", "query": "청춘 드라마", "expected": ["age-of-youth", "cheese-in-the-trap", "reply-1988"]}
 {"id": "q156", "class": "genre", "query": "가족 드라마", "expected": ["reply-1988", "dear-my-friends", "memory"]}
+{"id": "q160", "class": "multi_hop", "query": "공유랑 이동욱 같이 나온 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "q161", "class": "multi_hop", "query": "박보검 혜리 같이 나온 작품", "expected": ["reply-1988"]}
+{"id": "q162", "class": "multi_hop", "query": "김고은 서강준 같이 나온 드라마", "expected": ["cheese-in-the-trap"]}
+{"id": "q163", "class": "multi_hop", "query": "조진웅이랑 이동휘 같이 나온 드라마", "expected": ["entourage"]}
+{"id": "q164", "class": "multi_hop", "query": "김은숙 이응복 콤비 작품", "expected": ["guardian-the-lonely-and-great-god", "descendants-of-the-sun"]}
+{"id": "q165", "class": "multi_hop", "query": "송중기 송혜교 같이 나온 드라마", "expected": ["descendants-of-the-sun"]}
+{"id": "q166", "class": "multi_hop", "query": "이제훈이랑 조진웅 나온 드라마", "expected": ["signal"]}
+{"id": "q167", "class": "multi_hop", "query": "고경표 박보검 같이 나온 드라마", "expected": ["reply-1988"]}
+{"id": "q168", "class": "multi_hop", "query": "이성경 김고은 같이 나온 드라마", "expected": ["cheese-in-the-trap"]}
+{"id": "q169", "class": "multi_hop", "query": "서강준이랑 이동휘 같이 나온 드라마", "expected": ["entourage"]}
+{"id": "q170", "class": "multi_hop", "query": "박보검 김유정 같이 나온 사극", "expected": ["love-in-the-moonlight"]}
+{"id": "q171", "class": "multi_hop", "query": "이종석 한효주 같이 나온 작품", "expected": ["w-two-worlds"]}

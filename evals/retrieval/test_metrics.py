@@ -45,7 +45,7 @@ def test_golden_file_is_well_formed():
     assert len(ids) == len(set(ids)), "duplicate ids"
     assert len(golden) >= 30
     classes = {g.cls for g in golden}
-    assert {"entity_lookup", "person", "ost", "semantic_memory", "temporal"} <= classes
+    assert {"entity_lookup", "person", "ost", "semantic_memory", "temporal", "multi_hop"} <= classes
     for g in golden:
         assert g.query.strip() and g.expected, g.id
         json.dumps(g.expected)  # serializable
