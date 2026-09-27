@@ -122,6 +122,11 @@ docs/            설계 문서
   - [x] seed 24편 (tvN 2016 전편 + KBS/SBS/MBC/JTBC 10편, **공식 출처 검증 전 초안**) · ER 동명이인(김원석 PD/작가) 리뷰 큐 → 수동 결정으로 검증
   - [x] web `/search` → ai-api hybrid, ai-api 장애 시 domain-api lexical로 degrade
   - [ ] DM-605 reranker 실험 · DM-701~706 AI memory search(LLM 생성·근거 UI·abstention) · 카탈로그 확대 후 골든셋 200+
+- [ ] Phase 4 / M3 — Neo4j graph
+  - [x] DM-801 Neo4j 2026.01 compose + Airflow 이미지(neo4j 드라이버) · DM-802 `graph_materialization` DAG(per-aggregate replace, 멱등) · DM-803 integrity test
+  - [x] DM-804/805 ai-api `/v1/graph/*` (공동출연·작품 이웃·OST 가수 경유) + retrieval `graph` 리스트(RRF) · DM-806 작품/인물 페이지 관계 섹션
+  - 측정: 132질의에서 graph 리스트 효과 없음(MRR 0.971→0.972, +11ms) — 24편 규모의 한계. 카탈로그 확대 후 재측정, 개선 없으면 retrieval에서 제거(GRAPH_MODEL 구현 현황 참조)
+  - [ ] DM-903 graph benchmark 확대 · collaboration score · Character/Platform 노드
 
 ## 현재 문서 기준
 

@@ -14,6 +14,23 @@ Neo4j는 이 관계를 빠르게 탐색하기 위한 derived graph read model로
 
 ---
 
+## 구현 현황 (2026-09-27)
+
+| 설계 | 구현 | 위치 |
+|---|---|---|
+| §3-§4 노드/엣지 | Drama·Person·Song·Artist·Broadcaster·Genre, ACTED_IN/DIRECTED/WROTE/PRODUCED(character_name·billing_order·main_cast 속성)·HAS_OST·PERFORMED·AIRED_BY·HAS_GENRE. Character/Platform/Year/Concept 노드는 미구현 | `data-platform/src/dramamemory_data/graph/projection.py` |
+| §5 제약/인덱스 | canonical_id 유니크 제약 4종, code 유니크 2종, start_year/slug/name 인덱스 (매 실행 idempotent) | 동일 |
+| §6-§7 materialization / stale edge | gold asset 트리거, PG `canonical_version` > 그래프 버전인 작품만 **per-aggregate replace**(작품 주변 edge 전부 삭제 후 재생성, 노래의 PERFORMED 포함), 미공개 작품 DETACH DELETE, 고아 노드 삭제 | `dags/graph_materialization.py` |
+| §15 품질 검사 | 노드/엣지 수, 고아=0, PG published 수와 일치(불일치 시 asset 차단), 방송사 없는 작품·degree spike 경고 | 동일 |
+| §8 질의 | 배우 출연작·공동출연작·collaborators·작품 이웃(출연진/OST 가수 경유) | `apps/ai-api/src/ai_api/graph/queries.py` |
+| §13-§14 API/보안 | REST만 노출, 파라미터화 Cypher, LIMIT≤50, 3초 timeout, read 세션. read-only 계정은 Community 에디션 한계로 미적용 | `apps/ai-api/src/ai_api/main.py` |
+| RAG §5.4 graph retrieval | 질의 속 인물명 → 출연작/공동출연작을 RRF 리스트 `graph`로 결합 | `apps/ai-api/src/ai_api/retrieval/graph_candidates.py` |
+| §9 collaboration score, §10-§12 GraphRAG/community/vector | 미구현 | — |
+
+**측정 (24편, 골든 132질의, `evals/retrieval/reports/latest.json`)**: retrieval에 graph 리스트를 더한 효과는 현재 카탈로그에서 **유의미하지 않다** — `multi_hop` 12질의는 graph 없이도 recall@5 1.0(OR-FTS와 vector가 "두 이름이 한 문서에" 있는 경우를 이미 잡음), 전체 MRR 0.971 → 0.972, person MRR 0.975 → 0.981, 대신 p50 +11ms. graph 탐색 API(작품 이웃·공동출연자)는 UI 가치가 있어 유지하지만, **retrieval의 graph 리스트는 카탈로그 확대 후(배우당 출연작 다수) 재측정에서 multi_hop을 개선하지 못하면 제거한다** (README 원칙 9). 이 실험이 정직하게 남긴 결론이다.
+
+---
+
 # 2. Identity Rule
 
 모든 노드는 PostgreSQL canonical ID를 가진다.
