@@ -29,6 +29,12 @@ SOURCES: dict[str, SourceConfig] = {
         allowed_url_prefixes=("https://",),
         pool="source_manual_pool",
     ),
+    # Local-only: nginx serving data-platform/seed/ inside compose (service "seed").
+    "local_seed": SourceConfig(
+        code="local_seed",
+        allowed_url_prefixes=("http://seed:8000/",),
+        pool="source_manual_pool",
+    ),
     # First vertical slice target (docs/IMPLEMENTATION_GUIDE.md §1).
     # Collectors stay disabled until site terms are confirmed; manifests are manual for now.
     "tvn_official": SourceConfig(

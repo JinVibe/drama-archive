@@ -1,0 +1,8 @@
+{
+  "source_code": "local_seed",
+  "items": [
+    {"external_id": "tvn-2016-goblin", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-goblin.json"},
+    {"external_id": "tvn-2016-signal", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-signal.json"},
+    {"external_id": "tvn-2016-another-oh-hae-young", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-another-oh-hae-young.json"}
+  ]
+}

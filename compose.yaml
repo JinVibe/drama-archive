@@ -116,6 +116,18 @@ services:
       -c "aws --endpoint-url http://objectstore:9000 s3api head-bucket --bucket ${RAW_BUCKET:-dramamemory-raw} 2>/dev/null
       || aws --endpoint-url http://objectstore:9000 s3 mb s3://${RAW_BUCKET:-dramamemory-raw}"
 
+  # Serves curated seed JSON to the local_seed ingestion source (local only).
+  seed:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./data-platform/seed:/usr/share/nginx/html:ro
+      - ./data-platform/config/seed-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://localhost:8000/dramas/"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
   # ---------------------------------------------------------------------------
   # Airflow 3 (LocalExecutor). Metadata DB = "airflow" database in the same
   # postgres instance; pipeline code writes to the "dramamemory" database
