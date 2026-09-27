@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { api } from "@/lib/api";
+import { Suspense } from "react";
+import { Collaborators } from "@/components/Collaborators";
 import { JsonLd } from "@/components/JsonLd";
 import { CREDIT_LABEL, fmtDate, yearOf } from "@/lib/format";
 import { personJsonLd } from "@/lib/seo";
@@ -57,6 +59,10 @@ export default async function PersonPage({ params }: PageProps<"/persons/[slug]"
           ))}
         </ul>
       </section>
+
+      <Suspense fallback={null}>
+        <Collaborators personId={p.id} />
+      </Suspense>
     </article>
   );
 }

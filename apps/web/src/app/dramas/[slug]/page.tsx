@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { api } from "@/lib/api";
 import { JsonLd } from "@/components/JsonLd";
 import { MemoryNote } from "@/components/MemoryNote";
+import { RelatedDramas } from "@/components/RelatedDramas";
 import { WatchButtons } from "@/components/WatchButtons";
 import { dramaJsonLd } from "@/lib/seo";
 import { CREDIT_LABEL, LINK_LABEL, fmtDate, fmtRange, genreLabel, yearOf } from "@/lib/format";
@@ -144,6 +146,10 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
           </ol>
         </section>
       )}
+
+      <Suspense fallback={null}>
+        <RelatedDramas dramaId={d.id} />
+      </Suspense>
     </article>
   );
 }
