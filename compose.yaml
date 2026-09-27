@@ -28,6 +28,9 @@ x-airflow-common: &airflow-common
     AIRFLOW_CONN_DRAMAMEMORY_POSTGRES: postgresql://${POSTGRES_USER:-dramamemory}:${POSTGRES_PASSWORD:-dramamemory}@postgres:5432/${POSTGRES_DB:-dramamemory}
     AIRFLOW_CONN_DRAMAMEMORY_S3: '{"conn_type":"aws","login":"${S3_ACCESS_KEY:-dramamemory}","password":"${S3_SECRET_KEY:-dramamemory}","extra":{"endpoint_url":"http://objectstore:9000","region_name":"us-east-1"}}'
     DRAMAMEMORY_RAW_BUCKET: ${RAW_BUCKET:-dramamemory-raw}
+    # embedding_refresh DAG calls ai-api so the model lives in exactly one process.
+    DRAMAMEMORY_AI_API_URL: http://ai-api:8090
+    DRAMAMEMORY_AI_API_TOKEN: ${AI_API_INTERNAL_TOKEN:-local-dev-internal-token}
   volumes:
     - ./data-platform/dags:/opt/airflow/dags
     - ./data-platform/src:/opt/airflow/src
@@ -136,10 +139,31 @@ services:
       retries: 10
       start_period: 30s
 
+  ai-api:
+    build: ./apps/ai-api
+    environment:
+      AI_API_DB_URL: postgresql://${POSTGRES_USER:-dramamemory}:${POSTGRES_PASSWORD:-dramamemory}@postgres:5432/${POSTGRES_DB:-dramamemory}
+      AI_API_EMBEDDER: ${AI_API_EMBEDDER:-bge}
+      AI_API_INTERNAL_TOKEN: ${AI_API_INTERNAL_TOKEN:-local-dev-internal-token}
+    ports:
+      - "${AI_API_PORT:-8090}:8090"
+    volumes:
+      - hf-models:/models   # BGE-M3 weights, downloaded once
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://localhost:8090/health/ready')\" || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 120s
+
   web:
     build: ./apps/web
     environment:
       DOMAIN_API_URL: http://domain-api:8081
+      AI_API_URL: http://ai-api:8090
       SITE_URL: ${SITE_URL:-http://localhost:3000}
     ports:
       - "${WEB_PORT:-3000}:3000"
@@ -227,3 +251,4 @@ services:
 volumes:
   postgres-data:
   objectstore-data:
+  hf-models:
