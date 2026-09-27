@@ -1,0 +1,344 @@
+{
+  "generated_at": "2026-09-27T10:40:05.364068+00:00",
+  "golden_set": "C:/Users/82108/Desktop/harness_project/drama-archive/evals/retrieval/golden_queries.jsonl",
+  "n_queries": 37,
+  "targets": {
+    "lexical": {
+      "overall": {
+        "recall@1": 0.4864864864864865,
+        "recall@3": 0.4864864864864865,
+        "recall@5": 0.4864864864864865,
+        "recall@10": 0.4864864864864865,
+        "mrr": 0.4864864864864865,
+        "ndcg@1": 0.4864864864864865,
+        "ndcg@3": 0.4864864864864865,
+        "ndcg@5": 0.4864864864864865,
+        "ndcg@10": 0.4864864864864865,
+        "latency_p50_ms": 12.266899924725294,
+        "latency_p95_ms": 35.97199998330325,
+        "errors": 0,
+        "n": 37
+      },
+      "by_class": {
+        "character": {
+          "recall@1": 0.3333333333333333,
+          "recall@3": 0.3333333333333333,
+          "recall@5": 0.3333333333333333,
+          "recall@10": 0.3333333333333333,
+          "mrr": 0.3333333333333333,
+          "ndcg@1": 0.3333333333333333,
+          "ndcg@3": 0.3333333333333333,
+          "ndcg@5": 0.3333333333333333,
+          "ndcg@10": 0.3333333333333333,
+          "latency_p50_ms": 12.605900061316788,
+          "latency_p95_ms": 13.986200094223022,
+          "errors": 0,
+          "n": 3
+        },
+        "entity_lookup": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 15.214949962683022,
+          "latency_p95_ms": 56.079300004057586,
+          "errors": 0,
+          "n": 8
+        },
+        "genre": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 11.172399972565472,
+          "latency_p95_ms": 13.563600019551814,
+          "errors": 0,
+          "n": 3
+        },
+        "ost": {
+          "recall@1": 0.6,
+          "recall@3": 0.6,
+          "recall@5": 0.6,
+          "recall@10": 0.6,
+          "mrr": 0.6,
+          "ndcg@1": 0.6,
+          "ndcg@3": 0.6,
+          "ndcg@5": 0.6,
+          "ndcg@10": 0.6,
+          "latency_p50_ms": 11.903699953109026,
+          "latency_p95_ms": 24.21240007970482,
+          "errors": 0,
+          "n": 5
+        },
+        "person": {
+          "recall@1": 0.5,
+          "recall@3": 0.5,
+          "recall@5": 0.5,
+          "recall@10": 0.5,
+          "mrr": 0.5,
+          "ndcg@1": 0.5,
+          "ndcg@3": 0.5,
+          "ndcg@5": 0.5,
+          "ndcg@10": 0.5,
+          "latency_p50_ms": 12.088899966329336,
+          "latency_p95_ms": 28.43489998485893,
+          "errors": 0,
+          "n": 6
+        },
+        "semantic_memory": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr": 0.0,
+          "ndcg@1": 0.0,
+          "ndcg@3": 0.0,
+          "ndcg@5": 0.0,
+          "ndcg@10": 0.0,
+          "latency_p50_ms": 11.366399936378002,
+          "latency_p95_ms": 22.996499901637435,
+          "errors": 0,
+          "n": 7
+        },
+        "temporal": {
+          "recall@1": 0.0,
+          "recall@3": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr": 0.0,
+          "ndcg@1": 0.0,
+          "ndcg@3": 0.0,
+          "ndcg@5": 0.0,
+          "ndcg@10": 0.0,
+          "latency_p50_ms": 11.919000069610775,
+          "latency_p95_ms": 12.452000053599477,
+          "errors": 0,
+          "n": 5
+        }
+      },
+      "failures": [
+        {
+          "id": "q010",
+          "class": "person",
+          "query": "공유 나온 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q013",
+          "class": "person",
+          "query": "김은숙 작가 판타지",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q015",
+          "class": "person",
+          "query": "김은희 작가 형사물",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q021",
+          "class": "character",
+          "query": "박해영 형사",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q022",
+          "class": "character",
+          "query": "오해영 두 명 나오는 드라마",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q033",
+          "class": "ost",
+          "query": "에일리 OST 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q034",
+          "class": "ost",
+          "query": "스테이 위드 미 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q040",
+          "class": "semantic_memory",
+          "query": "불멸의 삶을 사는 남자와 인간 신부",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q041",
+          "class": "semantic_memory",
+          "query": "무전기로 과거 형사랑 교신하는 드라마",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q042",
+          "class": "semantic_memory",
+          "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q043",
+          "class": "semantic_memory",
+          "query": "저승사자랑 같이 사는 도깨비",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q044",
+          "class": "semantic_memory",
+          "query": "장기 미제 사건 수사 과거 현재",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q045",
+          "class": "semantic_memory",
+          "query": "미래가 보이는 남자 로코",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q046",
+          "class": "semantic_memory",
+          "query": "기억상실 저승사자 호텔 사장 여자",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q050",
+          "class": "temporal",
+          "query": "2016년 겨울 tvN 판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q051",
+          "class": "temporal",
+          "query": "2016년 초 tvN 스릴러",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q052",
+          "class": "temporal",
+          "query": "2016년쯤 봤던 로맨틱 코미디",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q053",
+          "class": "temporal",
+          "query": "2016년 tvN 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "signal",
+            "another-miss-oh"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "q054",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러",
+          "expected": [
+            "signal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        }
+      ]
+    }
+  }
+}

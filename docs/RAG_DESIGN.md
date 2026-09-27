@@ -19,6 +19,24 @@ Personal    사용자 시청 기록
 
 ---
 
+## 구현 현황 (2026-09-27, `apps/ai-api`)
+
+| 설계 항목 | 구현 | 위치 |
+|---|---|---|
+| §4 Query Understanding | 결정적 규칙: 연도(`2016년`, `16년쯤`±1, `2010년대 초반`, `90년대 후반`), 방송사 별칭, 필러/조사 제거. LLM 추출기는 같은 `QueryPlan` 뒤로 교체 가능 | `retrieval/query.py` |
+| §5.2 Full-text | `websearch_to_tsquery('simple')`, title/alias weight A, body weight B + `pg_trgm` 부분 일치 | `retrieval/store.py` |
+| §5.3 Vector | BGE-M3(1024, cosine, normalized) + pgvector HNSW. 임베딩은 `embedding_refresh` DAG가 ai-api `/internal/embed`로 생성 | V11, `store.py`, DAG |
+| §6 Fusion | RRF k=60, 리스트별 rank/raw score를 evidence로 응답에 포함 | `retrieval/fusion.py` |
+| §7 Metadata-aware | 연도 범위·방송사 필터를 세 retriever 모두에 동일 적용, 조건만 있는 질의는 filter-only | `hybrid.py` |
+| §8 Reranking | 미구현 (DM-605) | — |
+| §9~§10 Context/Answer | 미구현 (DM-703~706) — `/v1/search`는 retrieval-only | — |
+| §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
+| §18 Evaluation | 골든 37 질의 / 7 클래스, lexical·vector·hybrid 비교 보고서 | `evals/retrieval/` |
+
+첫 측정(3편 카탈로그, 자세한 수치는 `evals/retrieval/reports/latest.json`): lexical recall@1 0.49 → hybrid 0.95+. 단, 문서가 3개라 recall@5는 자명하게 1.0이므로 **recall@1·MRR만 유의미**하다. 카탈로그를 늘린 뒤 골든셋 200+로 재측정하는 것이 다음 조건.
+
+---
+
 # 2. Query Taxonomy
 
 ## Q1. Structured
