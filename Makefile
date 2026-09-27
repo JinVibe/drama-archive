@@ -45,3 +45,10 @@ test-data:
 # Same DAG import check CI runs
 dag-check:
 	docker run --rm -v "$(CURDIR)/data-platform:/workspace" -w /workspace -e PYTHONPATH=/workspace/src -e AIRFLOW__CORE__LOAD_EXAMPLES=false -e AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////tmp/ci.db --entrypoint python apache/airflow:3.3.0-python3.12 -c "from airflow.models import DagBag; b=DagBag('dags'); assert not b.import_errors, b.import_errors; print(sorted(b.dag_ids))"
+
+# domain-api (Spring Boot, :8081)
+api-test:
+	cd apps/domain-api && ./gradlew test --no-daemon
+
+api-up:
+	docker compose up -d --build domain-api

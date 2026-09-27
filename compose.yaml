@@ -116,6 +116,24 @@ services:
       -c "aws --endpoint-url http://objectstore:9000 s3api head-bucket --bucket ${RAW_BUCKET:-dramamemory-raw} 2>/dev/null
       || aws --endpoint-url http://objectstore:9000 s3 mb s3://${RAW_BUCKET:-dramamemory-raw}"
 
+  domain-api:
+    build: ./apps/domain-api
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-dramamemory}
+      DB_USER: ${POSTGRES_USER:-dramamemory}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-dramamemory}
+    ports:
+      - "${DOMAIN_API_PORT:-8081}:8081"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8081/actuator/health/readiness || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
   # Serves curated seed JSON to the local_seed ingestion source (local only).
   seed:
     image: nginx:1.27-alpine
