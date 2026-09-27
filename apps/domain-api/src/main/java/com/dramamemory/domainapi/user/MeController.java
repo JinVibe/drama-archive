@@ -4,6 +4,9 @@ import com.dramamemory.domainapi.catalog.NotFoundException;
 import com.dramamemory.domainapi.user.WatchedDtos.DramaState;
 import com.dramamemory.domainapi.user.WatchedDtos.DramaStates;
 import com.dramamemory.domainapi.user.WatchedDtos.Me;
+import com.dramamemory.domainapi.user.WatchedDtos.Note;
+import com.dramamemory.domainapi.user.WatchedDtos.Timeline;
+import com.dramamemory.domainapi.user.WatchedDtos.UpdateNote;
 import com.dramamemory.domainapi.user.WatchedDtos.UpdateState;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,10 +35,51 @@ public class MeController {
 
     private final SessionService sessions;
     private final WatchedRepository watched;
+    private final NoteRepository notes;
+    private final TimelineRepository timeline;
 
-    public MeController(SessionService sessions, WatchedRepository watched) {
+    public MeController(SessionService sessions, WatchedRepository watched, NoteRepository notes,
+            TimelineRepository timeline) {
         this.sessions = sessions;
         this.watched = watched;
+        this.notes = notes;
+        this.timeline = timeline;
+    }
+
+    /** Aggregates for the timeline page; all zeros without a session. */
+    @GetMapping("/timeline")
+    public Timeline timeline(HttpServletRequest req, HttpServletResponse res) {
+        return sessions.current(req, res)
+                .map(u -> timeline.build(u.id()))
+                .orElseGet(() -> timeline.build(new java.util.UUID(0L, 0L)));
+    }
+
+    // ------------------------------------------------------------------ memory note
+
+    @GetMapping("/dramas/{dramaId}/note")
+    public Note note(@PathVariable long dramaId, HttpServletRequest req, HttpServletResponse res) {
+        return sessions.current(req, res)
+                .flatMap(u -> notes.find(u.id(), dramaId))
+                .orElseThrow(() -> new NotFoundException("note", Long.toString(dramaId)));
+    }
+
+    @PutMapping("/dramas/{dramaId}/note")
+    @Transactional
+    public Note putNote(@PathVariable long dramaId, @Valid @RequestBody UpdateNote body,
+            HttpServletRequest req, HttpServletResponse res) {
+        if (!watched.dramaIsPublished(dramaId)) {
+            throw new NotFoundException("drama", Long.toString(dramaId));
+        }
+        CurrentUser user = sessions.currentOrCreate(req, res);
+        return notes.upsert(user.id(), dramaId, body.body().strip());
+    }
+
+    @DeleteMapping("/dramas/{dramaId}/note")
+    @Transactional
+    public ResponseEntity<Void> deleteNote(@PathVariable long dramaId, HttpServletRequest req,
+            HttpServletResponse res) {
+        boolean removed = sessions.current(req, res).map(u -> notes.delete(u.id(), dramaId)).orElse(false);
+        return removed ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
     @GetMapping
