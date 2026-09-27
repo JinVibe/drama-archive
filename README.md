@@ -111,7 +111,8 @@ docs/            설계 문서
   - [ ] 실제 방송사 collector/parser (약관 확인 후) — 지금은 curated `dramamemory.drama.v1` JSON만
 - [ ] Phase 2 — 공개 아카이브 + watched timeline
   - [x] `apps/domain-api` Spring Boot 4 / Java 17 스캐폴드 + 공개 read API (`/api/v1/broadcasters`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`)
-  - [ ] DM-401 guest-first auth · DM-402 watched state · DM-403 timeline (ADR-011)
+  - [x] DM-401 익명 세션(서명 쿠키) + identity 연결/병합 서비스 + 90일 정리 DAG · DM-402 watched state (`/api/v1/me/...`)
+  - [ ] DM-401 카카오/네이버/구글 OAuth 콜백 (provider 앱 등록 후) · DM-403 timeline · DM-404 memory note
   - [ ] `apps/web` Next.js
 
 ## 현재 문서 기준

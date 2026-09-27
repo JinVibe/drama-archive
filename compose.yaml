@@ -122,6 +122,8 @@ services:
       DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-dramamemory}
       DB_USER: ${POSTGRES_USER:-dramamemory}
       DB_PASSWORD: ${POSTGRES_PASSWORD:-dramamemory}
+      SESSION_COOKIE_SECRET: ${SESSION_COOKIE_SECRET:-local-dev-only-session-secret-change-me-0000}
+      SESSION_COOKIE_SECURE: "false"
     ports:
       - "${DOMAIN_API_PORT:-8081}:8081"
     depends_on:
