@@ -10,6 +10,7 @@ Next.js 16 (App Router) public archive UI. See `docs/ARCHITECTURE.md` §4.1.
 | `/persons/[slug]` | filmography |
 | `/my` | the browser's own watched list / timeline (client-rendered) |
 | `/sitemap.xml` | public catalog only |
+| `/admin/login`, `/admin/review`, `/admin/problems` | entity-resolution review queue and dead-letter view; gated by `ADMIN_TOKEN` (HttpOnly cookie scoped to `/admin`, 8h). Interim until OAuth + RBAC |
 
 ## How data flows
 
