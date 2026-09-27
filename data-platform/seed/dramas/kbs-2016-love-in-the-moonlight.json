@@ -1,0 +1,107 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "kbs-2016-love-in-the-moonlight",
+  "title_ko": "구르미 그린 달빛",
+  "title_en": "Love in the Moonlight",
+  "aliases": [
+    "구르미"
+  ],
+  "broadcaster": "KBS",
+  "start_date": "2016-08-22",
+  "end_date": "2016-10-18",
+  "episode_count": 18,
+  "genres": [
+    "historical",
+    "romance"
+  ],
+  "synopsis": "남장을 하고 궁에 들어간 내시 홍라온과 세자 이영의 궁중 로맨스. 동명 웹소설 원작.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "park-bo-gum",
+        "name_ko": "박보검",
+        "name_en": "Park Bo-gum",
+        "birth_date": "1993-06-16"
+      },
+      "type": "ACTOR",
+      "character": "이영",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-yoo-jung",
+        "name_ko": "김유정",
+        "name_en": "Kim Yoo-jung",
+        "birth_date": "1999-09-22"
+      },
+      "type": "ACTOR",
+      "character": "홍라온",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jinyoung",
+        "name_ko": "진영",
+        "name_en": "Jinyoung",
+        "birth_date": "1991-11-18"
+      },
+      "type": "ACTOR",
+      "character": "김윤성",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "chae-soo-bin",
+        "name_ko": "채수빈",
+        "name_en": "Chae Soo-bin",
+        "birth_date": "1994-07-10"
+      },
+      "type": "ACTOR",
+      "character": "조하연",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kwak-dong-yeon",
+        "name_ko": "곽동연",
+        "name_en": "Kwak Dong-yeon",
+        "birth_date": "1997-03-19"
+      },
+      "type": "ACTOR",
+      "character": "김병연",
+      "billing_order": 5,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-sung-yoon",
+        "name_ko": "김성윤",
+        "name_en": "Kim Sung-yoon"
+      },
+      "type": "DIRECTOR"
+    }
+  ],
+  "ost": [
+    {
+      "external_id": "moonlight-ost-title",
+      "title": "구르미 그린 달빛",
+      "artists": [
+        "거미"
+      ],
+      "part_no": 1
+    },
+    {
+      "external_id": "moonlight-ost-foggy-road",
+      "title": "안갯길",
+      "artists": [
+        "벤"
+      ],
+      "part_no": 2
+    }
+  ],
+  "links": []
+}

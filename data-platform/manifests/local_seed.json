@@ -1,8 +1,125 @@
 {
   "source_code": "local_seed",
   "items": [
-    {"external_id": "tvn-2016-goblin", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-goblin.json"},
-    {"external_id": "tvn-2016-signal", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-signal.json"},
-    {"external_id": "tvn-2016-another-oh-hae-young", "entity_type": "DRAMA", "url": "http://seed:8000/dramas/tvn-2016-another-oh-hae-young.json"}
+    {
+      "external_id": "tvn-2016-goblin",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-goblin.json"
+    },
+    {
+      "external_id": "tvn-2016-signal",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-signal.json"
+    },
+    {
+      "external_id": "tvn-2016-another-oh-hae-young",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-another-oh-hae-young.json"
+    },
+    {
+      "external_id": "tvn-2015-reply-1988",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2015-reply-1988.json"
+    },
+    {
+      "external_id": "tvn-2016-cheese-in-the-trap",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-cheese-in-the-trap.json"
+    },
+    {
+      "external_id": "tvn-2016-pied-piper",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-pied-piper.json"
+    },
+    {
+      "external_id": "tvn-2016-memory",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-memory.json"
+    },
+    {
+      "external_id": "tvn-2016-dear-my-friends",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-dear-my-friends.json"
+    },
+    {
+      "external_id": "tvn-2016-the-good-wife",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-the-good-wife.json"
+    },
+    {
+      "external_id": "tvn-2016-lets-fight-ghost",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-lets-fight-ghost.json"
+    },
+    {
+      "external_id": "tvn-2016-cinderella-four-knights",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-cinderella-four-knights.json"
+    },
+    {
+      "external_id": "tvn-2016-drinking-solo",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-drinking-solo.json"
+    },
+    {
+      "external_id": "tvn-2016-the-k2",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-the-k2.json"
+    },
+    {
+      "external_id": "tvn-2016-entourage",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/tvn-2016-entourage.json"
+    },
+    {
+      "external_id": "kbs-2016-descendants-of-the-sun",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/kbs-2016-descendants-of-the-sun.json"
+    },
+    {
+      "external_id": "kbs-2016-love-in-the-moonlight",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/kbs-2016-love-in-the-moonlight.json"
+    },
+    {
+      "external_id": "sbs-2016-doctors",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/sbs-2016-doctors.json"
+    },
+    {
+      "external_id": "sbs-2016-jealousy-incarnate",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/sbs-2016-jealousy-incarnate.json"
+    },
+    {
+      "external_id": "sbs-2016-legend-of-the-blue-sea",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/sbs-2016-legend-of-the-blue-sea.json"
+    },
+    {
+      "external_id": "mbc-2016-w",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/mbc-2016-w.json"
+    },
+    {
+      "external_id": "mbc-2016-shopping-king-louie",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/mbc-2016-shopping-king-louie.json"
+    },
+    {
+      "external_id": "jtbc-2016-age-of-youth",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/jtbc-2016-age-of-youth.json"
+    },
+    {
+      "external_id": "jtbc-2016-fantastic",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/jtbc-2016-fantastic.json"
+    },
+    {
+      "external_id": "jtbc-2016-mirror-of-the-witch",
+      "entity_type": "DRAMA",
+      "url": "http://seed:8000/dramas/jtbc-2016-mirror-of-the-witch.json"
+    }
   ]
 }

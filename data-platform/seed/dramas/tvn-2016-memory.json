@@ -1,0 +1,84 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-memory",
+  "title_ko": "기억",
+  "title_en": "Memory",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-03-18",
+  "end_date": "2016-05-07",
+  "episode_count": 16,
+  "genres": [
+    "legal",
+    "family"
+  ],
+  "synopsis": "알츠하이머 진단을 받은 잘나가는 변호사가 기억을 잃어가며 아들의 죽음에 얽힌 진실을 좇는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "lee-sung-min",
+        "name_ko": "이성민",
+        "name_en": "Lee Sung-min",
+        "birth_date": "1968-10-15"
+      },
+      "type": "ACTOR",
+      "character": "박태석",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-ji-soo",
+        "name_ko": "김지수",
+        "name_en": "Kim Ji-soo",
+        "birth_date": "1972-10-24"
+      },
+      "type": "ACTOR",
+      "character": "서영주",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-jin-hee",
+        "name_ko": "박진희",
+        "name_en": "Park Jin-hee",
+        "birth_date": "1978-01-08"
+      },
+      "type": "ACTOR",
+      "character": "나은선",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-jun-ho",
+        "name_ko": "이준호",
+        "name_en": "Lee Jun-ho",
+        "birth_date": "1990-01-25"
+      },
+      "type": "ACTOR",
+      "character": "정진",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-chan-hong",
+        "name_ko": "박찬홍",
+        "name_en": "Park Chan-hong"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "kim-ji-woo",
+        "name_ko": "김지우",
+        "name_en": "Kim Ji-woo"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

@@ -1,0 +1,56 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "sbs-2016-jealousy-incarnate",
+  "title_ko": "질투의 화신",
+  "title_en": "Jealousy Incarnate",
+  "aliases": [],
+  "broadcaster": "SBS",
+  "start_date": "2016-08-24",
+  "end_date": "2016-11-10",
+  "episode_count": 24,
+  "genres": [
+    "romance",
+    "comedy"
+  ],
+  "synopsis": "방송국 기상캐스터 표나리와 잘나가는 기자 이화신, 재벌 고정원 사이의 삼각 로맨스.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "gong-hyo-jin",
+        "name_ko": "공효진",
+        "name_en": "Gong Hyo-jin",
+        "birth_date": "1980-04-04"
+      },
+      "type": "ACTOR",
+      "character": "표나리",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jo-jung-suk",
+        "name_ko": "조정석",
+        "name_en": "Jo Jung-suk",
+        "birth_date": "1980-12-26"
+      },
+      "type": "ACTOR",
+      "character": "이화신",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "go-kyung-pyo",
+        "name_ko": "고경표",
+        "name_en": "Go Kyung-pyo",
+        "birth_date": "1990-06-11"
+      },
+      "type": "ACTOR",
+      "character": "고정원",
+      "billing_order": 3,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

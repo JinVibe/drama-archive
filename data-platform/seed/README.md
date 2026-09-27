@@ -42,6 +42,19 @@ source from any https URL (e.g. raw.githubusercontent.com).
 }
 ```
 
+## Provenance and verification status
+
+The current files were **drafted from general knowledge to exercise the pipeline and the
+retrieval evaluation**. They are not yet verified against official broadcaster pages.
+Before any public launch every file must be checked (dates, episode counts, cast/character
+names, OST credits) and the `links` filled with official pages; the `manual` source has
+trust_level 50 for exactly this reason. Intentional test cases inside the data:
+
+- `김원석` appears twice on purpose: `kim-won-seok` (director, 시그널) and `kim-won-seok-writer`
+  (writer, 태양의 후예) — a homonym that must stay two persons.
+- People shared across dramas reuse one `external_id` (김고은, 서강준, 조진웅, 이동휘, 고경표,
+  박보검, 이성경, 김은숙, 이응복) so re-ingests resolve deterministically.
+
 Rules:
 
 - `external_id` on persons/songs is optional but strongly recommended: it makes

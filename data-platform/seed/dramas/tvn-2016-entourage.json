@@ -1,0 +1,79 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-entourage",
+  "title_ko": "안투라지",
+  "title_en": "Entourage",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-11-04",
+  "end_date": "2016-12-24",
+  "episode_count": 16,
+  "genres": [
+    "comedy"
+  ],
+  "synopsis": "톱스타 차영빈과 그의 친구들, 매니지먼트 대표 김은갑이 연예계에서 좌충우돌하는 이야기. 미국 드라마 리메이크.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "seo-kang-joon",
+        "name_ko": "서강준",
+        "name_en": "Seo Kang-joon",
+        "birth_date": "1993-10-12"
+      },
+      "type": "ACTOR",
+      "character": "차영빈",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-kwang-soo",
+        "name_ko": "이광수",
+        "name_en": "Lee Kwang-soo",
+        "birth_date": "1985-07-14"
+      },
+      "type": "ACTOR",
+      "character": "차준",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-jung-min",
+        "name_ko": "박정민",
+        "name_en": "Park Jung-min",
+        "birth_date": "1987-03-24"
+      },
+      "type": "ACTOR",
+      "character": "이호진",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-dong-hwi",
+        "name_ko": "이동휘",
+        "name_en": "Lee Dong-hwi",
+        "birth_date": "1985-07-22"
+      },
+      "type": "ACTOR",
+      "character": "거북",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "cho-jin-woong",
+        "name_ko": "조진웅",
+        "name_en": "Cho Jin-woong",
+        "birth_date": "1976-03-03"
+      },
+      "type": "ACTOR",
+      "character": "김은갑",
+      "billing_order": 5,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

@@ -1,0 +1,165 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2015-reply-1988",
+  "title_ko": "응답하라 1988",
+  "title_en": "Reply 1988",
+  "aliases": [
+    "응팔"
+  ],
+  "broadcaster": "tvN",
+  "start_date": "2015-11-06",
+  "end_date": "2016-01-16",
+  "episode_count": 20,
+  "genres": [
+    "family",
+    "youth",
+    "comedy"
+  ],
+  "synopsis": "1988년 서울 쌍문동 골목의 다섯 가족과 다섯 친구들의 이야기. 덕선의 남편 찾기와 이웃의 정을 그린 복고 가족극.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "hyeri",
+        "name_ko": "혜리",
+        "name_en": "Hyeri",
+        "birth_date": "1994-06-09"
+      },
+      "type": "ACTOR",
+      "character": "성덕선",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-bo-gum",
+        "name_ko": "박보검",
+        "name_en": "Park Bo-gum",
+        "birth_date": "1993-06-16"
+      },
+      "type": "ACTOR",
+      "character": "최택",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "ryu-jun-yeol",
+        "name_ko": "류준열",
+        "name_en": "Ryu Jun-yeol",
+        "birth_date": "1986-09-25"
+      },
+      "type": "ACTOR",
+      "character": "김정환",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "go-kyung-pyo",
+        "name_ko": "고경표",
+        "name_en": "Go Kyung-pyo",
+        "birth_date": "1990-06-11"
+      },
+      "type": "ACTOR",
+      "character": "성선우",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-dong-hwi",
+        "name_ko": "이동휘",
+        "name_en": "Lee Dong-hwi",
+        "birth_date": "1985-07-22"
+      },
+      "type": "ACTOR",
+      "character": "류동룡",
+      "billing_order": 5,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "ra-mi-ran",
+        "name_ko": "라미란",
+        "name_en": "Ra Mi-ran"
+      },
+      "type": "ACTOR",
+      "character": "라미란",
+      "billing_order": 6,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-sung-kyun",
+        "name_ko": "김성균",
+        "name_en": "Kim Sung-kyun"
+      },
+      "type": "ACTOR",
+      "character": "김성균",
+      "billing_order": 7,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "sung-dong-il",
+        "name_ko": "성동일",
+        "name_en": "Sung Dong-il"
+      },
+      "type": "ACTOR",
+      "character": "성동일",
+      "billing_order": 8,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "shin-won-ho",
+        "name_ko": "신원호",
+        "name_en": "Shin Won-ho"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "lee-woo-jung",
+        "name_ko": "이우정",
+        "name_en": "Lee Woo-jung"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [
+    {
+      "external_id": "reply1988-ost-girl",
+      "title": "소녀",
+      "artists": [
+        "오혁"
+      ],
+      "part_no": 1
+    },
+    {
+      "external_id": "reply1988-ost-hyehwadong",
+      "title": "혜화동 (혹은 쌍문동)",
+      "artists": [
+        "박보람"
+      ],
+      "part_no": 2
+    },
+    {
+      "external_id": "reply1988-ost-youth",
+      "title": "청춘",
+      "artists": [
+        "김필"
+      ],
+      "part_no": 3
+    },
+    {
+      "external_id": "reply1988-ost-dont-worry",
+      "title": "걱정말아요 그대",
+      "artists": [
+        "이적"
+      ],
+      "part_no": 4
+    }
+  ],
+  "links": []
+}

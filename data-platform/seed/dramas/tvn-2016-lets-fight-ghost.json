@@ -1,0 +1,57 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-lets-fight-ghost",
+  "title_ko": "싸우자 귀신아",
+  "title_en": "Bring It On, Ghost",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-07-11",
+  "end_date": "2016-08-30",
+  "episode_count": 16,
+  "genres": [
+    "fantasy",
+    "romance",
+    "comedy"
+  ],
+  "synopsis": "귀신을 보는 퇴마사 청년과 기억을 잃은 여고생 귀신이 한 팀을 이뤄 귀신을 쫓는 로맨틱 코미디.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "ok-taec-yeon",
+        "name_ko": "옥택연",
+        "name_en": "Ok Taec-yeon",
+        "birth_date": "1988-12-27"
+      },
+      "type": "ACTOR",
+      "character": "박봉팔",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-so-hyun",
+        "name_ko": "김소현",
+        "name_en": "Kim So-hyun",
+        "birth_date": "1999-06-04"
+      },
+      "type": "ACTOR",
+      "character": "김현지",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kwon-yul",
+        "name_ko": "권율",
+        "name_en": "Kwon Yul",
+        "birth_date": "1982-06-29"
+      },
+      "type": "ACTOR",
+      "character": "주혜성",
+      "billing_order": 3,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

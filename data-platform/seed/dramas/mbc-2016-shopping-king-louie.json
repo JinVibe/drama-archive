@@ -1,0 +1,56 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "mbc-2016-shopping-king-louie",
+  "title_ko": "쇼핑왕 루이",
+  "title_en": "Shopping King Louie",
+  "aliases": [],
+  "broadcaster": "MBC",
+  "start_date": "2016-09-21",
+  "end_date": "2016-11-10",
+  "episode_count": 16,
+  "genres": [
+    "romance",
+    "comedy"
+  ],
+  "synopsis": "기억을 잃은 재벌 3세 루이와 시골 처녀 고복실이 서울에서 만나 함께 성장하는 로맨틱 코미디.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "seo-in-guk",
+        "name_ko": "서인국",
+        "name_en": "Seo In-guk",
+        "birth_date": "1987-10-23"
+      },
+      "type": "ACTOR",
+      "character": "루이",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "nam-ji-hyun",
+        "name_ko": "남지현",
+        "name_en": "Nam Ji-hyun",
+        "birth_date": "1995-09-17"
+      },
+      "type": "ACTOR",
+      "character": "고복실",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "yoon-sang-hyun",
+        "name_ko": "윤상현",
+        "name_en": "Yoon Sang-hyun",
+        "birth_date": "1973-09-21"
+      },
+      "type": "ACTOR",
+      "character": "차중원",
+      "billing_order": 3,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

@@ -1,0 +1,76 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-the-k2",
+  "title_ko": "THE K2",
+  "title_en": "The K2",
+  "aliases": [
+    "더 케이투",
+    "K2"
+  ],
+  "broadcaster": "tvN",
+  "start_date": "2016-09-30",
+  "end_date": "2016-11-19",
+  "episode_count": 16,
+  "genres": [
+    "action",
+    "thriller",
+    "romance"
+  ],
+  "synopsis": "전직 용병 출신 경호원 김제하가 대선 후보의 숨겨진 딸 고안나를 지키며 권력의 음모에 맞서는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "ji-chang-wook",
+        "name_ko": "지창욱",
+        "name_en": "Ji Chang-wook",
+        "birth_date": "1987-07-05"
+      },
+      "type": "ACTOR",
+      "character": "김제하",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "im-yoon-ah",
+        "name_ko": "임윤아",
+        "name_en": "Im Yoon-ah",
+        "birth_date": "1990-05-30"
+      },
+      "type": "ACTOR",
+      "character": "고안나",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "song-yoon-ah",
+        "name_ko": "송윤아",
+        "name_en": "Song Yoon-ah",
+        "birth_date": "1973-06-07"
+      },
+      "type": "ACTOR",
+      "character": "최유진",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kwak-jung-hwan",
+        "name_ko": "곽정환",
+        "name_en": "Kwak Jung-hwan"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "jang-hyuk-rin",
+        "name_ko": "장혁린",
+        "name_en": "Jang Hyuk-rin"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

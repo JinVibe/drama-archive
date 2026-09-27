@@ -1,0 +1,119 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-dear-my-friends",
+  "title_ko": "디어 마이 프렌즈",
+  "title_en": "Dear My Friends",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-05-13",
+  "end_date": "2016-07-02",
+  "episode_count": 16,
+  "genres": [
+    "family"
+  ],
+  "synopsis": "황혼의 문턱에 선 노년의 친구들과 그들을 꼰대라 부르는 딸 완이 함께 써 내려가는 인생 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "go-hyun-jung",
+        "name_ko": "고현정",
+        "name_en": "Go Hyun-jung",
+        "birth_date": "1971-03-02"
+      },
+      "type": "ACTOR",
+      "character": "박완",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-hye-ja",
+        "name_ko": "김혜자",
+        "name_en": "Kim Hye-ja",
+        "birth_date": "1941-10-25"
+      },
+      "type": "ACTOR",
+      "character": "조희자",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "na-moon-hee",
+        "name_ko": "나문희",
+        "name_en": "Na Moon-hee",
+        "birth_date": "1941-11-30"
+      },
+      "type": "ACTOR",
+      "character": "문정아",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "go-doo-shim",
+        "name_ko": "고두심",
+        "name_en": "Go Doo-shim",
+        "birth_date": "1951-05-22"
+      },
+      "type": "ACTOR",
+      "character": "장난희",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "youn-yuh-jung",
+        "name_ko": "윤여정",
+        "name_en": "Youn Yuh-jung",
+        "birth_date": "1947-06-19"
+      },
+      "type": "ACTOR",
+      "character": "오충남",
+      "billing_order": 5,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "shin-goo",
+        "name_ko": "신구",
+        "name_en": "Shin Goo",
+        "birth_date": "1936-08-13"
+      },
+      "type": "ACTOR",
+      "character": "이성재",
+      "billing_order": 6,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jo-in-sung",
+        "name_ko": "조인성",
+        "name_en": "Jo In-sung",
+        "birth_date": "1981-07-28"
+      },
+      "type": "ACTOR",
+      "character": "서연하",
+      "billing_order": 7,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "hong-jong-chan",
+        "name_ko": "홍종찬",
+        "name_en": "Hong Jong-chan"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "noh-hee-kyung",
+        "name_ko": "노희경",
+        "name_en": "Noh Hee-kyung"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

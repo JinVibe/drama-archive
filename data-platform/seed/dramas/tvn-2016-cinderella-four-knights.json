@@ -1,0 +1,79 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-cinderella-four-knights",
+  "title_ko": "신데렐라와 네 명의 기사",
+  "title_en": "Cinderella and Four Knights",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-08-12",
+  "end_date": "2016-10-01",
+  "episode_count": 16,
+  "genres": [
+    "romance",
+    "comedy"
+  ],
+  "synopsis": "가난한 여고생 은하원이 재벌가 사촌 삼형제와 경호원이 사는 저택에 들어가 벌어지는 로맨스.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "park-so-dam",
+        "name_ko": "박소담",
+        "name_en": "Park So-dam",
+        "birth_date": "1991-09-08"
+      },
+      "type": "ACTOR",
+      "character": "은하원",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jung-il-woo",
+        "name_ko": "정일우",
+        "name_en": "Jung Il-woo",
+        "birth_date": "1987-09-09"
+      },
+      "type": "ACTOR",
+      "character": "강지운",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "ahn-jae-hyun",
+        "name_ko": "안재현",
+        "name_en": "Ahn Jae-hyun",
+        "birth_date": "1987-07-01"
+      },
+      "type": "ACTOR",
+      "character": "강현민",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-jung-shin",
+        "name_ko": "이정신",
+        "name_en": "Lee Jung-shin",
+        "birth_date": "1991-09-15"
+      },
+      "type": "ACTOR",
+      "character": "강서우",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "choi-min",
+        "name_ko": "최민",
+        "name_en": "Choi Min"
+      },
+      "type": "ACTOR",
+      "character": "이윤성",
+      "billing_order": 5,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

@@ -1,0 +1,79 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-drinking-solo",
+  "title_ko": "혼술남녀",
+  "title_en": "Drinking Solo",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-09-05",
+  "end_date": "2016-10-25",
+  "episode_count": 16,
+  "genres": [
+    "comedy",
+    "romance"
+  ],
+  "synopsis": "노량진 고시학원 강사들과 공시생들이 각자의 이유로 혼자 술을 마시며 위로받는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "ha-seok-jin",
+        "name_ko": "하석진",
+        "name_en": "Ha Seok-jin",
+        "birth_date": "1982-02-20"
+      },
+      "type": "ACTOR",
+      "character": "진정석",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-ha-sun",
+        "name_ko": "박하선",
+        "name_en": "Park Ha-sun",
+        "birth_date": "1987-10-22"
+      },
+      "type": "ACTOR",
+      "character": "박하나",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "gong-myung",
+        "name_ko": "공명",
+        "name_en": "Gong Myung",
+        "birth_date": "1994-05-26"
+      },
+      "type": "ACTOR",
+      "character": "공명",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-dong-young",
+        "name_ko": "김동영",
+        "name_en": "Kim Dong-young"
+      },
+      "type": "ACTOR",
+      "character": "김동영",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jung-chae-yeon",
+        "name_ko": "정채연",
+        "name_en": "Jung Chae-yeon",
+        "birth_date": "1997-12-01"
+      },
+      "type": "ACTOR",
+      "character": "김채연",
+      "billing_order": 5,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

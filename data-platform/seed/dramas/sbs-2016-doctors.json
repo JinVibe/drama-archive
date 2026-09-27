@@ -1,0 +1,68 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "sbs-2016-doctors",
+  "title_ko": "닥터스",
+  "title_en": "Doctors",
+  "aliases": [],
+  "broadcaster": "SBS",
+  "start_date": "2016-06-20",
+  "end_date": "2016-08-23",
+  "episode_count": 20,
+  "genres": [
+    "medical",
+    "romance"
+  ],
+  "synopsis": "문제아였던 소녀가 스승의 도움으로 의사가 되어 13년 만에 그를 병원에서 다시 만나는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "kim-rae-won",
+        "name_ko": "김래원",
+        "name_en": "Kim Rae-won",
+        "birth_date": "1981-03-19"
+      },
+      "type": "ACTOR",
+      "character": "홍지홍",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-shin-hye",
+        "name_ko": "박신혜",
+        "name_en": "Park Shin-hye",
+        "birth_date": "1990-02-18"
+      },
+      "type": "ACTOR",
+      "character": "유혜정",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "yoon-kyun-sang",
+        "name_ko": "윤균상",
+        "name_en": "Yoon Kyun-sang",
+        "birth_date": "1987-04-30"
+      },
+      "type": "ACTOR",
+      "character": "정윤도",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-sung-kyung",
+        "name_ko": "이성경",
+        "name_en": "Lee Sung-kyung",
+        "birth_date": "1990-08-10"
+      },
+      "type": "ACTOR",
+      "character": "진서우",
+      "billing_order": 4,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

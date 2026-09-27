@@ -1,0 +1,45 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "jtbc-2016-mirror-of-the-witch",
+  "title_ko": "마녀보감",
+  "title_en": "Mirror of the Witch",
+  "aliases": [],
+  "broadcaster": "JTBC",
+  "start_date": "2016-05-13",
+  "end_date": "2016-07-16",
+  "episode_count": 20,
+  "genres": [
+    "historical",
+    "fantasy",
+    "romance"
+  ],
+  "synopsis": "저주받은 공주 서리와 젊은 허준이 저주를 풀기 위해 함께하는 조선 판타지 사극.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "yoon-si-yoon",
+        "name_ko": "윤시윤",
+        "name_en": "Yoon Si-yoon",
+        "birth_date": "1986-09-26"
+      },
+      "type": "ACTOR",
+      "character": "허준",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-sae-ron",
+        "name_ko": "김새론",
+        "name_en": "Kim Sae-ron",
+        "birth_date": "2000-07-31"
+      },
+      "type": "ACTOR",
+      "character": "서리",
+      "billing_order": 2,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

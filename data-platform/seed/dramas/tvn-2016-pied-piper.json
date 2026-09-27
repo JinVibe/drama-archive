@@ -1,0 +1,72 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-pied-piper",
+  "title_ko": "피리부는 사나이",
+  "title_en": "Pied Piper",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-03-07",
+  "end_date": "2016-04-26",
+  "episode_count": 16,
+  "genres": [
+    "thriller",
+    "crime"
+  ],
+  "synopsis": "위기협상팀이 도시를 위협하는 정체불명의 인물 피리부는 사나이와 벌이는 심리전.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "shin-ha-kyun",
+        "name_ko": "신하균",
+        "name_en": "Shin Ha-kyun",
+        "birth_date": "1974-05-30"
+      },
+      "type": "ACTOR",
+      "character": "주성찬",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jo-yoon-hee",
+        "name_ko": "조윤희",
+        "name_en": "Jo Yoon-hee",
+        "birth_date": "1982-10-13"
+      },
+      "type": "ACTOR",
+      "character": "여명하",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "yoo-jun-sang",
+        "name_ko": "유준상",
+        "name_en": "Yoo Jun-sang",
+        "birth_date": "1969-11-28"
+      },
+      "type": "ACTOR",
+      "character": "공지훈",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-hong-sun",
+        "name_ko": "김홍선",
+        "name_en": "Kim Hong-sun"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "ryu-yong-jae",
+        "name_ko": "류용재",
+        "name_en": "Ryu Yong-jae"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

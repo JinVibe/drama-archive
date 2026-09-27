@@ -1,0 +1,75 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "tvn-2016-the-good-wife",
+  "title_ko": "굿와이프",
+  "title_en": "The Good Wife",
+  "aliases": [],
+  "broadcaster": "tvN",
+  "start_date": "2016-07-08",
+  "end_date": "2016-08-27",
+  "episode_count": 16,
+  "genres": [
+    "legal"
+  ],
+  "synopsis": "검사 남편의 스캔들로 무너진 가정을 지키기 위해 15년 만에 변호사로 복귀한 김혜경의 이야기. 미국 드라마 리메이크.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "jeon-do-yeon",
+        "name_ko": "전도연",
+        "name_en": "Jeon Do-yeon",
+        "birth_date": "1973-02-11"
+      },
+      "type": "ACTOR",
+      "character": "김혜경",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "yoo-ji-tae",
+        "name_ko": "유지태",
+        "name_en": "Yoo Ji-tae",
+        "birth_date": "1976-04-13"
+      },
+      "type": "ACTOR",
+      "character": "이태준",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "yoon-kye-sang",
+        "name_ko": "윤계상",
+        "name_en": "Yoon Kye-sang",
+        "birth_date": "1978-12-20"
+      },
+      "type": "ACTOR",
+      "character": "서중원",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "nana",
+        "name_ko": "나나",
+        "name_en": "Nana",
+        "birth_date": "1991-09-14"
+      },
+      "type": "ACTOR",
+      "character": "김단",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-jung-hyo",
+        "name_ko": "이정효",
+        "name_en": "Lee Jung-hyo"
+      },
+      "type": "DIRECTOR"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

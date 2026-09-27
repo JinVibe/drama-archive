@@ -1,0 +1,80 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "mbc-2016-w",
+  "title_ko": "W",
+  "title_en": "W: Two Worlds",
+  "aliases": [
+    "더블유",
+    "W 두 개의 세계"
+  ],
+  "broadcaster": "MBC",
+  "start_date": "2016-07-20",
+  "end_date": "2016-09-14",
+  "episode_count": 16,
+  "genres": [
+    "fantasy",
+    "romance",
+    "thriller"
+  ],
+  "synopsis": "인기 웹툰 W의 세계로 빨려 들어간 의사 오연주가 웹툰 주인공 강철과 두 세계를 넘나들며 벌이는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "lee-jong-suk",
+        "name_ko": "이종석",
+        "name_en": "Lee Jong-suk",
+        "birth_date": "1989-09-14"
+      },
+      "type": "ACTOR",
+      "character": "강철",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "han-hyo-joo",
+        "name_ko": "한효주",
+        "name_en": "Han Hyo-joo",
+        "birth_date": "1987-02-22"
+      },
+      "type": "ACTOR",
+      "character": "오연주",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jung-yoo-jin",
+        "name_ko": "정유진",
+        "name_en": "Jung Yoo-jin",
+        "birth_date": "1989-05-24"
+      },
+      "type": "ACTOR",
+      "character": "윤소희",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-tae-hwan",
+        "name_ko": "이태환",
+        "name_en": "Lee Tae-hwan",
+        "birth_date": "1992-02-21"
+      },
+      "type": "ACTOR",
+      "character": "서도윤",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "song-jae-jung",
+        "name_ko": "송재정",
+        "name_en": "Song Jae-jung"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

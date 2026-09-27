@@ -108,6 +108,12 @@ def test_registry():
 def test_seed_files_parse_and_match_filename(path):
     d = parse(path.read_bytes())
     assert d.external_id == path.stem
-    assert d.broadcaster_code == "tvn"
+    # file name convention: {broadcaster}-{start year}-{slug}.json
+    prefix_bc, prefix_year, _ = path.stem.split("-", 2)
+    assert d.broadcaster_code == prefix_bc
+    assert d.broadcaster_code in {"kbs", "mbc", "sbs", "jtbc", "tvn"}
     assert d.start_date and d.end_date and d.start_date <= d.end_date
+    assert d.start_date.year == int(prefix_year)
     assert d.credits, "seed drama must have credits"
+    assert d.synopsis, "seed drama must have a synopsis (vector search relies on it)"
+    assert d.genres, "seed drama must have genres"

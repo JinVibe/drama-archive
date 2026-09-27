@@ -1,0 +1,56 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "jtbc-2016-fantastic",
+  "title_ko": "판타스틱",
+  "title_en": "Fantastic",
+  "aliases": [],
+  "broadcaster": "JTBC",
+  "start_date": "2016-09-02",
+  "end_date": "2016-10-22",
+  "episode_count": 16,
+  "genres": [
+    "romance",
+    "melodrama"
+  ],
+  "synopsis": "시한부 선고를 받은 드라마 작가 이소혜와 톱스타 류해성이 남은 시간을 판타스틱하게 살아가는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "kim-hyun-joo",
+        "name_ko": "김현주",
+        "name_en": "Kim Hyun-joo",
+        "birth_date": "1977-04-24"
+      },
+      "type": "ACTOR",
+      "character": "이소혜",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "joo-sang-wook",
+        "name_ko": "주상욱",
+        "name_en": "Joo Sang-wook",
+        "birth_date": "1978-07-18"
+      },
+      "type": "ACTOR",
+      "character": "류해성",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-si-yeon",
+        "name_ko": "박시연",
+        "name_en": "Park Si-yeon",
+        "birth_date": "1979-03-29"
+      },
+      "type": "ACTOR",
+      "character": "백설",
+      "billing_order": 3,
+      "main": true
+    }
+  ],
+  "ost": [],
+  "links": []
+}

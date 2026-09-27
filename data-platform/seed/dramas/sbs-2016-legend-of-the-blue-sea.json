@@ -1,0 +1,66 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "sbs-2016-legend-of-the-blue-sea",
+  "title_ko": "푸른 바다의 전설",
+  "title_en": "The Legend of the Blue Sea",
+  "aliases": [
+    "푸바전"
+  ],
+  "broadcaster": "SBS",
+  "start_date": "2016-11-16",
+  "end_date": "2017-01-25",
+  "episode_count": 20,
+  "genres": [
+    "fantasy",
+    "romance"
+  ],
+  "synopsis": "조선시대 인어 설화를 모티브로, 서울에 온 인어 심청과 천재 사기꾼 허준재의 사랑을 그린 판타지 로맨스.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "jun-ji-hyun",
+        "name_ko": "전지현",
+        "name_en": "Jun Ji-hyun",
+        "birth_date": "1981-10-30"
+      },
+      "type": "ACTOR",
+      "character": "심청",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-min-ho",
+        "name_ko": "이민호",
+        "name_en": "Lee Min-ho",
+        "birth_date": "1987-06-22"
+      },
+      "type": "ACTOR",
+      "character": "허준재",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-hee-joon",
+        "name_ko": "이희준",
+        "name_en": "Lee Hee-joon",
+        "birth_date": "1979-01-27"
+      },
+      "type": "ACTOR",
+      "character": "조남두",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "park-ji-eun",
+        "name_ko": "박지은",
+        "name_en": "Park Ji-eun"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [],
+  "links": []
+}

@@ -1,0 +1,128 @@
+{
+  "format": "dramamemory.drama.v1",
+  "external_id": "kbs-2016-descendants-of-the-sun",
+  "title_ko": "태양의 후예",
+  "title_en": "Descendants of the Sun",
+  "aliases": [
+    "태후"
+  ],
+  "broadcaster": "KBS",
+  "start_date": "2016-02-24",
+  "end_date": "2016-04-14",
+  "episode_count": 16,
+  "genres": [
+    "romance",
+    "action"
+  ],
+  "synopsis": "분쟁 지역 우르크에 파견된 특전사 대위 유시진과 의사 강모연이 재난과 전쟁 속에서 사랑을 키우는 이야기.",
+  "credits": [
+    {
+      "person": {
+        "external_id": "song-joong-ki",
+        "name_ko": "송중기",
+        "name_en": "Song Joong-ki",
+        "birth_date": "1985-09-19"
+      },
+      "type": "ACTOR",
+      "character": "유시진",
+      "billing_order": 1,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "song-hye-kyo",
+        "name_ko": "송혜교",
+        "name_en": "Song Hye-kyo",
+        "birth_date": "1981-11-22"
+      },
+      "type": "ACTOR",
+      "character": "강모연",
+      "billing_order": 2,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "jin-goo",
+        "name_ko": "진구",
+        "name_en": "Jin Goo",
+        "birth_date": "1980-07-10"
+      },
+      "type": "ACTOR",
+      "character": "서대영",
+      "billing_order": 3,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "kim-ji-won",
+        "name_ko": "김지원",
+        "name_en": "Kim Ji-won",
+        "birth_date": "1992-10-19"
+      },
+      "type": "ACTOR",
+      "character": "윤명주",
+      "billing_order": 4,
+      "main": true
+    },
+    {
+      "person": {
+        "external_id": "lee-eung-bok",
+        "name_ko": "이응복",
+        "name_en": "Lee Eung-bok"
+      },
+      "type": "DIRECTOR"
+    },
+    {
+      "person": {
+        "external_id": "kim-eun-sook",
+        "name_ko": "김은숙",
+        "name_en": "Kim Eun-sook"
+      },
+      "type": "WRITER"
+    },
+    {
+      "person": {
+        "external_id": "kim-won-seok-writer",
+        "name_ko": "김원석",
+        "name_en": "Kim Won-seok"
+      },
+      "type": "WRITER"
+    }
+  ],
+  "ost": [
+    {
+      "external_id": "dots-ost-always",
+      "title": "Always",
+      "artists": [
+        "윤미래"
+      ],
+      "part_no": 1
+    },
+    {
+      "external_id": "dots-ost-everytime",
+      "title": "Everytime",
+      "artists": [
+        "첸",
+        "펀치"
+      ],
+      "part_no": 2
+    },
+    {
+      "external_id": "dots-ost-this-love",
+      "title": "This Love",
+      "artists": [
+        "다비치"
+      ],
+      "part_no": 3
+    },
+    {
+      "external_id": "dots-ost-you-are-my-everything",
+      "title": "You Are My Everything",
+      "artists": [
+        "거미"
+      ],
+      "part_no": 4
+    }
+  ],
+  "links": []
+}
