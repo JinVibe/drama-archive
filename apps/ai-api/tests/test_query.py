@@ -23,6 +23,12 @@ def test_analyze(raw, year_from, year_to, broadcaster, text):
     assert plan.text == text
 
 
+def test_extract_constraints_can_be_disabled():
+    plan = analyze("2016년 tvN 공유 나온 드라마", extract_constraints=False)
+    assert plan.year_from is None and plan.broadcaster is None
+    assert plan.text == "2016년 tvN 공유"
+
+
 def test_two_digit_year_with_qualifier():
     plan = analyze("16년쯤 공유")
     assert (plan.year_from, plan.year_to) == (2015, 2017)

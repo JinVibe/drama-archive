@@ -4,6 +4,7 @@ of (doc id, score); fusion happens in Python so each retriever stays independent
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass
 from typing import Any
 
@@ -22,6 +23,17 @@ FTS_SQL = f"""
 SELECT sd.id, ts_rank_cd(sd.fts, q.tsq) AS score
   FROM search_document sd, websearch_to_tsquery('simple', %(text)s) q(tsq)
  WHERE sd.entity_type = 'DRAMA' AND numnode(q.tsq) > 0 AND sd.fts @@ q.tsq
+ {_FILTER}
+ ORDER BY score DESC, sd.id
+ LIMIT %(limit)s
+"""
+
+# Any-token match (OR). Catches queries where one word is not in the document
+# ("노희경 작가": 작가 never appears, 노희경 does). Ranked below exact AND matches by RRF.
+FTS_ANY_SQL = f"""
+SELECT sd.id, ts_rank_cd(sd.fts, q.tsq) AS score
+  FROM search_document sd, to_tsquery('simple', %(any)s) q(tsq)
+ WHERE sd.entity_type = 'DRAMA' AND sd.fts @@ q.tsq
  {_FILTER}
  ORDER BY score DESC, sd.id
  LIMIT %(limit)s
@@ -87,6 +99,13 @@ class SearchStore:
 
     def fts(self, text: str, filters: dict[str, Any], limit: int) -> list[Candidate]:
         return self._candidates(FTS_SQL, {"text": text, "limit": limit, **filters})
+
+    def fts_any(self, text: str, filters: dict[str, Any], limit: int) -> list[Candidate]:
+        tokens = [t for t in re.split(r"[^0-9A-Za-z\uac00-\ud7a3]+", text.casefold()) if t]
+        if not tokens:
+            return []
+        any_query = " | ".join(f"'{t}'" for t in tokens)
+        return self._candidates(FTS_ANY_SQL, {"any": any_query, "limit": limit, **filters})
 
     def trigram(self, text: str, filters: dict[str, Any], limit: int) -> list[Candidate]:
         return self._candidates(TRIGRAM_SQL, {"text": text, "limit": limit, **filters})

@@ -89,6 +89,7 @@ class SearchOut(BaseModel):
     query: str
     plan: PlanOut
     strategy: str
+    relaxed: bool
     lists: dict[str, int]
     total: int
     hits: list[HitOut]
@@ -102,7 +103,7 @@ def _to_out(r: SearchResult) -> SearchOut:
         query=r.query,
         plan=PlanOut(text=r.plan.text, year_from=r.plan.year_from, year_to=r.plan.year_to,
                      broadcaster=r.plan.broadcaster, signals=r.plan.signals),
-        strategy=r.strategy, lists=r.lists, total=len(r.hits),
+        strategy=r.strategy, relaxed=r.relaxed, lists=r.lists, total=len(r.hits),
         hits=[HitOut(**h.__dict__) for h in r.hits],
         latency_ms=r.latency_ms, retrieval_version=r.retrieval_version,
         embedding_model=r.embedding_model,

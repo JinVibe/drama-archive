@@ -36,6 +36,7 @@ class SearchResult:
     strategy: str                   # "lexical" | "vector" | "hybrid" | "filter"
     lists: dict[str, int]           # list name -> candidate count
     hits: list[Hit]
+    relaxed: bool = False           # constraints dropped after they produced nothing
     latency_ms: dict[str, int] = field(default_factory=dict)
     retrieval_version: str = ""
     embedding_model: str | None = None
@@ -53,27 +54,37 @@ class HybridRetriever:
     def search(self, query: str, limit: int = 10, *, use_vector: bool = True,
                use_lexical: bool = True) -> SearchResult:
         plan = analyze(query)
-        filters = {"year_from": plan.year_from, "year_to": plan.year_to,
-                   "broadcaster": plan.broadcaster}
         lists: dict[str, list] = {}
         latency: dict[str, int] = {}
+        relaxed = False
 
         def timed(name, fn):
             t = time.perf_counter()
             lists[name] = fn()
             latency[name] = int((time.perf_counter() - t) * 1000)
 
-        if use_lexical and plan.text:
-            timed("fts", lambda: self.store.fts(plan.text, filters, self.candidates))
-            timed("trigram", lambda: self.store.trigram(plan.text, filters, self.candidates))
-        if use_vector and self.embedder is not None and plan.text:
-            t = time.perf_counter()
-            vec = self.embedder.embed([plan.text])[0]
-            latency["embed"] = int((time.perf_counter() - t) * 1000)
-            timed("vector", lambda: self.store.vector(vec, filters, self.candidates))
+        def gather(p: QueryPlan) -> None:
+            filters = {"year_from": p.year_from, "year_to": p.year_to, "broadcaster": p.broadcaster}
+            if use_lexical and p.text:
+                timed("fts", lambda: self.store.fts(p.text, filters, self.candidates))
+                timed("fts_any", lambda: self.store.fts_any(p.text, filters, self.candidates))
+                timed("trigram", lambda: self.store.trigram(p.text, filters, self.candidates))
+            if use_vector and self.embedder is not None and p.text:
+                t = time.perf_counter()
+                vec = self.embedder.embed([p.text])[0]
+                latency["embed"] = latency.get("embed", 0) + int((time.perf_counter() - t) * 1000)
+                timed("vector", lambda: self.store.vector(vec, filters, self.candidates))
+            if not any(lists.values()) and p.has_constraints and not p.text:
+                timed("filter", lambda: self.store.filter_only(filters, self.candidates))
 
-        if not any(lists.values()) and plan.has_constraints:
-            timed("filter", lambda: self.store.filter_only(filters, self.candidates))
+        gather(plan)
+        # A "year" that was really part of a title (응답하라 1988) filters everything out:
+        # drop the constraints and try once more with the plain text.
+        if not any(lists.values()) and plan.has_constraints and plan.text:
+            lists.clear()
+            plan = analyze(query, extract_constraints=False)
+            relaxed = True
+            gather(plan)
 
         t = time.perf_counter()
         fused = rrf(lists, k=self.rrf_k, limit=limit)
@@ -86,7 +97,7 @@ class HybridRetriever:
             for f in fused if (d := docs.get(f.doc_id))
         ]
         return SearchResult(
-            query=query, plan=plan, strategy=_strategy(lists),
+            query=query, plan=plan, strategy=_strategy(lists), relaxed=relaxed,
             lists={k: len(v) for k, v in lists.items()}, hits=hits, latency_ms=latency,
             retrieval_version=self.retrieval_version,
             embedding_model=self.embedder.model_id if self.embedder else None,
@@ -94,7 +105,7 @@ class HybridRetriever:
 
 
 def _strategy(lists: dict[str, list]) -> str:
-    lexical = bool(lists.get("fts") or lists.get("trigram"))
+    lexical = bool(lists.get("fts") or lists.get("fts_any") or lists.get("trigram"))
     vector = bool(lists.get("vector"))
     if lexical and vector:
         return "hybrid"

@@ -55,13 +55,17 @@ def _year_window(year: int, qualifier: str | None) -> tuple[int, int]:
     return year, year
 
 
-def analyze(raw: str) -> QueryPlan:
+def analyze(raw: str, *, extract_constraints: bool = True) -> QueryPlan:
+    """With extract_constraints=False only filler/particles are stripped: used to relax a
+    query whose "year" was really part of a title (응답하라 1988)."""
     text = raw.strip()
     signals: dict[str, str] = {}
     year_from = year_to = None
     broadcaster = None
 
-    if m := _DECADE.search(text):
+    if not extract_constraints:
+        pass
+    elif m := _DECADE.search(text):
         head = m.group(1)
         if len(head) == 3:                     # 201 -> 2010s
             base = int(head) * 10
@@ -89,7 +93,7 @@ def analyze(raw: str) -> QueryPlan:
         signals["year"] = m.group(0)
         text = text.replace(m.group(0), " ")
 
-    if m := _BROADCASTER.search(text):
+    if extract_constraints and (m := _BROADCASTER.search(text)):
         token = m.group(0)
         broadcaster = BROADCASTER_ALIASES.get(token) or BROADCASTER_ALIASES.get(token.lower())
         signals["broadcaster"] = m.group(0)

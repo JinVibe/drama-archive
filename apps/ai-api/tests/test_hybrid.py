@@ -20,7 +20,15 @@ class FakeStore:
 
     def fts(self, text, filters, limit):
         self.calls.append(("fts", text, filters))
+        if filters.get("year_from") == 1988:
+            return []          # nothing aired in 1988: the "year" was part of a title
         return self._c(1) if "공유" in text else []
+
+    def fts_any(self, text, filters, limit):
+        self.calls.append(("fts_any", text, filters))
+        if filters.get("year_from") == 1988:
+            return []
+        return self._c(2) if "1988" in text else []
 
     def trigram(self, text, filters, limit):
         self.calls.append(("trigram", text, filters))
@@ -28,6 +36,8 @@ class FakeStore:
 
     def vector(self, vec, filters, limit):
         self.calls.append(("vector", None, filters))
+        if filters.get("year_from") == 1988:
+            return []
         return self._c(3, 1)
 
     def filter_only(self, filters, limit):
@@ -49,7 +59,7 @@ def test_hybrid_fuses_and_reports_evidence():
     r = _retriever()
     res = r.search("공유 판타지", limit=5)
     assert res.strategy == "hybrid"
-    assert res.lists == {"fts": 1, "trigram": 0, "vector": 2}
+    assert res.lists == {"fts": 1, "fts_any": 0, "trigram": 0, "vector": 2}
     assert [h.drama_id for h in res.hits] == [4, 9]        # 4 in fts+vector beats 9 (vector only)
     assert res.hits[0].ranks == {"fts": 1, "vector": 2}
     assert res.hits[0].metadata["slug"] == "goblin"
@@ -81,6 +91,17 @@ def test_constraint_only_query_falls_back_to_filter():
     assert res.strategy == "filter"
     assert [c[0] for c in store.calls] == ["filter"]
     assert [h.drama_id for h in res.hits] == [4, 5]
+
+
+def test_title_number_mistaken_for_year_is_relaxed():
+    store = FakeStore()
+    res = _retriever(store).search("응답하라 1988")
+    assert res.relaxed is True
+    assert res.plan.year_from is None and res.plan.text == "응답하라 1988"
+    # first pass filtered by 1988 (empty), second pass without constraints
+    years = [c[2].get("year_from") for c in store.calls]
+    assert years[0] == 1988 and years[-1] is None
+    assert 5 in [h.drama_id for h in res.hits]   # fts_any found it on the relaxed pass
 
 
 def test_no_embedder_means_lexical_only():
