@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: domain-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/dramamemory}
+    username: ${DB_USER:dramamemory}
+    password: ${DB_PASSWORD:dramamemory}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:10}
+  # Schema is applied by the compose `migrate` service / CI before this app starts.
+  flyway:
+    enabled: false
+  mvc:
+    problemdetails:
+      enabled: true
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: ${PORT:8081}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true

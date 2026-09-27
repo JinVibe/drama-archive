@@ -1,0 +1,5 @@
+spring:
+  flyway:
+    enabled: true
+    # Same migrations the compose `migrate` service applies; path injected by Gradle.
+    locations: filesystem:${dramamemory.migrations}
