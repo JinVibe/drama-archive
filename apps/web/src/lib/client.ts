@@ -16,42 +16,61 @@ export type DramaState = {
 
 export type Me = { userId?: string; anonymous: boolean; displayName?: string };
 
+export type Note = { dramaId: number; body: string; visibility: "PRIVATE" | "PUBLIC"; updatedAt: string };
+
+export type Timeline = {
+  total: number;
+  byStatus: Record<WatchStatus, number>;
+  byYear: { year: number; count: number }[];
+  byBroadcaster: { code: string; nameKo: string; count: number }[];
+  byGenre: { code: string; count: number }[];
+  topActors: { slug: string; nameKo: string; count: number }[];
+};
+
 const json = { "Content-Type": "application/json" };
+const opts: RequestInit = { credentials: "same-origin" };
+
+async function getOrNull<T>(path: string): Promise<T | null> {
+  const res = await fetch(path, opts);
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`${path} ${res.status}`);
+  return res.json();
+}
+
+async function put<T>(path: string, body: unknown): Promise<T> {
+  const res = await fetch(path, { ...opts, method: "PUT", headers: json, body: JSON.stringify(body) });
+  if (!res.ok) throw new Error(`PUT ${path} ${res.status}`);
+  return res.json();
+}
+
+async function del(path: string): Promise<void> {
+  const res = await fetch(path, { ...opts, method: "DELETE" });
+  if (!res.ok && res.status !== 404) throw new Error(`DELETE ${path} ${res.status}`);
+}
 
 export const me = {
   profile: async (): Promise<Me> => {
-    const res = await fetch("/api/v1/me", { credentials: "same-origin" });
+    const res = await fetch("/api/v1/me", opts);
     if (!res.ok) throw new Error(`me ${res.status}`);
     return res.json();
   },
   list: async (): Promise<DramaState[]> => {
-    const res = await fetch("/api/v1/me/dramas", { credentials: "same-origin" });
+    const res = await fetch("/api/v1/me/dramas", opts);
     if (!res.ok) throw new Error(`me/dramas ${res.status}`);
     return (await res.json()).items;
   },
-  state: async (dramaId: number): Promise<DramaState | null> => {
-    const res = await fetch(`/api/v1/me/dramas/${dramaId}`, { credentials: "same-origin" });
-    if (res.status === 404) return null;
-    if (!res.ok) throw new Error(`me/dramas/${dramaId} ${res.status}`);
+  timeline: async (): Promise<Timeline> => {
+    const res = await fetch("/api/v1/me/timeline", opts);
+    if (!res.ok) throw new Error(`me/timeline ${res.status}`);
     return res.json();
   },
-  set: async (dramaId: number, status: WatchStatus): Promise<DramaState> => {
-    const res = await fetch(`/api/v1/me/dramas/${dramaId}/status`, {
-      method: "PUT",
-      headers: json,
-      credentials: "same-origin",
-      body: JSON.stringify({ status }),
-    });
-    if (!res.ok) throw new Error(`set status ${res.status}`);
-    return res.json();
-  },
-  clear: async (dramaId: number): Promise<void> => {
-    const res = await fetch(`/api/v1/me/dramas/${dramaId}/status`, {
-      method: "DELETE",
-      credentials: "same-origin",
-    });
-    if (!res.ok && res.status !== 404) throw new Error(`clear status ${res.status}`);
-  },
+  state: (dramaId: number) => getOrNull<DramaState>(`/api/v1/me/dramas/${dramaId}`),
+  set: (dramaId: number, status: WatchStatus) =>
+    put<DramaState>(`/api/v1/me/dramas/${dramaId}/status`, { status }),
+  clear: (dramaId: number) => del(`/api/v1/me/dramas/${dramaId}/status`),
+  note: (dramaId: number) => getOrNull<Note>(`/api/v1/me/dramas/${dramaId}/note`),
+  setNote: (dramaId: number, body: string) => put<Note>(`/api/v1/me/dramas/${dramaId}/note`, { body }),
+  clearNote: (dramaId: number) => del(`/api/v1/me/dramas/${dramaId}/note`),
 };
 
 export const STATUS_LABEL: Record<WatchStatus, string> = {
