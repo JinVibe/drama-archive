@@ -24,7 +24,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="text-muted hover:text-foreground">
               연도별
             </Link>
-            <Link href="/my" className="ml-auto text-muted hover:text-foreground">
+            <form action="/search" className="ml-auto hidden sm:block">
+              <input
+                type="search"
+                name="q"
+                placeholder="제목·배우·OST 검색"
+                className="w-56 rounded-md border border-line bg-background px-3 py-1.5 text-sm focus:border-accent focus:outline-none"
+              />
+            </form>
+            <Link href="/search" className="text-muted hover:text-foreground sm:hidden">
+              검색
+            </Link>
+            <Link href="/my" className="text-muted hover:text-foreground">
               내 드라마
             </Link>
           </nav>
