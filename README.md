@@ -109,12 +109,13 @@ docs/            설계 문서
   - [x] DM-203 `normalize_catalog` · DM-204 `entity_resolution` · DM-205/206 `publish_gold_catalog`
   - [ ] DM-104 admin review queue UI · DM-207 link validator · DM-208 backfill
   - [ ] 실제 방송사 collector/parser (약관 확인 후) — 지금은 curated `dramamemory.drama.v1` JSON만
-- [ ] Phase 2 — 공개 아카이브 + watched timeline
-  - [x] `apps/domain-api` Spring Boot 4 / Java 17 스캐폴드 + 공개 read API (`/api/v1/broadcasters`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`)
-  - [x] DM-401 익명 세션(서명 쿠키) + identity 연결/병합 서비스 + 90일 정리 DAG · DM-402 watched state (`/api/v1/me/...`)
-  - [ ] DM-401 카카오/네이버/구글 OAuth 콜백 (provider 앱 등록 후) · DM-403 timeline · DM-404 memory note
-  - [x] `apps/web` Next.js 16 — `/`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`, `/my`, sitemap, 봤어요 버튼 (`/api/*` 런타임 프록시로 쿠키 first-party)
-  - [ ] DM-307 SEO 마무리(OG 이미지, JSON-LD) · DM-405 share card
+- [x] Phase 2 / M1 — 공개 아카이브 + watched timeline + 검색 v1 (M1 DoD 충족)
+  - [x] `apps/domain-api` Spring Boot 4 / Java 17 — 공개 read API, `/me/*` (watched, note, timeline), `/search`
+  - [x] DM-401 익명 세션(서명 쿠키) + identity 연결/병합 서비스 + 90일 정리 DAG · DM-402 watched · DM-403 timeline 집계 · DM-404 memory note(private)
+  - [x] `apps/web` Next.js 16 — `/`, `/years/{year}`, `/dramas/{slug}`, `/persons/{slug}`, `/my`, `/search`, sitemap/robots, JSON-LD, OG 이미지, 봤어요/추억 한 줄, DM-405 share card
+  - [x] DM-501/502/503 — `search_document` projection DAG, FTS + pg_trgm **RRF** 검색, zero-result 질의 로그
+  - [ ] DM-401 카카오/네이버/구글 OAuth 콜백 (provider 앱 등록 후)
+- [ ] Phase 3 / M2 — pgvector Hybrid Search + AI memory search (`apps/ai-api`) + golden query 평가
 
 ## 현재 문서 기준
 
