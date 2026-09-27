@@ -10,9 +10,13 @@ x-postgres-env: &postgres-env
   POSTGRES_DB: ${POSTGRES_DB:-dramamemory}
 
 x-airflow-common: &airflow-common
-  image: apache/airflow:3.3.0-python3.12
+  build: ./data-platform          # apache/airflow:3.3.0-python3.12 + neo4j driver
+  image: dramamemory/airflow:local
   user: "${AIRFLOW_UID:-50000}:0"
   environment:
+    DRAMAMEMORY_NEO4J_URI: bolt://neo4j:7687
+    DRAMAMEMORY_NEO4J_USER: neo4j
+    DRAMAMEMORY_NEO4J_PASSWORD: ${NEO4J_PASSWORD:-dramamemory-neo4j}
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
@@ -84,6 +88,26 @@ services:
       timeout: 3s
       retries: 10
 
+  # Derived graph read model (docs/GRAPH_MODEL.md). Re-creatable from PostgreSQL by the
+  # graph_materialization DAG, so its volume is disposable.
+  neo4j:
+    image: neo4j:2026.01
+    environment:
+      NEO4J_AUTH: neo4j/${NEO4J_PASSWORD:-dramamemory-neo4j}
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 256m
+    ports:
+      - "${NEO4J_HTTP_PORT:-7474}:7474"
+      - "${NEO4J_BOLT_PORT:-7687}:7687"
+    volumes:
+      - neo4j-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p ${NEO4J_PASSWORD:-dramamemory-neo4j} 'RETURN 1' >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 40s
+
   # S3-compatible object storage for raw snapshots (local only; production uses S3).
   # RustFS replaces MinIO, whose public images are no longer distributed.
   objectstore:
@@ -145,6 +169,9 @@ services:
       AI_API_DB_URL: postgresql://${POSTGRES_USER:-dramamemory}:${POSTGRES_PASSWORD:-dramamemory}@postgres:5432/${POSTGRES_DB:-dramamemory}
       AI_API_EMBEDDER: ${AI_API_EMBEDDER:-bge}
       AI_API_INTERNAL_TOKEN: ${AI_API_INTERNAL_TOKEN:-local-dev-internal-token}
+      AI_API_NEO4J_URI: bolt://neo4j:7687
+      AI_API_NEO4J_USER: neo4j
+      AI_API_NEO4J_PASSWORD: ${NEO4J_PASSWORD:-dramamemory-neo4j}
     ports:
       - "${AI_API_PORT:-8090}:8090"
     volumes:
@@ -252,3 +279,4 @@ volumes:
   postgres-data:
   objectstore-data:
   hf-models:
+  neo4j-data:
