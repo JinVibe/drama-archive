@@ -18,6 +18,11 @@ class SourceConfig:
     # Airflow pool name; slots are defined in data-platform/config/pools.json.
     pool: str
     request_timeout_seconds: float = 20.0
+    # Politeness delay between requests inside one task (0 = none).
+    min_interval_seconds: float = 0.0
+    # True when a source_discovery_* DAG writes manifests/{code}/latest.json and emits
+    # raw.discovery.{code}; the ingest DAG is then scheduled on that asset.
+    discovered: bool = False
     user_agent: str = "DramaMemoryBot/0.1 (+https://github.com/JinVibe/drama-archive)"
     extra: dict[str, str] = field(default_factory=dict)
 
@@ -34,6 +39,15 @@ SOURCES: dict[str, SourceConfig] = {
         code="local_seed",
         allowed_url_prefixes=("http://seed:8000/",),
         pool="source_manual_pool",
+    ),
+    # Wikidata Query Service (CC0). ~1 req/s, descriptive User-Agent (their policy).
+    "wikidata": SourceConfig(
+        code="wikidata",
+        allowed_url_prefixes=("https://query.wikidata.org/",),
+        pool="source_wikidata_pool",
+        request_timeout_seconds=120.0,
+        min_interval_seconds=1.0,
+        discovered=True,
     ),
     # First vertical slice target (docs/IMPLEMENTATION_GUIDE.md §1).
     # Collectors stay disabled until site terms are confirmed; manifests are manual for now.

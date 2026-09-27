@@ -18,5 +18,10 @@
     "slots": 1,
     "description": "Calls to ai-api /internal/embed (CPU-bound model, one at a time)",
     "include_deferred": false
+  },
+  "source_wikidata_pool": {
+    "slots": 1,
+    "description": "Wikidata Query Service (~1 req/s)",
+    "include_deferred": false
   }
 }
