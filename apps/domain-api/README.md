@@ -27,6 +27,16 @@ Errors are RFC 9457 problem details.
 | PUT | `/api/v1/me/dramas/{id}/status` | body `{status: WATCHED\|WATCHING\|WANT_TO_WATCH, rating?: 0.5–5.0, firstWatchedYear?}`. **First write creates an anonymous user and sets the `dm_uid` cookie** |
 | DELETE | `/api/v1/me/dramas/{id}/status` | 204 / 404 |
 
+| GET | `/api/v1/me/dramas/{id}/note`, PUT, DELETE | private one-line memory note (1–500 chars) |
+| GET | `/api/v1/me/timeline` | counts by status, watched-by-year, broadcaster/genre ratios, top actors |
+
+## Search (v1, lexical)
+
+`GET /api/v1/search?q=&size=` — full-text (`simple` config, title/alias weight A, body weight B) and
+`pg_trgm` partial matching on title/aliases, fused with **RRF (k=60)**. Response carries `strategy`
+(`FTS` / `TRIGRAM` / `FUSED` / `NONE`) and per-hit `inFts` / `inTrigram` for the evidence UI.
+Every query is logged to `search_query_log` (no user id); zero-result queries feed alias curation.
+
 Session cookie: `dm_uid = <uuid>.<hmac-sha256>`, HttpOnly, SameSite=Lax, 1 year. The HMAC key is
 `SESSION_COOKIE_SECRET` (>= 32 bytes; rotating it logs everyone out). Set `SESSION_COOKIE_SECURE=true`
 behind https. A cookie for a MERGED account is transparently re-issued for the survivor.
