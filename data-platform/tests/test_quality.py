@@ -53,7 +53,6 @@ def test_clean_record_has_no_issues():
         ({"start_date": date(2017, 1, 1), "end_date": date(2016, 1, 1)}, "DATE_ORDER"),
         ({"episode_count": 0}, "EPISODE_COUNT"),
         ({"runtime_minutes": -5}, "RUNTIME"),
-        ({"broadcaster_code": "hbo"}, "UNKNOWN_BROADCASTER"),
         (
             {"links": [NormalizedLink(provider_code="x", url="http://x", link_type="OTT_DETAIL")]},
             "LINK_NOT_HTTPS",
@@ -68,11 +67,16 @@ def test_error_rules(kw, code):
 
 def test_warn_rules_do_not_reject():
     issues = check_drama(
-        _drama(genres=["romance", "isekai"], start_date=None, credits=[]),
+        _drama(genres=["romance", "isekai"], start_date=None, credits=[], broadcaster_code="hbo"),
         known_broadcasters=BROADCASTERS,
         known_genres=GENRES,
     )
-    assert _codes(issues) == ["MISSING_START_DATE", "NO_CREDITS", "UNKNOWN_GENRE"]
+    assert _codes(issues) == [
+        "MISSING_START_DATE",
+        "NO_CREDITS",
+        "UNKNOWN_BROADCASTER",
+        "UNKNOWN_GENRE",
+    ]
     assert not has_errors(issues)
 
 

@@ -56,7 +56,10 @@ def check_drama(
 
     # Referential (taxonomy) rules
     if drama.broadcaster_code and drama.broadcaster_code not in known_broadcasters:
-        err("UNKNOWN_BROADCASTER", f"broadcaster {drama.broadcaster_code!r} not in canonical list")
+        warn(
+            "UNKNOWN_BROADCASTER",
+            f"broadcaster {drama.broadcaster_code!r} not in canonical list; stored without",
+        )
     for genre in drama.genres:
         if genre not in known_genres:
             warn("UNKNOWN_GENRE", f"genre {genre!r} not in taxonomy; dropped")
