@@ -29,6 +29,38 @@ jobs:
       - name: Unit tests
         run: pytest -q
 
+  ai-api:
+    name: ai-api lint + unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ai-api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install (no torch; unit tests use the fake embedder)
+        run: pip install -e ".[dev]"
+      - run: ruff check .
+      - run: pytest -q
+
+  evals:
+    name: evals lint + metric tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: evals
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install "pytest>=8.3" "ruff>=0.8"
+      - run: ruff check .
+      - run: pytest -q
+
   dag-import:
     name: Airflow DAG import check
     runs-on: ubuntu-latest
