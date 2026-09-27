@@ -76,12 +76,17 @@ make dag-check     # DAG import 오류 검사 (CI와 동일)
 make down          # 중지 / make clean 은 볼륨까지 삭제
 ```
 
-첫 파이프라인 smoke test:
+첫 end-to-end (raw → silver → gold):
 
 ```sh
-docker compose run --rm airflow-cli dags unpause ingest_source_records__manual
-docker compose run --rm airflow-cli dags trigger ingest_source_records__manual
-# 결과: source_record 행 1개 + 버킷 안 raw 스냅샷 1개. 다시 실행해도 늘어나지 않는다.
+for d in ingest_source_records__local_seed normalize_catalog entity_resolution publish_gold_catalog; do
+  docker compose run --rm airflow-cli dags unpause $d
+done
+docker compose run --rm airflow-cli dags trigger ingest_source_records__local_seed
+# ingest가 끝나면 normalize → entity_resolution → publish가 asset으로 연쇄 실행된다.
+# 결과: data-platform/seed/dramas/*.json 3편이 drama/person/credit/song/artist 테이블에 들어가고,
+#       source_entity_map에 provenance, outbox_event에 DRAMA_CANONICAL_CREATED가 남는다.
+# seed 파일을 고쳐 다시 trigger하면 external_ref로 같은 행에 매핑되어 canonical_version만 오른다.
 ```
 
 디렉터리:
@@ -98,11 +103,13 @@ docs/            설계 문서
 ## 진행 상태
 
 - [x] Phase 0 — canonical schema + provenance (`db/migrations` V1~V6)
-- [ ] Phase 1 — Airflow ingestion + data quality
+- [x] Phase 1 — Airflow ingestion + data quality (M0 DoD 충족: raw snapshot → canonical DB 자동 반영)
   - [x] DM-201 Airflow local stack
   - [x] DM-202 raw snapshot DAG (`ingest_source_records__{source}`)
-  - [ ] DM-203 normalize · DM-204 entity resolution · DM-205 quality gate · DM-206 gold publish
-- [ ] Phase 2 이후
+  - [x] DM-203 `normalize_catalog` · DM-204 `entity_resolution` · DM-205/206 `publish_gold_catalog`
+  - [ ] DM-104 admin review queue UI · DM-207 link validator · DM-208 backfill
+  - [ ] 실제 방송사 collector/parser (약관 확인 후) — 지금은 curated `dramamemory.drama.v1` JSON만
+- [ ] Phase 2 — 공개 아카이브 + watched timeline
 
 ## 현재 문서 기준
 

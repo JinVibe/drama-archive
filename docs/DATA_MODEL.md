@@ -382,6 +382,38 @@ CREATE TABLE source_entity_map (
 
 ---
 
+### `staging_record` (Silver)
+
+raw `source_record` 하나당 정규화된 payload 하나. canonical ID는 아직 없다.
+
+```sql
+CREATE TABLE staging_record (
+  id                BIGSERIAL PRIMARY KEY,
+  source_record_id  BIGINT NOT NULL UNIQUE REFERENCES source_record(id),
+  entity_type       VARCHAR(30) NOT NULL,
+  parser_version    VARCHAR(80) NOT NULL,
+  payload           JSONB,            -- NormalizedDrama (data-platform normalization/models.py)
+  status            VARCHAR(30) NOT NULL DEFAULT 'NEW',
+  resolution        JSONB,            -- entity resolution 결과 (엔티티별 decision/canonical_id/signals)
+  issues            JSONB,            -- parse 오류 / quality 이슈
+  created_at        TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at        TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+```
+
+상태 흐름:
+
+```text
+NEW → RESOLVED → PUBLISHED
+    ↘ REVIEW   (admin review queue)
+    ↘ REJECTED (quality gate ERROR)
+PARSE_FAILED (dead-letter; parser_version 변경 시 재파싱)
+```
+
+`source_entity_map.external_ref`는 drama 레코드 안에 중첩된 person/song의 source 내부 ID를 기억해 재수집 시 결정적으로 매칭한다.
+
+---
+
 ## 9. Entity Resolution
 
 ### Candidate key
