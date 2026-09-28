@@ -421,11 +421,14 @@ def set_drama_status(
     external_refs: list[str],
     status: str,
     reason: str | dict[str, str],
+    only_reasons: list[str] | None = None,
 ) -> int:
     """Move the dramas a source maps to `external_refs` into `status` (HIDDEN or
     PUBLISHED), bumping canonical_version and writing one outbox event per row, so
     search/graph projections drop or restore them. Rows already in `status` are
-    untouched; MERGED/DEPRECATED rows are never changed. Returns the row count."""
+    untouched; MERGED/DEPRECATED rows are never changed. Hiding records the reason
+    in drama.hidden_reason; restoring only touches rows hidden for `only_reasons`
+    (never a row hidden by hand). Returns the row count."""
     if not external_refs or status not in ("HIDDEN", "PUBLISHED"):
         return 0
     from_status = "PUBLISHED" if status == "HIDDEN" else "HIDDEN"
@@ -438,33 +441,75 @@ def set_drama_status(
             JOIN source_record r ON r.id = m.source_record_id
             JOIN source s ON s.id = r.source_id
             WHERE s.code = %s AND m.external_ref = ANY(%s) AND d.status = %s
+              AND (%s::text[] IS NULL OR d.hidden_reason = ANY(%s::text[]))
         )
         UPDATE drama d
-        SET status = %s, canonical_version = canonical_version + 1, updated_at = now()
+        SET status = %s, canonical_version = canonical_version + 1, updated_at = now(),
+            hidden_reason = CASE WHEN %s = 'HIDDEN' THEN %s::jsonb ->> t.external_ref ELSE NULL END
         FROM target t
         WHERE d.id = t.id
         RETURNING d.id, t.external_ref
         """,
-        (source_code, external_refs, from_status, status),
+        (
+            source_code, external_refs, from_status, only_reasons, only_reasons, status, status,
+            json.dumps(
+                reason if isinstance(reason, dict) else dict.fromkeys(external_refs, reason)
+            ),
+        ),
     )
     rows = cur.fetchall()
     for drama_id, external_ref in rows:
-        cur.execute(
-            """
-            INSERT INTO outbox_event (aggregate_type, aggregate_id, event_type, payload)
-            VALUES ('DRAMA', %s, %s, %s::jsonb)
-            """,
-            (
-                str(drama_id),
-                "DRAMA_HIDDEN" if status == "HIDDEN" else "DRAMA_RESTORED",
-                json.dumps(
-                    {
-                        "drama_id": drama_id,
-                        "source_code": source_code,
-                        "external_ref": external_ref,
-                        "reason": reason.get(external_ref) if isinstance(reason, dict) else reason,
-                    }
-                ),
-            ),
+        _status_event(
+            cur, drama_id, status,
+            {
+                "source_code": source_code,
+                "external_ref": external_ref,
+                "reason": reason.get(external_ref) if isinstance(reason, dict) else reason,
+            },
         )
     return len(rows)
+
+
+def hide_upcoming(cur) -> tuple[int, int]:
+    """Dramas that have not started airing are not part of the archive: PUBLISHED with
+    a future start_date -> HIDDEN ('upcoming'); the day they air they come back.
+    Returns (hidden, restored)."""
+    cur.execute(
+        """
+        UPDATE drama
+        SET status = 'HIDDEN', hidden_reason = 'upcoming',
+            canonical_version = canonical_version + 1, updated_at = now()
+        WHERE status = 'PUBLISHED' AND start_date > CURRENT_DATE
+        RETURNING id, start_date::text
+        """
+    )
+    hidden = cur.fetchall()
+    for drama_id, start in hidden:
+        _status_event(cur, drama_id, "HIDDEN", {"reason": "upcoming", "start_date": start})
+    cur.execute(
+        """
+        UPDATE drama
+        SET status = 'PUBLISHED', hidden_reason = NULL,
+            canonical_version = canonical_version + 1, updated_at = now()
+        WHERE status = 'HIDDEN' AND hidden_reason = 'upcoming' AND start_date <= CURRENT_DATE
+        RETURNING id, start_date::text
+        """
+    )
+    restored = cur.fetchall()
+    for drama_id, start in restored:
+        _status_event(cur, drama_id, "PUBLISHED", {"reason": "aired", "start_date": start})
+    return len(hidden), len(restored)
+
+
+def _status_event(cur, drama_id: int, status: str, payload: dict[str, Any]) -> None:
+    cur.execute(
+        """
+        INSERT INTO outbox_event (aggregate_type, aggregate_id, event_type, payload)
+        VALUES ('DRAMA', %s, %s, %s::jsonb)
+        """,
+        (
+            str(drama_id),
+            "DRAMA_HIDDEN" if status == "HIDDEN" else "DRAMA_RESTORED",
+            json.dumps({"drama_id": drama_id, **payload}),
+        ),
+    )

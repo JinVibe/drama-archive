@@ -9,6 +9,8 @@ without anyone emitting an asset event.
     retire_excluded : dramas that a discovery DAG now lists in
                       manifests/{source}/excluded.json (not a drama / foreign) go
                       PUBLISHED -> HIDDEN; ones back in the manifest go HIDDEN -> PUBLISHED.
+                      Dramas whose start_date is still in the future are hidden as
+                      'upcoming' and restored the day they air (drama.hidden_reason, V16).
     publish         : each RESOLVED record in its own transaction:
                       canonical rows + provenance + canonical_version + outbox.
 
@@ -27,7 +29,7 @@ from airflow.timetables.assets import AssetOrTimeSchedule
 from airflow.timetables.trigger import CronTriggerTimetable
 
 from dramamemory_data import staging
-from dramamemory_data.publish.gold import publish_record, set_drama_status
+from dramamemory_data.publish.gold import hide_upcoming, publish_record, set_drama_status
 from dramamemory_data.quality.checks import check_drama, gate_batch, has_errors
 from dramamemory_data.sources import SOURCES
 
@@ -119,9 +121,15 @@ def publish_gold_catalog():
                         external_refs=[i["external_id"] for i in items],
                         status="PUBLISHED",
                         reason="back in discovery manifest",
+                        only_reasons=["not_a_drama", "foreign"],
                     )
+            # Not aired yet -> not in the archive; back the day it airs.
+            upcoming_hidden, aired = hide_upcoming(cur)
             conn.commit()
-        summary = {"hidden": hidden, "restored": restored}
+        summary = {
+            "hidden": hidden, "restored": restored,
+            "upcoming_hidden": upcoming_hidden, "aired_restored": aired,
+        }
         print(f"retire excluded: {summary}")
         return summary
 
