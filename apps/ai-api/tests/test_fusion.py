@@ -5,6 +5,14 @@ def _list(*ids: int) -> list[Candidate]:
     return [Candidate(doc_id=d, rank=i + 1, score=1.0 / (i + 1)) for i, d in enumerate(ids)]
 
 
+def test_rrf_weights_scale_a_list():
+    lists = {"fts": _list(1), "vector": _list(2)}
+    assert [f.doc_id for f in rrf(lists, k=60)] == [1, 2]            # tie -> lower id
+    assert [f.doc_id for f in rrf(lists, k=60, weights={"vector": 2.0})] == [2, 1]
+    assert [f.doc_id for f in rrf(lists, k=60, weights={"vector": 0.0})] == [1, 2]
+    assert rrf(lists, k=60, weights={"vector": 0.0})[1].score == 0.0
+
+
 def test_rrf_rewards_agreement_across_lists():
     fused = rrf({"fts": _list(1, 2, 3), "vector": _list(3, 1, 9)}, k=60)
     ids = [f.doc_id for f in fused]

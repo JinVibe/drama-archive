@@ -54,12 +54,14 @@ class HybridRetriever:
     def __init__(self, store: SearchStore, embedder: Embedder | None, *,
                  graph: GraphClient | None = None, reranker: Reranker | None = None,
                  rrf_k: int = 60, candidates: int = 50, rerank_candidates: int = 30,
+                 list_weights: dict[str, float] | None = None,
                  retrieval_version: str = "hybrid-v1"):
         self.store = store
         self.embedder = embedder
         self.graph = graph
         self.reranker = reranker
         self.rrf_k = rrf_k
+        self.list_weights = dict(list_weights or {})
         self.candidates = candidates
         self.rerank_candidates = rerank_candidates
         self.retrieval_version = retrieval_version
@@ -67,14 +69,18 @@ class HybridRetriever:
     def search(self, query: str, limit: int = 10, *, use_vector: bool = True,
                use_lexical: bool = True, use_graph: bool = True, rerank: bool = False,
                year_from: int | None = None, year_to: int | None = None,
-               broadcaster: str | None = None) -> SearchResult:
+               broadcaster: str | None = None,
+               weights: dict[str, float] | None = None) -> SearchResult:
         plan = _with_overrides(analyze(query), year_from, year_to, broadcaster)
         lists: dict[str, list] = {}
         latency: dict[str, int] = {}
         relaxed = False
         graph_match: GraphMatch | None = None
+        effective = {**self.list_weights, **(weights or {})}
 
         def timed(name, fn):
+            if effective.get(name, 1.0) <= 0:
+                return  # a list weighted 0 is not worth a round trip
             t = time.perf_counter()
             lists[name] = fn()
             latency[name] = int((time.perf_counter() - t) * 1000)
@@ -118,7 +124,10 @@ class HybridRetriever:
 
         t = time.perf_counter()
         use_rerank = rerank and self.reranker is not None
-        fused = rrf(lists, k=self.rrf_k, limit=self.rerank_candidates if use_rerank else limit)
+        fused = rrf(
+            lists, k=self.rrf_k, limit=self.rerank_candidates if use_rerank else limit,
+            weights=effective,
+        )
         docs = self.store.docs([f.doc_id for f in fused])
         latency["fuse"] = int((time.perf_counter() - t) * 1000)
 

@@ -142,6 +142,18 @@ def test_rerank_reorders_fused_top_n_and_records_evidence():
     assert _retriever(FakeStore()).search("아이유 호텔", rerank=True).reranker is None
 
 
+def test_zero_weight_list_is_not_queried_and_weights_change_order():
+    store = FakeStore()
+    r = HybridRetriever(store, FAKE, rrf_k=60, candidates=10, list_weights={"vector": 0})
+    res = r.search("공유 판타지", limit=5)
+    assert "vector" not in res.lists and "vector" not in res.latency_ms
+    assert [c[0] for c in store.calls] == ["fts", "fts_any", "trigram", "vector_synopsis"]
+    # request-time weights override the defaults: vector only -> its order (9 before 4)
+    only_vector = {"vector": 1.0, "fts": 0, "fts_any": 0, "trigram": 0, "vector_synopsis": 0}
+    res = r.search("공유 판타지", limit=5, weights=only_vector)
+    assert res.lists == {"vector": 2} and [h.drama_id for h in res.hits] == [9, 4]
+
+
 def test_no_embedder_means_lexical_only():
     res = _retriever(embedder=None).search("공유")
     assert res.strategy == "lexical"

@@ -18,6 +18,24 @@ from ai_api.retrieval.store import SearchStore
 log = logging.getLogger("ai_api")
 
 
+def parse_weights(spec: str | None) -> dict[str, float] | None:
+    """'vector:0.5,graph:1.5' -> {'vector': 0.5, 'graph': 1.5}; None/'' -> None."""
+    if not spec:
+        return None
+    out: dict[str, float] = {}
+    for part in spec.split(","):
+        name, _, value = part.strip().partition(":")
+        if not name or not value:
+            raise HTTPException(400, f"bad weight spec {part!r}; expected name:number")
+        try:
+            out[name] = float(value)
+        except ValueError as exc:
+            raise HTTPException(400, f"bad weight {value!r} for {name}") from exc
+        if out[name] < 0:
+            raise HTTPException(400, f"weight for {name} must be >= 0")
+    return out
+
+
 class State:
     embedder: Embedder | None = None
     retriever: HybridRetriever | None = None
@@ -60,7 +78,8 @@ async def lifespan(app: FastAPI):
     state.retriever = HybridRetriever(
         SearchStore(state.pool), state.embedder, graph=state.graph, reranker=state.reranker,
         rrf_k=s.rrf_k, candidates=s.candidates_per_list,
-        rerank_candidates=s.rerank_candidates, retrieval_version=s.retrieval_version,
+        rerank_candidates=s.rerank_candidates, list_weights=parse_weights(s.list_weights),
+        retrieval_version=s.retrieval_version,
     )
     state.ready = True
     log.info("ready")
@@ -154,6 +173,8 @@ def search(
     broadcaster: str | None = Query(None, max_length=40, pattern="^[a-z0-9_]+$"),
     rerank: bool = Query(False, description="cross-encoder rerank of the fused top-N "
                                             "(needs AI_API_RERANKER; ignored otherwise)"),
+    w: str | None = Query(None, max_length=200,
+                          description="evaluation only: per-list RRF weights 'vector:0.5,graph:2'"),
     r: HybridRetriever = Depends(retriever),
 ) -> SearchOut:
     """Retrieval only (no generation): ranked dramas with evidence per retriever.
@@ -165,6 +186,7 @@ def search(
         use_vector=mode != "lexical", use_lexical=mode != "vector",
         use_graph=mode == "hybrid", rerank=rerank,
         year_from=year_from, year_to=year_to, broadcaster=broadcaster,
+        weights=parse_weights(w),
     )
     return _to_out(result)
 
