@@ -90,17 +90,16 @@ export function ClientSearch() {
 
   const index = useMemo(() => {
     if (!docs) return null;
-    const ms = new MiniSearch<Doc>({
-      fields: ["title", "titleEn", "aliases", "cast", "characters", "synopsis"],
+    const ms = new MiniSearch<Doc & { genreText: string }>({
+      fields: ["title", "titleEn", "aliases", "cast", "characters", "genreText", "synopsis"],
       storeFields: ["slug", "title", "year", "broadcasterName", "genres", "cast", "broadcaster"],
       tokenize,
       searchOptions: {
-        boost: { title: 4, aliases: 3, cast: 2, characters: 2 },
+        boost: { title: 4, aliases: 3, cast: 3, characters: 2, genreText: 2 },
         prefix: true,
-        combineWith: "OR",
       },
     });
-    ms.addAll(docs);
+    ms.addAll(docs.map((d) => ({ ...d, genreText: d.genres.map(genreLabel).join(" ") })));
     return ms;
   }, [docs]);
 
@@ -111,8 +110,15 @@ export function ClientSearch() {
     const inScope = (d: Doc) =>
       (plan.yearFrom === undefined || (d.year !== undefined && d.year >= plan.yearFrom && d.year <= plan.yearTo!)) &&
       (!plan.broadcaster || d.broadcaster === plan.broadcaster);
+    // Every word must match first (공유 + 판타지 -> 도깨비); widen to any word only when
+    // that finds nothing, mirroring the server's FTS-AND then FTS-OR lists.
+    const lookup = (combineWith: "AND" | "OR") =>
+      index.search(plan.text, { combineWith }).map((r) => byId.get(r.id as number)!).filter(Boolean);
     let results = plan.text
-      ? index.search(plan.text).map((r) => byId.get(r.id as number)!).filter(Boolean)
+      ? (() => {
+          const strict = lookup("AND");
+          return strict.length > 0 ? strict : lookup("OR");
+        })()
       : plan.yearFrom !== undefined || plan.broadcaster
         ? docs.slice()
         : [];
