@@ -25,29 +25,46 @@ export default async function YearPage({ params, searchParams }: PageProps<"/yea
   const broadcaster = typeof rawBc === "string" ? rawBc : undefined;
 
   const [page, broadcasters, years] = await Promise.all([
-    api.year(year, broadcaster),
+    api.year(year, broadcaster, 0, 200),
     api.broadcasters(),
     api.years(),
   ]);
   const idx = years.findIndex((y) => y.year === year);
   const newer = idx > 0 ? years[idx - 1] : undefined;
   const older = idx >= 0 && idx < years.length - 1 ? years[idx + 1] : undefined;
+  const filterName = broadcasters.find((b) => b.code === broadcaster)?.nameKo;
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-baseline justify-between">
-        <h1 className="text-3xl font-semibold tracking-tight">{year}년</h1>
-        <nav className="flex gap-3 text-sm text-muted">
-          {older && <Link href={`/years/${older.year}`}>← {older.year}</Link>}
-          {newer && <Link href={`/years/${newer.year}`}>{newer.year} →</Link>}
+    <div className="space-y-10">
+      <header className="flex flex-wrap items-end justify-between gap-6">
+        <div>
+          <p className="eyebrow">Ⅰ · 연도별{filterName ? ` · ${filterName}` : ""}</p>
+          <h1 className="display mt-3 text-[clamp(3.5rem,12vw,8rem)] tabular-nums">{year}</h1>
+          <p className="mt-2 text-sm text-muted">{page.total}편</p>
+        </div>
+        <nav className="flex gap-3 text-sm">
+          {older ? (
+            <Link href={`/years/${older.year}`} className="btn">
+              ← {older.year}
+            </Link>
+          ) : (
+            <span className="btn opacity-30">←</span>
+          )}
+          {newer ? (
+            <Link href={`/years/${newer.year}`} className="btn">
+              {newer.year} →
+            </Link>
+          ) : (
+            <span className="btn opacity-30">→</span>
+          )}
         </nav>
-      </div>
+      </header>
 
-      <ul className="flex flex-wrap gap-2 text-sm">
+      <ul className="flex flex-wrap gap-x-5 gap-y-2 border-b border-line pb-3 text-sm">
         <li>
           <Link
             href={`/years/${year}`}
-            className={`rounded-full border px-3 py-1 ${!broadcaster ? "border-accent text-accent" : "border-line"}`}
+            className={!broadcaster ? "text-accent" : "text-muted hover:text-foreground"}
           >
             전체
           </Link>
@@ -56,7 +73,7 @@ export default async function YearPage({ params, searchParams }: PageProps<"/yea
           <li key={b.code}>
             <Link
               href={`/years/${year}?broadcaster=${b.code}`}
-              className={`rounded-full border px-3 py-1 ${broadcaster === b.code ? "border-accent text-accent" : "border-line"}`}
+              className={broadcaster === b.code ? "text-accent" : "text-muted hover:text-foreground"}
             >
               {b.nameKo}
             </Link>
@@ -67,16 +84,13 @@ export default async function YearPage({ params, searchParams }: PageProps<"/yea
       {page.total === 0 ? (
         <p className="text-muted">이 조건에 맞는 작품이 아직 없습니다.</p>
       ) : (
-        <>
-          <p className="text-sm text-muted">{page.total}편</p>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {page.items.map((d) => (
-              <li key={d.id}>
-                <DramaCard drama={d} />
-              </li>
-            ))}
-          </ul>
-        </>
+        <ul className="row-list">
+          {page.items.map((d) => (
+            <li key={d.id}>
+              <DramaCard drama={d} />
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

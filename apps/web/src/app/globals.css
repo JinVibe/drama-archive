@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
+/* Dark editorial theme: near-black surfaces, warm off-white type, one amber accent
+   (the glow of an old TV). Token names are stable so components only change values. */
 :root {
-  --background: #fbf9f4;
-  --foreground: #1c1a17;
-  --muted: #6b6560;
-  --card: #ffffff;
-  --line: #e7e2d9;
-  --accent: #b5412e;
-  --accent-soft: #f6e4df;
+  --background: #0a0a0a;
+  --foreground: #f3efe6;
+  --muted: #8a8780;
+  --card: #141414;
+  --card-2: #1b1b1b;
+  --line: #262626;
+  --line-strong: #3a3a3a;
+  --accent: #e3b25a;
+  --accent-fg: #0a0a0a;
+  --accent-soft: #2a2415;
 }
 
 @theme inline {
@@ -15,25 +20,85 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-card-2: var(--card-2);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
-  --font-sans: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo",
+    "Malgun Gothic", system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #141311;
-    --foreground: #f1ede6;
-    --muted: #a39d95;
-    --card: #1e1c19;
-    --line: #2e2b27;
-    --accent: #e0705c;
-    --accent-soft: #3a221d;
-  }
+html {
+  background: var(--background);
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-feature-settings: "ss01", "tnum";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+@layer components {
+/* Editorial display type: tight, heavy, slightly condensed feel via letter-spacing. */
+.display {
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Index rows: the list is the design. */
+.row-link {
+  display: block;
+  border-top: 1px solid var(--line);
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+.row-link:hover {
+  border-top-color: var(--line-strong);
+  background: var(--card);
+}
+.row-list > :last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.btn {
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--line-strong);
+  transition: all 160ms ease;
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+  color: var(--accent-fg);
+}
+}
+
+input,
+textarea {
+  color-scheme: dark;
 }

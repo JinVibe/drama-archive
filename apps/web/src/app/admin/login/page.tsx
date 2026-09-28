@@ -26,7 +26,7 @@ export default async function AdminLoginPage({ searchParams }: PageProps<"/admin
             className="w-full rounded-md border border-line bg-card px-3 py-2 focus:border-accent focus:outline-none"
           />
           {error && <p className="text-sm text-accent">토큰이 맞지 않습니다.</p>}
-          <button type="submit" className="rounded-md bg-accent px-4 py-2 text-white">
+          <button type="submit" className="rounded-md bg-accent px-4 py-2 text-accent-fg">
             들어가기
           </button>
         </form>

@@ -22,28 +22,27 @@ export default async function PersonPage({ params }: PageProps<"/persons/[slug]"
   const p = await api.person(slug);
 
   return (
-    <article className="space-y-6">
+    <article className="space-y-12">
       <JsonLd data={personJsonLd(p)} />
-      <header>
-        <h1 className="text-3xl font-semibold tracking-tight">{p.nameKo}</h1>
-        <p className="text-sm text-muted">
+      <header className="space-y-3 border-b border-line pb-8">
+        <p className="eyebrow">Person</p>
+        <h1 className="display text-[clamp(2.5rem,7vw,5.5rem)]">{p.nameKo}</h1>
+        <p className="text-base text-muted">
           {[p.nameEn, p.birthDate ? `${fmtDate(p.birthDate)} 출생` : undefined].filter(Boolean).join(" · ")}
         </p>
       </header>
 
       <section>
-        <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">
-          작품 {p.filmography.length}편
-        </h2>
-        <ul className="divide-y divide-line rounded-md border border-line bg-card">
+        <h2 className="eyebrow mb-4">Ⅰ · 작품 {p.filmography.length}편</h2>
+        <ul className="row-list">
           {p.filmography.map((f) => (
             <li key={`${f.dramaId}-${f.creditType}-${f.characterName ?? ""}`}>
               <Link
                 href={`/dramas/${f.slug}`}
-                className="flex items-baseline gap-3 px-3 py-2 text-sm hover:text-accent"
+                className="row-link group flex items-baseline gap-4 py-3 text-sm"
               >
-                <span className="w-12 shrink-0 text-muted">{yearOf(f.startDate) ?? ""}</span>
-                <span className="font-medium">{f.titleKo}</span>
+                <span className="w-12 shrink-0 tabular-nums text-muted">{yearOf(f.startDate) ?? ""}</span>
+                <span className="text-lg font-semibold tracking-tight group-hover:text-accent">{f.titleKo}</span>
                 <span className="text-muted">
                   {f.creditType === "ACTOR"
                     ? f.characterName

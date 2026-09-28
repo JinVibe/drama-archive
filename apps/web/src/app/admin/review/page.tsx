@@ -84,7 +84,7 @@ export default async function ReviewPage() {
                           <input type="hidden" name="key" value={e.key} />
                           <input type="hidden" name="decision" value="AUTO_MERGE" />
                           <input type="hidden" name="canonicalId" value={e.candidate.canonicalId} />
-                          <button type="submit" className="w-full rounded-md bg-accent px-3 py-1.5 text-sm text-white">
+                          <button type="submit" className="w-full rounded-md bg-accent px-3 py-1.5 text-sm text-accent-fg">
                             같은 {KIND_LABEL[e.kind]} — 병합
                           </button>
                         </form>

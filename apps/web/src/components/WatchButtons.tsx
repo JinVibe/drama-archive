@@ -58,10 +58,7 @@ export function WatchButtons({ dramaId }: { dramaId: number }) {
               disabled={busy || status === undefined}
               aria-pressed={active}
               className={
-                "rounded-full border px-4 py-1.5 text-sm transition disabled:opacity-60 " +
-                (active
-                  ? "border-accent bg-accent text-white"
-                  : "border-line bg-card hover:border-accent hover:text-accent")
+                "btn disabled:opacity-60 " + (active ? "btn-primary" : "")
               }
             >
               {STATUS_LABEL[s]}

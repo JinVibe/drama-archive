@@ -1,29 +1,21 @@
 import Link from "next/link";
 import type { DramaSummary } from "@/lib/api";
-import { fmtRange, genreLabel } from "@/lib/format";
+import { fmtDate, genreLabel } from "@/lib/format";
 
+/** Index row: title first, everything else recedes. */
 export function DramaCard({ drama }: { drama: DramaSummary }) {
   return (
-    <Link
-      href={`/dramas/${drama.slug}`}
-      className="block rounded-lg border border-line bg-card p-4 transition hover:border-accent"
-    >
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-base font-semibold">{drama.titleKo}</h3>
-        {drama.broadcaster && (
-          <span className="shrink-0 rounded bg-accent-soft px-2 py-0.5 text-xs font-medium text-accent">
-            {drama.broadcaster.nameKo}
-          </span>
-        )}
-      </div>
-      {drama.titleEn && <p className="text-xs text-muted">{drama.titleEn}</p>}
-      <p className="mt-2 text-sm text-muted">
-        {fmtRange(drama.startDate, drama.endDate)}
-        {drama.episodeCount ? ` · ${drama.episodeCount}부작` : ""}
-      </p>
-      {drama.genres.length > 0 && (
-        <p className="mt-1 text-xs text-muted">{drama.genres.map(genreLabel).join(" · ")}</p>
-      )}
+    <Link href={`/dramas/${drama.slug}`} className="row-link group grid gap-1 py-4 md:grid-cols-[7rem_1fr_auto] md:items-baseline md:gap-6">
+      <span className="text-xs tabular-nums text-muted">{fmtDate(drama.startDate) || "—"}</span>
+      <span>
+        <span className="text-lg font-semibold tracking-tight group-hover:text-accent md:text-xl">{drama.titleKo}</span>
+        {drama.titleEn && <span className="ml-3 text-sm text-muted">{drama.titleEn}</span>}
+      </span>
+      <span className="flex flex-wrap items-baseline gap-x-3 text-xs text-muted md:justify-end">
+        {drama.broadcaster && <span className="text-foreground">{drama.broadcaster.nameKo}</span>}
+        {drama.episodeCount ? <span>{drama.episodeCount}부작</span> : null}
+        {drama.genres.length > 0 && <span>{drama.genres.map(genreLabel).join(" · ")}</span>}
+      </span>
     </Link>
   );
 }

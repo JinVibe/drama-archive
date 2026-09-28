@@ -8,13 +8,13 @@ export async function Collaborators({ personId }: { personId: number }) {
 
   return (
     <section>
-      <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">함께 출연한 배우</h2>
+      <h2 className="eyebrow mb-4">Ⅱ · 함께 출연한 배우</h2>
       <ul className="grid gap-2 sm:grid-cols-2">
         {data.collaborators.map((c) => (
           <li key={c.id}>
             <Link
               href={`/persons/${c.slug}`}
-              className="flex items-baseline justify-between rounded-md border border-line bg-card px-3 py-2 text-sm hover:border-accent"
+              className="flex items-baseline justify-between rounded-lg border border-line bg-card px-4 py-3 text-sm transition hover:border-line-strong hover:bg-card-2"
             >
               <span className="font-medium">{c.name}</span>
               <span className="text-xs text-muted">

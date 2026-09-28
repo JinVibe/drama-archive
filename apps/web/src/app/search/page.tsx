@@ -99,19 +99,22 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
 
   return (
     <div className="space-y-6">
-      <form action="/search" className="flex gap-2">
-        <input
-          type="search"
-          name="q"
-          defaultValue={q}
-          placeholder="기억나는 대로 적어 보세요. 예) 2016년쯤 겨울에 공유 나온 판타지"
-          className="flex-1 rounded-md border border-line bg-card px-3 py-2 focus:border-accent focus:outline-none"
-          autoFocus
-        />
-        <button type="submit" className="rounded-md bg-accent px-4 py-2 text-white">
-          검색
-        </button>
-      </form>
+      <header className="space-y-4">
+        <p className="eyebrow">Ⅱ · 검색</p>
+        <form action="/search" className="flex gap-3">
+          <input
+            type="search"
+            name="q"
+            defaultValue={q}
+            placeholder="기억나는 대로 적어 보세요. 예) 2016년쯤 겨울에 공유 나온 판타지"
+            className="display flex-1 border-b border-line-strong bg-transparent px-1 py-3 text-2xl font-semibold tracking-tight placeholder:font-normal placeholder:text-muted focus:border-accent focus:outline-none md:text-4xl"
+            autoFocus
+          />
+          <button type="submit" className="btn btn-primary self-end">
+            검색
+          </button>
+        </form>
+      </header>
 
       {result && (
         <>
@@ -128,17 +131,17 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
               찾지 못했어요. 배우 이름, 배역, OST, 줄거리의 한 장면처럼 기억나는 것을 더 적어 보세요.
             </p>
           ) : (
-            <ul className="grid gap-3 sm:grid-cols-2">
+            <ul className="row-list">
               {result.hits.map((h) => (
                 <li key={h.dramaId}>
                   <Link
                     href={`/dramas/${h.metadata.slug}`}
-                    className="block rounded-lg border border-line bg-card p-4 transition hover:border-accent"
+                    className="row-link group py-4"
                   >
                     <div className="flex items-baseline justify-between gap-3">
-                      <h3 className="font-semibold">{h.title}</h3>
+                      <h3 className="text-xl font-semibold tracking-tight group-hover:text-accent">{h.title}</h3>
                       {h.metadata.broadcaster_name && (
-                        <span className="shrink-0 rounded bg-accent-soft px-2 py-0.5 text-xs text-accent">
+                        <span className="shrink-0 text-xs text-muted">
                           {h.metadata.broadcaster_name}
                         </span>
                       )}

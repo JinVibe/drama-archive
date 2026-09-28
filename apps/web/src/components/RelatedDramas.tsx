@@ -13,17 +13,15 @@ export async function RelatedDramas({ dramaId }: { dramaId: number }) {
     <section className="space-y-4">
       {data.by_people.length > 0 && (
         <div>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">
-            출연진·제작진이 함께한 다른 작품
-          </h2>
+          <h2 className="eyebrow mb-4">Ⅳ · 출연진·제작진이 함께한 다른 작품</h2>
           <ul className="grid gap-2 sm:grid-cols-2">
             {data.by_people.map((d) => (
               <li key={d.id}>
                 <Link
                   href={`/dramas/${d.slug}`}
-                  className="block rounded-md border border-line bg-card px-3 py-2 text-sm hover:border-accent"
+                  className="block rounded-lg border border-line bg-card px-4 py-3 text-sm transition hover:border-line-strong hover:bg-card-2"
                 >
-                  <span className="font-medium">{d.title}</span>
+                  <span className="text-base font-semibold tracking-tight">{d.title}</span>
                   {d.year && <span className="ml-2 text-xs text-muted">{d.year}</span>}
                   <p className="mt-0.5 text-xs text-muted">
                     {d.via
@@ -40,15 +38,13 @@ export async function RelatedDramas({ dramaId }: { dramaId: number }) {
       )}
       {data.by_ost_artists.length > 0 && (
         <div>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">
-            같은 OST 가수가 부른 다른 작품
-          </h2>
+          <h2 className="eyebrow mb-4">Ⅴ · 같은 OST 가수가 부른 다른 작품</h2>
           <ul className="flex flex-wrap gap-2 text-sm">
             {data.by_ost_artists.map((d) => (
               <li key={d.id}>
                 <Link
                   href={`/dramas/${d.slug}`}
-                  className="rounded-md border border-line bg-card px-3 py-1.5 hover:border-accent"
+                  className="btn inline-block"
                 >
                   {d.title}
                   <span className="ml-1 text-xs text-muted">({d.artists.map((a) => a.name).join(", ")})</span>

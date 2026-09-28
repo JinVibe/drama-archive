@@ -34,10 +34,10 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
   const crew = d.credits.filter((c) => c.creditType !== "ACTOR");
 
   return (
-    <article className="space-y-8">
+    <article className="space-y-14">
       <JsonLd data={dramaJsonLd(d)} />
-      <header className="space-y-3">
-        <p className="text-sm text-muted">
+      <header className="space-y-5 border-b border-line pb-10">
+        <p className="eyebrow">
           {year && (
             <Link href={`/years/${year}`} className="hover:text-accent">
               {year}년
@@ -52,9 +52,9 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
             </>
           )}
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight">{d.titleKo}</h1>
+        <h1 className="display text-[clamp(2.5rem,7vw,5.5rem)]">{d.titleKo}</h1>
         {(d.titleEn || d.aliases.length > 0) && (
-          <p className="text-sm text-muted">{[d.titleEn, ...d.aliases].filter(Boolean).join(" · ")}</p>
+          <p className="text-base text-muted">{[d.titleEn, ...d.aliases].filter(Boolean).join(" · ")}</p>
         )}
         <p className="text-sm text-muted">
           {fmtRange(d.startDate, d.endDate)}
@@ -64,7 +64,7 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
         {d.genres.length > 0 && (
           <ul className="flex flex-wrap gap-1.5">
             {d.genres.map((g) => (
-              <li key={g} className="rounded bg-accent-soft px-2 py-0.5 text-xs text-accent">
+              <li key={g} className="rounded-full border border-line-strong px-2.5 py-0.5 text-xs text-muted">
                 {genreLabel(g)}
               </li>
             ))}
@@ -74,11 +74,11 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
         <MemoryNote dramaId={d.id} />
       </header>
 
-      {d.synopsis && <p className="max-w-3xl leading-relaxed">{d.synopsis}</p>}
+      {d.synopsis && <p className="max-w-3xl text-lg leading-relaxed">{d.synopsis}</p>}
 
       {d.links.length > 0 && (
         <section>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">다시보기</h2>
+          <h2 className="eyebrow mb-4">다시보기</h2>
           <ul className="flex flex-wrap gap-2">
             {d.links.map((l) => (
               <li key={l.url}>
@@ -86,7 +86,7 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
                   href={l.url}
                   rel="noopener noreferrer nofollow"
                   target="_blank"
-                  className="rounded-md border border-line bg-card px-3 py-1.5 text-sm hover:border-accent"
+                  className="btn inline-block"
                 >
                   {LINK_LABEL[l.linkType] ?? l.linkType} · {l.providerCode.toUpperCase()}
                 </a>
@@ -98,15 +98,15 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
 
       {cast.length > 0 && (
         <section>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">출연</h2>
-          <ul className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
+          <h2 className="eyebrow mb-4">Ⅰ · 출연</h2>
+          <ul className="row-list">
             {cast.map((c) => (
               <li key={`${c.personId}-${c.characterName ?? ""}`}>
                 <Link
                   href={`/persons/${c.slug}`}
-                  className="flex items-baseline justify-between rounded-md border border-line bg-card px-3 py-2 hover:border-accent"
+                  className="row-link group flex items-baseline justify-between py-3"
                 >
-                  <span className="font-medium">{c.nameKo}</span>
+                  <span className="text-lg font-semibold tracking-tight group-hover:text-accent">{c.nameKo}</span>
                   {c.characterName && <span className="text-sm text-muted">{c.characterName} 역</span>}
                 </Link>
               </li>
@@ -117,7 +117,7 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
 
       {crew.length > 0 && (
         <section>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">제작진</h2>
+          <h2 className="eyebrow mb-4">Ⅱ · 제작진</h2>
           <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
             {crew.map((c) => (
               <li key={`${c.personId}-${c.creditType}`}>
@@ -133,10 +133,10 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
 
       {d.osts.length > 0 && (
         <section>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">OST</h2>
-          <ol className="divide-y divide-line rounded-md border border-line bg-card">
+          <h2 className="eyebrow mb-4">Ⅲ · OST</h2>
+          <ol className="row-list">
             {d.osts.map((o) => (
-              <li key={o.songId} className="flex items-baseline gap-3 px-3 py-2 text-sm">
+              <li key={o.songId} className="row-link flex items-baseline gap-4 py-3 text-sm">
                 <span className="w-12 shrink-0 text-muted">{o.partNo ? `Part ${o.partNo}` : ""}</span>
                 <span className="font-medium">{o.title}</span>
                 <span className="text-muted">{o.artists.map((a) => a.name).join(", ")}</span>

@@ -47,7 +47,7 @@ export function MyDramas() {
       <section className="grid grid-cols-3 gap-2 text-center">
         {GROUPS.map((g) => (
           <div key={g} className="rounded-lg border border-line bg-card py-3">
-            <div className="text-2xl font-semibold">{stats.byStatus[g]}</div>
+            <div className="display text-4xl tabular-nums">{stats.byStatus[g]}</div>
             <div className="text-xs text-muted">{STATUS_LABEL[g]}</div>
           </div>
         ))}
@@ -82,7 +82,7 @@ export function MyDramas() {
           href="/share/card.png"
           target="_blank"
           rel="noopener"
-          className="inline-block rounded-md border border-line bg-card px-3 py-1.5 text-sm hover:border-accent"
+          className="btn inline-block"
         >
           내 연대기 카드 이미지 만들기 →
         </a>
@@ -90,7 +90,7 @@ export function MyDramas() {
 
       {years.length > 0 && (
         <section>
-          <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">내 연대기</h2>
+          <h2 className="eyebrow mb-4">연도별</h2>
           <ol className="space-y-4">
             {years.map((y) => (
               <li key={y}>
@@ -118,7 +118,7 @@ export function MyDramas() {
         if (list.length === 0) return null;
         return (
           <section key={g}>
-            <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-muted">{STATUS_LABEL[g]}</h2>
+            <h2 className="eyebrow mb-4">{STATUS_LABEL[g]}</h2>
             <ul className="divide-y divide-line rounded-md border border-line bg-card">
               {list.map((s) => (
                 <li key={s.drama.id}>

@@ -31,3 +31,10 @@ npm run lint && npm run build
 # or inside compose:
 docker compose up -d --build web
 ```
+
+## Design
+
+Dark editorial theme (`src/app/globals.css`): near-black surfaces, warm off-white type, one amber
+accent, Pretendard, index rows instead of cards, roman-numeral section labels. Tokens are exposed to
+Tailwind via `@theme inline`; component classes (`.row-link`, `.btn`, `.eyebrow`, `.display`) live in
+`@layer components` so utilities can still override them.
