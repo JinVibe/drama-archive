@@ -42,10 +42,14 @@ from dramamemory_data.sources import SOURCES
 
 POSTGRES_CONN_ID = "dramamemory_postgres"
 S3_CONN_ID = "dramamemory_s3"
-# Channels the archive covers for now (README 진행 상태). Widen by env when asked.
+# Channels the archive covers (ADR-012): the five networks plus Netflix / Disney+
+# originals. A drama files under a platform only when no network aired it (the
+# parser prefers networks), so these codes mean originals, not re-runs.
 SCOPE_BROADCASTERS = [
     c.strip()
-    for c in os.environ.get("DRAMAMEMORY_SCOPE_BROADCASTERS", "kbs,mbc,sbs,tvn,jtbc").split(",")
+    for c in os.environ.get(
+        "DRAMAMEMORY_SCOPE_BROADCASTERS", "kbs,mbc,sbs,tvn,jtbc,netflix,disney_plus"
+    ).split(",")
     if c.strip()
 ]
 SCOPE_YEAR_FROM = int(os.environ.get("DRAMAMEMORY_SCOPE_YEAR_FROM", "2006"))

@@ -19,6 +19,10 @@ The product owner decided (2026-09-28):
 3. for now only **KBS, MBC, SBS, tvN, JTBC**, started 2006 or later — platforms
    mostly re-run what those channels aired, so they add duplicates rather than
    titles. Widen when asked.
+   *Amended the same day:* **Netflix and Disney+ originals** are in. Because the
+   parser files a drama under its network whenever one exists, a drama whose
+   channel is `netflix` / `disney_plus` is by construction an original, not a
+   re-run — so widening the scope to those two codes adds only new titles.
 
 ## Decision
 
