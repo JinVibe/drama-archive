@@ -100,6 +100,18 @@ infra/           IaC (별도 관리)
 docs/            설계 문서
 ```
 
+## 정적 배포 (GitHub Pages)
+
+서버 없이 카탈로그만 보여 주는 데모: <https://jinvibe.github.io/drama-archive/>
+
+```sh
+make up && make airflow-up            # 로컬 스택 (domain-api :8081, ai-api :8090)
+apps/web/scripts/deploy-pages.sh      # 정적 빌드(Docker) → gh-pages 브랜치 push
+DRY_RUN=1 apps/web/scripts/deploy-pages.sh   # 빌드만 (apps/web/out)
+```
+
+`STATIC_EXPORT=1`이면 Next가 `output: export`로 연도·작품·인물 페이지 전부를 미리 렌더링한다. 검색은 브라우저 안에서(`public/search-index.json` + MiniSearch), 봤어요/추억 한 줄은 그 브라우저의 localStorage에만 저장된다. 관리자·공유 카드·AI 기억 검색·그래프 갱신은 서버 배포에서만 동작한다. 처음 한 번은 저장소 Settings → Pages → Source: **gh-pages / root**를 켜야 한다.
+
 ## 진행 상태
 
 - [x] Phase 0 — canonical schema + provenance (`db/migrations` V1~V6)
