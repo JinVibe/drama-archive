@@ -7,7 +7,7 @@ a forgotten daily drama is not. Weekly:
 
     targets  published dramas whose kowiki article is known (synopsis URL) or resolvable
              through the Wikidata sitelink
-    fetch    GET /metrics/pageviews/per-article/ko.wikipedia/all-access/user/{title}/monthly/{from}/{to}
+    fetch    GET …/pageviews/per-article/ko.wikipedia/all-access/user/{title}/monthly/{from}/{to}
     write    drama.popularity_score = sum(views), popularity_source = 'kowiki:pageviews:365d',
              popularity_updated_at = now()   (no canonical_version bump: presentation data only)
 
@@ -28,7 +28,9 @@ from dramamemory_data.sources import get_source
 
 POSTGRES_CONN_ID = "dramamemory_postgres"
 SOURCE = "kowiki"
-PAGEVIEWS = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ko.wikipedia/all-access/user"
+PAGEVIEWS = (
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ko.wikipedia/all-access/user"
+)
 SITELINKS_QUERY = """
 SELECT ?item ?title WHERE {
   VALUES ?item { %s }
@@ -91,10 +93,14 @@ def popularity_refresh_kowiki():
                 chunk = qids[i : i + 200]
                 resp = client.get(
                     "https://query.wikidata.org/sparql",
-                    params={"format": "json",
-                            "query": SITELINKS_QUERY % " ".join(f"wd:{q}" for q in chunk)},
-                    headers={"User-Agent": wikidata.user_agent,
-                             "Accept": "application/sparql-results+json"},
+                    params={
+                        "format": "json",
+                        "query": SITELINKS_QUERY % " ".join(f"wd:{q}" for q in chunk),
+                    },
+                    headers={
+                        "User-Agent": wikidata.user_agent,
+                        "Accept": "application/sparql-results+json",
+                    },
                     timeout=120,
                 )
                 resp.raise_for_status()
@@ -117,7 +123,9 @@ def popularity_refresh_kowiki():
                         errors += 1
                         continue
                     else:
-                        views = sum(int(item.get("views", 0)) for item in resp.json().get("items", []))
+                        views = sum(
+                            int(item.get("views", 0)) for item in resp.json().get("items", [])
+                        )
                     cur.execute(UPDATE, (views, drama_id))
                     updated += 1
                     if n % 200 == 0:
@@ -125,8 +133,13 @@ def popularity_refresh_kowiki():
                         print(f"{n}/{len(titles)}")
                     time.sleep(0.1)  # Wikimedia asks for a descriptive UA and moderate rates
                 conn.commit()
-        summary = {"targets": len(rows), "updated": updated, "no_article": no_article,
-                   "errors": errors, "window": span}
+        summary = {
+            "targets": len(rows),
+            "updated": updated,
+            "no_article": no_article,
+            "errors": errors,
+            "window": span,
+        }
         print(f"kowiki popularity: {summary}")
         return summary
 

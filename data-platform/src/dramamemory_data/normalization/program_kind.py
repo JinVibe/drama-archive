@@ -80,6 +80,10 @@ WEAK_NON_DRAMA_CLASSES: frozenset[str] = frozenset(
     }
 )
 
+# "television program" and the weak classes say nothing about being a drama; an item
+# with only these needs a drama genre or a kowiki drama category to count.
+GENERIC_CLASSES: frozenset[str] = frozenset({"Q15416"}) | WEAK_NON_DRAMA_CLASSES
+
 # Genre (P136) labels, ko/en. Drama genres name a kind of fiction.
 DRAMA_GENRE = re.compile(
     r"드라마|drama|시트콤|sitcom|thriller|스릴러|mystery|미스터리|crime|범죄|fantasy|판타지"
@@ -99,11 +103,13 @@ NON_DRAMA_GENRE = re.compile(
 
 # Korean Wikipedia categories. "…드라마" categories are curated by people and
 # beat every Wikidata signal.
-KOWIKI_DRAMA_CATEGORY = re.compile(r"드라마")
+KOWIKI_DRAMA_CATEGORY = re.compile(r"드라마|시트콤")
 KOWIKI_LIST_CATEGORY = re.compile(r"목록")
 KOWIKI_NON_DRAMA_CATEGORY = re.compile(
-    r"예능|리얼리티|버라이어티|토크 ?쇼|음악 프로그램|오디션|다큐멘터리|시사|교양|뉴스|스포츠"
-    r"|퀴즈|게임 쇼|경연|서바이벌|애니메이션|영화|만화|소설|웹툰|목록"
+    r"예능|리얼리티|버라이어티|토크|음악 (?:텔레비전 )?프로그램|연예 ?오락|오디션|다큐멘터리"
+    r"|시사|교양"
+    r"|뉴스|스포츠|퀴즈|게임|경연|서바이벌|애니메이션|영화|만화|소설|웹툰|목록|음식|요리|시상식"
+    r"|라디오|코미디 텔레비전 프로그램"
 )
 
 
@@ -126,14 +132,22 @@ def classify(
 
     if kowiki_categories:
         drama_cats = [
-            c for c in kowiki_categories
+            c
+            for c in kowiki_categories
             if KOWIKI_DRAMA_CATEGORY.search(c) and not KOWIKI_LIST_CATEGORY.search(c)
         ]
         if drama_cats:
             return "DRAMA", ["kowiki category"]
+        # No drama category but a variety/music/food/... one: kowiki editors filed it as a
+        # programme, and that outranks a loose Wikidata genre word such as 희극.
         hits = [c for c in kowiki_categories if KOWIKI_NON_DRAMA_CATEGORY.search(c)]
         if hits:
-            non.append(f"kowiki category {hits[0]}")
+            return "NOT_DRAMA", [f"kowiki category {hits[0]}"]
+        # A bare "television program" (no series class, no drama genre) whose article
+        # is filed under no drama category at all is a programme, not a drama
+        # (아이돌 전국 노래자랑: class 텔레비전 프로그램, categories 음악 텔레비전 프로그램).
+        if not cls - GENERIC_CLASSES and not any(DRAMA_GENRE.search(g) for g in genre_labels):
+            return "NOT_DRAMA", ["kowiki has no drama category for a generic programme"]
 
     if cls & DRAMA_CLASSES:
         drama.append(f"class {sorted(cls & DRAMA_CLASSES)[0]}")

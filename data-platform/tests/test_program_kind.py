@@ -65,16 +65,53 @@ def test_webcomic_sharing_an_item_with_its_web_drama():
     assert classify(classes={WEBCOMIC})[0] == "UNKNOWN"
 
 
+def test_generic_programme_without_any_drama_category_is_not_a_drama():
+    # 아이돌 전국 노래자랑: P31 텔레비전 프로그램, no genre, kowiki "음악 텔레비전 프로그램"
+    assert (
+        classify(
+            classes={"Q15416"},
+            kowiki_categories=[
+                "2010년대 대한민국의 텔레비전 프로그램",
+                "대한민국의 음악 텔레비전 프로그램",
+            ],
+        )[0]
+        == "NOT_DRAMA"
+    )
+    # 코미디쇼 희희낙락: sketch comedy filed as 연예오락, genre 희극 -> the categories win
+    assert (
+        classify(
+            classes={"Q15416"},
+            genre_labels=["희극"],
+            kowiki_categories=[
+                "대한민국의 코미디 텔레비전 프로그램",
+                "한국방송공사의 연예오락 프로그램",
+            ],
+        )[0]
+        == "NOT_DRAMA"
+    )
+    # a generic programme with no article categories at all stays open (UNKNOWN)
+    assert classify(classes={"Q15416"})[0] == "UNKNOWN"
+    # a television *series* without a drama category is not rejected on that alone
+    assert (
+        classify(
+            classes={TV_SERIES}, kowiki_categories=["2016년 시작한 대한민국의 텔레비전 프로그램"]
+        )[0]
+        == "UNKNOWN"
+    )
+
+
 def test_episode_and_list_articles_are_never_dramas():
     # an anthology episode (단막극) with a drama genre or kowiki drama category is a drama
     assert classify(classes={"Q21191270"}, genre_labels=["텔레비전 드라마"])[0] == "DRAMA"
     assert classify(classes={"Q21191270"})[0] == "UNKNOWN"
     assert classify(classes={"Q13406463"})[0] == "NOT_DRAMA"
     # "2016년 대한민국의 텔레비전 드라마 목록" sits in a drama category on kowiki
-    assert classify(
-        classes={"Q13406463"}, kowiki_categories=["2016년 텔레비전 드라마"]
-    )[0] == "NOT_DRAMA"
+    assert (
+        classify(classes={"Q13406463"}, kowiki_categories=["2016년 텔레비전 드라마"])[0]
+        == "NOT_DRAMA"
+    )
     # a "…목록" category is a list signal, not a drama signal
-    assert classify(
-        classes={TV_SERIES}, kowiki_categories=["대한민국의 텔레비전 드라마 목록"]
-    )[0] == "NOT_DRAMA"
+    assert (
+        classify(classes={TV_SERIES}, kowiki_categories=["대한민국의 텔레비전 드라마 목록"])[0]
+        == "NOT_DRAMA"
+    )
