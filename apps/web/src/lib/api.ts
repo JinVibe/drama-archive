@@ -84,8 +84,11 @@ export type PersonDetail = {
  * browser to the surviving slug so the canonical URL is what gets indexed.
  */
 async function get<T>(path: string, pageForSlug?: (slug: string) => string): Promise<T> {
+  // No data cache: the catalog changes through the pipeline (hide/restore, enrichment)
+  // and the stale-while-revalidate entries kept serving old counts for hours. Every
+  // page is force-dynamic already and the domain API answers in milliseconds.
   const res = await fetch(`${BASE}${path}`, {
-    next: { revalidate: CATALOG_REVALIDATE },
+    cache: "no-store",
     redirect: "manual",
   });
   if (res.status === 404) notFound();

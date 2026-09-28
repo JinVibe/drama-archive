@@ -2,7 +2,7 @@ import Link from "next/link";
 import { api } from "@/lib/api";
 
 // Rendered per request so `next build` never needs the Domain API; the fetches
-// themselves are cached for CATALOG_REVALIDATE seconds (lib/api.ts).
+// themselves are not cached (lib/api.ts): the pipeline hides/restores dramas at any time.
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {

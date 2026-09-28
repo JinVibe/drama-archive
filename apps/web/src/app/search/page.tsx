@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CATALOG_REVALIDATE } from "@/lib/api";
 import { genreLabel } from "@/lib/format";
 
 export const metadata: Metadata = { title: "검색", robots: { index: false } };
@@ -36,7 +35,7 @@ const DOMAIN_API = process.env.DOMAIN_API_URL ?? "http://localhost:8081";
  * (docs/ARCHITECTURE.md §11 failure modes).
  */
 async function search(q: string): Promise<Result> {
-  const opts = { next: { revalidate: CATALOG_REVALIDATE } };
+  const opts = { cache: "no-store" as const };
   try {
     const started = Date.now();
     const res = await fetch(`${AI_API}/v1/search?${new URLSearchParams({ q, size: "30" })}`, {
