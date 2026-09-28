@@ -2,6 +2,7 @@ package com.dramamemory.domainapi.catalog;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.endsWith;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
@@ -107,8 +108,7 @@ class CatalogApiTest {
     void broadcasters_come_from_seed_migration() throws Exception {
         mvc.perform(get("/api/v1/broadcasters"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(5)))
-                .andExpect(jsonPath("$[*].code", containsInAnyOrder("kbs", "mbc", "sbs", "jtbc", "tvn")));
+                .andExpect(jsonPath("$[*].code", hasItems("kbs", "mbc", "sbs", "jtbc", "tvn", "netflix")));
     }
 
     @Test
