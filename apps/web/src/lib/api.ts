@@ -53,6 +53,7 @@ export type DramaDetail = DramaSummary & {
   aliases: string[];
   runtimeMinutes?: number;
   synopsis?: string;
+  synopsisSource?: { code: string; url?: string; license?: string };
   officialPageUrl?: string;
   credits: Credit[];
   osts: Ost[];

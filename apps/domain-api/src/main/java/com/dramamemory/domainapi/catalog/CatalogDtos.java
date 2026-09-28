@@ -46,6 +46,9 @@ public final class CatalogDtos {
             Integer trackNo,
             List<Artist> artists) {}
 
+    /** Where quoted synopsis text came from; null when the text is our own. */
+    public record SynopsisSource(String code, String url, String license) {}
+
     public record WatchLink(
             String providerCode,
             String url,
@@ -66,6 +69,7 @@ public final class CatalogDtos {
             Integer episodeCount,
             Integer runtimeMinutes,
             String synopsis,
+            SynopsisSource synopsisSource,
             String officialPageUrl,
             List<String> genres,
             List<Credit> credits,

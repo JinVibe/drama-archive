@@ -9,6 +9,7 @@ import com.dramamemory.domainapi.catalog.CatalogDtos.FilmographyEntry;
 import com.dramamemory.domainapi.catalog.CatalogDtos.Ost;
 import com.dramamemory.domainapi.catalog.CatalogDtos.Page;
 import com.dramamemory.domainapi.catalog.CatalogDtos.PersonDetail;
+import com.dramamemory.domainapi.catalog.CatalogDtos.SynopsisSource;
 import com.dramamemory.domainapi.catalog.CatalogDtos.WatchLink;
 import com.dramamemory.domainapi.catalog.CatalogDtos.YearCount;
 import java.sql.ResultSet;
@@ -135,6 +136,7 @@ public class CatalogRepository {
         return jdbc.sql("""
                         SELECT d.id, d.slug, d.title_ko, d.title_en, d.start_date, d.end_date, d.episode_count,
                                d.runtime_minutes, d.synopsis, d.official_page_url, d.canonical_version,
+                               d.synopsis_source, d.synopsis_source_url, d.synopsis_license,
                                b.code, b.name_ko, b.name_en, b.official_url,
                                (SELECT string_agg(g.code, ',' ORDER BY g.code)
                                   FROM drama_genre dg JOIN genre g ON g.id = dg.genre_id
@@ -157,6 +159,7 @@ public class CatalogRepository {
                         rs.getObject("episode_count", Integer.class),
                         rs.getObject("runtime_minutes", Integer.class),
                         rs.getString("synopsis"),
+                        synopsisSource(rs),
                         rs.getString("official_page_url"),
                         csv(rs.getString("genres")),
                         credits(id),
@@ -164,6 +167,14 @@ public class CatalogRepository {
                         links(id),
                         rs.getLong("canonical_version")))
                 .single();
+    }
+
+    private static SynopsisSource synopsisSource(ResultSet rs) throws SQLException {
+        String code = rs.getString("synopsis_source");
+        if (code == null || rs.getString("synopsis") == null || code.endsWith(":none")) {
+            return null;
+        }
+        return new SynopsisSource(code, rs.getString("synopsis_source_url"), rs.getString("synopsis_license"));
     }
 
     private List<Credit> credits(long dramaId) {

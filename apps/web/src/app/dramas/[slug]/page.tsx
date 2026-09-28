@@ -74,7 +74,23 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
         <MemoryNote dramaId={d.id} />
       </header>
 
-      {d.synopsis && <p className="max-w-3xl text-lg leading-relaxed">{d.synopsis}</p>}
+      {d.synopsis && (
+        <section className="max-w-3xl space-y-2">
+          <p className="text-lg leading-relaxed">{d.synopsis}</p>
+          {d.synopsisSource?.code === "kowiki" && (
+            <p className="text-xs text-muted">
+              줄거리 출처:{" "}
+              <a href={d.synopsisSource.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">
+                한국어 위키백과
+              </a>{" "}
+              ·{" "}
+              <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent">
+                {d.synopsisSource.license ?? "CC BY-SA 4.0"}
+              </a>
+            </p>
+          )}
+        </section>
+      )}
 
       {d.links.length > 0 && (
         <section>
