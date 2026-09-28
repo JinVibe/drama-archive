@@ -24,6 +24,11 @@
     "description": "Wikidata Query Service (a few concurrent queries per UA; 1 req/s each)",
     "include_deferred": false
   },
+  "link_validator_pool": {
+    "slots": 2,
+    "description": "Official link checks (HEAD/GET against providers, be polite)",
+    "include_deferred": false
+  },
   "source_kowiki_pool": {
     "slots": 1,
     "description": "Korean Wikipedia REST API (~4 req/s)",
