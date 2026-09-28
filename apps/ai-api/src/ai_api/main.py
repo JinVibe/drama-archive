@@ -11,6 +11,7 @@ from ai_api.config import Settings, settings
 from ai_api.db import make_pool
 from ai_api.embedder import Embedder, build_embedder
 from ai_api.graph.queries import GraphClient, Neo4jRunner
+from ai_api.reranker import Reranker, build_reranker
 from ai_api.retrieval.hybrid import HybridRetriever, SearchResult
 from ai_api.retrieval.store import SearchStore
 
@@ -21,6 +22,7 @@ class State:
     embedder: Embedder | None = None
     retriever: HybridRetriever | None = None
     graph: GraphClient | None = None
+    reranker: Reranker | None = None
     pool = None
     ready: bool = False
 
@@ -52,9 +54,13 @@ async def lifespan(app: FastAPI):
         except Exception as exc:  # graph is optional (ARCHITECTURE §11: Neo4j outage -> SQL/vector)
             log.warning("graph disabled: %s", exc)
             runner = None
+    if s.reranker != "none":
+        log.info("loading reranker kind=%s model=%s", s.reranker, s.reranker_model)
+        state.reranker = build_reranker(s.reranker, s.reranker_model)
     state.retriever = HybridRetriever(
-        SearchStore(state.pool), state.embedder, graph=state.graph,
-        rrf_k=s.rrf_k, candidates=s.candidates_per_list, retrieval_version=s.retrieval_version,
+        SearchStore(state.pool), state.embedder, graph=state.graph, reranker=state.reranker,
+        rrf_k=s.rrf_k, candidates=s.candidates_per_list,
+        rerank_candidates=s.rerank_candidates, retrieval_version=s.retrieval_version,
     )
     state.ready = True
     log.info("ready")
@@ -116,6 +122,7 @@ class SearchOut(BaseModel):
     latency_ms: dict[str, int]
     retrieval_version: str
     embedding_model: str | None
+    reranker: str | None = None
 
 
 def _to_out(r: SearchResult) -> SearchOut:
@@ -127,7 +134,7 @@ def _to_out(r: SearchResult) -> SearchOut:
         graph=GraphOut(mode=r.graph.mode, persons=r.graph.persons) if r.graph else None,
         hits=[HitOut(**h.__dict__) for h in r.hits],
         latency_ms=r.latency_ms, retrieval_version=r.retrieval_version,
-        embedding_model=r.embedding_model,
+        embedding_model=r.embedding_model, reranker=r.reranker,
     )
 
 
@@ -145,6 +152,8 @@ def search(
     year_from: int | None = Query(None, ge=1950, le=2100),
     year_to: int | None = Query(None, ge=1950, le=2100),
     broadcaster: str | None = Query(None, max_length=40, pattern="^[a-z0-9_]+$"),
+    rerank: bool = Query(False, description="cross-encoder rerank of the fused top-N "
+                                            "(needs AI_API_RERANKER; ignored otherwise)"),
     r: HybridRetriever = Depends(retriever),
 ) -> SearchOut:
     """Retrieval only (no generation): ranked dramas with evidence per retriever.
@@ -154,7 +163,7 @@ def search(
     result = r.search(
         q, limit=size,
         use_vector=mode != "lexical", use_lexical=mode != "vector",
-        use_graph=mode == "hybrid",
+        use_graph=mode == "hybrid", rerank=rerank,
         year_from=year_from, year_to=year_to, broadcaster=broadcaster,
     )
     return _to_out(result)

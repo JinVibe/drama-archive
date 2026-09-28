@@ -85,7 +85,7 @@ SELECT entity_id, id FROM search_document WHERE entity_type = 'DRAMA' AND entity
 """
 
 DOCS_SQL = """
-SELECT id, entity_id, title, aliases, body, metadata
+SELECT id, entity_id, title, aliases, body, metadata, synopsis
   FROM search_document WHERE id = ANY(%(ids)s)
 """
 
@@ -98,6 +98,7 @@ class Doc:
     aliases: list[str]
     body: str
     metadata: dict[str, Any]
+    synopsis: str = ""
 
 
 class SearchStore:
@@ -155,8 +156,8 @@ class SearchStore:
         with self.pool.connection() as conn:
             rows = conn.execute(DOCS_SQL, {"ids": ids}).fetchall()
         out = {}
-        for id_, entity_id, title, aliases, body, metadata in rows:
+        for id_, entity_id, title, aliases, body, metadata, synopsis in rows:
             meta = metadata if isinstance(metadata, dict) else json.loads(metadata)
             out[int(id_)] = Doc(int(id_), int(entity_id), title,
-                                [a for a in aliases.split("\n") if a], body, meta)
+                                [a for a in aliases.split("\n") if a], body, meta, synopsis or "")
         return out

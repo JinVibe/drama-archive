@@ -24,6 +24,13 @@ class Settings(BaseSettings):
     rrf_k: int = 60
     candidates_per_list: int = 50
 
+    # Optional cross-encoder rerank of the fused top-N (RAG_DESIGN §8, DM-605).
+    # "none" | "bge" (sentence-transformers CrossEncoder) | "fake" (tests). Applied only when a
+    # request asks for it (rerank=true) so the default path stays cheap.
+    reranker: str = "none"
+    reranker_model: str = "BAAI/bge-reranker-v2-m3"
+    rerank_candidates: int = 30
+
     # Neo4j read model. Empty uri = graph features off (search still works without it).
     neo4j_uri: str = ""
     neo4j_user: str = "neo4j"

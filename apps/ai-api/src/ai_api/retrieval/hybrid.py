@@ -16,6 +16,7 @@ from typing import Any
 
 from ai_api.embedder import Embedder
 from ai_api.graph.queries import GraphClient
+from ai_api.reranker import Reranker
 from ai_api.retrieval.fusion import rrf
 from ai_api.retrieval.graph_candidates import GraphMatch, graph_candidates
 from ai_api.retrieval.query import QueryPlan, analyze
@@ -46,21 +47,25 @@ class SearchResult:
     latency_ms: dict[str, int] = field(default_factory=dict)
     retrieval_version: str = ""
     embedding_model: str | None = None
+    reranker: str | None = None     # model id when the rerank list was applied
 
 
 class HybridRetriever:
     def __init__(self, store: SearchStore, embedder: Embedder | None, *,
-                 graph: GraphClient | None = None,
-                 rrf_k: int = 60, candidates: int = 50, retrieval_version: str = "hybrid-v1"):
+                 graph: GraphClient | None = None, reranker: Reranker | None = None,
+                 rrf_k: int = 60, candidates: int = 50, rerank_candidates: int = 30,
+                 retrieval_version: str = "hybrid-v1"):
         self.store = store
         self.embedder = embedder
         self.graph = graph
+        self.reranker = reranker
         self.rrf_k = rrf_k
         self.candidates = candidates
+        self.rerank_candidates = rerank_candidates
         self.retrieval_version = retrieval_version
 
     def search(self, query: str, limit: int = 10, *, use_vector: bool = True,
-               use_lexical: bool = True, use_graph: bool = True,
+               use_lexical: bool = True, use_graph: bool = True, rerank: bool = False,
                year_from: int | None = None, year_to: int | None = None,
                broadcaster: str | None = None) -> SearchResult:
         plan = _with_overrides(analyze(query), year_from, year_to, broadcaster)
@@ -112,9 +117,27 @@ class HybridRetriever:
             gather(plan)
 
         t = time.perf_counter()
-        fused = rrf(lists, k=self.rrf_k, limit=limit)
+        use_rerank = rerank and self.reranker is not None
+        fused = rrf(lists, k=self.rrf_k, limit=self.rerank_candidates if use_rerank else limit)
         docs = self.store.docs([f.doc_id for f in fused])
         latency["fuse"] = int((time.perf_counter() - t) * 1000)
+
+        if use_rerank and fused:
+            # Cross-encoder over the fused top-N; RRF evidence stays, rerank is one more list.
+            t = time.perf_counter()
+            fused = [f for f in fused if f.doc_id in docs]
+            scores = self.reranker.score(query, [_rerank_text(docs[f.doc_id]) for f in fused])
+            order = sorted(range(len(fused)), key=lambda i: (-scores[i], fused[i].doc_id))
+            reranked = []
+            for pos, i in enumerate(order[:limit], start=1):
+                f = fused[i]
+                f.ranks["rerank"] = pos
+                f.scores["rerank"] = float(scores[i])
+                f.score = float(scores[i])
+                reranked.append(f)
+            fused = reranked
+            lists["rerank"] = fused
+            latency["rerank"] = int((time.perf_counter() - t) * 1000)
 
         hits = [
             Hit(drama_id=d.drama_id, title=d.title, metadata=d.metadata, score=f.score,
@@ -127,6 +150,7 @@ class HybridRetriever:
             retrieval_version=self.retrieval_version,
             embedding_model=self.embedder.model_id if self.embedder else None,
             graph=graph_match,
+            reranker=self.reranker.model_id if use_rerank and self.reranker else None,
         )
 
     def _graph_list(self, text: str):
@@ -136,6 +160,18 @@ class HybridRetriever:
             return [], match
         id_map = self.store.doc_ids_for_dramas([int(d["id"]) for d in match.dramas])
         return graph_candidates(self.graph, text, doc_id_by_drama=id_map, limit=self.candidates)
+
+
+def _rerank_text(doc: Doc, max_synopsis: int = 600) -> str:
+    """What the cross-encoder reads: title, aliases, the metadata/cast body, a slice of plot."""
+    parts = [doc.title]
+    if doc.aliases:
+        parts.append(" / ".join(doc.aliases))
+    if doc.body:
+        parts.append(doc.body)
+    if doc.synopsis:
+        parts.append(f"줄거리: {doc.synopsis[:max_synopsis]}")
+    return "\n".join(parts)
 
 
 def _with_overrides(plan: QueryPlan, year_from: int | None, year_to: int | None,

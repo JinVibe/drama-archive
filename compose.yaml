@@ -173,6 +173,8 @@ services:
       AI_API_NEO4J_URI: bolt://neo4j:7687
       AI_API_NEO4J_USER: neo4j
       AI_API_NEO4J_PASSWORD: ${NEO4J_PASSWORD:-dramamemory-neo4j}
+      # "bge" loads BAAI/bge-reranker-v2-m3 (~1.1 GB) for ?rerank=true; off by default (DM-605)
+      AI_API_RERANKER: ${AI_API_RERANKER:-none}
     ports:
       - "${AI_API_PORT:-8090}:8090"
     volumes:

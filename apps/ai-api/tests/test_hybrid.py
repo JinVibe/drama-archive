@@ -123,6 +123,25 @@ def test_title_number_mistaken_for_year_is_relaxed():
     assert 5 in [h.drama_id for h in res.hits]   # fts_any found it on the relaxed pass
 
 
+def test_rerank_reorders_fused_top_n_and_records_evidence():
+    from ai_api.reranker import FakeReranker
+
+    store = FakeStore()
+    # doc 3 (호텔 델루나, 출연: 아이유) only appears in vector lists; without reranking doc 1 wins.
+    r = HybridRetriever(store, FAKE, reranker=FakeReranker(), rrf_k=60, candidates=10,
+                        rerank_candidates=5)
+    plain = r.search("아이유 호텔", limit=2)
+    assert [h.drama_id for h in plain.hits] == [4, 9] and plain.reranker is None
+    res = r.search("아이유 호텔", limit=2, rerank=True)
+    assert [h.drama_id for h in res.hits] == [9, 4]          # overlap with "아이유"/"호텔" wins
+    assert res.hits[0].ranks["rerank"] == 1 and res.hits[0].scores["rerank"] > 0
+    assert res.hits[0].ranks["vector"] == 1                  # RRF evidence is kept
+    assert res.reranker == "fake/overlap-reranker" and "rerank" in res.latency_ms
+    assert res.lists["rerank"] == 2
+    # rerank=True without a configured reranker is a no-op
+    assert _retriever(FakeStore()).search("아이유 호텔", rerank=True).reranker is None
+
+
 def test_no_embedder_means_lexical_only():
     res = _retriever(embedder=None).search("공유")
     assert res.strategy == "lexical"
