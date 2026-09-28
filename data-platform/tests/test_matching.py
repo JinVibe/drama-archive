@@ -108,6 +108,18 @@ def test_drama_alias_match():
     assert resolve_drama(d, 1, repo).canonical_id == 7
 
 
+def test_drama_empty_alias_key_is_ignored():
+    from dramamemory_data.normalization.models import NormalizedAlias
+
+    class Boom(FakeRepo):
+        def dramas_by_title(self, t):
+            assert t != "", "empty key must never be looked up"
+            return super().dramas_by_title(t)
+
+    d = _drama(aliases=[NormalizedAlias(alias="怪異", alias_normalized="")])
+    assert resolve_drama(d, 1, Boom()).decision == "CREATE_NEW"
+
+
 def test_drama_two_equal_candidates_review():
     repo = FakeRepo(
         dramas={

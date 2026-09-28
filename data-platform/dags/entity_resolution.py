@@ -52,9 +52,9 @@ def entity_resolution():
                 if was_review:
                     keep_manual_decisions(row.resolution, resolution)
                 status = "REVIEW" if resolution["needs_review"] else "RESOLVED"
-                if was_review and status == "REVIEW":
-                    continue  # still ambiguous: keep the queue entry untouched
                 staging.set_status(cur, row.id, status, resolution=resolution)
+                if was_review and status == "REVIEW":
+                    continue  # still ambiguous, but the queue now shows the current verdicts
                 if was_review:
                     cleared += 1
                 elif status == "REVIEW":

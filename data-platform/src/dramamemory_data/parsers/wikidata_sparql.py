@@ -183,7 +183,7 @@ def parse(body: bytes) -> NormalizedDrama:
     seen = {normalize_key(title_ko)}
     for a in [*original, *aliases]:
         a = clean(a)
-        if a and normalize_key(a) not in seen and not a.startswith("-"):
+        if a and normalize_key(a) and normalize_key(a) not in seen and not a.startswith("-"):
             seen.add(normalize_key(a))
             alias_set.append(NormalizedAlias(alias=a, alias_normalized=normalize_key(a)))
 

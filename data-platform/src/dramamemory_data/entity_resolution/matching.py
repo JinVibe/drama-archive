@@ -105,8 +105,12 @@ def resolve_drama(drama: NormalizedDrama, source_id: int, repo: Repo) -> Match:
     if m := _by_external_ref(repo, source_id, "DRAMA", drama.external_id):
         return m
 
-    candidates = repo.dramas_by_title(drama.title_normalized)
+    candidates = repo.dramas_by_title(drama.title_normalized) if drama.title_normalized else []
     for alias in drama.aliases:
+        if (
+            not alias.alias_normalized
+        ):  # Cyrillic/CJK aliases normalize to '' and would match everything
+            continue
         candidates += [
             c for c in repo.dramas_by_title(alias.alias_normalized) if c not in candidates
         ]

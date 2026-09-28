@@ -47,6 +47,7 @@ GOBLIN = [
     _row("alias", "도깨비", lang="ko"),
     _row("alias", "Goblin", lang="en"),
     _row("alias", "-sseul-ha-go cha-ran-ha-sin-do-ggae-bi", lang="en"),
+    _row("alias", "Пхурын падаи чонсоль", lang="en"),  # normalizes to "" -> dropped
     _row("P1476", "쓸쓸하고 찬란하神-도깨비", label="쓸쓸하고 찬란하神-도깨비"),
     _row("P580", "2016-12-02T00:00:00Z", label="2016-12-02T00:00:00Z"),
     _row("P582", "2017-01-21T00:00:00Z", label="2017-01-21T00:00:00Z"),

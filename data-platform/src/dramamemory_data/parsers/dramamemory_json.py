@@ -165,7 +165,7 @@ def parse(body: bytes) -> NormalizedDrama:
     aliases = [
         NormalizedAlias(alias=a, alias_normalized=normalize_key(a))
         for a in (clean(x) for x in raw.aliases)
-        if a and normalize_key(a) != normalize_key(title_ko)
+        if a and normalize_key(a) and normalize_key(a) != normalize_key(title_ko)
     ]
 
     return NormalizedDrama(

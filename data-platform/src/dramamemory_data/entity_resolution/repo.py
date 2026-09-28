@@ -32,6 +32,8 @@ class PostgresRepo:
         return int(row[0]) if row else None
 
     def dramas_by_title(self, title_normalized: str) -> list[DramaCandidate]:
+        if not title_normalized:
+            return []
         self.cur.execute(
             """
             SELECT d.id, d.title_normalized, b.code, EXTRACT(YEAR FROM d.start_date)::int

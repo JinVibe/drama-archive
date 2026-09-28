@@ -164,6 +164,8 @@ def sync_aliases_and_genres(
     cur, drama_id: int, drama: NormalizedDrama, known_genres: set[str]
 ) -> None:
     for alias in drama.aliases:
+        if not alias.alias_normalized:
+            continue
         cur.execute(
             """
             INSERT INTO drama_alias (drama_id, alias, alias_normalized, language_code, alias_type)
