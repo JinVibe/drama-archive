@@ -58,7 +58,6 @@ STRONG_NON_DRAMA_CLASSES: frozenset[str] = frozenset(
         "Q336181",  # variety show
         "Q622812",  # talk show
         "Q173799",  # entertainment
-        "Q21191270",  # television series episode
         "Q13406463",  # Wikimedia list article
         "Q18340514",  # events in a specific year
         "Q2155186",  # program block
@@ -72,6 +71,7 @@ STRONG_NON_DRAMA_CLASSES: frozenset[str] = frozenset(
 WEAK_NON_DRAMA_CLASSES: frozenset[str] = frozenset(
     {
         "Q11424",  # film
+        "Q21191270",  # television series episode (KBS 드라마 스페셜 단막극 are filed so)
         "Q7725634",  # literary work
         "Q21198342",  # Japanese manga series
         "Q74262765",  # Korean manga series
@@ -118,7 +118,7 @@ def classify(
     drama: list[str] = []
     non: list[str] = []
 
-    # An episode, a list article, a variety show: never a drama, whatever kowiki
+    # A list article, a variety show, a news programme: never a drama, whatever kowiki
     # files it under ("2016년 대한민국의 텔레비전 드라마 목록" sits in a drama category).
     strong = cls & STRONG_NON_DRAMA_CLASSES
     if strong:

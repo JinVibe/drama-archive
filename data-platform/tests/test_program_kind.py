@@ -66,7 +66,9 @@ def test_webcomic_sharing_an_item_with_its_web_drama():
 
 
 def test_episode_and_list_articles_are_never_dramas():
-    assert classify(classes={"Q21191270"}, genre_labels=["텔레비전 드라마"])[0] == "NOT_DRAMA"
+    # an anthology episode (단막극) with a drama genre or kowiki drama category is a drama
+    assert classify(classes={"Q21191270"}, genre_labels=["텔레비전 드라마"])[0] == "DRAMA"
+    assert classify(classes={"Q21191270"})[0] == "UNKNOWN"
     assert classify(classes={"Q13406463"})[0] == "NOT_DRAMA"
     # "2016년 대한민국의 텔레비전 드라마 목록" sits in a drama category on kowiki
     assert classify(
