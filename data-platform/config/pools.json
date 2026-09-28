@@ -20,8 +20,8 @@
     "include_deferred": false
   },
   "source_wikidata_pool": {
-    "slots": 1,
-    "description": "Wikidata Query Service (~1 req/s)",
+    "slots": 3,
+    "description": "Wikidata Query Service (a few concurrent queries per UA; 1 req/s each)",
     "include_deferred": false
   },
   "source_kowiki_pool": {
