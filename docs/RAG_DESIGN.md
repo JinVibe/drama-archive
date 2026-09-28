@@ -33,15 +33,15 @@ Personal    사용자 시청 기록
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 손으로 쓴 골든 132질의 / 8클래스 + 카탈로그에서 생성한 300질의 / 5클래스, lexical·no-graph·hybrid 비교 보고서 | `evals/retrieval/` |
 
-측정 (**2,782편** 발행 카탈로그 — Wikidata ∪ kowiki 분류 발견, 비드라마·방송 예정 제외, 줄거리 2,600여 편, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
+측정 (**1,948편** 발행 카탈로그 — Wikidata ∪ kowiki 분류 발견, 비드라마·방송 예정·범위 밖 채널 제외, 범위 KBS/MBC/SBS/tvN/JTBC, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR | p50 |
 |---|---|---|---|---|
-| lexical (domain-api, FTS AND + trigram) | 0.439 | 0.467 | 0.462 | 31ms |
-| hybrid without graph (FTS AND/OR + trigram + 줄거리 벡터, RRF) | 0.687 | 0.860 | 0.774 | 117ms |
-| **hybrid + graph list** | **0.736** | **0.902** | **0.821** | 122ms |
+| lexical (domain-api, FTS AND + trigram) | 0.439 | 0.467 | 0.463 | 21ms |
+| hybrid without graph (FTS AND/OR + trigram + 줄거리 벡터, RRF) | 0.717 | 0.866 | 0.795 | 122ms |
+| **hybrid + graph list** | **0.767** | **0.912** | **0.841** | 118ms |
 
-클래스별: `semantic_memory` recall@5 **1.000**(recall@1 0.778), `person` 1.000 / MRR 0.902, `multi_hop` 1.000 / 0.958, `entity_lookup` 1.000. 그래프 리스트는 multi_hop recall@1 0.417 → 0.875, person recall@5 0.852 → 1.000 — 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed에만 있음, 0.75), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음, 0.68), `genre`(장르 태그가 P136에 있는 작품만, 0.22).
+클래스별: `semantic_memory` recall@5 **1.000**(recall@1 0.852), `person` 1.000 / MRR 0.917, `multi_hop` 1.000 / 1.000, `entity_lookup` 1.000. 그래프 리스트는 multi_hop recall@1 0.500 → 0.958, person recall@5 0.815 → 1.000 — 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed에만 있음, 0.75), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음, 0.68), `genre`(장르 태그가 P136에 있는 작품만, 0.22).
 
 **벡터 리스트 실험** (같은 골든셋·카탈로그, hybrid). 줄거리를 body에 섞었을 때(2,416편 시점) `person`/`temporal`이 희석돼 V14에서 줄거리를 별도 벡터로 분리했는데, 분리 직후 측정은 오히려 recall@1 0.689 → 0.583으로 떨어졌다. 원인은 **메타데이터(제목·출연진·연도)만 담은 벡터 리스트**가 RRF에서 잡음으로 작동한 것 — 렉시컬과 그래프가 이미 그 신호를 더 정확히 낸다. 리스트 가중치(`?w=`)로 비교:
 
@@ -55,15 +55,15 @@ Personal    사용자 시청 기록
 
 → 기본값 `AI_API_LIST_WEIGHTS=vector:0`(가중치 0인 리스트는 조회도 하지 않음). 생성 골든셋에서도 MRR 0.916 → 0.927, recall@5는 0.974 → 0.968(2질의 차, temporal)로 손해가 없었다. `embedding` 컬럼은 남겨 두되 검색에는 쓰지 않는다 — 다음 임베딩 모델 교체 때 제거 후보.
 
-**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 2,782편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
+**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 1,948편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR |
 |---|---|---|---|
-| lexical | 0.331 | 0.347 | 0.349 |
-| hybrid without graph | 0.618 | 0.814 | 0.757 |
-| **hybrid + graph** | **0.806** | **0.968** | **0.927** |
+| lexical | 0.322 | 0.348 | 0.345 |
+| hybrid without graph | 0.632 | 0.878 | 0.789 |
+| **hybrid + graph** | **0.862** | **0.997** | **0.974** |
 
-클래스별: multi_hop MRR 0.311 → 0.903, person 0.650 → 0.890 (graph 효과), entity_lookup 0.99, character 0.96, temporal 0.89. 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
+클래스별: multi_hop MRR 0.332 → 0.951, person 0.677 → 0.962 (graph 효과), entity_lookup 0.98, character 0.99, temporal 0.98. (2,782편·범위 제한 전: 0.806 / 0.968 / 0.927 — 채널 5곳으로 좁히자 동명 작품·후보가 줄어 전 클래스가 올랐다.) 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
 
 **Reranker(DM-605)**: bge-reranker-v2-m3를 RRF 상위 30에 적용하면 이 CPU에서 **질의당 16~20초** — 대화형 경로에 넣을 수 없어 기본 꺼짐. 품질 측정치는 `reports/rerank-latest.json`(측정 중이면 없음) — 채택 조건은 "GPU 또는 경량 reranker로 p95 < 800ms(§16) 이면서 semantic_memory/ost recall@1 개선".
 

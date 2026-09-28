@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-28T07:10:23.680484+00:00",
+  "generated_at": "2026-09-28T07:26:16.212805+00:00",
   "golden_set": "C:/Users/82108/Desktop/harness_project/drama-archive/evals/retrieval/golden_queries.jsonl",
   "n_queries": 132,
   "targets": {
     "lexical": {
       "overall": {
         "recall@1": 0.4393939393939394,
-        "recall@3": 0.4583333333333333,
+        "recall@3": 0.46742424242424246,
         "recall@5": 0.46742424242424246,
         "recall@10": 0.46742424242424246,
-        "mrr": 0.4617424242424243,
+        "mrr": 0.46338383838383834,
         "ndcg@1": 0.44696969696969696,
-        "ndcg@3": 0.4550824252369699,
-        "ndcg@5": 0.4593391042944376,
-        "ndcg@10": 0.4593391042944376,
-        "latency_p50_ms": 30.825300025753677,
-        "latency_p95_ms": 46.811899985186756,
+        "ndcg@3": 0.4606478749567531,
+        "ndcg@5": 0.4601550017720972,
+        "ndcg@10": 0.4601550017720972,
+        "latency_p50_ms": 21.074799995403737,
+        "latency_p95_ms": 42.40439995191991,
         "errors": 0,
         "n": 132
       },
@@ -30,38 +30,38 @@
           "ndcg@3": 0.75,
           "ndcg@5": 0.75,
           "ndcg@10": 0.75,
-          "latency_p50_ms": 31.8396000075154,
-          "latency_p95_ms": 40.50080000888556,
+          "latency_p50_ms": 27.97355002257973,
+          "latency_p95_ms": 38.32199994940311,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
           "recall@1": 0.9166666666666666,
-          "recall@3": 0.9166666666666666,
+          "recall@3": 0.9583333333333334,
           "recall@5": 0.9583333333333334,
           "recall@10": 0.9583333333333334,
-          "mrr": 0.9270833333333334,
+          "mrr": 0.9305555555555555,
           "ndcg@1": 0.9166666666666666,
-          "ndcg@3": 0.9166666666666666,
-          "ndcg@5": 0.9346115232530581,
-          "ndcg@10": 0.9346115232530581,
-          "latency_p50_ms": 32.17149997362867,
-          "latency_p95_ms": 40.948999929241836,
+          "ndcg@3": 0.9375,
+          "ndcg@5": 0.9375,
+          "ndcg@10": 0.9375,
+          "latency_p50_ms": 17.529050004668534,
+          "latency_p95_ms": 30.614799936302006,
           "errors": 0,
           "n": 24
         },
         "genre": {
           "recall@1": 0.07142857142857142,
-          "recall@3": 0.11904761904761904,
+          "recall@3": 0.1476190476190476,
           "recall@5": 0.1476190476190476,
           "recall@10": 0.1476190476190476,
-          "mrr": 0.24285714285714285,
+          "mrr": 0.2619047619047619,
           "ndcg@1": 0.14285714285714285,
-          "ndcg@3": 0.12988987196161766,
-          "ndcg@5": 0.14863345446338075,
-          "ndcg@10": 0.14863345446338075,
-          "latency_p50_ms": 22.16950000729412,
-          "latency_p95_ms": 34.75869994144887,
+          "ndcg@3": 0.1634097809632431,
+          "ndcg@5": 0.15411560090973309,
+          "ndcg@10": 0.15411560090973309,
+          "latency_p50_ms": 18.410000018775463,
+          "latency_p95_ms": 31.502099940553308,
           "errors": 0,
           "n": 7
         },
@@ -75,8 +75,8 @@
           "ndcg@3": 0.0,
           "ndcg@5": 0.0,
           "ndcg@10": 0.0,
-          "latency_p50_ms": 25.659749982878566,
-          "latency_p95_ms": 48.35910000838339,
+          "latency_p50_ms": 20.629850041586906,
+          "latency_p95_ms": 30.935000046156347,
           "errors": 0,
           "n": 12
         },
@@ -90,8 +90,8 @@
           "ndcg@3": 0.5833333333333334,
           "ndcg@5": 0.5833333333333334,
           "ndcg@10": 0.5833333333333334,
-          "latency_p50_ms": 29.200250050053,
-          "latency_p95_ms": 44.485799968242645,
+          "latency_p50_ms": 24.026850005611777,
+          "latency_p95_ms": 42.40439995191991,
           "errors": 0,
           "n": 12
         },
@@ -105,8 +105,8 @@
           "ndcg@3": 0.7037037037037037,
           "ndcg@5": 0.7037037037037037,
           "ndcg@10": 0.7037037037037037,
-          "latency_p50_ms": 30.666799983009696,
-          "latency_p95_ms": 44.836799963377416,
+          "latency_p50_ms": 18.852300010621548,
+          "latency_p95_ms": 33.92180008813739,
           "errors": 0,
           "n": 27
         },
@@ -120,8 +120,8 @@
           "ndcg@3": 0.037037037037037035,
           "ndcg@5": 0.037037037037037035,
           "ndcg@10": 0.037037037037037035,
-          "latency_p50_ms": 38.56960008852184,
-          "latency_p95_ms": 51.352999988012016,
+          "latency_p50_ms": 23.048099945299327,
+          "latency_p95_ms": 42.5935999955982,
           "errors": 0,
           "n": 27
         },
@@ -135,8 +135,8 @@
           "ndcg@3": 0.10560463886806373,
           "ndcg@5": 0.10560463886806373,
           "ndcg@10": 0.10560463886806373,
-          "latency_p50_ms": 30.829800060018897,
-          "latency_p95_ms": 46.811899985186756,
+          "latency_p50_ms": 28.669199906289577,
+          "latency_p95_ms": 46.343700028955936,
           "errors": 0,
           "n": 11
         }
@@ -219,10 +219,8 @@
           "expected": [
             "love-in-the-moonlight"
           ],
-          "got": [
-            "when-life-gives-you-tangerines"
-          ],
-          "strategy": "FTS",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
@@ -235,7 +233,6 @@
           "got": [
             "the-lawyers-of-the-great-republic-korea",
             "lawless-lawyer",
-            "extraordinary-attorney-woo",
             "one-dollar-lawyer",
             "beyond-the-bar"
           ],
@@ -280,8 +277,6 @@
           ],
           "got": [
             "detective-mr-lee",
-            "cheo-yong",
-            "the-criminal-cheoyong-who-sees-ghosts-2",
             "less-than-evil"
           ],
           "strategy": "TRIGRAM",
@@ -519,11 +514,8 @@
           "expected": [
             "bring-it-on-ghost"
           ],
-          "got": [
-            "cheo-yong",
-            "the-criminal-cheoyong-who-sees-ghosts-2"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
@@ -822,10 +814,10 @@
           ],
           "got": [
             "romance-town",
-            "a-time-called-you",
-            "wild-romance",
             "kokdu-season-of-deity",
-            "the-legend-of-the-blue-sea"
+            "the-legend-of-the-blue-sea",
+            "wild-romance",
+            "shining-romance"
           ],
           "strategy": "FUSED",
           "error": null
@@ -839,11 +831,11 @@
             "pied-piper"
           ],
           "got": [
-            "karma",
-            "a-model-family",
-            "the-manipulated",
-            "narco-saints",
-            "gold-land"
+            "stranger",
+            "designated-survivor-60-days",
+            "inspector-koo",
+            "pandora-beneath-the-paradise",
+            "the-escape-of-the-seven"
           ],
           "strategy": "FTS",
           "error": null
@@ -934,7 +926,7 @@
             "the-good-wife",
             "the-love-in-your-eyes",
             "queen-seondeok",
-            "수상한-가족"
+            "unpredictable-family"
           ],
           "strategy": "FUSED",
           "error": null
@@ -1076,123 +1068,123 @@
     },
     "nograph": {
       "overall": {
-        "recall@1": 0.6871212121212121,
-        "recall@3": 0.7919191919191919,
-        "recall@5": 0.86010101010101,
-        "recall@10": 0.9171717171717172,
-        "mrr": 0.7735660173160173,
-        "ndcg@1": 0.7121212121212122,
-        "ndcg@3": 0.7558961185306031,
-        "ndcg@5": 0.7844535365371175,
-        "ndcg@10": 0.8047236761468303,
-        "latency_p50_ms": 117.3047999618575,
-        "latency_p95_ms": 144.9490999802947,
+        "recall@1": 0.7174242424242424,
+        "recall@3": 0.7994949494949495,
+        "recall@5": 0.8664141414141414,
+        "recall@10": 0.9247474747474748,
+        "mrr": 0.7954725829725829,
+        "ndcg@1": 0.7424242424242424,
+        "ndcg@3": 0.7744517962372724,
+        "ndcg@5": 0.8025867839134414,
+        "ndcg@10": 0.8228715832431227,
+        "latency_p50_ms": 122.43130005663261,
+        "latency_p95_ms": 170.4048999818042,
         "errors": 0,
         "n": 132
       },
       "by_class": {
         "character": {
           "recall@1": 0.9166666666666666,
-          "recall@3": 0.9166666666666666,
+          "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9333333333333332,
+          "mrr": 0.9444444444444445,
           "ndcg@1": 0.9166666666666666,
-          "ndcg@3": 0.9166666666666666,
-          "ndcg@5": 0.9489044006028785,
-          "ndcg@10": 0.9489044006028785,
-          "latency_p50_ms": 116.85135000152513,
-          "latency_p95_ms": 143.37780000641942,
+          "ndcg@3": 0.9583333333333334,
+          "ndcg@5": 0.9583333333333334,
+          "ndcg@10": 0.9583333333333334,
+          "latency_p50_ms": 118.04764997214079,
+          "latency_p95_ms": 135.55440003983676,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
           "recall@1": 0.9583333333333334,
-          "recall@3": 0.9583333333333334,
+          "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.96875,
+          "mrr": 0.9722222222222222,
           "ndcg@1": 0.9583333333333334,
-          "ndcg@3": 0.9583333333333334,
-          "ndcg@5": 0.9762781899197247,
-          "ndcg@10": 0.9762781899197247,
-          "latency_p50_ms": 114.60880003869534,
-          "latency_p95_ms": 135.32370002940297,
+          "ndcg@3": 0.9791666666666666,
+          "ndcg@5": 0.9791666666666666,
+          "ndcg@10": 0.9791666666666666,
+          "latency_p50_ms": 122.94430006295443,
+          "latency_p95_ms": 390.51679999101907,
           "errors": 0,
           "n": 24
         },
         "genre": {
-          "recall@1": 0.028571428571428574,
+          "recall@1": 0.17142857142857143,
           "recall@3": 0.17142857142857143,
-          "recall@5": 0.21904761904761902,
+          "recall@5": 0.26666666666666666,
           "recall@10": 0.2952380952380952,
-          "mrr": 0.25,
-          "ndcg@1": 0.14285714285714285,
-          "ndcg@3": 0.15717263994203057,
-          "ndcg@5": 0.16745675790651732,
-          "ndcg@10": 0.20592216506210503,
-          "latency_p50_ms": 114.17259997688234,
-          "latency_p95_ms": 124.97819995041937,
+          "mrr": 0.32142857142857145,
+          "ndcg@1": 0.2857142857142857,
+          "ndcg@3": 0.20989696086039378,
+          "ndcg@5": 0.24611562061593092,
+          "ndcg@10": 0.2614003538112543,
+          "latency_p50_ms": 123.58869996387511,
+          "latency_p95_ms": 136.21989998500794,
           "errors": 0,
           "n": 7
         },
         "multi_hop": {
-          "recall@1": 0.4166666666666667,
-          "recall@3": 0.625,
-          "recall@5": 0.7916666666666666,
-          "recall@10": 0.9166666666666666,
-          "mrr": 0.5791666666666667,
-          "ndcg@1": 0.4166666666666667,
-          "ndcg@3": 0.5473694252938036,
-          "ndcg@5": 0.6154968724027983,
-          "ndcg@10": 0.663381424396647,
-          "latency_p50_ms": 125.45844999840483,
-          "latency_p95_ms": 136.57720002811402,
+          "recall@1": 0.5,
+          "recall@3": 0.7083333333333334,
+          "recall@5": 0.9166666666666666,
+          "recall@10": 1.0,
+          "mrr": 0.6702380952380952,
+          "ndcg@1": 0.5,
+          "ndcg@3": 0.6373926928647881,
+          "ndcg@5": 0.7216346368013197,
+          "ndcg@10": 0.7494124145790974,
+          "latency_p50_ms": 120.43004995211959,
+          "latency_p95_ms": 170.4048999818042,
           "errors": 0,
           "n": 12
         },
         "ost": {
           "recall@1": 0.4166666666666667,
-          "recall@3": 0.75,
+          "recall@3": 0.5833333333333334,
           "recall@5": 0.75,
           "recall@10": 0.8333333333333334,
-          "mrr": 0.5396825396825397,
+          "mrr": 0.535515873015873,
           "ndcg@1": 0.4166666666666667,
-          "ndcg@3": 0.5833333333333334,
-          "ndcg@5": 0.5833333333333334,
-          "ndcg@10": 0.611111111111111,
-          "latency_p50_ms": 125.66195003455505,
-          "latency_p95_ms": 169.69650005921721,
+          "ndcg@3": 0.5109108127976215,
+          "ndcg@5": 0.5790382599066161,
+          "ndcg@10": 0.6068160376843937,
+          "latency_p50_ms": 127.9175000381656,
+          "latency_p95_ms": 172.63429996091872,
           "errors": 0,
           "n": 12
         },
         "person": {
           "recall@1": 0.7592592592592593,
           "recall@3": 0.8148148148148148,
-          "recall@5": 0.8518518518518519,
+          "recall@5": 0.8148148148148148,
           "recall@10": 0.9629629629629629,
-          "mrr": 0.8392416225749558,
+          "mrr": 0.8379629629629629,
           "ndcg@1": 0.8148148148148148,
           "ndcg@3": 0.8148148148148148,
-          "ndcg@5": 0.8307657984471627,
-          "ndcg@10": 0.8670104409197272,
-          "latency_p50_ms": 108.49060001783073,
-          "latency_p95_ms": 127.59209994692355,
+          "ndcg@5": 0.8148148148148148,
+          "ndcg@10": 0.8660772754855479,
+          "latency_p50_ms": 115.62319996301085,
+          "latency_p95_ms": 132.55889993160963,
           "errors": 0,
           "n": 27
         },
         "semantic_memory": {
-          "recall@1": 0.7777777777777778,
+          "recall@1": 0.8518518518518519,
           "recall@3": 0.9259259259259259,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.8580246913580247,
-          "ndcg@1": 0.7777777777777778,
-          "ndcg@3": 0.8615503521164043,
-          "ndcg@5": 0.8934523193811,
-          "ndcg@10": 0.8934523193811,
-          "latency_p50_ms": 125.80489995889366,
-          "latency_p95_ms": 157.05249994061887,
+          "mrr": 0.9012345679012346,
+          "ndcg@1": 0.8518518518518519,
+          "ndcg@3": 0.8937381390211651,
+          "ndcg@5": 0.9256401062858609,
+          "ndcg@10": 0.9256401062858609,
+          "latency_p50_ms": 134.33959998656064,
+          "latency_p95_ms": 185.54880004376173,
           "errors": 0,
           "n": 27
         },
@@ -1206,8 +1198,8 @@
           "ndcg@3": 0.531616959616076,
           "ndcg@5": 0.6016625910953889,
           "ndcg@10": 0.6489214342203176,
-          "latency_p50_ms": 81.46649994887412,
-          "latency_p95_ms": 117.78550001326948,
+          "latency_p50_ms": 89.85480002593249,
+          "latency_p95_ms": 127.66989995725453,
           "errors": 0,
           "n": 11
         }
@@ -1223,9 +1215,9 @@
           "got": [
             "three-color-fantasy",
             "mirror-of-the-witch",
-            "the-east-palace",
             "moon-embracing-the-sun",
-            "genie-make-a-wish"
+            "the-universe-s-star",
+            "the-legend-of-the-blue-sea"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1240,9 +1232,9 @@
           "got": [
             "연인-3부작",
             "fantastic",
-            "three-brothers",
             "guardian-the-lonely-and-great-god",
-            "so-i-married-an-anti-fan"
+            "three-brothers",
+            "the-k2"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1255,11 +1247,11 @@
             "love-in-the-moonlight"
           ],
           "got": [
-            "when-life-gives-you-tangerines",
-            "dear-hongrang",
             "ja-myung-go",
             "mirror-of-the-witch",
-            "kingdom-2019"
+            "sa-yug-shin",
+            "god-of-war",
+            "hur-jun-the-original-story"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1272,11 +1264,28 @@
             "the-good-wife"
           ],
           "got": [
-            "extraordinary-attorney-woo",
             "one-dollar-lawyer",
             "lawless-lawyer",
             "the-lawyers-of-the-great-republic-korea",
-            "a-new-leaf"
+            "a-new-leaf",
+            "beyond-the-bar"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q043",
+          "class": "person",
+          "query": "노희경 작가",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [
+            "the-world-that-they-live-in",
+            "adolescence-medley",
+            "fantastic",
+            "닿을-듯-말-듯",
+            "습지생태-보고서"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1293,7 +1302,7 @@
             "face-me",
             "standby",
             "by-my-side",
-            "dramaworld"
+            "made-in-u"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1306,10 +1315,10 @@
             "descendants-of-the-sun"
           ],
           "got": [
-            "can-this-love-be-translated",
             "because-this-is-my-first-life",
-            "love-to-hate-you",
             "love-rain",
+            "love-on-the-menu",
+            "listen-to-love",
             "beloved-eun-dong"
           ],
           "strategy": "hybrid",
@@ -1323,8 +1332,8 @@
             "descendants-of-the-sun"
           ],
           "got": [
-            "doctor-stranger",
             "w-two-worlds",
+            "doctor-stranger",
             "dr-romantic-2",
             "doctors",
             "poong-the-joseon-psychiatrist"
@@ -1418,7 +1427,7 @@
             "three-color-fantasy",
             "another-miss-oh",
             "romance-town",
-            "genie-make-a-wish"
+            "wild-romance"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1432,11 +1441,11 @@
             "pied-piper"
           ],
           "got": [
-            "narco-saints",
-            "shadow-detective",
-            "karma",
-            "a-model-family",
-            "gold-land"
+            "buried-hearts",
+            "stranger",
+            "designated-survivor-60-days",
+            "inspector-koo",
+            "psychopath-diary"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1451,10 +1460,10 @@
           ],
           "got": [
             "witch-s-court",
-            "honour",
-            "may-it-please-the-court",
             "lawless-lawyer",
-            "extraordinary-attorney-woo"
+            "suspicious-partner",
+            "payback-money-and-power",
+            "one-dollar-lawyer"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1470,9 +1479,9 @@
           "got": [
             "shining-romance",
             "risky-romance",
-            "실업급여-로맨스",
-            "when-life-gives-you-tangerines",
-            "wild-romance"
+            "wild-romance",
+            "로맨스-파파",
+            "romance-town"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1491,7 +1500,7 @@
             "잘-지내나요-청춘",
             "youth-of-may",
             "age-of-youth",
-            "fragile"
+            "reply-1988"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1507,45 +1516,10 @@
           ],
           "got": [
             "641-가족",
-            "수상한-가족",
-            "dandelion-family",
             "perfect-family",
-            "save-the-family"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "q164",
-          "class": "multi_hop",
-          "query": "김은숙 이응복 콤비 작품",
-          "expected": [
-            "guardian-the-lonely-and-great-god",
-            "descendants-of-the-sun"
-          ],
-          "got": [
-            "연인-3부작",
-            "sweet-home-2",
-            "guardian-the-lonely-and-great-god",
-            "entourage",
-            "reply-1988"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "q165",
-          "class": "multi_hop",
-          "query": "송중기 송혜교 같이 나온 드라마",
-          "expected": [
-            "descendants-of-the-sun"
-          ],
-          "got": [
-            "the-world-that-they-live-in",
-            "the-glory",
-            "encounter",
-            "marry-me-now",
-            "another-miss-oh"
+            "dandelion-family",
+            "save-the-family",
+            "21세기-가족"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1558,11 +1532,11 @@
             "love-in-the-moonlight"
           ],
           "got": [
-            "when-life-gives-you-tangerines",
             "mirror-of-the-witch",
             "sa-yug-shin",
-            "dear-hongrang",
-            "another-miss-oh"
+            "another-miss-oh",
+            "marry-me-now",
+            "dinner-mate"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1571,17 +1545,17 @@
     },
     "hybrid": {
       "overall": {
-        "recall@1": 0.7363636363636363,
-        "recall@3": 0.8563131313131312,
-        "recall@5": 0.9017676767676768,
+        "recall@1": 0.7666666666666667,
+        "recall@3": 0.8487373737373737,
+        "recall@5": 0.9118686868686868,
         "recall@10": 0.9323232323232323,
-        "mrr": 0.8205357142857143,
-        "ndcg@1": 0.7651515151515151,
-        "ndcg@3": 0.81417965189134,
-        "ndcg@5": 0.8332809644176928,
-        "ndcg@10": 0.84430953859292,
-        "latency_p50_ms": 122.26964998990297,
-        "latency_p95_ms": 158.4323999704793,
+        "mrr": 0.8405393217893218,
+        "ndcg@1": 0.7954545454545454,
+        "ndcg@3": 0.8255432882549764,
+        "ndcg@5": 0.8522133216740965,
+        "ndcg@10": 0.8594873651595117,
+        "latency_p50_ms": 117.71114991279319,
+        "latency_p95_ms": 146.82629995513707,
         "errors": 0,
         "n": 132
       },
@@ -1589,75 +1563,75 @@
         "character": {
           "recall@1": 0.9166666666666666,
           "recall@3": 0.9166666666666666,
-          "recall@5": 0.9166666666666666,
+          "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9285714285714285,
+          "mrr": 0.9333333333333332,
           "ndcg@1": 0.9166666666666666,
           "ndcg@3": 0.9166666666666666,
-          "ndcg@5": 0.9166666666666666,
-          "ndcg@10": 0.9444444444444445,
-          "latency_p50_ms": 117.23135004285723,
-          "latency_p95_ms": 132.751900004223,
+          "ndcg@5": 0.9489044006028785,
+          "ndcg@10": 0.9489044006028785,
+          "latency_p50_ms": 113.73114999150857,
+          "latency_p95_ms": 132.09700002335012,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
           "recall@1": 0.9583333333333334,
-          "recall@3": 0.9583333333333334,
+          "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.96875,
+          "mrr": 0.9722222222222222,
           "ndcg@1": 0.9583333333333334,
-          "ndcg@3": 0.9583333333333334,
-          "ndcg@5": 0.9762781899197247,
-          "ndcg@10": 0.9762781899197247,
-          "latency_p50_ms": 114.66645001200959,
-          "latency_p95_ms": 145.99099999759346,
+          "ndcg@3": 0.9791666666666666,
+          "ndcg@5": 0.9791666666666666,
+          "ndcg@10": 0.9791666666666666,
+          "latency_p50_ms": 115.48824998317286,
+          "latency_p95_ms": 148.5625000204891,
           "errors": 0,
           "n": 24
         },
         "genre": {
-          "recall@1": 0.028571428571428574,
+          "recall@1": 0.17142857142857143,
           "recall@3": 0.17142857142857143,
-          "recall@5": 0.21904761904761902,
+          "recall@5": 0.26666666666666666,
           "recall@10": 0.2952380952380952,
-          "mrr": 0.25,
-          "ndcg@1": 0.14285714285714285,
-          "ndcg@3": 0.15717263994203057,
-          "ndcg@5": 0.16745675790651732,
-          "ndcg@10": 0.20592216506210503,
-          "latency_p50_ms": 109.44659996312112,
-          "latency_p95_ms": 113.80390007980168,
+          "mrr": 0.32142857142857145,
+          "ndcg@1": 0.2857142857142857,
+          "ndcg@3": 0.20989696086039378,
+          "ndcg@5": 0.24611562061593092,
+          "ndcg@10": 0.2614003538112543,
+          "latency_p50_ms": 107.7056999783963,
+          "latency_p95_ms": 124.69889991916716,
           "errors": 0,
           "n": 7
         },
         "multi_hop": {
-          "recall@1": 0.875,
+          "recall@1": 0.9583333333333334,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9583333333333334,
-          "ndcg@1": 0.9166666666666666,
-          "ndcg@3": 0.9692441461309548,
-          "ndcg@5": 0.9692441461309548,
-          "ndcg@10": 0.9692441461309548,
-          "latency_p50_ms": 130.12724998407066,
-          "latency_p95_ms": 158.4323999704793,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 114.72620000131428,
+          "latency_p95_ms": 134.4222000334412,
           "errors": 0,
           "n": 12
         },
         "ost": {
           "recall@1": 0.4166666666666667,
-          "recall@3": 0.75,
+          "recall@3": 0.5833333333333334,
           "recall@5": 0.75,
           "recall@10": 0.8333333333333334,
-          "mrr": 0.5396825396825397,
+          "mrr": 0.535515873015873,
           "ndcg@1": 0.4166666666666667,
-          "ndcg@3": 0.5833333333333334,
-          "ndcg@5": 0.5833333333333334,
-          "ndcg@10": 0.611111111111111,
-          "latency_p50_ms": 116.37604999123141,
-          "latency_p95_ms": 133.9614000171423,
+          "ndcg@3": 0.5109108127976215,
+          "ndcg@5": 0.5790382599066161,
+          "ndcg@10": 0.6068160376843937,
+          "latency_p50_ms": 114.41784998169169,
+          "latency_p95_ms": 126.44599995110184,
           "errors": 0,
           "n": 12
         },
@@ -1666,28 +1640,28 @@
           "recall@3": 0.9629629629629629,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9024691358024691,
+          "mrr": 0.9166666666666666,
           "ndcg@1": 0.8518518518518519,
-          "ndcg@3": 0.9122566575396837,
-          "ndcg@5": 0.926584539289111,
-          "ndcg@10": 0.926584539289111,
-          "latency_p50_ms": 136.92630000878125,
-          "latency_p95_ms": 174.4370999513194,
+          "ndcg@3": 0.9219551578042361,
+          "ndcg@5": 0.937906141436584,
+          "ndcg@10": 0.937906141436584,
+          "latency_p50_ms": 120.36589998751879,
+          "latency_p95_ms": 132.70259997807443,
           "errors": 0,
           "n": 27
         },
         "semantic_memory": {
-          "recall@1": 0.7777777777777778,
+          "recall@1": 0.8518518518518519,
           "recall@3": 0.9259259259259259,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.8580246913580247,
-          "ndcg@1": 0.7777777777777778,
-          "ndcg@3": 0.8615503521164043,
-          "ndcg@5": 0.8934523193811,
-          "ndcg@10": 0.8934523193811,
-          "latency_p50_ms": 134.17570001911372,
-          "latency_p95_ms": 163.39870006777346,
+          "mrr": 0.9012345679012346,
+          "ndcg@1": 0.8518518518518519,
+          "ndcg@3": 0.8937381390211651,
+          "ndcg@5": 0.9256401062858609,
+          "ndcg@10": 0.9256401062858609,
+          "latency_p50_ms": 128.2790000550449,
+          "latency_p95_ms": 172.5315999938175,
           "errors": 0,
           "n": 27
         },
@@ -1701,30 +1675,13 @@
           "ndcg@3": 0.531616959616076,
           "ndcg@5": 0.6016625910953889,
           "ndcg@10": 0.6489214342203176,
-          "latency_p50_ms": 81.4764000242576,
-          "latency_p95_ms": 130.23959996644408,
+          "latency_p50_ms": 88.06460001505911,
+          "latency_p95_ms": 104.56340003293008,
           "errors": 0,
           "n": 11
         }
       },
       "failures": [
-        {
-          "id": "q061",
-          "class": "character",
-          "query": "박해영 형사",
-          "expected": [
-            "signal"
-          ],
-          "got": [
-            "detective-mr-lee",
-            "cheo-yong",
-            "the-criminal-cheoyong-who-sees-ghosts-2",
-            "my-liberation-notes",
-            "less-than-evil"
-          ],
-          "strategy": "hybrid+graph",
-          "error": null
-        },
         {
           "id": "q084",
           "class": "ost",
@@ -1737,7 +1694,7 @@
             "face-me",
             "standby",
             "by-my-side",
-            "dramaworld"
+            "made-in-u"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1750,10 +1707,10 @@
             "descendants-of-the-sun"
           ],
           "got": [
-            "can-this-love-be-translated",
             "because-this-is-my-first-life",
-            "love-to-hate-you",
             "love-rain",
+            "love-on-the-menu",
+            "listen-to-love",
             "beloved-eun-dong"
           ],
           "strategy": "hybrid",
@@ -1767,8 +1724,8 @@
             "descendants-of-the-sun"
           ],
           "got": [
-            "doctor-stranger",
             "w-two-worlds",
+            "doctor-stranger",
             "dr-romantic-2",
             "doctors",
             "poong-the-joseon-psychiatrist"
@@ -1862,7 +1819,7 @@
             "three-color-fantasy",
             "another-miss-oh",
             "romance-town",
-            "genie-make-a-wish"
+            "wild-romance"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1876,11 +1833,11 @@
             "pied-piper"
           ],
           "got": [
-            "narco-saints",
-            "shadow-detective",
-            "karma",
-            "a-model-family",
-            "gold-land"
+            "buried-hearts",
+            "stranger",
+            "designated-survivor-60-days",
+            "inspector-koo",
+            "psychopath-diary"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1895,10 +1852,10 @@
           ],
           "got": [
             "witch-s-court",
-            "honour",
-            "may-it-please-the-court",
             "lawless-lawyer",
-            "extraordinary-attorney-woo"
+            "suspicious-partner",
+            "payback-money-and-power",
+            "one-dollar-lawyer"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1914,9 +1871,9 @@
           "got": [
             "shining-romance",
             "risky-romance",
-            "실업급여-로맨스",
-            "when-life-gives-you-tangerines",
-            "wild-romance"
+            "wild-romance",
+            "로맨스-파파",
+            "romance-town"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1935,7 +1892,7 @@
             "잘-지내나요-청춘",
             "youth-of-may",
             "age-of-youth",
-            "fragile"
+            "reply-1988"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1951,10 +1908,10 @@
           ],
           "got": [
             "641-가족",
-            "수상한-가족",
-            "dandelion-family",
             "perfect-family",
-            "save-the-family"
+            "dandelion-family",
+            "save-the-family",
+            "21세기-가족"
           ],
           "strategy": "hybrid",
           "error": null

@@ -128,7 +128,7 @@ manifests/wikidata/latest.json     DRAMA + UNKNOWN 항목 (kind 포함), 날짜�
 manifests/wikidata/excluded.json   NOT_DRAMA / foreign 항목과 근거
 ```
 
-`publish_gold_catalog.retire_excluded`가 매 실행마다 `excluded.json`에 있는 이미 발행된 작품을 `HIDDEN`으로(outbox `DRAMA_HIDDEN`), 다시 manifest에 들어온 작품을 `PUBLISHED`로 되돌린다. search_document·graph 프로젝션은 PUBLISHED만 보므로 자동으로 빠진다.
+`publish_gold_catalog.retire_excluded`(publish 다음에 실행)가 매 실행마다 `excluded.json`에 있는 이미 발행된 작품을 `HIDDEN`으로(outbox `DRAMA_HIDDEN`), 다시 manifest에 들어온 작품을 `PUBLISHED`로 되돌린다. 같은 단계에서 **방송 예정작**(시작일 > 오늘, `hidden_reason='upcoming'`)과 **범위 밖 채널**(`DRAMAMEMORY_SCOPE_BROADCASTERS`, 기본 kbs,mbc,sbs,tvn,jtbc; 채널 미상 포함, `'out_of_scope'`)도 숨기고, 조건이 풀리면 자동 복귀시킨다. 손으로 숨긴 행(`hidden_reason IS NULL`)은 건드리지 않는다. search_document·graph 프로젝션은 PUBLISHED만 보므로 자동으로 빠진다.
 
 ## 구현 현황 — `synopsis_enrich_kowiki` (매일 03:00 UTC + gold.catalog)
 
