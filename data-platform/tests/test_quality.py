@@ -90,3 +90,11 @@ def test_gate_blocks_mostly_broken_batch():
     with pytest.raises(QualityGateError, match="blocking gold publish"):
         gate_batch([(1, bad), (2, bad), (3, bad), (4, bad), (5, ok)])
     gate_batch([(1, bad), (2, bad), (3, ok), (4, ok), (5, ok)])  # 40% is under the limit
+
+
+def test_non_drama_programme_is_rejected():
+    issues = check_drama(
+        _drama(program_kind="NOT_DRAMA"), known_broadcasters=BROADCASTERS, known_genres=GENRES
+    )
+    assert has_errors(issues)
+    assert any(i.code == "NOT_A_DRAMA" for i in issues)

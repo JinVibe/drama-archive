@@ -47,6 +47,8 @@ def check_drama(
         warn("NO_CREDITS", "no cast/crew credits")
 
     # Semantic rules
+    if drama.program_kind == "NOT_DRAMA":
+        err("NOT_A_DRAMA", "source classifies this as a non-drama programme (variety/reality/talk)")
     if drama.start_date and drama.end_date and drama.start_date > drama.end_date:
         err("DATE_ORDER", f"start_date {drama.start_date} after end_date {drama.end_date}")
     if drama.episode_count is not None and drama.episode_count <= 0:

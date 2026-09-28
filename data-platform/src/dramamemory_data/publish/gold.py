@@ -412,3 +412,59 @@ def publish_record(
         ),
     )
     return result
+
+
+def set_drama_status(
+    cur,
+    *,
+    source_code: str,
+    external_refs: list[str],
+    status: str,
+    reason: str | dict[str, str],
+) -> int:
+    """Move the dramas a source maps to `external_refs` into `status` (HIDDEN or
+    PUBLISHED), bumping canonical_version and writing one outbox event per row, so
+    search/graph projections drop or restore them. Rows already in `status` are
+    untouched; MERGED/DEPRECATED rows are never changed. Returns the row count."""
+    if not external_refs or status not in ("HIDDEN", "PUBLISHED"):
+        return 0
+    from_status = "PUBLISHED" if status == "HIDDEN" else "HIDDEN"
+    cur.execute(
+        """
+        WITH target AS (
+            SELECT DISTINCT d.id, m.external_ref
+            FROM drama d
+            JOIN source_entity_map m ON m.canonical_type = 'DRAMA' AND m.canonical_id = d.id
+            JOIN source_record r ON r.id = m.source_record_id
+            JOIN source s ON s.id = r.source_id
+            WHERE s.code = %s AND m.external_ref = ANY(%s) AND d.status = %s
+        )
+        UPDATE drama d
+        SET status = %s, canonical_version = canonical_version + 1, updated_at = now()
+        FROM target t
+        WHERE d.id = t.id
+        RETURNING d.id, t.external_ref
+        """,
+        (source_code, external_refs, from_status, status),
+    )
+    rows = cur.fetchall()
+    for drama_id, external_ref in rows:
+        cur.execute(
+            """
+            INSERT INTO outbox_event (aggregate_type, aggregate_id, event_type, payload)
+            VALUES ('DRAMA', %s, %s, %s::jsonb)
+            """,
+            (
+                str(drama_id),
+                "DRAMA_HIDDEN" if status == "HIDDEN" else "DRAMA_RESTORED",
+                json.dumps(
+                    {
+                        "drama_id": drama_id,
+                        "source_code": source_code,
+                        "external_ref": external_ref,
+                        "reason": reason.get(external_ref) if isinstance(reason, dict) else reason,
+                    }
+                ),
+            ),
+        )
+    return len(rows)

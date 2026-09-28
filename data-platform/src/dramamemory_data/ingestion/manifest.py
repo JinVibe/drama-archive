@@ -18,6 +18,8 @@ class ManifestItem(BaseModel):
     external_id: str = Field(min_length=1, max_length=255)
     entity_type: EntityType
     url: HttpUrl
+    # Discovery's program-kind verdict (DRAMA/UNKNOWN); informational, the parser re-derives it.
+    kind: str | None = None
 
     def as_task_arg(self) -> dict[str, str]:
         """Plain dict for Airflow XCom / dynamic task mapping."""

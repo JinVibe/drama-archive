@@ -185,3 +185,21 @@ def test_registry_and_url():
         url.startswith("https://query.wikidata.org/sparql?format=json&query=")
         and "Q24859151" in url
     )
+
+
+def test_program_kind_from_classes_and_genres():
+    series = _row(
+        "P31", "http://www.wikidata.org/entity/Q5398426", o_type="uri", label="텔레비전 시리즈"
+    )
+    assert parse(_doc(GOBLIN + [series])).program_kind == "DRAMA"
+
+    variety = [
+        _row("label", "런닝맨", lang="ko"),
+        series,
+        _row("P31", "http://www.wikidata.org/entity/Q336181", o_type="uri", label="버라이어티 쇼"),
+        _row("P136", "http://www.wikidata.org/entity/Q182415", o_type="uri", label="리얼리티 방송"),
+    ]
+    assert parse(_doc(variety)).program_kind == "NOT_DRAMA"
+
+    bare = [_row("label", "스트릿댄스 걸스 파이터", lang="ko"), series]
+    assert parse(_doc(bare)).program_kind == "UNKNOWN"

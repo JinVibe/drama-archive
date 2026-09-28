@@ -88,6 +88,9 @@ class NormalizedDrama(BaseModel):
     credits: list[NormalizedCredit] = Field(default_factory=list)
     osts: list[NormalizedSong] = Field(default_factory=list)
     links: list[NormalizedLink] = Field(default_factory=list)
+    # normalization.program_kind: sources whose classes mix variety/reality shows in
+    # with dramas set this; the quality gate rejects NOT_DRAMA.
+    program_kind: Literal["DRAMA", "NOT_DRAMA", "UNKNOWN"] = "DRAMA"
 
     @property
     def start_year(self) -> int | None:

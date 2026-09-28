@@ -107,6 +107,29 @@ current_count < previous_7d_median * 0.6
 → fail + alert
 ```
 
+## 구현 현황 — `source_discovery_wikidata` (주간)
+
+후보를 두 목록에서 모으고, 하나의 판정으로 거른다.
+
+```text
+Wikidata SPARQL  시리즈류 클래스(TV 시리즈·웹 시리즈·미니시리즈·시즌·TV 영화 …) × 제작국 한국 × 방영 시작 ≥ year_from
+kowiki 분류      분류:{연도}년 텔레비전 드라마 (2006 ~ 내년) 멤버 중 분류에 한국/한국 채널이 있는 문서 → wikibase_item
+  → 합집합 → DETAILS 배치 질의(P31 클래스, P136 장르 라벨, P495 제작국, kowiki 문서)
+  → program_kind.classify(): DRAMA / NOT_DRAMA / UNKNOWN
+  → UNKNOWN + kowiki 문서 있음 → 문서 분류 조회(50건/요청) 후 재판정
+```
+
+Wikidata의 "television series" 클래스에는 예능·리얼리티가 섞여 있어(《런닝맨》, 《스트릿댄스 걸스 파이터》) 클래스만으로는 걸러지지 않는다. 판정 신호는 `normalization/program_kind.py`에 결정적으로 적혀 있고 파서·품질 게이트도 같은 규칙을 쓴다: 사람이 관리하는 kowiki "…드라마" 분류 > Wikidata 클래스(버라이어티·토크쇼·에피소드·목록 문서는 항상 제외, 영화·만화는 시리즈 클래스가 없을 때만 제외) > 장르 라벨(드라마/스릴러/로맨스… vs 리얼리티/버라이어티/토크/음악 프로그램/다큐/경연…).
+
+출력:
+
+```text
+manifests/wikidata/latest.json     DRAMA + UNKNOWN 항목 (kind 포함), 날짜별 사본
+manifests/wikidata/excluded.json   NOT_DRAMA / foreign 항목과 근거
+```
+
+`publish_gold_catalog.retire_excluded`가 매 실행마다 `excluded.json`에 있는 이미 발행된 작품을 `HIDDEN`으로(outbox `DRAMA_HIDDEN`), 다시 manifest에 들어온 작품을 `PUBLISHED`로 되돌린다. search_document·graph 프로젝션은 PUBLISHED만 보므로 자동으로 빠진다.
+
 ---
 
 # 5. DAG: `ingest_source_records`

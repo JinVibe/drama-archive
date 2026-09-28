@@ -1,10 +1,11 @@
 """Parser for one drama's Wikidata SPARQL detail result (source `wikidata`).
 
 The raw snapshot is the JSON response of DETAIL_QUERY for a single item: one row
-per statement (dates, broadcaster, episodes, genres, cast with character and birth
-date, director, writer) plus label/alias rows. Q-ids become external ids for the
-drama and for every person, so re-ingests and cross-drama matches are
-deterministic. No synopsis: Wikidata has none.
+per statement (instance-of classes, dates, broadcaster, episodes, genres, cast with
+character and birth date, director, writer) plus label/alias rows. Classes and genre
+labels feed normalization.program_kind so variety/reality shows are rejected.
+Q-ids become external ids for the drama and for every person, so re-ingests and
+cross-drama matches are deterministic. No synopsis: Wikidata has none.
 """
 
 from __future__ import annotations
@@ -21,9 +22,10 @@ from dramamemory_data.normalization.models import (
     NormalizedDrama,
     NormalizedPerson,
 )
+from dramamemory_data.normalization.program_kind import classify
 from dramamemory_data.normalization.text import clean, normalize_key
 
-PARSER_VERSION = "wikidata_sparql/2"
+PARSER_VERSION = "wikidata_sparql/3"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
 # Statements we ask for, per item. Label/alias rows come through the UNION branches.
@@ -33,7 +35,7 @@ SELECT ?item ?p ?o ?oLabel ?charLabel ?birth ?ord ?lang WHERE {
   {
     ?item ?p ?st . ?st ?ps ?o .
     ?prop wikibase:claim ?p ; wikibase:statementProperty ?ps .
-    FILTER(?prop IN (wd:P580, wd:P582, wd:P449, wd:P1113, wd:P136, wd:P161, wd:P57, wd:P58, wd:P1476))
+    FILTER(?prop IN (wd:P31, wd:P580, wd:P582, wd:P449, wd:P1113, wd:P136, wd:P161, wd:P57, wd:P58, wd:P1476))
     OPTIONAL { ?st pq:P453 ?char }
     OPTIONAL { ?st pq:P1545 ?ord }
     OPTIONAL { ?o wdt:P569 ?birth }
@@ -48,9 +50,13 @@ SELECT ?item ?p ?o ?oLabel ?charLabel ?birth ?ord ?lang WHERE {
 
 # Wikidata broadcaster / platform items -> broadcaster.code (V5 + V12 seeds).
 BROADCASTER_BY_QID: dict[str, str] = {
-    "Q498825": "kbs", "Q624509": "kbs", "Q777278": "kbs",          # KBS, KBS2, KBS1
-    "Q482607": "mbc", "Q10854650": "mbc",                           # MBC, MBC TV
-    "Q928831": "sbs", "Q16172404": "sbs",                           # SBS, SBS TV
+    "Q498825": "kbs",  # KBS
+    "Q624509": "kbs",  # KBS2
+    "Q777278": "kbs",  # KBS1
+    "Q482607": "mbc",  # MBC
+    "Q10854650": "mbc",  # MBC TV
+    "Q928831": "sbs",  # SBS
+    "Q16172404": "sbs",  # SBS TV
     "Q213097": "jtbc",
     "Q333424": "tvn",
     "Q626419": "ocn",
@@ -175,7 +181,9 @@ def parse(body: bytes) -> NormalizedDrama:
         return None if not lab or _QID.match(lab) else lab
 
     original = [clean(v) for v in values("P1476")]
-    title_ko = clean(labels.get("ko")) or (original[0] if original else None) or clean(labels.get("en"))
+    title_ko = (
+        clean(labels.get("ko")) or (original[0] if original else None) or clean(labels.get("en"))
+    )
     if not title_ko:
         raise WikidataParseError(f"{item}: no usable title")
     title_en = clean(labels.get("en"))
@@ -204,7 +212,10 @@ def parse(body: bytes) -> NormalizedDrama:
             broadcaster_code = code
             break
 
-    genres = genre_codes([g for g in (label_of(r) for r in props.get("P136", [])) if g])
+    genre_labels = [g for g in (label_of(r) for r in props.get("P136", [])) if g]
+    genres = genre_codes(genre_labels)
+    classes = {q for q in (_qid(r["o"]["value"]) for r in props.get("P31", [])) if q}
+    program_kind, _ = classify(classes=classes, genre_labels=genre_labels)
 
     def credits_for(pid: str, credit_type: str) -> list[NormalizedCredit]:
         out: list[NormalizedCredit] = []
@@ -219,16 +230,20 @@ def parse(body: bytes) -> NormalizedDrama:
             character = clean(r.get("charLabel", {}).get("value"))
             if character and _QID.match(character):
                 character = None
-            out.append(NormalizedCredit(
-                person=NormalizedPerson(
-                    external_id=person_qid, name_ko=name, name_normalized=normalize_key(name),
-                    birth_date=_soft_date(r.get("birth", {}).get("value")),
-                ),
-                credit_type=credit_type,
-                character_name=character,
-                billing_order=int(ordinal) if ordinal and ordinal.isdigit() else None,
-                is_main_cast=bool(ordinal and ordinal.isdigit() and int(ordinal) <= 4),
-            ))
+            out.append(
+                NormalizedCredit(
+                    person=NormalizedPerson(
+                        external_id=person_qid,
+                        name_ko=name,
+                        name_normalized=normalize_key(name),
+                        birth_date=_soft_date(r.get("birth", {}).get("value")),
+                    ),
+                    credit_type=credit_type,
+                    character_name=character,
+                    billing_order=int(ordinal) if ordinal and ordinal.isdigit() else None,
+                    is_main_cast=bool(ordinal and ordinal.isdigit() and int(ordinal) <= 4),
+                )
+            )
         return out
 
     return NormalizedDrama(
@@ -242,6 +257,10 @@ def parse(body: bytes) -> NormalizedDrama:
         end_date=ends[-1] if ends else None,
         episode_count=episodes,
         genres=genres,
-        credits=[*credits_for("P161", "ACTOR"), *credits_for("P57", "DIRECTOR"),
-                 *credits_for("P58", "WRITER")],
+        credits=[
+            *credits_for("P161", "ACTOR"),
+            *credits_for("P57", "DIRECTOR"),
+            *credits_for("P58", "WRITER"),
+        ],
+        program_kind=program_kind,
     )
