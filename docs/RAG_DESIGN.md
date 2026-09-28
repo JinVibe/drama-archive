@@ -33,27 +33,39 @@ Personal    사용자 시청 기록
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 손으로 쓴 골든 132질의 / 8클래스 + 카탈로그에서 생성한 300질의 / 5클래스, lexical·no-graph·hybrid 비교 보고서 | `evals/retrieval/` |
 
-측정 (**2,416편** Wikidata 카탈로그 + 한국어 위키백과 줄거리 2,237편, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
+측정 (**2,782편** 발행 카탈로그 — Wikidata ∪ kowiki 분류 발견, 비드라마·방송 예정 제외, 줄거리 2,600여 편, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR | p50 |
 |---|---|---|---|---|
-| lexical (domain-api, FTS AND + trigram) | 0.439 | 0.467 | 0.462 | 28ms |
-| hybrid without graph (FTS AND/OR + trigram + vector, RRF) | 0.686 | 0.859 | 0.769 | 109ms |
-| **hybrid + graph list** | **0.689** | **0.881** | **0.778** | 117ms |
+| lexical (domain-api, FTS AND + trigram) | 0.439 | 0.467 | 0.462 | 31ms |
+| hybrid without graph (FTS AND/OR + trigram + 줄거리 벡터, RRF) | 0.687 | 0.860 | 0.774 | 117ms |
+| **hybrid + graph list** | **0.736** | **0.902** | **0.821** | 122ms |
 
-클래스별로 보면 그래프 리스트는 **multi_hop recall@1 0.875 → 0.958, MRR 0.959 → 1.000**, person recall@5 0.870 → 0.981. 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed 24편에만 있음), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음), `genre`(장르 태그가 Wikidata P136에 있는 작품만).
+클래스별: `semantic_memory` recall@5 **1.000**(recall@1 0.778), `person` 1.000 / MRR 0.902, `multi_hop` 1.000 / 0.958, `entity_lookup` 1.000. 그래프 리스트는 multi_hop recall@1 0.417 → 0.875, person recall@5 0.852 → 1.000 — 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed에만 있음, 0.75), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음, 0.68), `genre`(장르 태그가 P136에 있는 작품만, 0.22).
 
-**줄거리 추가 전후** (같은 골든셋, 줄거리 없는 2,347편 → 줄거리 있는 2,416편, hybrid): 전체 recall@5 0.862 → 0.881, MRR 0.778 → 0.778. `semantic_memory` recall@5 0.81 → 0.89, `ost` 0.75 → 0.83로 올랐지만 `temporal` 0.68 → 0.59(1질의), `person` without-graph 0.93 → 0.87(2질의)는 내려갔다 — 줄거리가 body(weight B)와 임베딩에 섞여 출연진·연도 신호가 희석된다. 다음 개선 후보: 줄거리를 별도 weight(C)/별도 임베딩으로 분리, reranker(DM-605).
+**벡터 리스트 실험** (같은 골든셋·카탈로그, hybrid). 줄거리를 body에 섞었을 때(2,416편 시점) `person`/`temporal`이 희석돼 V14에서 줄거리를 별도 벡터로 분리했는데, 분리 직후 측정은 오히려 recall@1 0.689 → 0.583으로 떨어졌다. 원인은 **메타데이터(제목·출연진·연도)만 담은 벡터 리스트**가 RRF에서 잡음으로 작동한 것 — 렉시컬과 그래프가 이미 그 신호를 더 정확히 낸다. 리스트 가중치(`?w=`)로 비교:
 
-**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
+| 변형 | recall@1 | recall@5 | MRR |
+|---|---|---|---|
+| 두 벡터 모두 1.0 | 0.591 | 0.860 | 0.712 |
+| 메타 벡터 0.5 | 0.614 | 0.875 | 0.730 |
+| 줄거리 벡터 0.5 | 0.583 | 0.830 | 0.696 |
+| graph 2.0 | 0.606 | 0.853 | 0.718 |
+| **메타 벡터 0 (줄거리 벡터만)** | **0.736** | **0.902** | **0.821** |
+
+→ 기본값 `AI_API_LIST_WEIGHTS=vector:0`(가중치 0인 리스트는 조회도 하지 않음). 생성 골든셋에서도 MRR 0.916 → 0.927, recall@5는 0.974 → 0.968(2질의 차, temporal)로 손해가 없었다. `embedding` 컬럼은 남겨 두되 검색에는 쓰지 않는다 — 다음 임베딩 모델 교체 때 제거 후보.
+
+**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 2,782편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR |
 |---|---|---|---|
-| lexical | 0.337 | 0.347 | 0.352 |
-| hybrid without graph | 0.675 | 0.894 | 0.813 |
-| **hybrid + graph** | **0.826** | **0.987** | **0.948** |
+| lexical | 0.331 | 0.347 | 0.349 |
+| hybrid without graph | 0.618 | 0.814 | 0.757 |
+| **hybrid + graph** | **0.806** | **0.968** | **0.927** |
 
-클래스별: multi_hop MRR 0.516 → 0.923, person 0.650 → 0.917 (graph 효과), entity_lookup 1.0, character 0.97, temporal 0.93. 줄거리 추가 전(0.699 / 0.921 / 0.846 → 0.831 / 0.991 / 0.953)보다 without-graph `person`이 0.79 → 0.73 내려갔고 hybrid는 1질의 차이 — 위와 같은 희석 효과이며 그래프 리스트가 대부분 메운다. 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
+클래스별: multi_hop MRR 0.311 → 0.903, person 0.650 → 0.890 (graph 효과), entity_lookup 0.99, character 0.96, temporal 0.89. 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
+
+**Reranker(DM-605)**: bge-reranker-v2-m3를 RRF 상위 30에 적용하면 이 CPU에서 **질의당 16~20초** — 대화형 경로에 넣을 수 없어 기본 꺼짐. 품질 측정치는 `reports/rerank-latest.json`(측정 중이면 없음) — 채택 조건은 "GPU 또는 경량 reranker로 p95 < 800ms(§16) 이면서 semantic_memory/ost recall@1 개선".
 
 이전 측정(24편, 120질의): lexical 0.554 / vector 0.914 / hybrid 0.992 recall@5 — 문서 3~24개 규모의 수치는 참고용.
 
