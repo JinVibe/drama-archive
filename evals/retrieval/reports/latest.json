@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-27T12:24:29.206881+00:00",
+  "generated_at": "2026-09-28T02:22:02.504912+00:00",
   "golden_set": "C:/Users/82108/Desktop/harness_project/drama-archive/evals/retrieval/golden_queries.jsonl",
   "n_queries": 132,
   "targets": {
     "lexical": {
       "overall": {
-        "recall@1": 0.4762626262626263,
-        "recall@3": 0.5007575757575757,
-        "recall@5": 0.5037878787878788,
-        "recall@10": 0.5037878787878788,
-        "mrr": 0.5113636363636364,
-        "ndcg@1": 0.5075757575757576,
-        "ndcg@3": 0.503626638707184,
-        "ndcg@5": 0.503626638707184,
-        "ndcg@10": 0.503626638707184,
-        "latency_p50_ms": 11.681450007017702,
-        "latency_p95_ms": 31.504299957305193,
+        "recall@1": 0.4446969696969697,
+        "recall@3": 0.46515151515151515,
+        "recall@5": 0.4727272727272727,
+        "recall@10": 0.47424242424242424,
+        "mrr": 0.4753787878787879,
+        "ndcg@1": 0.4621212121212121,
+        "ndcg@3": 0.4650601925233305,
+        "ndcg@5": 0.4668442741668887,
+        "ndcg@10": 0.46770073933172096,
+        "latency_p50_ms": 31.14760003518313,
+        "latency_p95_ms": 43.40680001769215,
         "errors": 0,
         "n": 132
       },
@@ -30,38 +30,38 @@
           "ndcg@3": 0.75,
           "ndcg@5": 0.75,
           "ndcg@10": 0.75,
-          "latency_p50_ms": 9.646400052588433,
-          "latency_p95_ms": 30.415999935939908,
+          "latency_p50_ms": 23.367949936073273,
+          "latency_p95_ms": 48.937999992631376,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
-          "recall@1": 0.9583333333333334,
-          "recall@3": 0.9583333333333334,
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9166666666666666,
           "recall@5": 0.9583333333333334,
           "recall@10": 0.9583333333333334,
-          "mrr": 0.9583333333333334,
-          "ndcg@1": 0.9583333333333334,
-          "ndcg@3": 0.9583333333333334,
-          "ndcg@5": 0.9583333333333334,
-          "ndcg@10": 0.9583333333333334,
-          "latency_p50_ms": 12.03134999377653,
-          "latency_p95_ms": 35.043600015342236,
+          "mrr": 0.9270833333333334,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9166666666666666,
+          "ndcg@5": 0.9346115232530581,
+          "ndcg@10": 0.9346115232530581,
+          "latency_p50_ms": 30.980150098912418,
+          "latency_p95_ms": 42.4252999946475,
           "errors": 0,
           "n": 24
         },
         "genre": {
-          "recall@1": 0.29047619047619044,
-          "recall@3": 0.49047619047619045,
-          "recall@5": 0.5476190476190477,
-          "recall@10": 0.5476190476190477,
-          "mrr": 0.7142857142857143,
-          "ndcg@1": 0.7142857142857143,
-          "ndcg@3": 0.5832037026840308,
-          "ndcg@5": 0.5832037026840308,
-          "ndcg@10": 0.5832037026840308,
-          "latency_p50_ms": 8.621099987067282,
-          "latency_p95_ms": 12.046299991197884,
+          "recall@1": 0.17142857142857143,
+          "recall@3": 0.24761904761904763,
+          "recall@5": 0.24761904761904763,
+          "recall@10": 0.2761904761904762,
+          "mrr": 0.5,
+          "ndcg@1": 0.42857142857142855,
+          "ndcg@3": 0.31804205507584526,
+          "ndcg@5": 0.29015951491531516,
+          "ndcg@10": 0.30631000088072546,
+          "latency_p50_ms": 27.708500041626394,
+          "latency_p95_ms": 40.17019993625581,
           "errors": 0,
           "n": 7
         },
@@ -75,23 +75,23 @@
           "ndcg@3": 0.0,
           "ndcg@5": 0.0,
           "ndcg@10": 0.0,
-          "latency_p50_ms": 9.070499974768609,
-          "latency_p95_ms": 32.19559998251498,
+          "latency_p50_ms": 30.857649981044233,
+          "latency_p95_ms": 37.87869994994253,
           "errors": 0,
           "n": 12
         },
         "ost": {
           "recall@1": 0.5833333333333334,
-          "recall@3": 0.6666666666666666,
-          "recall@5": 0.6666666666666666,
-          "recall@10": 0.6666666666666666,
-          "mrr": 0.625,
+          "recall@3": 0.5833333333333334,
+          "recall@5": 0.5833333333333334,
+          "recall@10": 0.5833333333333334,
+          "mrr": 0.5833333333333334,
           "ndcg@1": 0.5833333333333334,
-          "ndcg@3": 0.6359108127976215,
-          "ndcg@5": 0.6359108127976215,
-          "ndcg@10": 0.6359108127976215,
-          "latency_p50_ms": 9.347949991934001,
-          "latency_p95_ms": 32.206600066274405,
+          "ndcg@3": 0.5833333333333334,
+          "ndcg@5": 0.5833333333333334,
+          "ndcg@10": 0.5833333333333334,
+          "latency_p50_ms": 30.474750034045428,
+          "latency_p95_ms": 40.13029998168349,
           "errors": 0,
           "n": 12
         },
@@ -105,8 +105,8 @@
           "ndcg@3": 0.7037037037037037,
           "ndcg@5": 0.7037037037037037,
           "ndcg@10": 0.7037037037037037,
-          "latency_p50_ms": 11.974200024269521,
-          "latency_p95_ms": 30.997399939224124,
+          "latency_p50_ms": 21.771200001239777,
+          "latency_p95_ms": 39.95899995788932,
           "errors": 0,
           "n": 27
         },
@@ -120,23 +120,23 @@
           "ndcg@3": 0.037037037037037035,
           "ndcg@5": 0.037037037037037035,
           "ndcg@10": 0.037037037037037035,
-          "latency_p50_ms": 10.404999949969351,
-          "latency_p95_ms": 27.50600001309067,
+          "latency_p50_ms": 37.0699999621138,
+          "latency_p95_ms": 46.204800019040704,
           "errors": 0,
           "n": 27
         },
         "temporal": {
-          "recall@1": 0.21212121212121213,
-          "recall@3": 0.2424242424242424,
-          "recall@5": 0.2424242424242424,
-          "recall@10": 0.2424242424242424,
-          "mrr": 0.2727272727272727,
-          "ndcg@1": 0.2727272727272727,
-          "ndcg@3": 0.25139642154442016,
-          "ndcg@5": 0.25139642154442016,
-          "ndcg@10": 0.25139642154442016,
-          "latency_p50_ms": 29.778000083751976,
-          "latency_p95_ms": 31.504299957305193,
+          "recall@1": 0.0,
+          "recall@3": 0.1515151515151515,
+          "recall@5": 0.1515151515151515,
+          "recall@10": 0.1515151515151515,
+          "mrr": 0.09090909090909091,
+          "ndcg@1": 0.0,
+          "ndcg@3": 0.10560463886806373,
+          "ndcg@5": 0.10560463886806373,
+          "ndcg@10": 0.10560463886806373,
+          "latency_p50_ms": 34.6825000597164,
+          "latency_p95_ms": 40.69219995290041,
           "errors": 0,
           "n": 11
         }
@@ -160,8 +160,14 @@
           "expected": [
             "guardian-the-lonely-and-great-god"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "idol-drama-operation-team",
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -171,8 +177,10 @@
           "expected": [
             "guardian-the-lonely-and-great-god"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "three-color-fantasy"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -194,6 +202,23 @@
             "guardian-the-lonely-and-great-god",
             "cheese-in-the-trap"
           ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "q036",
+          "class": "person",
+          "query": "박보검 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
           "got": [],
           "strategy": "NONE",
           "error": null
@@ -205,8 +230,14 @@
           "expected": [
             "the-good-wife"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "the-lawyers-of-the-great-republic-korea",
+            "lawless-lawyer",
+            "extraordinary-attorney-woo",
+            "one-dollar-lawyer",
+            "beyond-the-bar"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -228,19 +259,14 @@
             "signal",
             "entourage"
           ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "q046",
-          "class": "person",
-          "query": "지창욱 윤아",
-          "expected": [
-            "the-k2"
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -250,8 +276,13 @@
           "expected": [
             "signal"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "detective-mr-lee",
+            "cheo-yong",
+            "the-criminal-cheoyong-who-sees-ghosts-2",
+            "less-than-evil"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -293,6 +324,22 @@
           "query": "스테이 위드 미 드라마",
           "expected": [
             "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "drama-stage",
+            "kbs-drama-special",
+            "kbs-drama-special-series",
+            "landscape-of-pain"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "q086",
+          "class": "ost",
+          "query": "거미 OST 사극",
+          "expected": [
+            "love-in-the-moonlight"
           ],
           "got": [],
           "strategy": "NONE",
@@ -470,8 +517,11 @@
           "expected": [
             "bring-it-on-ghost"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "cheo-yong",
+            "the-criminal-cheoyong-who-sees-ghosts-2"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -625,8 +675,14 @@
             "signal",
             "pied-piper"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "our-gap-soon",
+            "still-loving-you"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -650,10 +706,13 @@
             "mirror-of-the-witch"
           ],
           "got": [
+            "the-good-wife",
             "fantastic",
-            "age-of-youth"
+            "age-of-youth",
+            "monster-2016",
+            "good-person"
           ],
-          "strategy": "FTS",
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -664,8 +723,31 @@
             "w-two-worlds",
             "shopping-king-louie"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "monster-2016",
+            "good-person",
+            "the-good-wife",
+            "still-loving-you",
+            "our-gap-soon"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "q135",
+          "class": "temporal",
+          "query": "2016년 KBS 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [
+            "the-good-wife",
+            "jang-yeong-sil",
+            "monster-2016",
+            "good-person",
+            "our-gap-soon"
+          ],
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -675,8 +757,14 @@
           "expected": [
             "doctors"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "still-loving-you",
+            "war-of-the-roses"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -698,8 +786,14 @@
           "expected": [
             "reply-1988"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "late-night-restaurant",
+            "drama-stage",
+            "the-good-wife",
+            "the-fugitive-of-joseon",
+            "white-christmas"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
@@ -714,6 +808,45 @@
           "error": null
         },
         {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "the-legend-of-the-blue-sea",
+            "romance-town",
+            "guardian-the-lonely-and-great-god",
+            "wild-romance",
+            "another-miss-oh"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "q151",
+          "class": "genre",
+          "query": "범죄 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "voice",
+            "stranger",
+            "designated-survivor-60-days",
+            "watcher",
+            "my-name"
+          ],
+          "strategy": "FTS",
+          "error": null
+        },
+        {
           "id": "q152",
           "class": "genre",
           "query": "법정 드라마",
@@ -722,9 +855,31 @@
             "memory"
           ],
           "got": [
-            "the-good-wife"
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
           ],
-          "strategy": "FTS",
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "q153",
+          "class": "genre",
+          "query": "사극 로맨스",
+          "expected": [
+            "love-in-the-moonlight",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "mirror-of-the-witch",
+            "romance-town",
+            "wild-romance",
+            "moon-embracing-the-sun",
+            "gu-family-book"
+          ],
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -734,8 +889,14 @@
           "expected": [
             "doctors"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "jejungwon",
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "chuno"
+          ],
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -748,9 +909,13 @@
             "reply-1988"
           ],
           "got": [
-            "age-of-youth"
+            "the-good-wife",
+            "age-of-youth",
+            "queen-seondeok",
+            "first-love",
+            "lee-san-wind-of-the-palace"
           ],
-          "strategy": "FTS",
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -762,8 +927,14 @@
             "dear-my-friends",
             "memory"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "perfect-family",
+            "the-good-wife",
+            "the-love-in-your-eyes",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace"
+          ],
+          "strategy": "FUSED",
           "error": null
         },
         {
@@ -903,143 +1074,296 @@
     },
     "nograph": {
       "overall": {
-        "recall@1": 0.8954545454545455,
-        "recall@3": 0.9893939393939394,
-        "recall@5": 0.9924242424242424,
-        "recall@10": 0.9924242424242424,
-        "mrr": 0.9709595959595959,
-        "ndcg@1": 0.9545454545454546,
-        "ndcg@3": 0.9764605247023816,
-        "ndcg@5": 0.9764605247023816,
-        "ndcg@10": 0.9764605247023816,
-        "latency_p50_ms": 90.08215001085773,
-        "latency_p95_ms": 119.83769992366433,
+        "recall@1": 0.6666666666666666,
+        "recall@3": 0.7840909090909091,
+        "recall@5": 0.8472222222222222,
+        "recall@10": 0.8967171717171717,
+        "mrr": 0.7517947330447331,
+        "ndcg@1": 0.6818181818181818,
+        "ndcg@3": 0.7397182019737206,
+        "ndcg@5": 0.7672216988424969,
+        "ndcg@10": 0.7842486643110441,
+        "latency_p50_ms": 119.67914999695495,
+        "latency_p95_ms": 173.93709998577833,
         "errors": 0,
         "n": 132
       },
       "by_class": {
         "character": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9166666666666666,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 86.68939996277913,
-          "latency_p95_ms": 95.3575000166893,
+          "mrr": 0.9375,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9166666666666666,
+          "ndcg@5": 0.9525563798394495,
+          "ndcg@10": 0.9525563798394495,
+          "latency_p50_ms": 125.25635003112257,
+          "latency_p95_ms": 140.54739999119192,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9583333333333334,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 86.4633500459604,
-          "latency_p95_ms": 98.77550008241087,
+          "mrr": 0.9479166666666666,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9429554063988107,
+          "ndcg@5": 0.9609002629852021,
+          "ndcg@10": 0.9609002629852021,
+          "latency_p50_ms": 144.4002499920316,
+          "latency_p95_ms": 320.7448999164626,
           "errors": 0,
           "n": 24
         },
         "genre": {
-          "recall@1": 0.48095238095238096,
-          "recall@3": 0.9428571428571428,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 98.39820000343025,
-          "latency_p95_ms": 150.10999992955476,
+          "recall@1": 0.0,
+          "recall@3": 0.14285714285714285,
+          "recall@5": 0.19047619047619047,
+          "recall@10": 0.21904761904761902,
+          "mrr": 0.12142857142857143,
+          "ndcg@1": 0.0,
+          "ndcg@3": 0.09013282193877965,
+          "ndcg@5": 0.11900530001028645,
+          "ndcg@10": 0.1330109122719089,
+          "latency_p50_ms": 104.39879994373769,
+          "latency_p95_ms": 118.285599979572,
           "errors": 0,
           "n": 7
         },
         "multi_hop": {
-          "recall@1": 0.9583333333333334,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
+          "recall@1": 0.7083333333333334,
+          "recall@3": 0.8333333333333334,
+          "recall@5": 0.9166666666666666,
           "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 106.59604996908456,
-          "latency_p95_ms": 130.28389995452017,
+          "mrr": 0.8125,
+          "ndcg@1": 0.75,
+          "ndcg@3": 0.7849767324290156,
+          "ndcg@5": 0.8208664456017983,
+          "ndcg@10": 0.8505503778608002,
+          "latency_p50_ms": 124.8054500319995,
+          "latency_p95_ms": 160.3021000046283,
           "errors": 0,
           "n": 12
         },
         "ost": {
-          "recall@1": 0.8333333333333334,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.9027777777777778,
-          "ndcg@1": 0.8333333333333334,
-          "ndcg@3": 0.9275774794642881,
-          "ndcg@5": 0.9275774794642881,
-          "ndcg@10": 0.9275774794642881,
-          "latency_p50_ms": 83.18800001870841,
-          "latency_p95_ms": 119.83769992366433,
+          "recall@1": 0.3333333333333333,
+          "recall@3": 0.6666666666666666,
+          "recall@5": 0.75,
+          "recall@10": 0.8333333333333334,
+          "mrr": 0.5013888888888889,
+          "ndcg@1": 0.3333333333333333,
+          "ndcg@3": 0.5218216255952429,
+          "ndcg@5": 0.5577113387680257,
+          "ndcg@10": 0.5818000742945163,
+          "latency_p50_ms": 115.98109995247796,
+          "latency_p95_ms": 126.23270007316023,
           "errors": 0,
           "n": 12
         },
         "person": {
-          "recall@1": 0.9074074074074074,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.9753086419753086,
-          "ndcg@1": 0.9629629629629629,
-          "ndcg@3": 0.9814814814814815,
-          "ndcg@5": 0.9814814814814815,
-          "ndcg@10": 0.9814814814814815,
-          "latency_p50_ms": 85.53369995206594,
-          "latency_p95_ms": 115.5285999411717,
+          "recall@1": 0.7222222222222222,
+          "recall@3": 0.8148148148148148,
+          "recall@5": 0.9259259259259259,
+          "recall@10": 0.9629629629629629,
+          "mrr": 0.8028218694885362,
+          "ndcg@1": 0.7407407407407407,
+          "ndcg@3": 0.7849417186524915,
+          "ndcg@5": 0.8337859853432257,
+          "ndcg@10": 0.8461316643555713,
+          "latency_p50_ms": 113.14570007380098,
+          "latency_p95_ms": 140.79950004816055,
           "errors": 0,
           "n": 27
         },
         "semantic_memory": {
-          "recall@1": 0.8888888888888888,
-          "recall@3": 0.9629629629629629,
-          "recall@5": 0.9629629629629629,
-          "recall@10": 0.9629629629629629,
-          "mrr": 0.9259259259259259,
-          "ndcg@1": 0.8888888888888888,
-          "ndcg@3": 0.9356244261904784,
-          "ndcg@5": 0.9356244261904784,
-          "ndcg@10": 0.9356244261904784,
-          "latency_p50_ms": 95.55270010605454,
-          "latency_p95_ms": 118.31759999040514,
+          "recall@1": 0.6296296296296297,
+          "recall@3": 0.8148148148148148,
+          "recall@5": 0.8148148148148148,
+          "recall@10": 0.9259259259259259,
+          "mrr": 0.72663139329806,
+          "ndcg@1": 0.6296296296296297,
+          "ndcg@3": 0.7367699726190509,
+          "ndcg@5": 0.7367699726190509,
+          "ndcg@10": 0.7746541894255208,
+          "latency_p50_ms": 123.85410000570118,
+          "latency_p95_ms": 173.93709998577833,
           "errors": 0,
           "n": 27
         },
         "temporal": {
-          "recall@1": 0.8030303030303031,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 83.68919999338686,
-          "latency_p95_ms": 104.77380000520498,
+          "recall@1": 0.5454545454545454,
+          "recall@3": 0.5909090909090909,
+          "recall@5": 0.6818181818181818,
+          "recall@10": 0.712121212121212,
+          "mrr": 0.6659090909090909,
+          "ndcg@1": 0.6363636363636364,
+          "ndcg@3": 0.6011951993423144,
+          "ndcg@5": 0.6363636363636364,
+          "ndcg@10": 0.649821905043903,
+          "latency_p50_ms": 74.10540001001209,
+          "latency_p95_ms": 121.34800001513213,
           "errors": 0,
           "n": 11
         }
       },
       "failures": [
+        {
+          "id": "q030",
+          "class": "person",
+          "query": "공유 나온 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "big",
+            "one-fine-day",
+            "the-1st-shop-of-coffee-prince",
+            "the-trunk",
+            "the-silent-sea"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q033",
+          "class": "person",
+          "query": "김은숙 작가 판타지",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "three-color-fantasy",
+            "fantastic",
+            "i-can-hear-your-voice",
+            "tomorrow-with-you",
+            "gu-family-book"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q084",
+          "class": "ost",
+          "query": "스테이 위드 미 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "love-me",
+            "now-follow-me",
+            "face-me",
+            "mary-stayed-out-all-night",
+            "standby"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q086",
+          "class": "ost",
+          "query": "거미 OST 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [
+            "the-great-seer",
+            "the-return-of-iljimae",
+            "capital-scandal",
+            "seoul-s-sad-song",
+            "gunman-in-joseon"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q089",
+          "class": "ost",
+          "query": "다비치 This Love",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "beloved-eun-dong",
+            "can-this-love-be-translated",
+            "the-love-is-coming",
+            "love-truly",
+            "because-this-is-my-first-life"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q100",
+          "class": "semantic_memory",
+          "query": "불멸의 삶을 사는 남자와 인간 신부",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "bride-of-the-century",
+            "remarriage-desires",
+            "the-bride-of-habaek",
+            "man-who-dies-to-live",
+            "the-world-that-they-live-in"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q102",
+          "class": "semantic_memory",
+          "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [
+            "women-of-the-sun",
+            "lady-of-the-storm",
+            "ms-incognito",
+            "two-women-s-room",
+            "unknown-woman"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q104",
+          "class": "semantic_memory",
+          "query": "장기 미제 사건 수사 과거 현재",
+          "expected": [
+            "signal"
+          ],
+          "got": [
+            "special-investigation-log-case-no-1",
+            "scandal-a-shocking-and-wrongful-incident",
+            "detective-mr-lee",
+            "class-of-lies",
+            "capital-scandal"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q105",
+          "class": "semantic_memory",
+          "query": "미래가 보이는 남자 로코",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [
+            "the-innocent-man",
+            "tomorrow",
+            "boys-over-flowers",
+            "no-way-out-the-roulette",
+            "man-in-the-kitchen"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
         {
           "id": "q106",
           "class": "semantic_memory",
@@ -1049,10 +1373,212 @@
           ],
           "got": [
             "doctors",
+            "just-between-lovers",
+            "beloved-eun-dong",
+            "the-person-i-love",
+            "my-military-valentine"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q133",
+          "class": "temporal",
+          "query": "2016년 JTBC 드라마",
+          "expected": [
+            "age-of-youth",
+            "fantastic",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "code-secret-room",
+            "madame-antoine",
+            "cook-representative",
+            "ms-temper-and-nam-jung-gi",
+            "tribe-of-hip-hop"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q134",
+          "class": "temporal",
+          "query": "2016년 MBC 드라마",
+          "expected": [
+            "w-two-worlds",
+            "shopping-king-louie"
+          ],
+          "got": [
+            "one-more-happy-ending",
+            "happy-home",
+            "marriage-contract",
+            "my-little-baby",
+            "goodbye-mr-black"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q137",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러 tvN",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "signal",
+            "liar-game",
+            "oh-my-ghostess",
+            "flower-grandpa-investigation-unit",
+            "황금거탑"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q138",
+          "class": "temporal",
+          "query": "2015년 tvN 드라마",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "미생물",
+            "hogu-s-love",
+            "hot-brain-problematic-men",
+            "super-daddy-yeol",
+            "let-s-eat-2"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
             "w-two-worlds",
             "bring-it-on-ghost",
-            "the-k2",
-            "fantastic"
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "저주받은-로맨스",
+            "three-color-fantasy",
+            "risky-romance",
+            "뇌맘대로-로맨스-lr",
+            "the-villain-of-romance"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q151",
+          "class": "genre",
+          "query": "범죄 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "watcher",
+            "shadow-detective",
+            "reset",
+            "psychopath-diary",
+            "bargain"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q152",
+          "class": "genre",
+          "query": "법정 드라마",
+          "expected": [
+            "the-good-wife",
+            "memory"
+          ],
+          "got": [
+            "witch-s-court",
+            "honour",
+            "woman-with-a-suitcase",
+            "hidden",
+            "lawless-lawyer"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q153",
+          "class": "genre",
+          "query": "사극 로맨스",
+          "expected": [
+            "love-in-the-moonlight",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "risky-romance",
+            "저주받은-로맨스",
+            "haechi",
+            "wild-romance",
+            "the-villain-of-romance"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q155",
+          "class": "genre",
+          "query": "청춘 드라마",
+          "expected": [
+            "age-of-youth",
+            "cheese-in-the-trap",
+            "reply-1988"
+          ],
+          "got": [
+            "forever-young",
+            "youth-over-flowers",
+            "youth-of-may",
+            "age-of-youth",
+            "seonam-girls-high-school-investigators"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q156",
+          "class": "genre",
+          "query": "가족 드라마",
+          "expected": [
+            "reply-1988",
+            "dear-my-friends",
+            "memory"
+          ],
+          "got": [
+            "dandelion-family",
+            "perfect-family",
+            "단단한-가족",
+            "family-by-choice",
+            "21세기-가족"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q168",
+          "class": "multi_hop",
+          "query": "이성경 김고은 같이 나온 드라마",
+          "expected": [
+            "cheese-in-the-trap"
+          ],
+          "got": [
+            "weightlifting-fairy-kim-bok-joo",
+            "you-and-everything-else",
+            "little-women",
+            "dinner-mate",
+            "yumi-s-cells"
           ],
           "strategy": "hybrid",
           "error": null
@@ -1061,63 +1587,63 @@
     },
     "hybrid": {
       "overall": {
-        "recall@1": 0.8954545454545455,
-        "recall@3": 0.9893939393939394,
-        "recall@5": 0.9924242424242424,
-        "recall@10": 0.9924242424242424,
-        "mrr": 0.9722222222222223,
-        "ndcg@1": 0.9545454545454546,
-        "ndcg@3": 0.9774524167748927,
-        "ndcg@5": 0.9774524167748927,
-        "ndcg@10": 0.9774524167748927,
-        "latency_p50_ms": 101.15974996006116,
-        "latency_p95_ms": 138.02660000510514,
+        "recall@1": 0.6893939393939394,
+        "recall@3": 0.821969696969697,
+        "recall@5": 0.8623737373737373,
+        "recall@10": 0.9042929292929293,
+        "mrr": 0.7776785714285714,
+        "ndcg@1": 0.7045454545454546,
+        "ndcg@3": 0.7745969764065815,
+        "ndcg@5": 0.7923123696827808,
+        "ndcg@10": 0.806640795855055,
+        "latency_p50_ms": 126.3992500025779,
+        "latency_p95_ms": 184.3620000872761,
         "errors": 0,
         "n": 132
       },
       "by_class": {
         "character": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9166666666666666,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 89.5035500288941,
-          "latency_p95_ms": 114.35799999162555,
+          "mrr": 0.9333333333333332,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9166666666666666,
+          "ndcg@5": 0.9489044006028785,
+          "ndcg@10": 0.9489044006028785,
+          "latency_p50_ms": 133.90889996662736,
+          "latency_p95_ms": 172.9086999548599,
           "errors": 0,
           "n": 12
         },
         "entity_lookup": {
-          "recall@1": 1.0,
-          "recall@3": 1.0,
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9583333333333334,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 92.3863000352867,
-          "latency_p95_ms": 110.58390000835061,
+          "mrr": 0.9479166666666666,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9429554063988107,
+          "ndcg@5": 0.9609002629852021,
+          "ndcg@10": 0.9609002629852021,
+          "latency_p50_ms": 125.09684998076409,
+          "latency_p95_ms": 169.80160004459321,
           "errors": 0,
           "n": 24
         },
         "genre": {
-          "recall@1": 0.48095238095238096,
-          "recall@3": 0.9428571428571428,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 93.32379989791662,
-          "latency_p95_ms": 101.05549998115748,
+          "recall@1": 0.0,
+          "recall@3": 0.14285714285714285,
+          "recall@5": 0.19047619047619047,
+          "recall@10": 0.21904761904761902,
+          "mrr": 0.12142857142857143,
+          "ndcg@1": 0.0,
+          "ndcg@3": 0.09013282193877965,
+          "ndcg@5": 0.11900530001028645,
+          "ndcg@10": 0.1330109122719089,
+          "latency_p50_ms": 107.20850003417581,
+          "latency_p95_ms": 126.78880000021309,
           "errors": 0,
           "n": 7
         },
@@ -1131,73 +1657,209 @@
           "ndcg@3": 1.0,
           "ndcg@5": 1.0,
           "ndcg@10": 1.0,
-          "latency_p50_ms": 117.47679999098182,
-          "latency_p95_ms": 138.79900006577373,
+          "latency_p50_ms": 137.46250001713634,
+          "latency_p95_ms": 202.27290003094822,
           "errors": 0,
           "n": 12
         },
         "ost": {
-          "recall@1": 0.8333333333333334,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 0.9027777777777778,
-          "ndcg@1": 0.8333333333333334,
-          "ndcg@3": 0.9275774794642881,
-          "ndcg@5": 0.9275774794642881,
-          "ndcg@10": 0.9275774794642881,
-          "latency_p50_ms": 93.14595005707815,
-          "latency_p95_ms": 109.35829998925328,
+          "recall@1": 0.25,
+          "recall@3": 0.6666666666666666,
+          "recall@5": 0.75,
+          "recall@10": 0.8333333333333334,
+          "mrr": 0.4597222222222222,
+          "ndcg@1": 0.25,
+          "ndcg@3": 0.4910657717261977,
+          "ndcg@5": 0.5269554848989805,
+          "ndcg@10": 0.5510442204254712,
+          "latency_p50_ms": 133.63999995635822,
+          "latency_p95_ms": 247.65699997078627,
           "errors": 0,
           "n": 12
         },
         "person": {
-          "recall@1": 0.9074074074074074,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
+          "recall@1": 0.7592592592592593,
+          "recall@3": 0.9259259259259259,
+          "recall@5": 0.9629629629629629,
           "recall@10": 1.0,
-          "mrr": 0.9814814814814815,
-          "ndcg@1": 0.9629629629629629,
-          "ndcg@3": 0.9863307316137577,
-          "ndcg@5": 0.9863307316137577,
-          "ndcg@10": 0.9863307316137577,
-          "latency_p50_ms": 114.01839996688068,
-          "latency_p95_ms": 162.47740003746003,
+          "mrr": 0.8664021164021164,
+          "ndcg@1": 0.7777777777777778,
+          "ndcg@3": 0.8735635431233942,
+          "ndcg@5": 0.8921289444323529,
+          "ndcg@10": 0.9044746234446988,
+          "latency_p50_ms": 127.22659995779395,
+          "latency_p95_ms": 184.3620000872761,
           "errors": 0,
           "n": 27
         },
         "semantic_memory": {
-          "recall@1": 0.8888888888888888,
-          "recall@3": 0.9629629629629629,
-          "recall@5": 0.9629629629629629,
-          "recall@10": 0.9629629629629629,
-          "mrr": 0.9259259259259259,
-          "ndcg@1": 0.8888888888888888,
-          "ndcg@3": 0.9356244261904784,
-          "ndcg@5": 0.9356244261904784,
-          "ndcg@10": 0.9356244261904784,
-          "latency_p50_ms": 102.1377999568358,
-          "latency_p95_ms": 138.02660000510514,
+          "recall@1": 0.6296296296296297,
+          "recall@3": 0.8148148148148148,
+          "recall@5": 0.8148148148148148,
+          "recall@10": 0.9259259259259259,
+          "mrr": 0.72663139329806,
+          "ndcg@1": 0.6296296296296297,
+          "ndcg@3": 0.7367699726190509,
+          "ndcg@5": 0.7367699726190509,
+          "ndcg@10": 0.7746541894255208,
+          "latency_p50_ms": 127.28250003419816,
+          "latency_p95_ms": 169.23170001246035,
           "errors": 0,
           "n": 27
         },
         "temporal": {
-          "recall@1": 0.8030303030303031,
-          "recall@3": 1.0,
-          "recall@5": 1.0,
-          "recall@10": 1.0,
-          "mrr": 1.0,
-          "ndcg@1": 1.0,
-          "ndcg@3": 1.0,
-          "ndcg@5": 1.0,
-          "ndcg@10": 1.0,
-          "latency_p50_ms": 91.21439990121871,
-          "latency_p95_ms": 121.84580008033663,
+          "recall@1": 0.5454545454545454,
+          "recall@3": 0.5909090909090909,
+          "recall@5": 0.6818181818181818,
+          "recall@10": 0.712121212121212,
+          "mrr": 0.6659090909090909,
+          "ndcg@1": 0.6363636363636364,
+          "ndcg@3": 0.6011951993423144,
+          "ndcg@5": 0.6363636363636364,
+          "ndcg@10": 0.649821905043903,
+          "latency_p50_ms": 86.24809992033988,
+          "latency_p95_ms": 111.01579992100596,
           "errors": 0,
           "n": 11
         }
       },
       "failures": [
+        {
+          "id": "q030",
+          "class": "person",
+          "query": "공유 나온 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "big",
+            "one-fine-day",
+            "the-trunk",
+            "the-1st-shop-of-coffee-prince",
+            "the-silent-sea"
+          ],
+          "strategy": "hybrid+graph",
+          "error": null
+        },
+        {
+          "id": "q084",
+          "class": "ost",
+          "query": "스테이 위드 미 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "love-me",
+            "now-follow-me",
+            "face-me",
+            "mary-stayed-out-all-night",
+            "standby"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q086",
+          "class": "ost",
+          "query": "거미 OST 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [
+            "the-great-seer",
+            "the-return-of-iljimae",
+            "capital-scandal",
+            "seoul-s-sad-song",
+            "gunman-in-joseon"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q089",
+          "class": "ost",
+          "query": "다비치 This Love",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "beloved-eun-dong",
+            "can-this-love-be-translated",
+            "the-love-is-coming",
+            "love-truly",
+            "because-this-is-my-first-life"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q100",
+          "class": "semantic_memory",
+          "query": "불멸의 삶을 사는 남자와 인간 신부",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "bride-of-the-century",
+            "remarriage-desires",
+            "the-bride-of-habaek",
+            "man-who-dies-to-live",
+            "the-world-that-they-live-in"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q102",
+          "class": "semantic_memory",
+          "query": "같은 이름 여자 둘이 나오는 로맨틱 코미디",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [
+            "women-of-the-sun",
+            "lady-of-the-storm",
+            "ms-incognito",
+            "two-women-s-room",
+            "unknown-woman"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q104",
+          "class": "semantic_memory",
+          "query": "장기 미제 사건 수사 과거 현재",
+          "expected": [
+            "signal"
+          ],
+          "got": [
+            "special-investigation-log-case-no-1",
+            "scandal-a-shocking-and-wrongful-incident",
+            "detective-mr-lee",
+            "class-of-lies",
+            "capital-scandal"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q105",
+          "class": "semantic_memory",
+          "query": "미래가 보이는 남자 로코",
+          "expected": [
+            "another-miss-oh"
+          ],
+          "got": [
+            "the-innocent-man",
+            "tomorrow",
+            "boys-over-flowers",
+            "no-way-out-the-roulette",
+            "man-in-the-kitchen"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
         {
           "id": "q106",
           "class": "semantic_memory",
@@ -1207,10 +1869,195 @@
           ],
           "got": [
             "doctors",
+            "just-between-lovers",
+            "beloved-eun-dong",
+            "the-person-i-love",
+            "my-military-valentine"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q133",
+          "class": "temporal",
+          "query": "2016년 JTBC 드라마",
+          "expected": [
+            "age-of-youth",
+            "fantastic",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "code-secret-room",
+            "madame-antoine",
+            "cook-representative",
+            "ms-temper-and-nam-jung-gi",
+            "tribe-of-hip-hop"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q134",
+          "class": "temporal",
+          "query": "2016년 MBC 드라마",
+          "expected": [
+            "w-two-worlds",
+            "shopping-king-louie"
+          ],
+          "got": [
+            "one-more-happy-ending",
+            "happy-home",
+            "marriage-contract",
+            "my-little-baby",
+            "goodbye-mr-black"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q137",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러 tvN",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "signal",
+            "liar-game",
+            "oh-my-ghostess",
+            "flower-grandpa-investigation-unit",
+            "황금거탑"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q138",
+          "class": "temporal",
+          "query": "2015년 tvN 드라마",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "미생물",
+            "hogu-s-love",
+            "hot-brain-problematic-men",
+            "super-daddy-yeol",
+            "let-s-eat-2"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
             "w-two-worlds",
             "bring-it-on-ghost",
-            "the-k2",
-            "fantastic"
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "저주받은-로맨스",
+            "three-color-fantasy",
+            "risky-romance",
+            "뇌맘대로-로맨스-lr",
+            "the-villain-of-romance"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q151",
+          "class": "genre",
+          "query": "범죄 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "watcher",
+            "shadow-detective",
+            "reset",
+            "psychopath-diary",
+            "bargain"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q152",
+          "class": "genre",
+          "query": "법정 드라마",
+          "expected": [
+            "the-good-wife",
+            "memory"
+          ],
+          "got": [
+            "witch-s-court",
+            "honour",
+            "woman-with-a-suitcase",
+            "hidden",
+            "lawless-lawyer"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q153",
+          "class": "genre",
+          "query": "사극 로맨스",
+          "expected": [
+            "love-in-the-moonlight",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "risky-romance",
+            "저주받은-로맨스",
+            "haechi",
+            "wild-romance",
+            "the-villain-of-romance"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q155",
+          "class": "genre",
+          "query": "청춘 드라마",
+          "expected": [
+            "age-of-youth",
+            "cheese-in-the-trap",
+            "reply-1988"
+          ],
+          "got": [
+            "forever-young",
+            "youth-over-flowers",
+            "youth-of-may",
+            "age-of-youth",
+            "seonam-girls-high-school-investigators"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q156",
+          "class": "genre",
+          "query": "가족 드라마",
+          "expected": [
+            "reply-1988",
+            "dear-my-friends",
+            "memory"
+          ],
+          "got": [
+            "dandelion-family",
+            "perfect-family",
+            "단단한-가족",
+            "family-by-choice",
+            "21세기-가족"
           ],
           "strategy": "hybrid",
           "error": null

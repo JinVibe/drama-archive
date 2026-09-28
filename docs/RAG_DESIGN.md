@@ -33,13 +33,17 @@ Personal    사용자 시청 기록
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 골든 37 질의 / 7 클래스, lexical·vector·hybrid 비교 보고서 | `evals/retrieval/` |
 
-측정 (24편 카탈로그, 골든 120질의 / 7클래스, `evals/retrieval/reports/latest.json`):
+측정 (**2,347편** Wikidata 카탈로그, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR | p50 |
 |---|---|---|---|---|
-| lexical (domain-api, FTS AND + trigram) | 0.524 | 0.554 | 0.562 | 10ms |
-| vector only (BGE-M3) | 0.754 | 0.914 | 0.861 | 70ms |
-| **hybrid (FTS AND + FTS OR + trigram + vector, RRF)** | **0.889** | **0.992** | **0.968** | 80ms |
+| lexical (domain-api, FTS AND + trigram) | 0.445 | 0.473 | 0.475 | 31ms |
+| hybrid without graph (FTS AND/OR + trigram + vector, RRF) | 0.667 | 0.847 | 0.752 | 120ms |
+| **hybrid + graph list** | **0.689** | **0.862** | **0.778** | 126ms |
+
+클래스별로 보면 그래프 리스트는 **multi_hop recall@1 0.708 → 0.958, MRR 0.812 → 1.000**, person MRR 0.803 → 0.866. 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed 24편에만 있음), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음), `semantic_memory`(Wikidata엔 줄거리가 없어 벡터가 출연진·장르만 봄). 다음 개선 후보: 줄거리 소스 확보, reranker(DM-605).
+
+이전 측정(24편, 120질의): lexical 0.554 / vector 0.914 / hybrid 0.992 recall@5 — 문서 3~24개 규모의 수치는 참고용.
 
 평가가 잡아낸 결함과 수정: ① 제목 속 숫자(`응답하라 1988`, `88년 쌍문동`)를 연도 필터로 오해 → 조건으로 0건이면 **조건을 풀고 재검색**(`relaxed`) ② `노희경 작가`처럼 문서에 없는 단어 하나로 AND-FTS 전체 실패 → **OR-FTS 리스트** 추가. 남은 실패 1건(`군인이랑 의사가 전쟁터에서 사랑하는 드라마` → 닥터스 우선)은 reranker(DM-605) 후보. 카탈로그 확대 시 골든셋 200+로 재측정.
 

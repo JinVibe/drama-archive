@@ -27,7 +27,7 @@ Neo4j는 이 관계를 빠르게 탐색하기 위한 derived graph read model로
 | RAG §5.4 graph retrieval | 질의 속 인물명 → 출연작/공동출연작을 RRF 리스트 `graph`로 결합 | `apps/ai-api/src/ai_api/retrieval/graph_candidates.py` |
 | §9 collaboration score, §10-§12 GraphRAG/community/vector | 미구현 | — |
 
-**측정 (24편, 골든 132질의, `evals/retrieval/reports/latest.json`)**: retrieval에 graph 리스트를 더한 효과는 현재 카탈로그에서 **유의미하지 않다** — `multi_hop` 12질의는 graph 없이도 recall@5 1.0(OR-FTS와 vector가 "두 이름이 한 문서에" 있는 경우를 이미 잡음), 전체 MRR 0.971 → 0.972, person MRR 0.975 → 0.981, 대신 p50 +11ms. graph 탐색 API(작품 이웃·공동출연자)는 UI 가치가 있어 유지하지만, **retrieval의 graph 리스트는 카탈로그 확대 후(배우당 출연작 다수) 재측정에서 multi_hop을 개선하지 못하면 제거한다** (README 원칙 9). 이 실험이 정직하게 남긴 결론이다.
+**측정**: 24편 카탈로그에서는 retrieval의 graph 리스트가 효과가 없었다(multi_hop이 graph 없이도 recall@5 1.0, MRR 0.971 → 0.972). 그래서 "카탈로그 확대 후 multi_hop을 개선하지 못하면 제거"를 조건으로 남겼고, **2,347편(Wikidata)으로 확대한 뒤 재측정에서 조건이 충족됐다**: multi_hop recall@1 0.708 → 0.958, MRR 0.812 → 1.000, person MRR 0.803 → 0.866 (+6ms). 배우당 출연작이 많아지면 "두 사람이 함께 나온 작품"은 텍스트 검색이 못 고르는 질문이 된다. graph 리스트는 유지한다. 그래프 규모: Drama 2,347 · Person 2,340 · ACTED_IN 5,569, 재생성 DAG 멱등.
 
 ---
 
