@@ -81,6 +81,19 @@ def test_constraints_become_filters_and_stripped_text():
     assert filters == {"year_from": 2016, "year_to": 2016, "broadcaster": "tvn"}
 
 
+def test_explicit_filters_override_the_text():
+    store = FakeStore()
+    res = _retriever(store).search("2016년 공유", year_from=2018, year_to=2019, broadcaster="KBS")
+    _, text, filters = store.calls[0]
+    assert text == "공유"
+    assert filters == {"year_from": 2018, "year_to": 2019, "broadcaster": "kbs"}
+    assert res.plan.signals["explicit"] == "broadcaster,year_from,year_to"
+    # a single bound fills the other side so the window is well-formed
+    store = FakeStore()
+    _retriever(store).search("공유", year_from=2010)
+    assert store.calls[0][2] == {"year_from": 2010, "year_to": 2010, "broadcaster": None}
+
+
 def test_modes_skip_retrievers():
     store = FakeStore()
     res = _retriever(store).search("공유", use_vector=False)

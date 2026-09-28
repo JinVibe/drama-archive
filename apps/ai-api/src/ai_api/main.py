@@ -142,14 +142,20 @@ def search(
     q: str = Query(min_length=1, max_length=300),
     size: int = Query(10, ge=1, le=50),
     mode: str = Query("hybrid", pattern="^(hybrid|lexical|vector|nograph)$"),
+    year_from: int | None = Query(None, ge=1950, le=2100),
+    year_to: int | None = Query(None, ge=1950, le=2100),
+    broadcaster: str | None = Query(None, max_length=40, pattern="^[a-z0-9_]+$"),
     r: HybridRetriever = Depends(retriever),
 ) -> SearchOut:
     """Retrieval only (no generation): ranked dramas with evidence per retriever.
-    `mode` exists for evaluation: lexical / vector / nograph (lexical+vector) / hybrid (all)."""
+    `mode` exists for evaluation: lexical / vector / nograph (lexical+vector) / hybrid (all).
+    Explicit `year_from`/`year_to`/`broadcaster` override what the query text implies
+    (structured callers such as the MCP server)."""
     result = r.search(
         q, limit=size,
         use_vector=mode != "lexical", use_lexical=mode != "vector",
         use_graph=mode == "hybrid",
+        year_from=year_from, year_to=year_to, broadcaster=broadcaster,
     )
     return _to_out(result)
 

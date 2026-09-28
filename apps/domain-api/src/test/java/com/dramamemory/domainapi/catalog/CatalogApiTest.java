@@ -178,6 +178,22 @@ class CatalogApiTest {
     }
 
     @Test
+    void by_id_lookups_follow_the_slug_rules() throws Exception {
+        mvc.perform(get("/api/v1/dramas/by-id/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.slug").value("goblin"));
+        mvc.perform(get("/api/v1/dramas/by-id/3")).andExpect(status().isNotFound());   // hidden
+        mvc.perform(get("/api/v1/dramas/by-id/4"))                                       // merged
+                .andExpect(status().isMovedPermanently())
+                .andExpect(header().string("Location", endsWith("/api/v1/dramas/goblin")));
+        mvc.perform(get("/api/v1/dramas/by-id/999")).andExpect(status().isNotFound());
+        mvc.perform(get("/api/v1/persons/by-id/2"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.slug").value("kim-eun-sook"));
+        mvc.perform(get("/api/v1/persons/by-id/999")).andExpect(status().isNotFound());
+    }
+
+    @Test
     void person_detail_has_filmography_newest_first() throws Exception {
         mvc.perform(get("/api/v1/persons/kim-eun-sook"))
                 .andExpect(status().isOk())

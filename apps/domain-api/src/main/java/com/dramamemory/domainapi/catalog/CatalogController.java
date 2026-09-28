@@ -55,8 +55,19 @@ public class CatalogController {
         return catalog.dramaBySlug(slug);
     }
 
+    /** Id-based lookup for machine clients (MCP tools carry drama_id, not slugs). */
+    @GetMapping("/dramas/by-id/{id}")
+    public DramaDetail dramaById(@PathVariable @Min(1) long id) {
+        return catalog.dramaById(id);
+    }
+
     @GetMapping("/persons/{slug}")
     public PersonDetail person(@PathVariable String slug) {
         return catalog.personBySlug(slug);
+    }
+
+    @GetMapping("/persons/by-id/{id}")
+    public PersonDetail personById(@PathVariable @Min(1) long id) {
+        return catalog.personById(id);
     }
 }

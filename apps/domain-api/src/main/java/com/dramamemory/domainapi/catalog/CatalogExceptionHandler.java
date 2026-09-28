@@ -21,8 +21,9 @@ public class CatalogExceptionHandler {
     ResponseEntity<Void> merged(MergedException e) {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .replacePath(null)
+                // /dramas/{slug} and /dramas/by-id/{id} both redirect to /dramas/{survivor}
                 .path(ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath()
-                        .replaceFirst("/[^/]+$", "/" + e.targetSlug()))
+                        .replaceFirst("(/by-id)?/[^/]+$", "/" + e.targetSlug()))
                 .build()
                 .toUri();
         return ResponseEntity.status(HttpStatus.MOVED_PERMANENTLY).location(location).build();

@@ -113,6 +113,25 @@ public class CatalogRepository {
 
     // ------------------------------------------------------------------ drama detail
 
+    /** Same rules as {@link #dramaBySlug}: MERGED redirects, only PUBLISHED is visible. */
+    public DramaDetail dramaById(long id) {
+        String slug = jdbc.sql("SELECT slug FROM drama WHERE id = :id")
+                .param("id", id)
+                .query(String.class)
+                .optional()
+                .orElseThrow(() -> new NotFoundException("drama", Long.toString(id)));
+        return dramaBySlug(slug);
+    }
+
+    public PersonDetail personById(long id) {
+        String slug = jdbc.sql("SELECT slug FROM person WHERE id = :id")
+                .param("id", id)
+                .query(String.class)
+                .optional()
+                .orElseThrow(() -> new NotFoundException("person", Long.toString(id)));
+        return personBySlug(slug);
+    }
+
     public DramaDetail dramaBySlug(String slug) {
         record Head(long id, String status, Long mergedIntoId) {}
         Head head = jdbc.sql("SELECT id, status, merged_into_id FROM drama WHERE slug = :slug")

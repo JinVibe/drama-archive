@@ -187,6 +187,25 @@ services:
       retries: 40
       start_period: 120s
 
+  mcp-server:
+    build: ./apps/mcp-server
+    environment:
+      MCP_DOMAIN_API_URL: http://domain-api:8081
+      MCP_AI_API_URL: http://ai-api:8090
+      MCP_WEB_BASE_URL: ${WEB_BASE_URL:-http://localhost:3000}
+    ports:
+      - "${MCP_PORT:-8100}:8100"
+    depends_on:
+      domain-api:
+        condition: service_healthy
+      ai-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://localhost:8100/health')\" || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
   web:
     build: ./apps/web
     environment:

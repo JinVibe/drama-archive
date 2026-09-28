@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import logging
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any
 
 from ai_api.embedder import Embedder
@@ -60,8 +60,10 @@ class HybridRetriever:
         self.retrieval_version = retrieval_version
 
     def search(self, query: str, limit: int = 10, *, use_vector: bool = True,
-               use_lexical: bool = True, use_graph: bool = True) -> SearchResult:
-        plan = analyze(query)
+               use_lexical: bool = True, use_graph: bool = True,
+               year_from: int | None = None, year_to: int | None = None,
+               broadcaster: str | None = None) -> SearchResult:
+        plan = _with_overrides(analyze(query), year_from, year_to, broadcaster)
         lists: dict[str, list] = {}
         latency: dict[str, int] = {}
         relaxed = False
@@ -103,7 +105,9 @@ class HybridRetriever:
         # drop the constraints and try once more with the plain text.
         if not any(lists.values()) and plan.has_constraints and plan.text:
             lists.clear()
-            plan = analyze(query, extract_constraints=False)
+            plan = _with_overrides(
+                analyze(query, extract_constraints=False), year_from, year_to, broadcaster
+            )
             relaxed = True
             gather(plan)
 
@@ -132,6 +136,20 @@ class HybridRetriever:
             return [], match
         id_map = self.store.doc_ids_for_dramas([int(d["id"]) for d in match.dramas])
         return graph_candidates(self.graph, text, doc_id_by_drama=id_map, limit=self.candidates)
+
+
+def _with_overrides(plan: QueryPlan, year_from: int | None, year_to: int | None,
+                    broadcaster: str | None) -> QueryPlan:
+    """Explicit filters (API params, MCP tool arguments) win over what the text implied."""
+    if year_from is None and year_to is None and broadcaster is None:
+        return plan
+    changes: dict[str, Any] = {}
+    if year_from is not None or year_to is not None:
+        changes["year_from"] = year_from if year_from is not None else year_to
+        changes["year_to"] = year_to if year_to is not None else year_from
+    if broadcaster:
+        changes["broadcaster"] = broadcaster.lower()
+    return replace(plan, signals={**plan.signals, "explicit": ",".join(sorted(changes))}, **changes)
 
 
 def _strategy(lists: dict[str, list]) -> str:

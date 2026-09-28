@@ -1,0 +1,40 @@
+[project]
+name = "dramamemory-mcp-server"
+version = "0.1.0"
+description = "DramaMemory remote MCP server: catalog/search/graph tools, resources and prompts for AI clients (docs/MCP_SPEC.md)"
+requires-python = ">=3.12"
+dependencies = [
+    # Python SDK v2 (MCPServer, streamable HTTP, stateless mode). v1's FastMCP API differs.
+    "mcp>=2.2,<3",
+    "httpx>=0.28",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.6",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
