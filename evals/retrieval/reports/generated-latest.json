@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-09-28T02:52:46.895971+00:00",
+  "generated_at": "2026-09-28T03:15:57.594623+00:00",
   "golden_set": "evals/retrieval/golden_generated.jsonl",
   "n_queries": 300,
   "targets": {
     "lexical": {
       "overall": {
         "recall@1": 0.33694444444444444,
-        "recall@3": 0.34027777777777773,
-        "recall@5": 0.34027777777777773,
-        "recall@10": 0.34027777777777773,
-        "mrr": 0.34833333333333333,
+        "recall@3": 0.34694444444444444,
+        "recall@5": 0.34694444444444444,
+        "recall@10": 0.34694444444444444,
+        "mrr": 0.3516666666666667,
         "ndcg@1": 0.3466666666666667,
-        "ndcg@3": 0.3413630959463778,
-        "ndcg@5": 0.34110010035960897,
-        "ndcg@10": 0.34110010035960897,
-        "latency_p50_ms": 28.553550015203655,
-        "latency_p95_ms": 47.67380002886057,
+        "ndcg@3": 0.34556929430352085,
+        "ndcg@5": 0.345306298716752,
+        "ndcg@10": 0.345306298716752,
+        "latency_p50_ms": 31.367600022349507,
+        "latency_p95_ms": 47.0111999893561,
         "errors": 0,
         "n": 300
       },
@@ -30,8 +30,8 @@
           "ndcg@3": 0.6166666666666667,
           "ndcg@5": 0.6166666666666667,
           "ndcg@10": 0.6166666666666667,
-          "latency_p50_ms": 26.493700046557933,
-          "latency_p95_ms": 46.081600012257695,
+          "latency_p50_ms": 30.67554993322119,
+          "latency_p95_ms": 44.98030000831932,
           "errors": 0,
           "n": 60
         },
@@ -45,8 +45,8 @@
           "ndcg@3": 0.993848829226191,
           "ndcg@5": 0.993848829226191,
           "ndcg@10": 0.993848829226191,
-          "latency_p50_ms": 27.93635003035888,
-          "latency_p95_ms": 48.14329999499023,
+          "latency_p50_ms": 24.78085004258901,
+          "latency_p95_ms": 45.68860004656017,
           "errors": 0,
           "n": 60
         },
@@ -60,8 +60,8 @@
           "ndcg@3": 0.0,
           "ndcg@5": 0.0,
           "ndcg@10": 0.0,
-          "latency_p50_ms": 30.290600028820336,
-          "latency_p95_ms": 49.03670004568994,
+          "latency_p50_ms": 39.86949997488409,
+          "latency_p95_ms": 47.0111999893561,
           "errors": 0,
           "n": 60
         },
@@ -75,23 +75,23 @@
           "ndcg@3": 0.053771573092181946,
           "ndcg@5": 0.053771573092181946,
           "ndcg@10": 0.053771573092181946,
-          "latency_p50_ms": 25.17295000143349,
-          "latency_p95_ms": 44.785199919715524,
+          "latency_p50_ms": 23.057050013449043,
+          "latency_p95_ms": 43.163999915122986,
           "errors": 0,
           "n": 60
         },
         "temporal": {
           "recall@1": 0.034722222222222224,
-          "recall@3": 0.034722222222222224,
-          "recall@5": 0.034722222222222224,
-          "recall@10": 0.034722222222222224,
-          "mrr": 0.06666666666666667,
+          "recall@3": 0.06805555555555555,
+          "recall@5": 0.06805555555555555,
+          "recall@10": 0.06805555555555555,
+          "mrr": 0.08333333333333333,
           "ndcg@1": 0.06666666666666667,
-          "ndcg@3": 0.04252841074684952,
-          "ndcg@5": 0.041213432813005275,
-          "ndcg@10": 0.041213432813005275,
-          "latency_p50_ms": 36.63385001709685,
-          "latency_p95_ms": 48.65539993625134,
+          "ndcg@3": 0.06355940253256477,
+          "ndcg@5": 0.062244424598720524,
+          "ndcg@10": 0.062244424598720524,
+          "latency_p50_ms": 33.20229996461421,
+          "latency_p95_ms": 48.366199946030974,
           "errors": 0,
           "n": 60
         }
@@ -1906,21 +1906,6 @@
           "error": null
         },
         {
-          "id": "g0247",
-          "class": "temporal",
-          "query": "2019년 넷플릭스 공포 드라마",
-          "expected": [
-            "kingdom-2019"
-          ],
-          "got": [
-            "big-issue",
-            "designated-survivor-60-days",
-            "the-wind-blows"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
           "id": "g0248",
           "class": "temporal",
           "query": "2025년에 MBC에서 한 판타지 드라마",
@@ -2605,21 +2590,6 @@
           "error": null
         },
         {
-          "id": "g0296",
-          "class": "temporal",
-          "query": "2019년 넷플릭스 사극 드라마",
-          "expected": [
-            "kingdom-2019"
-          ],
-          "got": [
-            "big-issue",
-            "designated-survivor-60-days",
-            "the-wind-blows"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
           "id": "g0297",
           "class": "temporal",
           "query": "2020년 OCN 스릴러 드라마",
@@ -2682,33 +2652,33 @@
     },
     "nograph": {
       "overall": {
-        "recall@1": 0.6991666666666667,
-        "recall@3": 0.8869444444444444,
-        "recall@5": 0.9213888888888889,
-        "recall@10": 0.9566666666666667,
-        "mrr": 0.8457208994708995,
-        "ndcg@1": 0.78,
-        "ndcg@3": 0.8423475343466628,
-        "ndcg@5": 0.856001873143926,
-        "ndcg@10": 0.867948324242949,
-        "latency_p50_ms": 113.14534995472059,
-        "latency_p95_ms": 149.5353999780491,
+        "recall@1": 0.6747222222222222,
+        "recall@3": 0.8508333333333333,
+        "recall@5": 0.8944444444444444,
+        "recall@10": 0.9283333333333333,
+        "mrr": 0.8130026455026454,
+        "ndcg@1": 0.7466666666666667,
+        "ndcg@3": 0.8067853957362633,
+        "ndcg@5": 0.8253685877459931,
+        "ndcg@10": 0.8372155088787204,
+        "latency_p50_ms": 116.65729997912422,
+        "latency_p95_ms": 203.4272999735549,
         "errors": 0,
         "n": 300
       },
       "by_class": {
         "character": {
-          "recall@1": 0.9833333333333333,
+          "recall@1": 0.95,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9916666666666667,
-          "ndcg@1": 0.9833333333333333,
-          "ndcg@3": 0.993848829226191,
-          "ndcg@5": 0.993848829226191,
-          "ndcg@10": 0.993848829226191,
-          "latency_p50_ms": 113.79820003639907,
-          "latency_p95_ms": 139.43059998564422,
+          "mrr": 0.9694444444444444,
+          "ndcg@1": 0.95,
+          "ndcg@3": 0.9771821625595243,
+          "ndcg@5": 0.9771821625595243,
+          "ndcg@10": 0.9771821625595243,
+          "latency_p50_ms": 136.96009997511283,
+          "latency_p95_ms": 237.66840004827827,
           "errors": 0,
           "n": 60
         },
@@ -2722,53 +2692,53 @@
           "ndcg@3": 1.0,
           "ndcg@5": 1.0,
           "ndcg@10": 1.0,
-          "latency_p50_ms": 109.97180000413209,
-          "latency_p95_ms": 144.35009995941073,
+          "latency_p50_ms": 112.58845002157614,
+          "latency_p95_ms": 131.98429998010397,
           "errors": 0,
           "n": 60
         },
         "multi_hop": {
-          "recall@1": 0.3,
-          "recall@3": 0.7,
-          "recall@5": 0.8166666666666667,
-          "recall@10": 0.95,
-          "mrr": 0.5184193121693121,
-          "ndcg@1": 0.3,
-          "ndcg@3": 0.5327324383928643,
-          "ndcg@5": 0.5800564534455035,
-          "ndcg@10": 0.6229515462116401,
-          "latency_p50_ms": 122.36154999118298,
-          "latency_p95_ms": 218.98819995112717,
+          "recall@1": 0.36666666666666664,
+          "recall@3": 0.6166666666666667,
+          "recall@5": 0.75,
+          "recall@10": 0.8833333333333333,
+          "mrr": 0.5164021164021164,
+          "ndcg@1": 0.36666666666666664,
+          "ndcg@3": 0.5047596420238124,
+          "ndcg@5": 0.5607223914056365,
+          "ndcg@10": 0.6041147112700014,
+          "latency_p50_ms": 126.01950002135709,
+          "latency_p95_ms": 242.47609998565167,
           "errors": 0,
           "n": 60
         },
         "person": {
-          "recall@1": 0.5583333333333333,
-          "recall@3": 0.7722222222222223,
-          "recall@5": 0.7944444444444444,
-          "recall@10": 0.8333333333333334,
-          "mrr": 0.7810185185185186,
-          "ndcg@1": 0.7166666666666667,
-          "ndcg@3": 0.7455729591157858,
-          "ndcg@5": 0.7577436856432147,
-          "ndcg@10": 0.7722632453803465,
-          "latency_p50_ms": 119.022750062868,
-          "latency_p95_ms": 161.45819996017963,
+          "recall@1": 0.41944444444444445,
+          "recall@3": 0.6833333333333333,
+          "recall@5": 0.7305555555555556,
+          "recall@10": 0.7583333333333333,
+          "mrr": 0.65,
+          "ndcg@1": 0.5333333333333333,
+          "ndcg@3": 0.6263384335080885,
+          "ndcg@5": 0.6517125661641467,
+          "ndcg@10": 0.6643310785697978,
+          "latency_p50_ms": 106.27380001824349,
+          "latency_p95_ms": 124.12640010006726,
           "errors": 0,
           "n": 60
         },
         "temporal": {
-          "recall@1": 0.6541666666666667,
-          "recall@3": 0.9625,
-          "recall@5": 0.9958333333333333,
+          "recall@1": 0.6375,
+          "recall@3": 0.9541666666666667,
+          "recall@5": 0.9916666666666667,
           "recall@10": 1.0,
-          "mrr": 0.9375,
-          "ndcg@1": 0.9,
-          "ndcg@3": 0.9395834449984729,
-          "ndcg@5": 0.9483603974047207,
-          "ndcg@10": 0.9506780003965669,
-          "latency_p50_ms": 96.18429996771738,
-          "latency_p95_ms": 130.5724000558257,
+          "mrr": 0.9291666666666667,
+          "ndcg@1": 0.8833333333333333,
+          "ndcg@3": 0.9256467405898914,
+          "ndcg@5": 0.9372258186006577,
+          "ndcg@10": 0.9404495919942788,
+          "latency_p50_ms": 107.29489999357611,
+          "latency_p95_ms": 198.07569996919483,
           "errors": 0,
           "n": 60
         }
@@ -2782,11 +2752,11 @@
             "six-flying-dragons"
           ],
           "got": [
+            "love-tractor",
             "100-days-my-prince",
+            "sixth-sense",
             "healing-camp-aren-t-you-happy",
-            "vincenzo",
-            "empress-ki",
-            "a-model-family"
+            "vincenzo"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2800,10 +2770,10 @@
             "when-time-stopped"
           ],
           "got": [
-            "when-time-stopped",
-            "the-crowned-clown",
-            "extraordinary-you",
-            "doona",
+            "empress-ki",
+            "i-am-sam",
+            "reset",
+            "another-miss-oh",
             "healing-camp-aren-t-you-happy"
           ],
           "strategy": "hybrid",
@@ -2817,11 +2787,29 @@
             "boys-over-flowers"
           ],
           "got": [
-            "the-forbidden-marriage",
-            "maestra-strings-of-truth",
+            "reset",
+            "sixth-sense",
             "spice-up-our-love",
-            "healing-camp-aren-t-you-happy",
-            "producer"
+            "drinking-solo",
+            "healing-camp-aren-t-you-happy"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0067",
+          "class": "person",
+          "query": "황진영 작가 드라마",
+          "expected": [
+            "my-dearest",
+            "rebel-thief-who-stole-the-people"
+          ],
+          "got": [
+            "fantastic",
+            "my-first-first-love",
+            "unpredictable-family",
+            "the-judge-returns",
+            "the-school-nurse-files"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2836,10 +2824,10 @@
           ],
           "got": [
             "empress-ki",
-            "perfect-family",
             "reset",
+            "uncle-samsik",
             "trigger",
-            "villains-everywhere"
+            "perfect-family"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2852,11 +2840,11 @@
             "your-honor-2018"
           ],
           "got": [
-            "what-s-wrong-with-secretary-kim",
             "reset",
-            "reborn-rich",
-            "healing-camp-aren-t-you-happy",
-            "argon"
+            "empress-ki",
+            "love-tractor",
+            "i-am-sam",
+            "what-s-wrong-with-secretary-kim"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2870,10 +2858,29 @@
           ],
           "got": [
             "reset",
-            "what-s-wrong-with-secretary-kim",
+            "spice-up-our-love",
             "healing-camp-aren-t-you-happy",
-            "splendid-politics",
-            "empress-ki"
+            "paik-s-mysterious-kitchen",
+            "doctors"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0080",
+          "class": "person",
+          "query": "이수근 출연작",
+          "expected": [
+            "knowing-bros",
+            "new-journey-to-the-west",
+            "unexpected-q"
+          ],
+          "got": [
+            "freeze",
+            "new-journey-to-the-west",
+            "knowing-bros",
+            "mercy-for-none",
+            "fantastic"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2887,9 +2894,9 @@
           ],
           "got": [
             "fantastic",
-            "listen-to-love",
-            "moorim-school",
-            "three-brothers",
+            "island",
+            "death-s-game",
+            "unpredictable-family",
             "the-judge-returns"
           ],
           "strategy": "hybrid",
@@ -2904,11 +2911,11 @@
             "persona"
           ],
           "got": [
-            "jeon-woo-chi",
-            "ltns",
             "fantastic",
-            "the-price-of-confession",
-            "three-brothers"
+            "jeon-woo-chi",
+            "persona",
+            "gogh-the-starry-night",
+            "unpredictable-family"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2922,11 +2929,11 @@
             "the-art-of-sarah"
           ],
           "got": [
-            "somebody",
-            "100-days-my-prince",
             "reset",
+            "love-tractor",
             "the-crowned-clown",
-            "beautiful-gong-shim"
+            "reborn-rich",
+            "what-s-wrong-with-secretary-kim"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2940,11 +2947,28 @@
             "the-real-has-come"
           ],
           "got": [
-            "what-s-wrong-with-secretary-kim",
             "reset",
-            "the-crowned-clown",
-            "my-merry-marriage",
-            "the-forbidden-marriage"
+            "empress-ki",
+            "what-s-wrong-with-secretary-kim",
+            "fantastic",
+            "healing-camp-aren-t-you-happy"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0102",
+          "class": "person",
+          "query": "배우 홍지윤",
+          "expected": [
+            "woori-the-virgin"
+          ],
+          "got": [
+            "jekyll-and-me",
+            "reset",
+            "empress-ki",
+            "reborn-rich",
+            "healing-camp-aren-t-you-happy"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2960,10 +2984,10 @@
           ],
           "got": [
             "boys-over-flowers",
-            "the-family-is-coming",
+            "freeze",
+            "entourage",
             "my-fair-lady",
-            "the-package",
-            "left-handed-wife"
+            "lee-san-wind-of-the-palace"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2977,11 +3001,11 @@
             "pro-bono"
           ],
           "got": [
-            "the-two-sisters",
+            "reset",
+            "beautiful-gong-shim",
             "fantastic",
             "healing-camp-aren-t-you-happy",
-            "empress-ki",
-            "perfect-crown"
+            "bring-it-on-ghost"
           ],
           "strategy": "hybrid",
           "error": null
@@ -2995,11 +3019,11 @@
             "pro-bono"
           ],
           "got": [
-            "doona",
-            "doctors",
-            "healing-camp-aren-t-you-happy",
-            "reply-1988",
-            "empress-ki"
+            "jekyll-and-me",
+            "empress-ki",
+            "my-sassy-girl",
+            "reset",
+            "doctors"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3014,10 +3038,10 @@
           ],
           "got": [
             "bulgasal-immortal-souls",
-            "fantastic",
             "kim-su-ro-the-iron-king",
-            "three-brothers",
-            "loss-time-life"
+            "unpredictable-family",
+            "bring-it-on-ghost",
+            "fantastic"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3031,9 +3055,9 @@
           ],
           "got": [
             "my-sassy-girl",
-            "sh-ting-stars",
-            "the-forbidden-marriage",
-            "come-and-hug-me",
+            "sixth-sense",
+            "i-like-you",
+            "apartment-404",
             "healing-camp-aren-t-you-happy"
           ],
           "strategy": "hybrid",
@@ -3047,11 +3071,45 @@
             "a-good-day-for-the-wind-to-blow"
           ],
           "got": [
-            "listen-to-love",
-            "unlock-my-boss",
             "fantastic",
+            "cheap-cheonlima-mart",
+            "listen-to-love",
             "late-blossom",
-            "three-brothers"
+            "unpredictable-family"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0122",
+          "class": "multi_hop",
+          "query": "윤아정랑 윤용현 같이 나온 드라마",
+          "expected": [
+            "empress-ki"
+          ],
+          "got": [
+            "marry-me-now",
+            "be-my-boyfriend",
+            "cheese-in-the-trap",
+            "dinner-mate",
+            "entourage"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0124",
+          "class": "multi_hop",
+          "query": "이준혁랑 진선규 같이 나온 드라마",
+          "expected": [
+            "six-flying-dragons"
+          ],
+          "got": [
+            "marry-me-now",
+            "jun-and-jun",
+            "dinner-mate",
+            "our-dating-sim",
+            "pinocchio"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3064,11 +3122,11 @@
             "six-flying-dragons"
           ],
           "got": [
-            "rose-mansion",
             "pinocchio",
-            "rebel-thief-who-stole-the-people",
             "sacred-jewel",
-            "marry-me-now"
+            "marry-me-now",
+            "the-winning-try",
+            "dinner-mate"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3081,28 +3139,79 @@
             "a-korean-odyssey"
           ],
           "got": [
-            "the-tyrant",
             "tantara",
-            "korean-hostel-in-spain",
             "athena-goddess-of-war",
-            "fight-for-my-way"
+            "rock-rock-rock",
+            "the-greatest-love",
+            "secret-relationships"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0135",
+          "id": "g0130",
           "class": "multi_hop",
-          "query": "강미나 윤현민 공동 출연작",
+          "query": "김민재랑 김인권 같이 나온 드라마",
           "expected": [
-            "tale-of-fairy"
+            "the-cursed"
           ],
           "got": [
-            "if-wishes-could-kill",
-            "welcome-to-samdalri",
-            "twelve",
-            "my-holo-love",
-            "hotel-del-luna"
+            "mr-queen",
+            "high-kick",
+            "marry-me-now",
+            "dinner-mate",
+            "pachinko"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0137",
+          "class": "multi_hop",
+          "query": "문채원랑 이슬비 같이 나온 드라마",
+          "expected": [
+            "the-princess-man"
+          ],
+          "got": [
+            "you-re-the-best-lee-soon-shin",
+            "dinner-mate",
+            "marry-me-now",
+            "ceo-dol-mart",
+            "under-the-queen-s-umbrella"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0144",
+          "class": "multi_hop",
+          "query": "김병철이랑 변요한 나온 작품",
+          "expected": [
+            "mr-sunshine"
+          ],
+          "got": [
+            "ex-girlfriend-club",
+            "bring-it-on-ghost",
+            "six-flying-dragons",
+            "no-way-out-the-roulette",
+            "uncle-samsik"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0148",
+          "class": "multi_hop",
+          "query": "신은수이랑 장혁 나온 작품",
+          "expected": [
+            "bad-papa"
+          ],
+          "got": [
+            "wok-of-love",
+            "family-the-unbreakable-bond",
+            "iris-ii",
+            "pinocchio",
+            "signal"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3117,9 +3226,9 @@
           "got": [
             "kim-is-a-genius",
             "queen-of-the-ring",
+            "jealousy-incarnate",
             "love-with-flaws",
-            "discovery-of-love",
-            "jealousy-incarnate"
+            "discovery-of-love"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3132,11 +3241,11 @@
             "big-mouth"
           ],
           "got": [
-            "good-partner",
             "sixth-sense",
+            "empress-ki",
             "reset",
             "apartment-404",
-            "healing-camp-aren-t-you-happy"
+            "another-miss-oh"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3149,28 +3258,28 @@
             "passionate-love"
           ],
           "got": [
-            "dinner-mate",
             "wild-chives-and-soy-bean-soup-12-years-reunion",
-            "marry-me-now",
-            "see-you-at-work-tomorrow",
-            "itaewon-class"
+            "dinner-mate",
+            "jekyll-and-me",
+            "another-miss-oh",
+            "marry-me-now"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0154",
+          "id": "g0162",
           "class": "multi_hop",
-          "query": "지수 최병모 공동 출연작",
+          "query": "김창완이랑 엄효섭 나온 작품",
           "expected": [
-            "moon-lovers-scarlet-heart-ryeo"
+            "my-love-from-the-star"
           ],
           "got": [
-            "newtopia",
-            "my-first-first-love",
-            "strong-woman-do-bong-soon",
-            "boyfriend-on-demand",
-            "vincenzo"
+            "he-is-psychometric",
+            "the-princess-man",
+            "extraordinary-you",
+            "secret-relationships",
+            "gu-family-book"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3183,11 +3292,28 @@
             "master-god-of-noodles"
           ],
           "got": [
+            "my-sassy-girl",
+            "another-miss-oh",
             "marry-me-now",
-            "heesu-in-class-2",
-            "lucky-romance",
             "dinner-mate",
-            "good-doctor"
+            "adult-kids"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0168",
+          "class": "multi_hop",
+          "query": "안희연이랑 이성경 나온 작품",
+          "expected": [
+            "call-it-love"
+          ],
+          "got": [
+            "cheese-in-the-trap",
+            "weightlifting-fairy-kim-bok-joo",
+            "doctors",
+            "freeze",
+            "the-good-wife"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3202,63 +3328,27 @@
           "got": [
             "shut-up-flower-boy-band",
             "marry-me-now",
+            "bring-it-on-ghost",
             "dinner-mate",
-            "not-others",
-            "bring-it-on-ghost"
+            "the-legend-of-the-blue-sea"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0171",
-          "class": "multi_hop",
-          "query": "김소현랑 김영재 (배우) 같이 나온 드라마",
-          "expected": [
-            "reset"
-          ],
-          "got": [
-            "what-s-wrong-with-secretary-kim",
-            "come-and-hug-me",
-            "extraordinary-you",
-            "it-s-okay-to-be-sensitive",
-            "good-partner"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0178",
-          "class": "multi_hop",
-          "query": "김영철랑 박시후 같이 나온 드라마",
-          "expected": [
-            "the-princess-man"
-          ],
-          "got": [
-            "lovely-horribly",
-            "dinner-mate",
-            "happy-home",
-            "marry-me-now",
-            "knowing-bros"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0266",
+          "id": "g0281",
           "class": "temporal",
-          "query": "2022년에 넷플릭스에서 한 범죄 드라마",
+          "query": "2021년에 티빙에서 한 코미디 드라마",
           "expected": [
-            "a-model-family",
-            "money-heist-korea-joint-economic-area",
-            "narco-saints",
-            "somebody"
+            "adult-trainee",
+            "the-witch-s-diner"
           ],
           "got": [
-            "somebody",
-            "a-model-family",
-            "narco-saints",
-            "all-of-us-are-dead",
-            "big-mouth"
+            "adult-trainee",
+            "work-later-drink-now",
+            "so-not-worth-it",
+            "peng",
+            "not-yet-thirty"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3267,33 +3357,33 @@
     },
     "hybrid": {
       "overall": {
-        "recall@1": 0.8308333333333333,
-        "recall@3": 0.9675,
-        "recall@5": 0.9908333333333333,
-        "recall@10": 1.0,
-        "mrr": 0.9525,
-        "ndcg@1": 0.9233333333333333,
-        "ndcg@3": 0.9500791527130644,
-        "ndcg@5": 0.9588660570481621,
-        "ndcg@10": 0.9620957366805497,
-        "latency_p50_ms": 121.66129995603114,
-        "latency_p95_ms": 158.80420000758022,
+        "recall@1": 0.8258333333333333,
+        "recall@3": 0.9691666666666666,
+        "recall@5": 0.9866666666666667,
+        "recall@10": 0.9966666666666667,
+        "mrr": 0.9482777777777778,
+        "ndcg@1": 0.9133333333333333,
+        "ndcg@3": 0.947449849261142,
+        "ndcg@5": 0.9541051377286762,
+        "ndcg@10": 0.9579252814884772,
+        "latency_p50_ms": 119.07700001029298,
+        "latency_p95_ms": 149.5488000800833,
         "errors": 0,
         "n": 300
       },
       "by_class": {
         "character": {
-          "recall@1": 0.9666666666666667,
+          "recall@1": 0.95,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9833333333333333,
-          "ndcg@1": 0.9666666666666667,
-          "ndcg@3": 0.9876976584523819,
-          "ndcg@5": 0.9876976584523819,
-          "ndcg@10": 0.9876976584523819,
-          "latency_p50_ms": 123.22585005313158,
-          "latency_p95_ms": 192.29110004380345,
+          "mrr": 0.9722222222222222,
+          "ndcg@1": 0.95,
+          "ndcg@3": 0.9793643251190486,
+          "ndcg@5": 0.9793643251190486,
+          "ndcg@10": 0.9793643251190486,
+          "latency_p50_ms": 113.08549996465445,
+          "latency_p95_ms": 132.4715999653563,
           "errors": 0,
           "n": 60
         },
@@ -3307,53 +3397,53 @@
           "ndcg@3": 1.0,
           "ndcg@5": 1.0,
           "ndcg@10": 1.0,
-          "latency_p50_ms": 117.63090000022203,
-          "latency_p95_ms": 155.28900001663715,
+          "latency_p50_ms": 123.93369997153059,
+          "latency_p95_ms": 163.89659990090877,
           "errors": 0,
           "n": 60
         },
         "multi_hop": {
-          "recall@1": 0.8,
-          "recall@3": 0.9166666666666666,
-          "recall@5": 0.9666666666666667,
+          "recall@1": 0.8666666666666667,
+          "recall@3": 0.9666666666666667,
+          "recall@5": 0.9833333333333333,
           "recall@10": 1.0,
-          "mrr": 0.8716666666666666,
-          "ndcg@1": 0.8,
-          "ndcg@3": 0.8714263086904791,
-          "ndcg@5": 0.8922297407468346,
-          "ndcg@10": 0.902984274303933,
-          "latency_p50_ms": 129.7503000823781,
-          "latency_p95_ms": 158.80420000758022,
+          "mrr": 0.9227777777777778,
+          "ndcg@1": 0.8666666666666667,
+          "ndcg@3": 0.9297596420238124,
+          "ndcg@5": 0.9362071888110548,
+          "ndcg@10": 0.9421439752628551,
+          "latency_p50_ms": 128.9225000073202,
+          "latency_p95_ms": 153.47560006193817,
           "errors": 0,
           "n": 60
         },
         "person": {
-          "recall@1": 0.7333333333333333,
-          "recall@3": 0.9583333333333334,
-          "recall@5": 0.9916666666666667,
-          "recall@10": 1.0,
-          "mrr": 0.9700000000000001,
-          "ndcg@1": 0.95,
-          "ndcg@3": 0.9516883514239881,
-          "ndcg@5": 0.9660424886368737,
-          "ndcg@10": 0.9691187502498665,
-          "latency_p50_ms": 123.40740003855899,
-          "latency_p95_ms": 150.5058000329882,
+          "recall@1": 0.675,
+          "recall@3": 0.925,
+          "recall@5": 0.9583333333333334,
+          "recall@10": 0.9833333333333333,
+          "mrr": 0.9172222222222222,
+          "ndcg@1": 0.8666666666666667,
+          "ndcg@3": 0.9024785385729576,
+          "ndcg@5": 0.9177283561126196,
+          "ndcg@10": 0.9276685150662031,
+          "latency_p50_ms": 121.079400065355,
+          "latency_p95_ms": 139.5953999599442,
           "errors": 0,
           "n": 60
         },
         "temporal": {
-          "recall@1": 0.6541666666666667,
-          "recall@3": 0.9625,
-          "recall@5": 0.9958333333333333,
+          "recall@1": 0.6375,
+          "recall@3": 0.9541666666666667,
+          "recall@5": 0.9916666666666667,
           "recall@10": 1.0,
-          "mrr": 0.9375,
-          "ndcg@1": 0.9,
-          "ndcg@3": 0.9395834449984729,
-          "ndcg@5": 0.9483603974047207,
-          "ndcg@10": 0.9506780003965669,
-          "latency_p50_ms": 101.26170003786683,
-          "latency_p95_ms": 141.51160011533648,
+          "mrr": 0.9291666666666667,
+          "ndcg@1": 0.8833333333333333,
+          "ndcg@3": 0.9256467405898914,
+          "ndcg@5": 0.9372258186006577,
+          "ndcg@10": 0.9404495919942788,
+          "latency_p50_ms": 100.32674996182323,
+          "latency_p95_ms": 124.44030004553497,
           "errors": 0,
           "n": 60
         }
@@ -3369,27 +3459,63 @@
           ],
           "got": [
             "empress-ki",
-            "perfect-family",
             "reset",
+            "uncle-samsik",
             "trigger",
-            "villains-everywhere"
+            "perfect-family"
           ],
           "strategy": "hybrid+graph",
           "error": null
         },
         {
-          "id": "g0126",
-          "class": "multi_hop",
-          "query": "김의성랑 윤균상 같이 나온 드라마",
+          "id": "g0073",
+          "class": "person",
+          "query": "배우 김명곤",
           "expected": [
-            "six-flying-dragons"
+            "your-honor-2018"
           ],
           "got": [
-            "rose-mansion",
-            "pinocchio",
-            "rebel-thief-who-stole-the-people",
-            "sacred-jewel",
-            "the-winning-try"
+            "reset",
+            "empress-ki",
+            "love-tractor",
+            "i-am-sam",
+            "what-s-wrong-with-secretary-kim"
+          ],
+          "strategy": "hybrid+graph",
+          "error": null
+        },
+        {
+          "id": "g0108",
+          "class": "person",
+          "query": "배우 소주연",
+          "expected": [
+            "lovestruck-in-the-city",
+            "pro-bono"
+          ],
+          "got": [
+            "lovestruck-in-the-city",
+            "reset",
+            "beautiful-gong-shim",
+            "fantastic",
+            "healing-camp-aren-t-you-happy"
+          ],
+          "strategy": "hybrid+graph",
+          "error": null
+        },
+        {
+          "id": "g0109",
+          "class": "person",
+          "query": "배우 서혜원",
+          "expected": [
+            "business-proposal",
+            "pro-bono"
+          ],
+          "got": [
+            "jekyll-and-me",
+            "business-proposal",
+            "empress-ki",
+            "my-sassy-girl",
+            "reset"
           ],
           "strategy": "hybrid+graph",
           "error": null
@@ -3412,21 +3538,19 @@
           "error": null
         },
         {
-          "id": "g0266",
+          "id": "g0281",
           "class": "temporal",
-          "query": "2022년에 넷플릭스에서 한 범죄 드라마",
+          "query": "2021년에 티빙에서 한 코미디 드라마",
           "expected": [
-            "a-model-family",
-            "money-heist-korea-joint-economic-area",
-            "narco-saints",
-            "somebody"
+            "adult-trainee",
+            "the-witch-s-diner"
           ],
           "got": [
-            "somebody",
-            "a-model-family",
-            "narco-saints",
-            "all-of-us-are-dead",
-            "big-mouth"
+            "adult-trainee",
+            "work-later-drink-now",
+            "so-not-worth-it",
+            "peng",
+            "not-yet-thirty"
           ],
           "strategy": "hybrid",
           "error": null

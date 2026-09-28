@@ -19,7 +19,7 @@ Personal    사용자 시청 기록
 
 ---
 
-## 구현 현황 (2026-09-27, `apps/ai-api`)
+## 구현 현황 (2026-09-28, `apps/ai-api`)
 
 | 설계 항목 | 구현 | 위치 |
 |---|---|---|
@@ -31,27 +31,29 @@ Personal    사용자 시청 기록
 | §8 Reranking | 미구현 (DM-605) | — |
 | §9~§10 Context/Answer | 미구현 (DM-703~706) — `/v1/search`는 retrieval-only | — |
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
-| §18 Evaluation | 골든 37 질의 / 7 클래스, lexical·vector·hybrid 비교 보고서 | `evals/retrieval/` |
+| §18 Evaluation | 손으로 쓴 골든 132질의 / 8클래스 + 카탈로그에서 생성한 300질의 / 5클래스, lexical·no-graph·hybrid 비교 보고서 | `evals/retrieval/` |
 
-측정 (**2,347편** Wikidata 카탈로그, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
+측정 (**2,416편** Wikidata 카탈로그 + 한국어 위키백과 줄거리 2,237편, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR | p50 |
 |---|---|---|---|---|
-| lexical (domain-api, FTS AND + trigram) | 0.445 | 0.473 | 0.475 | 31ms |
-| hybrid without graph (FTS AND/OR + trigram + vector, RRF) | 0.667 | 0.847 | 0.752 | 120ms |
-| **hybrid + graph list** | **0.689** | **0.862** | **0.778** | 126ms |
+| lexical (domain-api, FTS AND + trigram) | 0.439 | 0.467 | 0.462 | 28ms |
+| hybrid without graph (FTS AND/OR + trigram + vector, RRF) | 0.686 | 0.859 | 0.769 | 109ms |
+| **hybrid + graph list** | **0.689** | **0.881** | **0.778** | 117ms |
 
-클래스별로 보면 그래프 리스트는 **multi_hop recall@1 0.708 → 0.958, MRR 0.812 → 1.000**, person MRR 0.803 → 0.866. 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed 24편에만 있음), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음), `semantic_memory`(Wikidata엔 줄거리가 없어 벡터가 출연진·장르만 봄). 다음 개선 후보: 줄거리 소스 확보, reranker(DM-605).
+클래스별로 보면 그래프 리스트는 **multi_hop recall@1 0.875 → 0.958, MRR 0.959 → 1.000**, person recall@5 0.870 → 0.981. 24편에서는 효과가 없던 것이 카탈로그가 100배 커지자 나타났다(배우당 출연작이 많아져 "공동 출연작"을 골라내는 일이 어려워짐). 약한 클래스: `ost`(Wikidata에 OST 없음 → seed 24편에만 있음), `temporal`(연도·방송사 조건에 맞는 작품이 수십 편이라 골든셋의 기대 답이 좁음), `genre`(장르 태그가 Wikidata P136에 있는 작품만).
+
+**줄거리 추가 전후** (같은 골든셋, 줄거리 없는 2,347편 → 줄거리 있는 2,416편, hybrid): 전체 recall@5 0.862 → 0.881, MRR 0.778 → 0.778. `semantic_memory` recall@5 0.81 → 0.89, `ost` 0.75 → 0.83로 올랐지만 `temporal` 0.68 → 0.59(1질의), `person` without-graph 0.93 → 0.87(2질의)는 내려갔다 — 줄거리가 body(weight B)와 임베딩에 섞여 출연진·연도 신호가 희석된다. 다음 개선 후보: 줄거리를 별도 weight(C)/별도 임베딩으로 분리, reranker(DM-605).
 
 **데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR |
 |---|---|---|---|
-| lexical | 0.337 | 0.340 | 0.348 |
-| hybrid without graph | 0.699 | 0.921 | 0.846 |
-| **hybrid + graph** | **0.831** | **0.991** | **0.953** |
+| lexical | 0.337 | 0.347 | 0.352 |
+| hybrid without graph | 0.675 | 0.894 | 0.813 |
+| **hybrid + graph** | **0.826** | **0.987** | **0.948** |
 
-클래스별: multi_hop MRR 0.518 → 0.872, person 0.781 → 0.970 (graph 효과), entity_lookup 1.0, character 0.99, temporal 0.94. 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
+클래스별: multi_hop MRR 0.516 → 0.923, person 0.650 → 0.917 (graph 효과), entity_lookup 1.0, character 0.97, temporal 0.93. 줄거리 추가 전(0.699 / 0.921 / 0.846 → 0.831 / 0.991 / 0.953)보다 without-graph `person`이 0.79 → 0.73 내려갔고 hybrid는 1질의 차이 — 위와 같은 희석 효과이며 그래프 리스트가 대부분 메운다. 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
 
 이전 측정(24편, 120질의): lexical 0.554 / vector 0.914 / hybrid 0.992 recall@5 — 문서 3~24개 규모의 수치는 참고용.
 

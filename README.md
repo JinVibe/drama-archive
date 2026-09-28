@@ -127,9 +127,11 @@ docs/            설계 문서
   - [x] DM-801 Neo4j 2026.01 compose + Airflow 이미지(neo4j 드라이버) · DM-802 `graph_materialization` DAG(per-aggregate replace, 멱등) · DM-803 integrity test
   - [x] DM-804/805 ai-api `/v1/graph/*` (공동출연·작품 이웃·OST 가수 경유) + retrieval `graph` 리스트(RRF) · DM-806 작품/인물 페이지 관계 섹션
   - 측정: 24편에선 효과 없음 → 2,347편에서 multi_hop recall@1 0.71→0.96, MRR 0.81→1.00으로 유지 조건 충족(GRAPH_MODEL 구현 현황)
-- [x] 카탈로그 확대 — **Wikidata(CC0) 수집기**: 2006년 이후 한국 TV 시리즈 2,426건 발견 → 2,347편 발행(연도별 73~145편, 채널 21곳), 인물 2,340(생년월일 91%), seed 24편 중 21편 자동 병합. `source_discovery_wikidata`(주간) → `ingest_source_records__wikidata`(청크 매핑, 1 req/s) → 기존 체인
-  - 2,347편 검색 재측정: lexical recall@5 0.47 → hybrid 0.86 (RAG_DESIGN 구현 현황). 리뷰 큐 71 → ER 재해소로 44(사람당 1회 결정)
-  - [ ] 줄거리 소스(Wikidata 없음) · OST 소스 · 파싱 실패 잔여(제목 없는 항목 2) · 리뷰 큐 44건 처리
+- [x] 카탈로그 확대 — **Wikidata(CC0) 수집기**: 2006년 이후 한국 TV 시리즈 2,426건 발견 → 2,416편 발행(연도별 73~145편, 채널 21곳), 인물 2,453(생년월일 91%), seed 24편 중 21편 자동 병합. `source_discovery_wikidata`(주간) → `ingest_source_records__wikidata`(청크 매핑, 1 req/s) → 기존 체인
+  - 2,347편 검색 재측정: lexical recall@5 0.47 → hybrid 0.86 → 줄거리 반영 후 0.88 (RAG_DESIGN 구현 현황). 리뷰 큐 71 → ER 재해소로 44(사람당 1회 결정)
+  - [x] 줄거리 — `synopsis_enrich_kowiki` DAG: 한국어 위키백과 요약(CC BY-SA 4.0, 출처·라이선스 표기) 2,237편(94%) 채움, semantic_memory recall@5 0.81 → 0.89 · 리뷰 큐 44 → 1(사람당 1회 결정 + 빈 별칭 버그 수정)
+  - [x] 데이터 생성 골든셋 300질의(`generate_golden.py`) — hybrid recall@5 0.987 / MRR 0.948, graph 리스트 효과 재확인(multi_hop MRR 0.52 → 0.92)
+  - [ ] OST 소스 · 파싱 실패 잔여(제목 없는 항목 3) · 리뷰 큐 1건(지리산 박소현)
   - [ ] DM-903 graph benchmark 확대 · collaboration score · Character/Platform 노드
 
 ## 현재 문서 기준
