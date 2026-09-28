@@ -13,7 +13,20 @@ Golden query datasets and evaluation runners. See `docs/EVALUATION.md`.
   (`golden_generated.jsonl`, seeded) from the canonical catalog: exact titles/aliases, people with
   few works, real co-star pairs that share exactly one drama, unique character names, and
   year+channel+genre combos with 1–4 answers. `semantic_memory` stays hand-written (needs paraphrase).
-- `reports/` — JSON reports (`latest.json` = hand-written set, `generated-latest.json` = generated set).
+- `reports/` — JSON reports (`latest.json` = hand-written set, `generated-latest.json` = generated set,
+  `rerank-latest.json` = hybrid vs hybrid+cross-encoder rerank on the hand-written set).
+
+The reranked target is `http://localhost:8090/v1/search?mode=hybrid&rerank=true` and needs ai-api
+started with `AI_API_RERANKER=bge`. At ~16 s per query on CPU, run it detached:
+
+```sh
+docker compose run -d --name rerank-eval --no-deps -v ./evals:/evals --entrypoint python \
+  -e PYTHONIOENCODING=utf-8 airflow-cli /evals/retrieval/run.py \
+  --golden /evals/retrieval/golden_queries.jsonl \
+  --target hybrid="http://ai-api:8090/v1/search?mode=hybrid" \
+  --target rerank="http://ai-api:8090/v1/search?mode=hybrid&rerank=true" \
+  --out /evals/retrieval/reports/rerank-latest.json
+```
 
 ```sh
 docker compose exec -T postgres psql -U dramamemory -d dramamemory -tA -f - < evals/retrieval/dump_catalog.sql > /tmp/dump.json
