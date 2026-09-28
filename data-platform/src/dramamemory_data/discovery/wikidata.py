@@ -267,7 +267,10 @@ def is_foreign(c: Candidate) -> bool:
 
 
 def needs_category_lookup(c: Candidate) -> bool:
-    return c.kind == "UNKNOWN" and bool(c.article) and not c.kowiki_categories
+    """Any candidate with an article we have not read the categories of. kowiki's
+    curated categories outrank Wikidata's loose genre words (코미디쇼 희희낙락 carries
+    genre 희극 yet is filed under 연예오락), so a DRAMA verdict is not final either."""
+    return bool(c.article) and not c.kowiki_categories
 
 
 def decide(cands: dict[str, Candidate]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
