@@ -17,6 +17,22 @@ AI Clients → MCP
 
 해당 버전은 stateless protocol core를 도입했으며, 서버가 세션 affinity 없이 일반적인 HTTP infrastructure 뒤에서 scale-out되기 쉬운 구조를 제공한다.
 
+## 구현 현황 (2026-09-28, `apps/mcp-server`)
+
+| 설계 항목 | 구현 |
+|---|---|
+| §2 Transport | Python SDK v2 `MCPServer`, `POST /mcp` streamable HTTP **stateless + JSON 응답** — 세션 저장소 없음, 인스턴스 어디서나 응답. `/health` 별도 |
+| §4 Public tools | `search_dramas`(ai-api hybrid, `year_from/year_to/broadcaster`는 질의 해석보다 우선), `get_drama`, `get_actor`(그래프 공동출연 요약 포함, 그래프 장애 시 빈 목록), `get_ost`, `get_official_watch_links`(`last_verified_at` 포함, 전부 미검증이면 `LINK_STALE` 경고), `traverse_drama_graph`(ACTED_IN/HAS_OST/PERFORMED, depth ≤ 2, 50노드 cap, Cypher 미노출) |
+| §5 Protected tools | **미등록** — OAuth 인가 서버가 없어 무방비 노출 대신 등록하지 않음 |
+| §6 Resources | `drama://{id}`, `actor://{id}`, `year://{year}`, `broadcaster://{code}` (`timeline://me`는 §5와 같은 이유로 없음) |
+| §7 Prompts | `nostalgia_search`, `actor_journey` |
+| §9 Rate limit | 프로세스 내 1분 슬라이딩 윈도(IP당 search 30 / read 120 / graph 20) — scale-out 시 게이트웨이로 이관 |
+| §10/§14 Safety | 읽기 전용, 임의 URL·SQL·Cypher 없음, 서버 고정 URL만 호출, `user_id` 인자 없음 |
+| §11 Error model | 도구 결과로 `{"error": {code, message, retryable}}` (`DRAMA_NOT_FOUND`, `PERSON_NOT_FOUND`, `UPSTREAM_UNAVAILABLE`, `RATE_LIMITED`, `EMPTY_QUERY`) |
+| §12 Observability | 미구현 (OpenTelemetry는 Phase 6에서 세 서비스 함께) |
+
+지원 변경: domain-api `GET /api/v1/dramas/by-id/{id}`, `/persons/by-id/{id}`(MERGED는 slug와 같이 301), ai-api `/v1/search?year_from&year_to&broadcaster`.
+
 ---
 
 # 2. Transport / Deployment
