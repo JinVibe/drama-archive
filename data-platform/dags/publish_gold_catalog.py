@@ -48,6 +48,7 @@ SCOPE_BROADCASTERS = [
     for c in os.environ.get("DRAMAMEMORY_SCOPE_BROADCASTERS", "kbs,mbc,sbs,tvn,jtbc").split(",")
     if c.strip()
 ]
+SCOPE_YEAR_FROM = int(os.environ.get("DRAMAMEMORY_SCOPE_YEAR_FROM", "2006"))
 RESOLVED_ASSET = Asset(name="silver.resolved", uri="asset://silver/resolved")
 GOLD_ASSET = Asset(name="gold.catalog", uri="asset://gold/catalog")
 
@@ -139,13 +140,15 @@ def publish_gold_catalog():
             # Not aired yet -> not in the archive; back the day it airs.
             upcoming_hidden, aired = hide_upcoming(cur)
             # Channel scope (KBS/MBC/SBS/tvN/JTBC for now).
-            scope_hidden, scope_restored = apply_scope(cur, SCOPE_BROADCASTERS)
+            scope_hidden, scope_restored = apply_scope(
+                cur, SCOPE_BROADCASTERS, year_from=SCOPE_YEAR_FROM
+            )
             conn.commit()
         summary = {
             "hidden": hidden, "restored": restored,
             "upcoming_hidden": upcoming_hidden, "aired_restored": aired,
             "out_of_scope_hidden": scope_hidden, "in_scope_restored": scope_restored,
-            "scope": SCOPE_BROADCASTERS,
+            "scope": SCOPE_BROADCASTERS, "year_from": SCOPE_YEAR_FROM,
         }
         print(f"retire excluded: {summary}")
         return summary

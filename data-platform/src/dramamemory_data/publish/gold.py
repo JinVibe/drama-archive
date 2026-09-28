@@ -501,12 +501,13 @@ def hide_upcoming(cur) -> tuple[int, int]:
     return len(hidden), len(restored)
 
 
-def apply_scope(cur, broadcaster_codes: list[str]) -> tuple[int, int]:
-    """The archive covers a fixed set of channels for now (product decision, 2026-09-28:
-    KBS, MBC, SBS, tvN, JTBC — platforms mostly re-run what those aired). PUBLISHED
-    dramas on another channel, or with no channel, -> HIDDEN ('out_of_scope');
-    when the scope widens or a channel gets inferred, they come back.
-    Returns (hidden, restored)."""
+def apply_scope(cur, broadcaster_codes: list[str], year_from: int = 2006) -> tuple[int, int]:
+    """The archive covers a fixed set of channels and years for now (product decision,
+    2026-09-28: KBS, MBC, SBS, tvN, JTBC, started 2006 or later — platforms mostly
+    re-run what those aired). PUBLISHED dramas on another channel, with no channel,
+    or that started before `year_from` -> HIDDEN ('out_of_scope'); when the scope
+    widens or a channel gets inferred, they come back. Returns (hidden, restored)."""
+    floor = f"{year_from}-01-01"
     cur.execute(
         """
         UPDATE drama d
@@ -515,11 +516,12 @@ def apply_scope(cur, broadcaster_codes: list[str]) -> tuple[int, int]:
         FROM (SELECT d2.id, b.code
                 FROM drama d2 LEFT JOIN broadcaster b ON b.id = d2.broadcaster_id
                WHERE d2.status = 'PUBLISHED'
-                 AND (b.code IS NULL OR NOT (b.code = ANY(%s)))) x
+                 AND (b.code IS NULL OR NOT (b.code = ANY(%s))
+                      OR d2.start_date < %s::date)) x
         WHERE d.id = x.id
         RETURNING d.id, x.code
         """,
-        (broadcaster_codes,),
+        (broadcaster_codes, floor),
     )
     hidden = cur.fetchall()
     for drama_id, code in hidden:
@@ -532,10 +534,10 @@ def apply_scope(cur, broadcaster_codes: list[str]) -> tuple[int, int]:
         FROM broadcaster b
         WHERE b.id = d.broadcaster_id AND b.code = ANY(%s)
           AND d.status = 'HIDDEN' AND d.hidden_reason = 'out_of_scope'
-          AND (d.start_date IS NULL OR d.start_date <= CURRENT_DATE)
+          AND (d.start_date IS NULL OR d.start_date BETWEEN %s::date AND CURRENT_DATE)
         RETURNING d.id, b.code
         """,
-        (broadcaster_codes,),
+        (broadcaster_codes, floor),
     )
     restored = cur.fetchall()
     for drama_id, code in restored:
