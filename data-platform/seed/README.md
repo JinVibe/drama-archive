@@ -62,3 +62,7 @@ Rules:
 - Only official links (broadcaster / OTT / official OST). Leave `links` empty
   rather than guessing a URL.
 - One file per drama. File name = `external_id`.json.
+
+## OST
+
+2026-09-28부터 OST는 `ost_enrich_kowiki` DAG가 한국어 위키백과에서 채운다. 이 seed 파일들의 손으로 적은 OST 초안은 그 소스로 대체됐다(발행 시 kowiki 트랙과 제목이 같으면 같은 곡으로 병합).

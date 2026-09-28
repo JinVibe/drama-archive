@@ -145,6 +145,22 @@ infer_broadcasters   채널 없는 발행 작품 중 문서를 아는 것 → �
   → asset enrich.synopsis → search_document_build, graph_materialization
 ```
 
+## 구현 현황 — `ost_enrich_kowiki` (매일 04:00 UTC + gold.catalog)
+
+```text
+targets   발행 작품 중 ost_source IS NULL (문서 제목: synopsis 단계의 URL, 없으면 Wikidata sitelink)
+fetch     MediaWiki action=parse&prop=wikitext → S3 스냅샷 + source_record(parser kowiki_ost/1)
+parse     parsers/kowiki_ost.py — OST/사운드트랙 절의 {{음반 정보}}(Part·발매일·가수) + {{곡 목록}}(제목N·주N·재생시간N),
+          구형 문서는 wikitable(제목/가수/파트 열). 연주곡(Inst./MR)과 가수·파트가 모두 없는 score cue 제외,
+          "Various Artists"는 가수가 아님. 트랙마다 합성 external id <qid>:ost:p<part>:t<track>
+write     entity_resolution.resolve_song(같은 작품 내 제목 일치 → AUTO_MERGE, 모호하면 건너뜀) ·
+          resolve_artist(이름) → publish.gold.ensure_song/ensure_artist/link_song_artist/upsert_drama_ost
+          + source_entity_map(SONG) → drama.ost_source='kowiki' | 'kowiki:none'(V18), canonical_version+1
+  → asset enrich.synopsis → search_document_build(OST가 본문에), graph_materialization(HAS_OST/PERFORMED)
+```
+
+첫 실행(2026-09-28): 1,926편 중 203편에 OST 섹션이 있어 2,298곡·977명 기록. 나머지 문서에는 OST 절 자체가 없다(소스 한계). 첫 시도에서 드러난 문제 두 가지 — 앨범의 "Various Artists"가 가수로 들어가고 전곡 앨범의 score cue 수십 곡이 딸려온 것 — 를 규칙으로 막고 전체를 다시 돌렸다(재실행은 멱등).
+
 ---
 
 # 5. DAG: `ingest_source_records`

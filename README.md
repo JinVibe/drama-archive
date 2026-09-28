@@ -137,7 +137,9 @@ docs/            설계 문서
   - [x] 채널 추론 — Wikidata에 방송사가 없는 작품은 kowiki 분류("SBS 금토드라마")에서 추론(V15 provenance), 81편
   - [x] 줄거리 분리 — V14 `synopsis` 필드(fts weight C) + 별도 임베딩. 측정 결과 메타데이터 전용 벡터 리스트는 잡음이라 기본 `AI_API_LIST_WEIGHTS=vector:0`(recall@1 0.59 → 0.74, 범위 제한 후 0.77)
   - [x] DM-605 reranker 실험 — `AI_API_RERANKER=bge` + `?rerank=true`(bge-reranker-v2-m3): recall@1 0.77 → 0.84, MRR 0.84 → 0.89(semantic_memory·OST top-1 크게 개선)지만 CPU에서 **질의당 20초** → 기본 꺼짐, 채택 조건은 RAG_DESIGN(GPU/경량 모델 + 조건 질의 우회)
-  - [ ] OST 소스 · 파싱 실패 잔여(제목 없는 항목 7) · 리뷰 큐 10건(동명이인) · 타 채널(드라마큐브·투니버스·U+ TV 등) 분류 추가 · `embedding` 컬럼 제거
+  - [x] **OST 소스** — `ost_enrich_kowiki` DAG: 한국어 위키백과 문서의 OST 섹션(`{{음반 정보}}`/`{{곡 목록}}`·표)을 파싱해 song/artist/drama_ost에 provenance와 함께 기록. 1,926편 중 **203편에 2,298곡·아티스트 977명**(나머지 문서엔 OST 섹션이 없음 — 소스의 한계). 연주곡·score cue 제외, 재실행 시 같은 곡에 매핑(합성 external id). seed 24편의 손으로 적은 OST 초안은 이 소스로 대체
+  - [x] 리뷰 큐 10 → 0 — 남은 6건은 모두 "같은 소스가 다른 ID로 아는 동명이인/동명작품"이라 규칙화(`_distinct_by_source`): 이후 같은 유형은 리뷰 없이 새 행
+  - [ ] 파싱 실패 잔여(제목 없는 항목 7) · `embedding` 컬럼 제거 · 범위 밖 채널은 요청 시 `DRAMAMEMORY_SCOPE_BROADCASTERS`로 확장
   - [ ] DM-903 graph benchmark 확대 · collaboration score · Character/Platform 노드
 - [x] Phase 6 일부 — **`apps/mcp-server`**: MCP 2026-07-28 stateless streamable HTTP, 공개 tools 6종 + resources 4종 + prompts 2종(MCP_SPEC 구현 현황). 보호 도구는 OAuth 전까지 미등록
   - [ ] OpenTelemetry · 운영 하드닝(Phase 6 나머지)
