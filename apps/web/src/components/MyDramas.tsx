@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { me, STATUS_LABEL, type DramaState, type Timeline, type WatchStatus } from "@/lib/client";
+import { IS_STATIC, me, STATUS_LABEL, type DramaState, type Timeline, type WatchStatus } from "@/lib/client";
 import { genreLabel, yearOf } from "@/lib/format";
 
 const GROUPS: WatchStatus[] = ["WATCHED", "WATCHING", "WANT_TO_WATCH"];
@@ -77,7 +77,7 @@ export function MyDramas() {
         </section>
       )}
 
-      {watched > 0 && (
+      {watched > 0 && !IS_STATIC && (
         <a
           href="/share/card.png"
           target="_blank"

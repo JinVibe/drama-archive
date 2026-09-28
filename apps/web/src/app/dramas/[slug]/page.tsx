@@ -9,6 +9,9 @@ import { WatchButtons } from "@/components/WatchButtons";
 import { dramaJsonLd } from "@/lib/seo";
 import { CREDIT_LABEL, LINK_LABEL, fmtDate, fmtRange, genreLabel, yearOf } from "@/lib/format";
 
+// Rendered on demand (uncached fetches). The static export adds generateStaticParams
+// to its staged copy of this file (scripts/deploy-pages.sh) so every drama is pre-rendered.
+
 export async function generateMetadata({ params }: PageProps<"/dramas/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const d = await api.drama(slug);
@@ -70,7 +73,10 @@ export default async function DramaPage({ params }: PageProps<"/dramas/[slug]">)
             ))}
           </ul>
         )}
-        <WatchButtons dramaId={d.id} />
+        <WatchButtons
+          dramaId={d.id}
+          drama={{ id: d.id, slug: d.slug, titleKo: d.titleKo, broadcasterCode: d.broadcaster?.code, startDate: d.startDate }}
+        />
         <MemoryNote dramaId={d.id} />
       </header>
 

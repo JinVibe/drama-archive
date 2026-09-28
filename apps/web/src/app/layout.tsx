@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BASE_PATH } from "@/lib/api";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </li>
               ))}
             </ul>
-            <form action="/search" className="ml-auto hidden md:block">
+            <form action={`${BASE_PATH}/search/`} className="ml-auto hidden md:block">
               <input
                 type="search"
                 name="q"

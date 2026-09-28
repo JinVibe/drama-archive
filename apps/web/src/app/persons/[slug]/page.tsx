@@ -7,6 +7,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { CREDIT_LABEL, fmtDate, yearOf } from "@/lib/format";
 import { personJsonLd } from "@/lib/seo";
 
+// Rendered on demand; the static export adds generateStaticParams in its staged copy.
+
 export async function generateMetadata({ params }: PageProps<"/persons/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const p = await api.person(slug);

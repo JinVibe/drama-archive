@@ -49,3 +49,6 @@ webserver_config.py
 .terraform/
 *.tfstate
 *.tfstate.*
+
+# Static export (apps/web/scripts/deploy-pages.sh)
+apps/web/public/search-index.json

@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import { ClientSearch } from "@/components/ClientSearch";
+import { BASE_PATH, IS_STATIC } from "@/lib/api";
 import { genreLabel } from "@/lib/format";
 
 export const metadata: Metadata = { title: "검색", robots: { index: false } };
-export const dynamic = "force-dynamic";
 
 type Meta = {
   slug: string;
@@ -91,6 +93,21 @@ function planLabel(p?: Plan): string | null {
 }
 
 export default async function SearchPage({ searchParams }: PageProps<"/search">) {
+  // Static export (GitHub Pages): no ai-api behind the page, so the browser searches a
+  // prebuilt index of the catalog (public/search-index.json) instead.
+  if (IS_STATIC) {
+    return (
+      <div className="space-y-6">
+        <header className="space-y-4">
+          <p className="eyebrow">Ⅱ · 검색</p>
+        </header>
+        <Suspense fallback={null}>
+          <ClientSearch />
+        </Suspense>
+      </div>
+    );
+  }
+
   const { q: raw } = await searchParams;
   const q = (typeof raw === "string" ? raw : "").trim();
   const result = q ? await search(q) : null;
@@ -100,7 +117,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/search">)
     <div className="space-y-6">
       <header className="space-y-4">
         <p className="eyebrow">Ⅱ · 검색</p>
-        <form action="/search" className="flex gap-3">
+        <form action={`${BASE_PATH}/search`} className="flex gap-3">
           <input
             type="search"
             name="q"

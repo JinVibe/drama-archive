@@ -3,9 +3,8 @@ import { api } from "@/lib/api";
 
 const SITE = process.env.SITE_URL ?? "http://localhost:3000";
 
-// Rendered per request (the build must not depend on the Domain API being up);
-// the underlying fetches are still cached for CATALOG_REVALIDATE seconds.
-export const dynamic = "force-dynamic";
+// Server mode: rendered per request (uncached fetches, so the build never needs the
+// Domain API). Static export: written once at build time.
 
 /** Public catalog only; user pages are never listed. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

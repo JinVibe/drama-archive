@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { api } from "@/lib/api";
+import { api, BASE_PATH } from "@/lib/api";
 
-// Rendered per request so `next build` never needs the Domain API; the fetches
-// themselves are not cached (lib/api.ts): the pipeline hides/restores dramas at any time.
-export const dynamic = "force-dynamic";
+// Server mode: the uncached fetches (lib/api.ts) make this page render per request, so
+// `next build` never needs the Domain API. Static export: rendered once at build time.
 
 export default async function HomePage() {
   const [years, broadcasters] = await Promise.all([api.years(), api.broadcasters()]);
@@ -23,7 +22,7 @@ export default async function HomePage() {
           연도와 방송사로 지나온 시절의 드라마를 찾고, 봤던 작품을 기록해 나만의 연대기를 만드세요.
           제목이 기억나지 않아도 배우, OST, 줄거리 한 장면으로 찾아냅니다.
         </p>
-        <form action="/search" className="flex max-w-xl gap-3">
+        <form action={`${BASE_PATH}/search/`} className="flex max-w-xl gap-3">
           <input
             type="search"
             name="q"

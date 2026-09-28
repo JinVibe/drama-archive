@@ -6,8 +6,12 @@
 import { notFound, redirect } from "next/navigation";
 
 const BASE = process.env.DOMAIN_API_URL ?? "http://localhost:8081";
-/** Public catalog pages revalidate on this cadence (seconds). */
+/** Graph sections revalidate on this cadence (seconds); catalog fetches are not cached. */
 export const CATALOG_REVALIDATE = 60;
+/** Static export for GitHub Pages (next.config.ts): everything is rendered at build time. */
+export const IS_STATIC = process.env.STATIC_EXPORT === "1";
+/** Prefix for plain <a>/<form> URLs (next/link adds it by itself). */
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export type Broadcaster = { code: string; nameKo: string; nameEn?: string; officialUrl?: string };
 export type YearCount = { year: number; count: number };
@@ -87,8 +91,9 @@ async function get<T>(path: string, pageForSlug?: (slug: string) => string): Pro
   // No data cache: the catalog changes through the pipeline (hide/restore, enrichment)
   // and the stale-while-revalidate entries kept serving old counts for hours. Every
   // page is force-dynamic already and the domain API answers in milliseconds.
+  // In a static export every fetch happens once at build time, so caching is fine there.
   const res = await fetch(`${BASE}${path}`, {
-    cache: "no-store",
+    cache: IS_STATIC ? "force-cache" : "no-store",
     redirect: "manual",
   });
   if (res.status === 404) notFound();
@@ -114,3 +119,22 @@ export const api = {
   person: (slug: string) =>
     get<PersonDetail>(`/api/v1/persons/${encodeURIComponent(slug)}`, (s) => `/persons/${s}`),
 };
+
+/** Every published drama (years -> year pages). Used by the static export to know
+ *  which pages to render and to build the browser search index. */
+export async function allDramas(): Promise<DramaSummary[]> {
+  const years = await api.years();
+  const pages = await Promise.all(years.map((y) => api.year(y.year, undefined, 0, 200)));
+  return pages.flatMap((p) => p.items);
+}
+
+/** Every person slug that appears in a published drama's credits. */
+export async function allPersonSlugs(): Promise<string[]> {
+  const dramas = await allDramas();
+  const slugs = new Set<string>();
+  for (const d of dramas) {
+    const detail = await api.drama(d.slug);
+    for (const c of detail.credits) slugs.add(c.slug);
+  }
+  return [...slugs];
+}
