@@ -136,6 +136,21 @@ def test_title_falls_back_to_original_then_english():
     assert parse(_doc(rows)).title_ko == "Goblin EN"
 
 
+def test_unknown_value_birth_date_is_tolerated():
+    rows = GOBLIN + [
+        _row(
+            "P161",
+            "http://www.wikidata.org/entity/Q77777",
+            o_type="uri",
+            label="미상배우",
+            birth="http://www.wikidata.org/.well-known/genid/abc",
+        )
+    ]
+    d = parse(_doc(rows))
+    unknown = [c for c in d.credits if c.person.external_id == "Q77777"][0]
+    assert unknown.person.birth_date is None
+
+
 def test_unknown_broadcaster_becomes_none():
     rows = [
         r

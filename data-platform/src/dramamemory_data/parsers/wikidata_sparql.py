@@ -23,7 +23,7 @@ from dramamemory_data.normalization.models import (
 )
 from dramamemory_data.normalization.text import clean, normalize_key
 
-PARSER_VERSION = "wikidata_sparql/1"
+PARSER_VERSION = "wikidata_sparql/2"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
 # Statements we ask for, per item. Label/alias rows come through the UNION branches.
@@ -117,6 +117,15 @@ def _date(value: str | None, field: str) -> date | None:
         return parse_date(value)
     except DateParseError as exc:
         raise WikidataParseError(f"{field}: {exc}") from exc
+
+
+def _soft_date(value: str | None) -> date | None:
+    """Optional dates (a person's birth) may be Wikidata 'unknown value' nodes or odd
+    precisions; those become None instead of failing the whole drama."""
+    try:
+        return parse_date(value)
+    except DateParseError:
+        return None
 
 
 def genre_codes(labels: list[str]) -> list[str]:
@@ -213,7 +222,7 @@ def parse(body: bytes) -> NormalizedDrama:
             out.append(NormalizedCredit(
                 person=NormalizedPerson(
                     external_id=person_qid, name_ko=name, name_normalized=normalize_key(name),
-                    birth_date=_date(r.get("birth", {}).get("value"), "P569"),
+                    birth_date=_soft_date(r.get("birth", {}).get("value")),
                 ),
                 credit_type=credit_type,
                 character_name=character,
