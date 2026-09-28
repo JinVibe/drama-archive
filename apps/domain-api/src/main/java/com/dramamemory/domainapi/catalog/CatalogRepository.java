@@ -39,8 +39,16 @@ public class CatalogRepository {
 
     // ------------------------------------------------------------------ broadcasters
 
+    /** Channels that currently have at least one published drama (the taxonomy is wider than
+     *  the archive's scope, so an empty channel would only be a dead filter). */
     public List<Broadcaster> broadcasters() {
-        return jdbc.sql("SELECT code, name_ko, name_en, official_url FROM broadcaster ORDER BY id")
+        return jdbc.sql("""
+                        SELECT b.code, b.name_ko, b.name_en, b.official_url
+                          FROM broadcaster b
+                         WHERE EXISTS (SELECT 1 FROM drama d
+                                        WHERE d.broadcaster_id = b.id AND d.status = 'PUBLISHED')
+                         ORDER BY b.id
+                        """)
                 .query((rs, i) -> broadcaster(rs))
                 .list();
     }

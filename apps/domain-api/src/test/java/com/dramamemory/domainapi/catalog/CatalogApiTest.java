@@ -3,6 +3,7 @@ package com.dramamemory.domainapi.catalog;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
@@ -105,10 +106,12 @@ class CatalogApiTest {
     }
 
     @Test
-    void broadcasters_come_from_seed_migration() throws Exception {
+    void broadcasters_lists_only_channels_with_published_dramas() throws Exception {
+        // seed: goblin + signal on tvN (published); the KBS drama is HIDDEN, netflix has none
         mvc.perform(get("/api/v1/broadcasters"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*].code", hasItems("kbs", "mbc", "sbs", "jtbc", "tvn", "netflix")));
+                .andExpect(jsonPath("$[*].code", hasItems("tvn")))
+                .andExpect(jsonPath("$[*].code", not(hasItems("kbs", "netflix"))));
     }
 
     @Test
