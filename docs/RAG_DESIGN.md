@@ -33,7 +33,7 @@ Personal    사용자 시청 기록
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 손으로 쓴 골든 132질의 / 8클래스 + 카탈로그에서 생성한 300질의 / 5클래스, lexical·no-graph·hybrid 비교 보고서 | `evals/retrieval/` |
 
-측정 (**1,948편** 발행 카탈로그 — Wikidata ∪ kowiki 분류 발견, 비드라마·방송 예정·범위 밖 채널 제외, 범위 KBS/MBC/SBS/tvN/JTBC, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
+측정 (**1,924편** 발행 카탈로그 — Wikidata ∪ kowiki 분류 발견, 비드라마·방송 예정·범위 밖 제외, 범위 KBS/MBC/SBS/tvN/JTBC · 2006년 이후, 골든 132질의 / 8클래스, `evals/retrieval/reports/latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR | p50 |
 |---|---|---|---|---|
@@ -55,15 +55,15 @@ Personal    사용자 시청 기록
 
 → 기본값 `AI_API_LIST_WEIGHTS=vector:0`(가중치 0인 리스트는 조회도 하지 않음). 생성 골든셋에서도 MRR 0.916 → 0.927, recall@5는 0.974 → 0.968(2질의 차, temporal)로 손해가 없었다. `embedding` 컬럼은 남겨 두되 검색에는 쓰지 않는다 — 다음 임베딩 모델 교체 때 제거 후보.
 
-**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 1,948편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
+**데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 1,924편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
 
 | retriever | recall@1 | recall@5 | MRR |
 |---|---|---|---|
-| lexical | 0.322 | 0.348 | 0.345 |
-| hybrid without graph | 0.632 | 0.878 | 0.789 |
-| **hybrid + graph** | **0.862** | **0.997** | **0.974** |
+| lexical | 0.350 | 0.367 | 0.373 |
+| hybrid without graph | 0.619 | 0.859 | 0.773 |
+| **hybrid + graph** | **0.847** | **0.985** | **0.957** |
 
-클래스별: multi_hop MRR 0.332 → 0.951, person 0.677 → 0.962 (graph 효과), entity_lookup 0.98, character 0.99, temporal 0.98. (2,782편·범위 제한 전: 0.806 / 0.968 / 0.927 — 채널 5곳으로 좁히자 동명 작품·후보가 줄어 전 클래스가 올랐다.) 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
+클래스별: multi_hop MRR 0.320 → 0.939, person 0.622 → 0.943 (graph 효과), entity_lookup 0.98, character 0.96, temporal 0.96. (2,782편·범위 제한 전: 0.806 / 0.968 / 0.927 — 채널 5곳으로 좁히자 동명 작품·후보가 줄어 전 클래스가 올랐다. 생성셋은 카탈로그마다 새로 뽑히므로 ±0.01은 표본 차이다.) 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
 
 **Reranker(DM-605)**: bge-reranker-v2-m3를 RRF 상위 30에 적용하면 이 CPU에서 **질의당 16~20초** — 대화형 경로에 넣을 수 없어 기본 꺼짐. 품질 측정치는 `reports/rerank-latest.json`(측정 중이면 없음) — 채택 조건은 "GPU 또는 경량 reranker로 p95 < 800ms(§16) 이면서 semantic_memory/ost recall@1 개선".
 

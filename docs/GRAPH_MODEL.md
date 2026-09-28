@@ -27,7 +27,7 @@ Neo4j는 이 관계를 빠르게 탐색하기 위한 derived graph read model로
 | RAG §5.4 graph retrieval | 질의 속 인물명 → 출연작/공동출연작을 RRF 리스트 `graph`로 결합 | `apps/ai-api/src/ai_api/retrieval/graph_candidates.py` |
 | §9 collaboration score, §10-§12 GraphRAG/community/vector | 미구현 | — |
 
-**측정**: 24편 카탈로그에서는 retrieval의 graph 리스트가 효과가 없었다(multi_hop이 graph 없이도 recall@5 1.0, MRR 0.971 → 0.972). 그래서 "카탈로그 확대 후 multi_hop을 개선하지 못하면 제거"를 조건으로 남겼고, **2,347편(Wikidata)으로 확대한 뒤 재측정에서 조건이 충족됐다**: multi_hop recall@1 0.708 → 0.958, MRR 0.812 → 1.000, person MRR 0.803 → 0.866 (+6ms). 1,948편(2026-09-28, 채널 5곳 범위·줄거리 벡터만 쓰는 구성)에서는 multi_hop recall@1 0.500 → 0.958, person recall@5 0.815 → 1.000, 생성 골든셋 multi_hop MRR 0.332 → 0.951. 배우당 출연작이 많아지면 "두 사람이 함께 나온 작품"은 텍스트 검색이 못 고르는 질문이 된다. graph 리스트는 유지한다. 그래프는 발행 작품과 항상 일치(HIDDEN 처리된 비드라마·방송 예정작은 reconcile이 제거), 재생성 DAG 멱등.
+**측정**: 24편 카탈로그에서는 retrieval의 graph 리스트가 효과가 없었다(multi_hop이 graph 없이도 recall@5 1.0, MRR 0.971 → 0.972). 그래서 "카탈로그 확대 후 multi_hop을 개선하지 못하면 제거"를 조건으로 남겼고, **2,347편(Wikidata)으로 확대한 뒤 재측정에서 조건이 충족됐다**: multi_hop recall@1 0.708 → 0.958, MRR 0.812 → 1.000, person MRR 0.803 → 0.866 (+6ms). 1,924편(2026-09-28, 채널 5곳·2006년 이후 범위, 줄거리 벡터만 쓰는 구성)에서는 multi_hop recall@1 0.500 → 0.958, person recall@5 0.815 → 1.000, 생성 골든셋 multi_hop MRR 0.320 → 0.939. 배우당 출연작이 많아지면 "두 사람이 함께 나온 작품"은 텍스트 검색이 못 고르는 질문이 된다. graph 리스트는 유지한다. 그래프는 발행 작품과 항상 일치(HIDDEN 처리된 비드라마·방송 예정작은 reconcile이 제거), 재생성 DAG 멱등.
 
 ---
 

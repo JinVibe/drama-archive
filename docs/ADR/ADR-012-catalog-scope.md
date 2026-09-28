@@ -16,8 +16,9 @@ The product owner decided (2026-09-28):
 
 1. only dramas — no variety, reality, talk, news, lists, episodes of magazines;
 2. only titles that have started airing;
-3. for now only **KBS, MBC, SBS, tvN, JTBC** — platforms mostly re-run what those
-   channels aired, so they add duplicates rather than titles. Widen when asked.
+3. for now only **KBS, MBC, SBS, tvN, JTBC**, started 2006 or later — platforms
+   mostly re-run what those channels aired, so they add duplicates rather than
+   titles. Widen when asked.
 
 ## Decision
 
@@ -33,8 +34,9 @@ drama.status = 'HIDDEN' + drama.hidden_reason ∈ { not_a_drama | foreign | upco
   discovery run excludes (`not_a_drama`, `foreign`) and restores them when they
   return to the manifest.
 - `hide_upcoming`: start_date > today → `upcoming`; restored the day it airs.
-- `apply_scope`: broadcaster not in `DRAMAMEMORY_SCOPE_BROADCASTERS` (or unknown)
-  → `out_of_scope`; restored when the scope widens or a channel is inferred.
+- `apply_scope`: broadcaster not in `DRAMAMEMORY_SCOPE_BROADCASTERS` (or unknown),
+  or start_date before `DRAMAMEMORY_SCOPE_YEAR_FROM` (2006) → `out_of_scope`;
+  restored when the scope widens or a channel is inferred.
 - Rows hidden by hand (`hidden_reason IS NULL`) are never touched automatically.
 - Every projection (search documents, embeddings, Neo4j, sitemap, API) reads
   `status = 'PUBLISHED'` only, so hiding a row removes it everywhere on the next
@@ -42,8 +44,8 @@ drama.status = 'HIDDEN' + drama.hidden_reason ∈ { not_a_drama | foreign | upco
 
 ## Consequences
 
-- 2026-09-28 run: 2,986 canonical dramas → 1,948 published; hidden 834 out of
-  scope, 190 not a drama, 14 upcoming. Retrieval quality rose on both golden sets
+- 2026-09-28 run: 2,989 canonical dramas → 1,924 published; hidden 861 out of
+  scope (channel or pre-2006), 190 not a drama, 14 upcoming. Retrieval quality rose on both golden sets
   (fewer same-title distractors).
 - Netflix/Disney+ originals with no network run are hidden too. That is accepted
   for now and is the first thing to revisit.

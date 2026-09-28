@@ -1,24 +1,24 @@
 {"id": "g0001", "class": "entity_lookup", "query": "Runaway with Sun-jae on Piggyback", "expected": ["lovely-runner"]}
 {"id": "g0002", "class": "entity_lookup", "query": "Yooryungeul Jabara", "expected": ["catch-the-ghost"]}
-{"id": "g0003", "class": "entity_lookup", "query": "BE;TWIN", "expected": ["be-twin"]}
+{"id": "g0003", "class": "entity_lookup", "query": "걱정마세요 귀신입니다", "expected": ["걱정마세요-귀신입니다"]}
 {"id": "g0004", "class": "entity_lookup", "query": "내 손을 잡아", "expected": ["take-my-hand"]}
 {"id": "g0005", "class": "entity_lookup", "query": "재벌X형사", "expected": ["flex-x-cop"]}
-{"id": "g0006", "class": "entity_lookup", "query": "It Was Love", "expected": ["it-was-love"]}
-{"id": "g0007", "class": "entity_lookup", "query": "Spooky in Love", "expected": ["spooky-in-love"]}
-{"id": "g0008", "class": "entity_lookup", "query": "식객남녀 잘먹었습니다", "expected": ["식객남녀-잘먹었습니다"]}
-{"id": "g0009", "class": "entity_lookup", "query": "매리는 외박중", "expected": ["mary-stayed-out-all-night"]}
+{"id": "g0006", "class": "entity_lookup", "query": "두근두근 달콤", "expected": ["두근두근-달콤"]}
+{"id": "g0007", "class": "entity_lookup", "query": "오싹한 연애", "expected": ["spooky-in-love"]}
+{"id": "g0008", "class": "entity_lookup", "query": "작정하고 본방사수", "expected": ["작정하고-본방사수"]}
+{"id": "g0009", "class": "entity_lookup", "query": "Mary Stayed Out All Night", "expected": ["mary-stayed-out-all-night"]}
 {"id": "g0010", "class": "entity_lookup", "query": "사랑한다면 이들처럼", "expected": ["if-in-love-like-them"]}
 {"id": "g0011", "class": "entity_lookup", "query": "하얀거탑", "expected": ["behind-the-white-tower"]}
-{"id": "g0012", "class": "entity_lookup", "query": "Shin Don", "expected": ["shin-don"]}
+{"id": "g0012", "class": "entity_lookup", "query": "선녀가 필요해", "expected": ["선녀가-필요해"]}
 {"id": "g0013", "class": "entity_lookup", "query": "유부녀의 탄생", "expected": ["유부녀의-탄생"]}
 {"id": "g0014", "class": "entity_lookup", "query": "The Wind Blows Where it Wishes", "expected": ["the-wind-blows-where-it-wishes"]}
-{"id": "g0015", "class": "entity_lookup", "query": "이런 꽃 같은 엔딩", "expected": ["이런-꽃-같은-엔딩"]}
+{"id": "g0015", "class": "entity_lookup", "query": "후", "expected": ["후"]}
 {"id": "g0016", "class": "entity_lookup", "query": "Reflection of You", "expected": ["reflection-of-you"]}
 {"id": "g0017", "class": "entity_lookup", "query": "아빠 셋 엄마 하나", "expected": ["one-mom-and-three-dads"]}
 {"id": "g0018", "class": "entity_lookup", "query": "I hate pork cutlet", "expected": ["the-pork-cutlets"]}
 {"id": "g0019", "class": "entity_lookup", "query": "Maids", "expected": ["maids"]}
 {"id": "g0020", "class": "entity_lookup", "query": "노리코, 서울에 가다", "expected": ["노리코-서울에-가다"]}
-{"id": "g0021", "class": "entity_lookup", "query": "두근두근 로맨스 30일", "expected": ["두근두근-로맨스-30일"]}
+{"id": "g0021", "class": "entity_lookup", "query": "하늘을 나는 텐트", "expected": ["하늘을-나는-텐트"]}
 {"id": "g0022", "class": "entity_lookup", "query": "사랑의 온도", "expected": ["temperature-of-love"]}
 {"id": "g0023", "class": "entity_lookup", "query": "온에어", "expected": ["on-air"]}
 {"id": "g0024", "class": "entity_lookup", "query": "Sword and Flower", "expected": ["the-blade-and-petal"]}
@@ -28,16 +28,16 @@
 {"id": "g0028", "class": "entity_lookup", "query": "황금 가면", "expected": ["gold-mask"]}
 {"id": "g0029", "class": "entity_lookup", "query": "Alice", "expected": ["alice"]}
 {"id": "g0030", "class": "entity_lookup", "query": "닥터 차정숙", "expected": ["doctor-cha-jung-sook"]}
-{"id": "g0031", "class": "entity_lookup", "query": "못난이 송편", "expected": ["못난이-송편"]}
+{"id": "g0031", "class": "entity_lookup", "query": "연민정", "expected": ["jang-bo-ri-is-here"]}
 {"id": "g0032", "class": "entity_lookup", "query": "풍상씨", "expected": ["liver-or-die"]}
-{"id": "g0033", "class": "entity_lookup", "query": "눈길", "expected": ["snowy-road"]}
-{"id": "g0034", "class": "entity_lookup", "query": "크레바스", "expected": ["크레바스"]}
-{"id": "g0035", "class": "entity_lookup", "query": "적루몽", "expected": ["적루몽"]}
+{"id": "g0033", "class": "entity_lookup", "query": "SBS 외화시리즈", "expected": ["sbs-외화시리즈"]}
+{"id": "g0034", "class": "entity_lookup", "query": "참치와 돌고래", "expected": ["참치와-돌고래"]}
+{"id": "g0035", "class": "entity_lookup", "query": "저 별은 나의 별", "expected": ["저-별은-나의-별"]}
 {"id": "g0036", "class": "entity_lookup", "query": "Smile Again", "expected": ["smile-again-2010"]}
 {"id": "g0037", "class": "entity_lookup", "query": "사십구일", "expected": ["49-days"]}
-{"id": "g0038", "class": "entity_lookup", "query": "백일장 키드의 사랑", "expected": ["백일장-키드의-사랑"]}
+{"id": "g0038", "class": "entity_lookup", "query": "그 여름의 끝", "expected": ["그-여름의-끝"]}
 {"id": "g0039", "class": "entity_lookup", "query": "누구세요?", "expected": ["who-are-you"]}
-{"id": "g0040", "class": "entity_lookup", "query": "나를 쏘다", "expected": ["나를-쏘다"]}
+{"id": "g0040", "class": "entity_lookup", "query": "중독", "expected": ["중독"]}
 {"id": "g0041", "class": "entity_lookup", "query": "감격시대: 투신의 탄생", "expected": ["age-of-feeling"]}
 {"id": "g0042", "class": "entity_lookup", "query": "동백꽃 필 무렵", "expected": ["when-the-camellia-blooms"]}
 {"id": "g0043", "class": "entity_lookup", "query": "Smile Again", "expected": ["smile-again"]}
@@ -45,256 +45,256 @@
 {"id": "g0045", "class": "entity_lookup", "query": "Radio Romance", "expected": ["radio-romance"]}
 {"id": "g0046", "class": "entity_lookup", "query": "배드 앤 크레이지", "expected": ["bad-and-crazy"]}
 {"id": "g0047", "class": "entity_lookup", "query": "The Moment", "expected": ["record-of-youth"]}
-{"id": "g0048", "class": "entity_lookup", "query": "봉재, 돌아오다", "expected": ["봉재-돌아오다"]}
-{"id": "g0049", "class": "entity_lookup", "query": "Hotel King", "expected": ["hotel-king"]}
-{"id": "g0050", "class": "entity_lookup", "query": "Love and Hate", "expected": ["love-and-hate"]}
-{"id": "g0051", "class": "entity_lookup", "query": "인간실격", "expected": ["lost"]}
-{"id": "g0052", "class": "entity_lookup", "query": "내 연애의 모든 것", "expected": ["all-about-my-love"]}
-{"id": "g0053", "class": "entity_lookup", "query": "내 여자의 핸드폰", "expected": ["내-여자의-핸드폰"]}
-{"id": "g0054", "class": "entity_lookup", "query": "폭로", "expected": ["폭로"]}
-{"id": "g0055", "class": "entity_lookup", "query": "Surgeon Bong Dal-hee", "expected": ["surgeon-bong-dal-hee"]}
-{"id": "g0056", "class": "entity_lookup", "query": "As the River Flows", "expected": ["as-the-river-flows"]}
-{"id": "g0057", "class": "entity_lookup", "query": "SS501 형준, 프로게이머 되다", "expected": ["ss501-형준-프로게이머-되다"]}
-{"id": "g0058", "class": "entity_lookup", "query": "Over the Rainbow", "expected": ["over-the-rainbow"]}
-{"id": "g0059", "class": "entity_lookup", "query": "연인이여", "expected": ["oh-lovers"]}
-{"id": "g0060", "class": "entity_lookup", "query": "춘자네 경사났네", "expected": ["chunja-s-happy-events"]}
-{"id": "g0061", "class": "person", "query": "배우 장영철", "expected": ["empress-ki"]}
-{"id": "g0062", "class": "person", "query": "남기애 나온 드라마", "expected": ["dynamite-kiss", "suspicious-partner"]}
-{"id": "g0063", "class": "person", "query": "차엽 출연작", "expected": ["connection"]}
+{"id": "g0048", "class": "entity_lookup", "query": "Hotel King", "expected": ["hotel-king"]}
+{"id": "g0049", "class": "entity_lookup", "query": "Love and Hate", "expected": ["love-and-hate"]}
+{"id": "g0050", "class": "entity_lookup", "query": "인간실격 (2021년 드라마)", "expected": ["lost"]}
+{"id": "g0051", "class": "entity_lookup", "query": "내 연애의 모든 것", "expected": ["all-about-my-love"]}
+{"id": "g0052", "class": "entity_lookup", "query": "진진", "expected": ["진진"]}
+{"id": "g0053", "class": "entity_lookup", "query": "안녕, 천사님", "expected": ["안녕-천사님"]}
+{"id": "g0054", "class": "entity_lookup", "query": "외과의사 봉달희", "expected": ["surgeon-bong-dal-hee"]}
+{"id": "g0055", "class": "entity_lookup", "query": "As the River Flows", "expected": ["as-the-river-flows"]}
+{"id": "g0056", "class": "entity_lookup", "query": "Snowy Road", "expected": ["snowy-road"]}
+{"id": "g0057", "class": "entity_lookup", "query": "오버 더 레인보우", "expected": ["over-the-rainbow"]}
+{"id": "g0058", "class": "entity_lookup", "query": "Dear Lover, Crossed Fate", "expected": ["oh-lovers"]}
+{"id": "g0059", "class": "entity_lookup", "query": "춘자네 경사났네", "expected": ["chunja-s-happy-events"]}
+{"id": "g0060", "class": "entity_lookup", "query": "La reina de las lágrimas", "expected": ["queen-of-tears"]}
+{"id": "g0061", "class": "person", "query": "배우 한희", "expected": ["empress-ki", "oasis"]}
+{"id": "g0062", "class": "person", "query": "찬성 나온 드라마", "expected": ["bitter-sweet-hell", "suspicious-partner"]}
+{"id": "g0063", "class": "person", "query": "정유민 출연작", "expected": ["connection"]}
 {"id": "g0064", "class": "person", "query": "갈소원 나온 드라마", "expected": ["a-korean-odyssey", "the-legend-of-the-blue-sea"]}
-{"id": "g0065", "class": "person", "query": "배우 문상민", "expected": ["to-my-beloved-thief", "wedding-impossible"]}
-{"id": "g0066", "class": "person", "query": "안영미 나온 드라마", "expected": ["tale-of-fairy"]}
-{"id": "g0067", "class": "person", "query": "한상우 연출 작품", "expected": ["black-knight-the-man-who-guards-me", "my-lawyer-mr-jo-2"]}
-{"id": "g0068", "class": "person", "query": "배우 최아라", "expected": ["hello-my-twenties-2"]}
-{"id": "g0069", "class": "person", "query": "허성태 출연작", "expected": ["fifties-professionals", "good-boy"]}
-{"id": "g0070", "class": "person", "query": "이홍내 나온 드라마", "expected": ["inspector-koo", "the-legend-of-kitchen-soldier"]}
-{"id": "g0071", "class": "person", "query": "변우종 출연작", "expected": ["gu-family-book"]}
-{"id": "g0072", "class": "person", "query": "배우 이시아", "expected": ["a-graceful-liar", "the-queen-who-crowns"]}
-{"id": "g0073", "class": "person", "query": "조남형 연출 작품", "expected": ["the-legend-of-kitchen-soldier"]}
-{"id": "g0074", "class": "person", "query": "배우 박하은", "expected": ["resident-playbook"]}
-{"id": "g0075", "class": "person", "query": "한선화 출연작", "expected": ["rosy-lovers"]}
-{"id": "g0076", "class": "person", "query": "백수찬 연출 작품", "expected": ["beautiful-gong-shim"]}
-{"id": "g0077", "class": "person", "query": "배우 김무열", "expected": ["trolley"]}
-{"id": "g0078", "class": "person", "query": "김민영 나온 드라마", "expected": ["pinocchio"]}
-{"id": "g0079", "class": "person", "query": "김민종 출연작", "expected": ["athena-goddess-of-war"]}
-{"id": "g0080", "class": "person", "query": "이정신 출연작", "expected": ["cinderella-and-four-knights", "my-sassy-girl", "sh-ting-stars"]}
-{"id": "g0081", "class": "person", "query": "이대경 연출 작품", "expected": ["a-trap-called-desire"]}
-{"id": "g0082", "class": "person", "query": "김정훈 나온 드라마", "expected": ["princess-hours", "start-again"]}
-{"id": "g0083", "class": "person", "query": "한지승 연출 작품", "expected": ["when-the-weather-is-fine"]}
-{"id": "g0084", "class": "person", "query": "김소진 나온 드라마", "expected": ["through-the-darkness"]}
-{"id": "g0085", "class": "person", "query": "유연미 출연작", "expected": ["my-love-from-the-star"]}
+{"id": "g0065", "class": "person", "query": "배우 박신우 (배우)", "expected": ["the-two-sisters"]}
+{"id": "g0066", "class": "person", "query": "김은수 나온 드라마", "expected": ["my-id-is-gangnam-beauty"]}
+{"id": "g0067", "class": "person", "query": "배우 마이클 리", "expected": ["a-korean-odyssey"]}
+{"id": "g0068", "class": "person", "query": "지우 출연작", "expected": ["hello-my-twenties-2"]}
+{"id": "g0069", "class": "person", "query": "김원해 나온 드라마", "expected": ["a-virtuous-business", "hwarang-the-poet-warrior-youth"]}
+{"id": "g0070", "class": "person", "query": "김혜준 출연작", "expected": ["inspector-koo"]}
+{"id": "g0071", "class": "person", "query": "배우 이도경", "expected": ["gu-family-book", "the-king-2-hearts"]}
+{"id": "g0072", "class": "person", "query": "배우 김금순", "expected": ["love-next-door"]}
+{"id": "g0073", "class": "person", "query": "한동희 출연작", "expected": ["the-legend-of-kitchen-soldier"]}
+{"id": "g0074", "class": "person", "query": "배우 김혜인", "expected": ["resident-playbook"]}
+{"id": "g0075", "class": "person", "query": "하서윤 나온 드라마", "expected": ["the-dream-life-of-mr-kim"]}
+{"id": "g0076", "class": "person", "query": "선우용여 출연작", "expected": ["beautiful-gong-shim", "left-handed-wife"]}
+{"id": "g0077", "class": "person", "query": "이유미 출연작", "expected": ["mental-coach-je-gal-gil", "strong-girl-nam-soon"]}
+{"id": "g0078", "class": "person", "query": "조덕현 나온 드라마", "expected": ["master-god-of-noodles", "pinocchio"]}
+{"id": "g0079", "class": "person", "query": "오수연 (드라마 작가) 작가 드라마", "expected": ["love-rain"]}
+{"id": "g0080", "class": "person", "query": "이정신 나온 드라마", "expected": ["cinderella-and-four-knights", "my-sassy-girl", "sh-ting-stars"]}
+{"id": "g0081", "class": "person", "query": "서수민 (2007년) 출연작", "expected": ["agent-kim-reactivated"]}
+{"id": "g0082", "class": "person", "query": "김도우 작가 드라마", "expected": ["what-s-up-fox"]}
+{"id": "g0083", "class": "person", "query": "추예진 나온 드라마", "expected": ["when-the-weather-is-fine"]}
+{"id": "g0084", "class": "person", "query": "이정흠 연출 작품", "expected": ["inspector-koo"]}
+{"id": "g0085", "class": "person", "query": "오상진 나온 드라마", "expected": ["my-love-from-the-star"]}
 {"id": "g0086", "class": "person", "query": "나영석 연출 작품", "expected": ["gbrb-joypopslaughpops"]}
-{"id": "g0087", "class": "person", "query": "안재홍 나온 드라마", "expected": ["be-melodramatic", "fight-for-my-way"]}
-{"id": "g0088", "class": "person", "query": "김부선 나온 드라마", "expected": ["your-neighbor-s-wife"]}
-{"id": "g0089", "class": "person", "query": "Jung Seo-ji 출연작", "expected": ["the-winning-try"]}
-{"id": "g0090", "class": "person", "query": "배우 엄지원", "expected": ["cold-blooded-intern", "for-eagle-brothers", "the-cursed"]}
-{"id": "g0091", "class": "person", "query": "윤승원 나온 드라마", "expected": ["the-princess-man"]}
-{"id": "g0092", "class": "person", "query": "배우 이빛나", "expected": ["heart-to-heart"]}
-{"id": "g0093", "class": "person", "query": "진영 출연작", "expected": ["love-in-the-moonlight", "warm-and-cozy", "who-is-she"]}
-{"id": "g0094", "class": "person", "query": "배우 김도연 (배우)", "expected": ["jekyll-and-me"]}
-{"id": "g0095", "class": "person", "query": "배우 유승목", "expected": ["the-dream-life-of-mr-kim"]}
-{"id": "g0096", "class": "person", "query": "문형주 출연작", "expected": ["heart-to-heart"]}
-{"id": "g0097", "class": "person", "query": "원진아 출연작", "expected": ["just-between-lovers", "life", "the-judge-returns"]}
-{"id": "g0098", "class": "person", "query": "보나 출연작", "expected": ["joseon-lawyer", "the-haunted-palace", "twenty-five-twenty-one"]}
-{"id": "g0099", "class": "person", "query": "배우 권승우", "expected": ["vincenzo"]}
-{"id": "g0100", "class": "person", "query": "배우 조복래", "expected": ["agent-kim-reactivated"]}
-{"id": "g0101", "class": "person", "query": "최준용 출연작", "expected": ["queen-of-the-game"]}
-{"id": "g0102", "class": "person", "query": "그린 출연작", "expected": ["idol-the-coup"]}
-{"id": "g0103", "class": "person", "query": "배우 박진우", "expected": ["agent-kim-reactivated", "military-prosecutor-doberman"]}
-{"id": "g0104", "class": "person", "query": "김재중 나온 드라마", "expected": ["spy"]}
-{"id": "g0105", "class": "person", "query": "배우 유건", "expected": ["prosecutor-princess"]}
-{"id": "g0106", "class": "person", "query": "윤미라 출연작", "expected": ["passionate-love", "queen-of-the-game"]}
-{"id": "g0107", "class": "person", "query": "박미현 출연작", "expected": ["abyss"]}
-{"id": "g0108", "class": "person", "query": "배우 전진기", "expected": ["chief-of-staff", "empress-ki"]}
-{"id": "g0109", "class": "person", "query": "박리원 출연작", "expected": ["cinderella-game"]}
-{"id": "g0110", "class": "person", "query": "이정성 출연작", "expected": ["empress-ki"]}
-{"id": "g0111", "class": "person", "query": "배우 최현욱", "expected": ["my-dearest-nemesis", "twenty-five-twenty-one", "twinkling-watermelon"]}
-{"id": "g0112", "class": "person", "query": "황승언 출연작", "expected": ["heart-to-heart", "i-m-not-a-robot"]}
-{"id": "g0113", "class": "person", "query": "이태임 나온 드라마", "expected": ["don-t-hesitate", "the-lady-in-dignity", "wild-chives-and-soy-bean-soup-12-years-reunion"]}
-{"id": "g0114", "class": "person", "query": "박주현 나온 드라마", "expected": ["mouse", "perfect-family", "the-forbidden-marriage"]}
-{"id": "g0115", "class": "person", "query": "서동현 나온 드라마", "expected": ["hidden"]}
-{"id": "g0116", "class": "person", "query": "김현수 출연작", "expected": ["good-doctor", "my-love-from-the-star", "solomon-s-perjury"]}
+{"id": "g0087", "class": "person", "query": "유재이 출연작", "expected": ["andante", "extraordinary-you"]}
+{"id": "g0088", "class": "person", "query": "배우 정한용", "expected": ["your-neighbor-s-wife"]}
+{"id": "g0089", "class": "person", "query": "권은성 나온 드라마", "expected": ["typhoon-family"]}
+{"id": "g0090", "class": "person", "query": "배우 노정의", "expected": ["crushology-101", "our-universe"]}
+{"id": "g0091", "class": "person", "query": "서혜진 출연작", "expected": ["the-princess-man"]}
+{"id": "g0092", "class": "person", "query": "배우 한여울", "expected": ["heart-to-heart"]}
+{"id": "g0093", "class": "person", "query": "배우 진영", "expected": ["love-in-the-moonlight", "warm-and-cozy", "who-is-she"]}
+{"id": "g0094", "class": "person", "query": "한상진 출연작", "expected": ["jekyll-and-me", "six-flying-dragons", "the-all-round-wife"]}
+{"id": "g0095", "class": "person", "query": "최소은 출연작", "expected": ["to-my-beloved-thief"]}
+{"id": "g0096", "class": "person", "query": "송의준 출연작", "expected": ["heart-to-heart"]}
+{"id": "g0097", "class": "person", "query": "배우 이솜", "expected": ["because-this-is-my-first-life", "phantom-lawyer", "taxi-driver"]}
+{"id": "g0098", "class": "person", "query": "이종재 연출 작품", "expected": ["our-blooming-youth"]}
+{"id": "g0099", "class": "person", "query": "배우 서예화", "expected": ["vincenzo", "when-flowers-bloom-i-think-of-the-moon"]}
+{"id": "g0100", "class": "person", "query": "유지안 출연작", "expected": ["agent-kim-reactivated"]}
+{"id": "g0101", "class": "person", "query": "수현 출연작", "expected": ["queen-of-the-game", "the-atypical-family"]}
+{"id": "g0102", "class": "person", "query": "배우 솔빈", "expected": ["idol-the-coup"]}
+{"id": "g0103", "class": "person", "query": "남경읍 나온 드라마", "expected": ["crash-landing-on-you", "military-prosecutor-doberman"]}
+{"id": "g0104", "class": "person", "query": "배우 유호정", "expected": ["heard-it-through-the-grapevine", "recipe-for-love"]}
+{"id": "g0105", "class": "person", "query": "에일리 출연작", "expected": ["dream-high-2"]}
+{"id": "g0106", "class": "person", "query": "홍경민 출연작", "expected": ["love-can-t-wait"]}
+{"id": "g0107", "class": "person", "query": "배우 강예서", "expected": ["abyss"]}
+{"id": "g0108", "class": "person", "query": "배건우 출연작", "expected": ["empress-ki"]}
+{"id": "g0109", "class": "person", "query": "한그루 출연작", "expected": ["cinderella-game"]}
+{"id": "g0110", "class": "person", "query": "배우 신승환", "expected": ["empress-ki", "save-the-family", "the-all-round-wife"]}
+{"id": "g0111", "class": "person", "query": "신동미 출연작", "expected": ["sold-out-on-you", "welcome-to-samdalri"]}
+{"id": "g0112", "class": "person", "query": "이해영 나온 드라마", "expected": ["buried-hearts", "i-m-not-a-robot"]}
+{"id": "g0113", "class": "person", "query": "장진영 나온 드라마", "expected": ["lobbyist"]}
+{"id": "g0114", "class": "person", "query": "황희 (배우) 나온 드라마", "expected": ["tale-of-the-nine-tailed"]}
+{"id": "g0115", "class": "person", "query": "박진주 출연작", "expected": ["it-s-okay-to-not-be-okay"]}
+{"id": "g0116", "class": "person", "query": "박혜련 작가 드라마", "expected": ["i-can-hear-your-voice", "pinocchio", "while-you-were-sleeping-2017"]}
 {"id": "g0117", "class": "person", "query": "정지순 나온 드라마", "expected": ["bring-it-on-ghost"]}
-{"id": "g0118", "class": "person", "query": "류한비 나온 드라마", "expected": ["come-and-hug-me"]}
-{"id": "g0119", "class": "person", "query": "배해선 출연작", "expected": ["crash-course-in-romance", "hotel-del-luna", "inspector-koo"]}
-{"id": "g0120", "class": "person", "query": "배우 김용림", "expected": ["you-re-the-best-lee-soon-shin"]}
-{"id": "g0121", "class": "multi_hop", "query": "이동욱 이시영 공동 출연작", "expected": ["wild-romance"]}
-{"id": "g0122", "class": "multi_hop", "query": "박해미이랑 전국환 나온 작품", "expected": ["empress-ki"]}
-{"id": "g0123", "class": "multi_hop", "query": "이병헌이랑 진구 나온 작품", "expected": ["mr-sunshine"]}
-{"id": "g0124", "class": "multi_hop", "query": "이도엽이랑 한예리 나온 작품", "expected": ["six-flying-dragons"]}
-{"id": "g0125", "class": "multi_hop", "query": "나문희 박지일 공동 출연작", "expected": ["goodbye-solo"]}
-{"id": "g0126", "class": "multi_hop", "query": "이무생랑 전성우 같이 나온 드라마", "expected": ["designated-survivor-60-days"]}
-{"id": "g0127", "class": "multi_hop", "query": "배그린 최란 공동 출연작", "expected": ["you-re-beautiful"]}
-{"id": "g0128", "class": "multi_hop", "query": "김명수이랑 이원종 나온 작품", "expected": ["empress-ki"]}
-{"id": "g0129", "class": "multi_hop", "query": "윤서현이랑 이초희 나온 작품", "expected": ["six-flying-dragons"]}
-{"id": "g0130", "class": "multi_hop", "query": "박민영이랑 서강준 나온 작품", "expected": ["when-the-weather-is-fine"]}
-{"id": "g0131", "class": "multi_hop", "query": "김예령 최무성 공동 출연작", "expected": ["empress-ki"]}
-{"id": "g0132", "class": "multi_hop", "query": "김명민 한상진 공동 출연작", "expected": ["six-flying-dragons"]}
-{"id": "g0133", "class": "multi_hop", "query": "문가영이랑 이성재 나온 작품", "expected": ["jealousy-incarnate"]}
-{"id": "g0134", "class": "multi_hop", "query": "이지현랑 하지원 같이 나온 드라마", "expected": ["empress-ki"]}
-{"id": "g0135", "class": "multi_hop", "query": "박시은이랑 전진서 나온 작품", "expected": ["six-flying-dragons"]}
-{"id": "g0136", "class": "multi_hop", "query": "고주원 김환희 공동 출연작", "expected": ["you-re-the-best-lee-soon-shin"]}
-{"id": "g0137", "class": "multi_hop", "query": "김여진 이성민 공동 출연작", "expected": ["splendid-politics"]}
-{"id": "g0138", "class": "multi_hop", "query": "전여빈이랑 최영준 나온 작품", "expected": ["vincenzo"]}
-{"id": "g0139", "class": "multi_hop", "query": "김영민 (1971년)이랑 박진우 나온 작품", "expected": ["military-prosecutor-doberman"]}
-{"id": "g0140", "class": "multi_hop", "query": "박민영이랑 이준혁 나온 작품", "expected": ["city-hunter"]}
-{"id": "g0141", "class": "multi_hop", "query": "고윤이랑 김혜선 나온 작품", "expected": ["beauty-and-mr-romantic"]}
-{"id": "g0142", "class": "multi_hop", "query": "나문희이랑 정일우 나온 작품", "expected": ["high-kick"]}
-{"id": "g0143", "class": "multi_hop", "query": "유인나 윤상현 공동 출연작", "expected": ["secret-garden"]}
-{"id": "g0144", "class": "multi_hop", "query": "문채원이랑 천호진 나온 작품", "expected": ["good-doctor"]}
-{"id": "g0145", "class": "multi_hop", "query": "진기주 허준호 공동 출연작", "expected": ["come-and-hug-me"]}
-{"id": "g0146", "class": "multi_hop", "query": "염동헌이랑 정동환 나온 작품", "expected": ["the-princess-man"]}
-{"id": "g0147", "class": "multi_hop", "query": "김보미 (1987년)이랑 이연희 나온 작품", "expected": ["gu-family-book"]}
-{"id": "g0148", "class": "multi_hop", "query": "류혜영 진희경 공동 출연작", "expected": ["heart-to-heart"]}
-{"id": "g0149", "class": "multi_hop", "query": "윤유선이랑 이성재 나온 작품", "expected": ["abyss"]}
-{"id": "g0150", "class": "multi_hop", "query": "박형식 최원영 공동 출연작", "expected": ["hwarang-the-poet-warrior-youth"]}
-{"id": "g0151", "class": "multi_hop", "query": "박지영 정경순 공동 출연작", "expected": ["moon-lovers-scarlet-heart-ryeo"]}
-{"id": "g0152", "class": "multi_hop", "query": "정소민이랑 조재윤 나온 작품", "expected": ["alchemy-of-souls"]}
-{"id": "g0153", "class": "multi_hop", "query": "공효진이랑 이민호 나온 작품", "expected": ["when-the-stars-gossip"]}
-{"id": "g0154", "class": "multi_hop", "query": "박진우 정인기 공동 출연작", "expected": ["military-prosecutor-doberman"]}
-{"id": "g0155", "class": "multi_hop", "query": "이진욱이랑 전혜빈 나온 작품", "expected": ["beyond-the-bar"]}
-{"id": "g0156", "class": "multi_hop", "query": "육성재랑 이엘 같이 나온 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "g0157", "class": "multi_hop", "query": "신세경 정동환 공동 출연작", "expected": ["the-bride-of-habaek"]}
-{"id": "g0158", "class": "multi_hop", "query": "강기영랑 이대연 같이 나온 드라마", "expected": ["oh-my-ghostess"]}
-{"id": "g0159", "class": "multi_hop", "query": "이대연랑 이학주 같이 나온 드라마", "expected": ["oh-my-ghostess"]}
-{"id": "g0160", "class": "multi_hop", "query": "이주실이랑 이학주 나온 작품", "expected": ["oh-my-ghostess"]}
-{"id": "g0161", "class": "multi_hop", "query": "전지현 전진서 공동 출연작", "expected": ["the-legend-of-the-blue-sea"]}
-{"id": "g0162", "class": "multi_hop", "query": "김태훈 이상이 공동 출연작", "expected": ["my-demon"]}
-{"id": "g0163", "class": "multi_hop", "query": "김소은이랑 이민정 나온 작품", "expected": ["boys-over-flowers"]}
-{"id": "g0164", "class": "multi_hop", "query": "강한나이랑 장기용 나온 작품", "expected": ["my-roommate-is-a-gumiho"]}
-{"id": "g0165", "class": "multi_hop", "query": "손석구 이기우 공동 출연작", "expected": ["my-liberation-notes"]}
-{"id": "g0166", "class": "multi_hop", "query": "박민영 변희봉 공동 출연작", "expected": ["glory-jane"]}
-{"id": "g0167", "class": "multi_hop", "query": "봉태규 윤주희 공동 출연작", "expected": ["the-penthouse-war-in-life"]}
-{"id": "g0168", "class": "multi_hop", "query": "박보검랑 진영 같이 나온 드라마", "expected": ["love-in-the-moonlight"]}
-{"id": "g0169", "class": "multi_hop", "query": "박지일 이희준 공동 출연작", "expected": ["the-legend-of-the-blue-sea"]}
-{"id": "g0170", "class": "multi_hop", "query": "이준기이랑 한효주 나온 작품", "expected": ["iljimae"]}
-{"id": "g0171", "class": "multi_hop", "query": "김서형랑 정지소 같이 나온 드라마", "expected": ["empress-ki"]}
-{"id": "g0172", "class": "multi_hop", "query": "이희도 조동혁 공동 출연작", "expected": ["mr-good-bye"]}
-{"id": "g0173", "class": "multi_hop", "query": "박성웅이랑 이기영 나온 작품", "expected": ["glory-jane"]}
-{"id": "g0174", "class": "multi_hop", "query": "공정환 허준호 공동 출연작", "expected": ["designated-survivor-60-days"]}
-{"id": "g0175", "class": "multi_hop", "query": "방은희랑 성준 같이 나온 드라마", "expected": ["high-society"]}
-{"id": "g0176", "class": "multi_hop", "query": "김범랑 김현중 같이 나온 드라마", "expected": ["boys-over-flowers"]}
-{"id": "g0177", "class": "multi_hop", "query": "김민석이랑 윤아정 나온 작품", "expected": ["empress-ki"]}
-{"id": "g0178", "class": "multi_hop", "query": "송경철 신승환 공동 출연작", "expected": ["empress-ki"]}
-{"id": "g0179", "class": "multi_hop", "query": "김남길이랑 이상엽 나온 작품", "expected": ["trans-siberian-pathfinders"]}
-{"id": "g0180", "class": "multi_hop", "query": "임철수랑 차청화 같이 나온 드라마", "expected": ["crash-landing-on-you"]}
-{"id": "g0181", "class": "character", "query": "이선균 spacecraft commander", "expected": ["trans-siberian-pathfinders"]}
-{"id": "g0182", "class": "character", "query": "이순재 조선 영조", "expected": ["lee-san-wind-of-the-palace"]}
-{"id": "g0183", "class": "character", "query": "표나리 나오는 드라마", "expected": ["jealousy-incarnate"]}
-{"id": "g0184", "class": "character", "query": "김단 역 나나", "expected": ["the-good-wife"]}
-{"id": "g0185", "class": "character", "query": "이서진 조선 정조", "expected": ["lee-san-wind-of-the-palace"]}
-{"id": "g0186", "class": "character", "query": "이재룡 무령왕", "expected": ["the-king-s-daughter-soo-baek-hyang"]}
-{"id": "g0187", "class": "character", "query": "백설 나오는 드라마", "expected": ["fantastic"]}
-{"id": "g0188", "class": "character", "query": "김동영 나오는 드라마", "expected": ["drinking-solo"]}
-{"id": "g0189", "class": "character", "query": "조진웅 김은갑", "expected": ["entourage"]}
-{"id": "g0190", "class": "character", "query": "이화신 역 조정석", "expected": ["jealousy-incarnate"]}
-{"id": "g0191", "class": "character", "query": "유시진 나오는 드라마", "expected": ["descendants-of-the-sun"]}
-{"id": "g0192", "class": "character", "query": "박혜수 유은재", "expected": ["age-of-youth"]}
-{"id": "g0193", "class": "character", "query": "정희왕후 나오는 드라마", "expected": ["the-princess-man"]}
-{"id": "g0194", "class": "character", "query": "혜리 성덕선", "expected": ["reply-1988"]}
-{"id": "g0195", "class": "character", "query": "김제하 역 지창욱", "expected": ["the-k2"]}
-{"id": "g0196", "class": "character", "query": "조선 태조 역 유동근", "expected": ["jeong-do-jeon"]}
-{"id": "g0197", "class": "character", "query": "고안나 나오는 드라마", "expected": ["the-k2"]}
-{"id": "g0198", "class": "character", "query": "장난희 역 고두심", "expected": ["dear-my-friends"]}
-{"id": "g0199", "class": "character", "query": "이준호 정진", "expected": ["memory"]}
-{"id": "g0200", "class": "character", "query": "안재현 강현민", "expected": ["cinderella-and-four-knights"]}
-{"id": "g0201", "class": "character", "query": "정예은 역 한승연", "expected": ["age-of-youth"]}
-{"id": "g0202", "class": "character", "query": "공명 공명", "expected": ["drinking-solo"]}
-{"id": "g0203", "class": "character", "query": "김신 나오는 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "g0204", "class": "character", "query": "황진이 역 손은서", "expected": ["my-love-from-the-star"]}
-{"id": "g0205", "class": "character", "query": "오연주 나오는 드라마", "expected": ["w-two-worlds"]}
-{"id": "g0206", "class": "character", "query": "지은탁 나오는 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
-{"id": "g0207", "class": "character", "query": "홍지홍 나오는 드라마", "expected": ["doctors"]}
-{"id": "g0208", "class": "character", "query": "김종서 나오는 드라마", "expected": ["the-princess-man"]}
-{"id": "g0209", "class": "character", "query": "이시애 역 차광수", "expected": ["the-princess-man"]}
-{"id": "g0210", "class": "character", "query": "송윤아 최유진", "expected": ["the-k2"]}
-{"id": "g0211", "class": "character", "query": "Royal Chef 역 김인권", "expected": ["mr-queen"]}
-{"id": "g0212", "class": "character", "query": "서영주 역 김지수", "expected": ["memory"]}
-{"id": "g0213", "class": "character", "query": "문정아 나오는 드라마", "expected": ["dear-my-friends"]}
-{"id": "g0214", "class": "character", "query": "최영 나오는 드라마", "expected": ["jeong-do-jeon"]}
-{"id": "g0215", "class": "character", "query": "성왕 나오는 드라마", "expected": ["the-king-s-daughter-soo-baek-hyang"]}
-{"id": "g0216", "class": "character", "query": "박신혜 유혜정", "expected": ["doctors"]}
-{"id": "g0217", "class": "character", "query": "이소혜 역 김현주", "expected": ["fantastic"]}
-{"id": "g0218", "class": "character", "query": "고경표 성선우", "expected": ["reply-1988"]}
-{"id": "g0219", "class": "character", "query": "조남두 역 이희준", "expected": ["the-legend-of-the-blue-sea"]}
-{"id": "g0220", "class": "character", "query": "공지훈 역 유준상", "expected": ["pied-piper"]}
-{"id": "g0221", "class": "character", "query": "이주석 안평대군", "expected": ["the-princess-man"]}
-{"id": "g0222", "class": "character", "query": "조선 세조 역 김영철", "expected": ["the-princess-man"]}
-{"id": "g0223", "class": "character", "query": "여명하 나오는 드라마", "expected": ["pied-piper"]}
-{"id": "g0224", "class": "character", "query": "김성균 나오는 드라마", "expected": ["reply-1988"]}
-{"id": "g0225", "class": "character", "query": "성삼문 나오는 드라마", "expected": ["the-princess-man"]}
-{"id": "g0226", "class": "character", "query": "박봉팔 역 옥택연", "expected": ["bring-it-on-ghost"]}
-{"id": "g0227", "class": "character", "query": "조하연 역 채수빈", "expected": ["love-in-the-moonlight"]}
-{"id": "g0228", "class": "character", "query": "김자점 나오는 드라마", "expected": ["the-three-musketeers"]}
-{"id": "g0229", "class": "character", "query": "김채연 나오는 드라마", "expected": ["drinking-solo"]}
-{"id": "g0230", "class": "character", "query": "정몽주 나오는 드라마", "expected": ["jeong-do-jeon"]}
-{"id": "g0231", "class": "character", "query": "고정원 역 고경표", "expected": ["jealousy-incarnate"]}
-{"id": "g0232", "class": "character", "query": "류동룡 나오는 드라마", "expected": ["reply-1988"]}
-{"id": "g0233", "class": "character", "query": "이민호 허준재", "expected": ["the-legend-of-the-blue-sea"]}
-{"id": "g0234", "class": "character", "query": "박하나 역 박하선", "expected": ["drinking-solo"]}
-{"id": "g0235", "class": "character", "query": "조선 단종 역 노태엽", "expected": ["the-princess-man"]}
-{"id": "g0236", "class": "character", "query": "서도윤 역 이태환", "expected": ["w-two-worlds"]}
-{"id": "g0237", "class": "character", "query": "심청 역 전지현", "expected": ["the-legend-of-the-blue-sea"]}
-{"id": "g0238", "class": "character", "query": "조희자 역 김혜자", "expected": ["dear-my-friends"]}
-{"id": "g0239", "class": "character", "query": "원경왕후 역 최명길", "expected": ["king-sejong-the-great"]}
-{"id": "g0240", "class": "character", "query": "이개 나오는 드라마", "expected": ["the-princess-man"]}
-{"id": "g0241", "class": "temporal", "query": "2025년에 MBC에서 한 사극 드라마", "expected": ["moon-river"]}
-{"id": "g0242", "class": "temporal", "query": "2005년에 SBS에서 한 로맨스 드라마", "expected": ["my-girl"]}
-{"id": "g0243", "class": "temporal", "query": "2014년 tvN 스릴러 드라마", "expected": ["liar-game"]}
-{"id": "g0244", "class": "temporal", "query": "2024년 tvN 멜로 드라마", "expected": ["the-midnight-romance-in-hagwon"]}
-{"id": "g0245", "class": "temporal", "query": "2021년 KBS 멜로 드라마", "expected": ["miss-monte-cristo", "red-shoes", "the-all-round-wife", "youth-of-may"]}
-{"id": "g0246", "class": "temporal", "query": "1981년 KBS 드라마", "expected": ["등신불-드라마"]}
-{"id": "g0247", "class": "temporal", "query": "2023년 JTBC 미스터리 드라마", "expected": ["miracle-brothers"]}
-{"id": "g0248", "class": "temporal", "query": "2017년 MBC SF 드라마", "expected": ["i-m-not-a-robot"]}
-{"id": "g0249", "class": "temporal", "query": "2019년에 SBS에서 한 코미디 드라마", "expected": ["big-issue", "my-absolute-boyfriend", "the-secret-life-of-my-secretary"]}
-{"id": "g0250", "class": "temporal", "query": "2023년에 KBS에서 한 액션 드라마", "expected": ["goryeo-khitan-war"]}
-{"id": "g0251", "class": "temporal", "query": "2023년에 MBC에서 한 판타지 드라마", "expected": ["a-good-day-to-be-a-dog", "kokdu-season-of-deity", "the-story-of-park-s-marriage-contract"]}
-{"id": "g0252", "class": "temporal", "query": "2015년에 SBS에서 한 코미디 드라마", "expected": ["the-time-we-were-not-in-love"]}
-{"id": "g0253", "class": "temporal", "query": "2017년 KBS 미스터리 드라마", "expected": ["ms-perfect", "queen-of-mystery", "school-2017"]}
-{"id": "g0254", "class": "temporal", "query": "2015년 KBS 청춘 드라마", "expected": ["cheer-up"]}
-{"id": "g0255", "class": "temporal", "query": "2021년에 tvN에서 한 범죄 드라마", "expected": ["mouse", "the-devil-judge", "vincenzo"]}
-{"id": "g0256", "class": "temporal", "query": "2009년에 MBC에서 한 액션 드라마", "expected": ["queen-seondeok"]}
-{"id": "g0257", "class": "temporal", "query": "2024년 JTBC 가족 드라마", "expected": ["family-by-choice", "romance-in-the-house"]}
-{"id": "g0258", "class": "temporal", "query": "2017년에 KBS에서 한 사극 드라마", "expected": ["a-sea-of-her-own", "queen-for-seven-days"]}
-{"id": "g0259", "class": "temporal", "query": "2017년에 tvN에서 한 SF 드라마", "expected": ["circle"]}
-{"id": "g0260", "class": "temporal", "query": "2023년에 tvN에서 한 스릴러 드라마", "expected": ["pandora-beneath-the-paradise", "the-uncanny-counter-2"]}
-{"id": "g0261", "class": "temporal", "query": "2011년에 tvN에서 한 드라마", "expected": ["ugly-miss-young-ae-season-9", "코미디빅리그-시즌-1"]}
-{"id": "g0262", "class": "temporal", "query": "2005년에 MBC에서 한 코미디 드라마", "expected": ["hello-franceska"]}
-{"id": "g0263", "class": "temporal", "query": "2010년 SBS 사극 드라마", "expected": ["giant"]}
-{"id": "g0264", "class": "temporal", "query": "2022년에 JTBC에서 한 코미디 드라마", "expected": ["cleaning-up"]}
+{"id": "g0118", "class": "person", "query": "정유안 나온 드라마", "expected": ["come-and-hug-me"]}
+{"id": "g0119", "class": "person", "query": "옥예린 출연작", "expected": ["designated-survivor-60-days"]}
+{"id": "g0120", "class": "person", "query": "배우 고주원", "expected": ["live-your-own-life", "run-jang-mi", "you-re-the-best-lee-soon-shin"]}
+{"id": "g0121", "class": "multi_hop", "query": "김광규랑 김산호 같이 나온 드라마", "expected": ["mr-good-bye"]}
+{"id": "g0122", "class": "multi_hop", "query": "정재민랑 조희봉 같이 나온 드라마", "expected": ["six-flying-dragons"]}
+{"id": "g0123", "class": "multi_hop", "query": "박형식이랑 유동근 나온 작품", "expected": ["what-happens-to-my-family"]}
+{"id": "g0124", "class": "multi_hop", "query": "구혜선랑 김현중 같이 나온 드라마", "expected": ["boys-over-flowers"]}
+{"id": "g0125", "class": "multi_hop", "query": "이레 한예리 공동 출연작", "expected": ["six-flying-dragons"]}
+{"id": "g0126", "class": "multi_hop", "query": "김영훈이랑 오승아 나온 작품", "expected": ["pinocchio"]}
+{"id": "g0127", "class": "multi_hop", "query": "박해진이랑 유인영 나온 작품", "expected": ["my-love-from-the-star"]}
+{"id": "g0128", "class": "multi_hop", "query": "육성재이랑 이엘 나온 작품", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "g0129", "class": "multi_hop", "query": "이기영 황선희 공동 출연작", "expected": ["masked-prosecutor"]}
+{"id": "g0130", "class": "multi_hop", "query": "박상면랑 이미숙 같이 나온 드라마", "expected": ["cinderella-s-sister"]}
+{"id": "g0131", "class": "multi_hop", "query": "김광규 이유비 공동 출연작", "expected": ["pinocchio"]}
+{"id": "g0132", "class": "multi_hop", "query": "이순재이랑 정재민 나온 작품", "expected": ["six-flying-dragons"]}
+{"id": "g0133", "class": "multi_hop", "query": "이원종이랑 한혜린 나온 작품", "expected": ["empress-ki"]}
+{"id": "g0134", "class": "multi_hop", "query": "윤종훈이랑 이재욱 (1998년) 나온 작품", "expected": ["extraordinary-you"]}
+{"id": "g0135", "class": "multi_hop", "query": "박시은 진기주 공동 출연작", "expected": ["moon-lovers-scarlet-heart-ryeo"]}
+{"id": "g0136", "class": "multi_hop", "query": "연우진 최웅 공동 출연작", "expected": ["my-love-from-the-star"]}
+{"id": "g0137", "class": "multi_hop", "query": "김동균이랑 신정근 나온 작품", "expected": ["mr-sunshine"]}
+{"id": "g0138", "class": "multi_hop", "query": "서지혜랑 이원정 같이 나온 드라마", "expected": ["my-perfect-stranger"]}
+{"id": "g0139", "class": "multi_hop", "query": "배그린이랑 이슬비 나온 작품", "expected": ["you-re-the-best-lee-soon-shin"]}
+{"id": "g0140", "class": "multi_hop", "query": "안효섭 이대연 공동 출연작", "expected": ["abyss"]}
+{"id": "g0141", "class": "multi_hop", "query": "송하윤 이레 공동 출연작", "expected": ["six-flying-dragons"]}
+{"id": "g0142", "class": "multi_hop", "query": "김소현이랑 예지원 나온 작품", "expected": ["page-turner"]}
+{"id": "g0143", "class": "multi_hop", "query": "민호이랑 최원영 나온 작품", "expected": ["hwarang-the-poet-warrior-youth"]}
+{"id": "g0144", "class": "multi_hop", "query": "안효섭이랑 양세종 나온 작품", "expected": ["still-17"]}
+{"id": "g0145", "class": "multi_hop", "query": "류화영이랑 박인환 나온 작품", "expected": ["mad-dog"]}
+{"id": "g0146", "class": "multi_hop", "query": "김병철이랑 임세미 나온 작품", "expected": ["mr-sunshine"]}
+{"id": "g0147", "class": "multi_hop", "query": "김민석 송중기 공동 출연작", "expected": ["descendants-of-the-sun"]}
+{"id": "g0148", "class": "multi_hop", "query": "김수현이랑 조희봉 나온 작품", "expected": ["my-love-from-the-star"]}
+{"id": "g0149", "class": "multi_hop", "query": "이재원 이호재 공동 출연작", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "g0150", "class": "multi_hop", "query": "김도훈이랑 여진구 나온 작품", "expected": ["my-absolute-boyfriend"]}
+{"id": "g0151", "class": "multi_hop", "query": "데이비드 맥기니스이랑 유동근 나온 작품", "expected": ["gu-family-book"]}
+{"id": "g0152", "class": "multi_hop", "query": "강하늘 박지영 공동 출연작", "expected": ["moon-lovers-scarlet-heart-ryeo"]}
+{"id": "g0153", "class": "multi_hop", "query": "권나라이랑 심은우 나온 작품", "expected": ["suspicious-partner"]}
+{"id": "g0154", "class": "multi_hop", "query": "공명 김광규 공동 출연작", "expected": ["splendid-politics"]}
+{"id": "g0155", "class": "multi_hop", "query": "안길강 정윤석 공동 출연작", "expected": ["six-flying-dragons"]}
+{"id": "g0156", "class": "multi_hop", "query": "박아인이랑 신동미 나온 작품", "expected": ["sold-out-on-you"]}
+{"id": "g0157", "class": "multi_hop", "query": "이규형이랑 지성 나온 작품", "expected": ["doctor-john"]}
+{"id": "g0158", "class": "multi_hop", "query": "이민호 임주환 공동 출연작", "expected": ["boys-over-flowers"]}
+{"id": "g0159", "class": "multi_hop", "query": "김창완이랑 김희원 나온 작품", "expected": ["my-love-from-the-star"]}
+{"id": "g0160", "class": "multi_hop", "query": "이기우랑 이민기 같이 나온 드라마", "expected": ["my-liberation-notes"]}
+{"id": "g0161", "class": "multi_hop", "query": "변우석 윤선우 공동 출연작", "expected": ["moon-lovers-scarlet-heart-ryeo"]}
+{"id": "g0162", "class": "multi_hop", "query": "김태리랑 윤경호 같이 나온 드라마", "expected": ["mr-sunshine"]}
+{"id": "g0163", "class": "multi_hop", "query": "강미나랑 황영희 같이 나온 드라마", "expected": ["tale-of-fairy"]}
+{"id": "g0164", "class": "multi_hop", "query": "서현철이랑 한상진 나온 작품", "expected": ["six-flying-dragons"]}
+{"id": "g0165", "class": "multi_hop", "query": "김윤서 유인나 공동 출연작", "expected": ["you-re-the-best-lee-soon-shin"]}
+{"id": "g0166", "class": "multi_hop", "query": "지창욱 최태준 공동 출연작", "expected": ["suspicious-partner"]}
+{"id": "g0167", "class": "multi_hop", "query": "박진영이랑 이승준 나온 작품", "expected": ["he-is-psychometric"]}
+{"id": "g0168", "class": "multi_hop", "query": "박지일이랑 이희준 나온 작품", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "g0169", "class": "multi_hop", "query": "류화영 한예리 공동 출연작", "expected": ["age-of-youth"]}
+{"id": "g0170", "class": "multi_hop", "query": "박영규 정애리 공동 출연작", "expected": ["masked-prosecutor"]}
+{"id": "g0171", "class": "multi_hop", "query": "수지 이도경 공동 출연작", "expected": ["gu-family-book"]}
+{"id": "g0172", "class": "multi_hop", "query": "김희애랑 박해준 같이 나온 드라마", "expected": ["the-world-of-the-married"]}
+{"id": "g0173", "class": "multi_hop", "query": "전국환 정경순 공동 출연작", "expected": ["empress-ki"]}
+{"id": "g0174", "class": "multi_hop", "query": "박민영이랑 유지태 나온 작품", "expected": ["healer"]}
+{"id": "g0175", "class": "multi_hop", "query": "나영희랑 로운 같이 나온 드라마", "expected": ["about-time"]}
+{"id": "g0176", "class": "multi_hop", "query": "김혜은 윤두준 공동 출연작", "expected": ["radio-romance"]}
+{"id": "g0177", "class": "multi_hop", "query": "송승헌이랑 윤다훈 나온 작품", "expected": ["saimdang-memoir-of-colors"]}
+{"id": "g0178", "class": "multi_hop", "query": "이유리 정찬 공동 출연작", "expected": ["yellow-boots"]}
+{"id": "g0179", "class": "multi_hop", "query": "김광규랑 이필모 같이 나온 드라마", "expected": ["pinocchio"]}
+{"id": "g0180", "class": "multi_hop", "query": "남보라랑 최명길 같이 나온 드라마", "expected": ["glory-jane"]}
+{"id": "g0181", "class": "character", "query": "박영규 이인임", "expected": ["jeong-do-jeon"]}
+{"id": "g0182", "class": "character", "query": "김종서 나오는 드라마", "expected": ["the-princess-man"]}
+{"id": "g0183", "class": "character", "query": "박철호 (1983년) 성삼문", "expected": ["the-princess-man"]}
+{"id": "g0184", "class": "character", "query": "김지원 윤명주", "expected": ["descendants-of-the-sun"]}
+{"id": "g0185", "class": "character", "query": "고정원 나오는 드라마", "expected": ["jealousy-incarnate"]}
+{"id": "g0186", "class": "character", "query": "김동영 역 김동영", "expected": ["drinking-solo"]}
+{"id": "g0187", "class": "character", "query": "김현주 이소혜", "expected": ["fantastic"]}
+{"id": "g0188", "class": "character", "query": "나나 김단", "expected": ["the-good-wife"]}
+{"id": "g0189", "class": "character", "query": "무령왕 나오는 드라마", "expected": ["the-king-s-daughter-soo-baek-hyang"]}
+{"id": "g0190", "class": "character", "query": "금성대군 나오는 드라마", "expected": ["the-princess-man"]}
+{"id": "g0191", "class": "character", "query": "정윤석 의안대군", "expected": ["six-flying-dragons"]}
+{"id": "g0192", "class": "character", "query": "조하연 역 채수빈", "expected": ["love-in-the-moonlight"]}
+{"id": "g0193", "class": "character", "query": "Vice-captain 나오는 드라마", "expected": ["trans-siberian-pathfinders"]}
+{"id": "g0194", "class": "character", "query": "전노민 최명길", "expected": ["the-three-musketeers"]}
+{"id": "g0195", "class": "character", "query": "홍지홍 나오는 드라마", "expected": ["doctors"]}
+{"id": "g0196", "class": "character", "query": "이태환 서도윤", "expected": ["w-two-worlds"]}
+{"id": "g0197", "class": "character", "query": "bank teller 역 유아인", "expected": ["descendants-of-the-sun"]}
+{"id": "g0198", "class": "character", "query": "고안나 역 임윤아", "expected": ["the-k2"]}
+{"id": "g0199", "class": "character", "query": "정진 나오는 드라마", "expected": ["memory"]}
+{"id": "g0200", "class": "character", "query": "류해성 역 주상욱", "expected": ["fantastic"]}
+{"id": "g0201", "class": "character", "query": "공효진 표나리", "expected": ["jealousy-incarnate"]}
+{"id": "g0202", "class": "character", "query": "공유 김신", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "g0203", "class": "character", "query": "성왕 역 조현재", "expected": ["the-king-s-daughter-soo-baek-hyang"]}
+{"id": "g0204", "class": "character", "query": "고두심 장난희", "expected": ["dear-my-friends"]}
+{"id": "g0205", "class": "character", "query": "지은탁 나오는 드라마", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "g0206", "class": "character", "query": "조선 영조 역 이순재", "expected": ["lee-san-wind-of-the-palace"]}
+{"id": "g0207", "class": "character", "query": "이시애 나오는 드라마", "expected": ["the-princess-man"]}
+{"id": "g0208", "class": "character", "query": "황진이 나오는 드라마", "expected": ["my-love-from-the-star"]}
+{"id": "g0209", "class": "character", "query": "김제하 나오는 드라마", "expected": ["the-k2"]}
+{"id": "g0210", "class": "character", "query": "유정 나오는 드라마", "expected": ["cheese-in-the-trap"]}
+{"id": "g0211", "class": "character", "query": "강현민 역 안재현", "expected": ["cinderella-and-four-knights"]}
+{"id": "g0212", "class": "character", "query": "나문희 문정아", "expected": ["dear-my-friends"]}
+{"id": "g0213", "class": "character", "query": "서영주 역 김지수", "expected": ["memory"]}
+{"id": "g0214", "class": "character", "query": "강모연 역 송혜교", "expected": ["descendants-of-the-sun"]}
+{"id": "g0215", "class": "character", "query": "최유진 나오는 드라마", "expected": ["the-k2"]}
+{"id": "g0216", "class": "character", "query": "조남두 나오는 드라마", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "g0217", "class": "character", "query": "성선우 나오는 드라마", "expected": ["reply-1988"]}
+{"id": "g0218", "class": "character", "query": "이민호 허준재", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "g0219", "class": "character", "query": "공지훈 역 유준상", "expected": ["pied-piper"]}
+{"id": "g0220", "class": "character", "query": "엄효섭 이개", "expected": ["the-princess-man"]}
+{"id": "g0221", "class": "character", "query": "여명하 역 조윤희", "expected": ["pied-piper"]}
+{"id": "g0222", "class": "character", "query": "김성균 역 김성균", "expected": ["reply-1988"]}
+{"id": "g0223", "class": "character", "query": "조진웅 김은갑", "expected": ["entourage"]}
+{"id": "g0224", "class": "character", "query": "박봉팔 역 옥택연", "expected": ["bring-it-on-ghost"]}
+{"id": "g0225", "class": "character", "query": "오연주 나오는 드라마", "expected": ["w-two-worlds"]}
+{"id": "g0226", "class": "character", "query": "조선 태조 나오는 드라마", "expected": ["jeong-do-jeon"]}
+{"id": "g0227", "class": "character", "query": "공명 나오는 드라마", "expected": ["drinking-solo"]}
+{"id": "g0228", "class": "character", "query": "조선 단종 역 노태엽", "expected": ["the-princess-man"]}
+{"id": "g0229", "class": "character", "query": "김승규 역 허정규", "expected": ["the-princess-man"]}
+{"id": "g0230", "class": "character", "query": "류동룡 나오는 드라마", "expected": ["reply-1988"]}
+{"id": "g0231", "class": "character", "query": "심청 나오는 드라마", "expected": ["the-legend-of-the-blue-sea"]}
+{"id": "g0232", "class": "character", "query": "박하나 나오는 드라마", "expected": ["drinking-solo"]}
+{"id": "g0233", "class": "character", "query": "정희왕후 역 김서라", "expected": ["the-princess-man"]}
+{"id": "g0234", "class": "character", "query": "이화신 나오는 드라마", "expected": ["jealousy-incarnate"]}
+{"id": "g0235", "class": "character", "query": "지승현 양규", "expected": ["goryeo-khitan-war"]}
+{"id": "g0236", "class": "character", "query": "조희자 역 김혜자", "expected": ["dear-my-friends"]}
+{"id": "g0237", "class": "character", "query": "조선 정조 역 이서진", "expected": ["lee-san-wind-of-the-palace"]}
+{"id": "g0238", "class": "character", "query": "백설 역 박시연", "expected": ["fantastic"]}
+{"id": "g0239", "class": "character", "query": "저승사자 역 이동욱", "expected": ["guardian-the-lonely-and-great-god"]}
+{"id": "g0240", "class": "character", "query": "유혜정 역 박신혜", "expected": ["doctors"]}
+{"id": "g0241", "class": "temporal", "query": "2024년 KBS 미스터리 드라마", "expected": ["dog-knows-everything", "face-me", "perfect-family"]}
+{"id": "g0242", "class": "temporal", "query": "2008년에 SBS에서 한 사극 드라마", "expected": ["iljimae", "painter-of-the-wind"]}
+{"id": "g0243", "class": "temporal", "query": "2014년에 KBS에서 한 일일 드라마", "expected": ["you-are-the-only-one"]}
+{"id": "g0244", "class": "temporal", "query": "2022년 MBC 법정 드라마", "expected": ["big-mouth", "doctor-lawyer"]}
+{"id": "g0245", "class": "temporal", "query": "2015년에 tvN에서 한 스릴러 드라마", "expected": ["oh-my-ghostess"]}
+{"id": "g0246", "class": "temporal", "query": "2020년 MBC 멜로 드라마", "expected": ["find-me-in-your-memory"]}
+{"id": "g0247", "class": "temporal", "query": "2020년 tvN 범죄 드라마", "expected": ["flower-of-evil"]}
+{"id": "g0248", "class": "temporal", "query": "2009년에 MBC에서 한 로맨스 드라마", "expected": ["cinderella-man", "queen-seondeok", "what-s-for-dinner"]}
+{"id": "g0249", "class": "temporal", "query": "2022년에 MBC에서 한 드라마", "expected": ["tracer"]}
+{"id": "g0250", "class": "temporal", "query": "2017년에 JTBC에서 한 로맨스 드라마", "expected": ["just-between-lovers", "makpan-romaenseu", "strong-woman-do-bong-soon"]}
+{"id": "g0251", "class": "temporal", "query": "2024년 tvN 오피스 드라마", "expected": ["the-auditors"]}
+{"id": "g0252", "class": "temporal", "query": "2012년에 SBS에서 한 코미디 드라마", "expected": ["a-gentleman-s-dignity", "history-of-a-salaryman", "rooftop-prince", "salamander-guru-and-the-shadows"]}
+{"id": "g0253", "class": "temporal", "query": "2014년에 SBS에서 한 사극 드라마", "expected": ["endless-love", "secret-door"]}
+{"id": "g0254", "class": "temporal", "query": "2010년 SBS 사극 드라마", "expected": ["giant"]}
+{"id": "g0255", "class": "temporal", "query": "2015년 MBC 사극 드라마", "expected": ["shine-or-go-crazy", "splendid-politics"]}
+{"id": "g0256", "class": "temporal", "query": "2006년 SBS 로맨스 드라마", "expected": ["101st-proposal", "alone-in-love", "smile-again", "tree-of-heaven"]}
+{"id": "g0257", "class": "temporal", "query": "2021년 SBS 액션 드라마", "expected": ["taxi-driver"]}
+{"id": "g0258", "class": "temporal", "query": "2018년 tvN 스릴러 드라마", "expected": ["the-smile-has-left-your-eyes"]}
+{"id": "g0259", "class": "temporal", "query": "2025년 tvN 드라마", "expected": ["love-take-two", "shin-s-project"]}
+{"id": "g0260", "class": "temporal", "query": "2007년에 MBC에서 한 의학 드라마", "expected": ["behind-the-white-tower"]}
+{"id": "g0261", "class": "temporal", "query": "2022년에 SBS에서 한 판타지 드라마", "expected": ["again-my-life"]}
+{"id": "g0262", "class": "temporal", "query": "2018년에 tvN에서 한 멜로 드라마", "expected": ["encounter"]}
+{"id": "g0263", "class": "temporal", "query": "2023년에 JTBC에서 한 판타지 드라마", "expected": ["destined-with-you", "miracle-brothers"]}
+{"id": "g0264", "class": "temporal", "query": "2017년 SBS 법정 드라마", "expected": ["suspicious-partner"]}
 {"id": "g0265", "class": "temporal", "query": "2012년 tvN 멜로 드라마", "expected": ["glass-mask", "yellow-boots"]}
-{"id": "g0266", "class": "temporal", "query": "2018년 KBS 가족 드라마", "expected": ["love-to-the-end"]}
-{"id": "g0267", "class": "temporal", "query": "2015년 MBC 사극 드라마", "expected": ["shine-or-go-crazy", "splendid-politics"]}
-{"id": "g0268", "class": "temporal", "query": "2023년 SBS 판타지 드라마", "expected": ["my-demon", "revenant"]}
-{"id": "g0269", "class": "temporal", "query": "2025년 tvN 의학 드라마", "expected": ["resident-playbook"]}
-{"id": "g0270", "class": "temporal", "query": "2024년에 KBS에서 한 판타지 드라마", "expected": ["love-song-for-illusion"]}
-{"id": "g0271", "class": "temporal", "query": "2026년에 SBS에서 한 액션 드라마", "expected": ["agent-kim-reactivated"]}
-{"id": "g0272", "class": "temporal", "query": "2017년에 SBS에서 한 범죄 드라마", "expected": ["band-of-sisters", "suspicious-partner"]}
-{"id": "g0273", "class": "temporal", "query": "2026년 MBC 코미디 드라마", "expected": ["fifties-professionals", "perfect-crown"]}
-{"id": "g0274", "class": "temporal", "query": "2009년에 MBC에서 한 로맨스 드라마", "expected": ["cinderella-man", "queen-seondeok", "what-s-for-dinner"]}
-{"id": "g0275", "class": "temporal", "query": "2014년 SBS 액션 드라마", "expected": ["three-days", "you-re-all-surrounded"]}
-{"id": "g0276", "class": "temporal", "query": "2022년 MBC 가족 드라마", "expected": ["game-of-witches", "secret-house"]}
-{"id": "g0277", "class": "temporal", "query": "2018년에 KBS에서 한 법정 드라마", "expected": ["suits"]}
-{"id": "g0278", "class": "temporal", "query": "2015년 tvN 멜로 드라마", "expected": ["reply-1988"]}
-{"id": "g0279", "class": "temporal", "query": "2025년에 JTBC에서 한 가족 드라마", "expected": ["love-me", "the-nice-guy"]}
-{"id": "g0280", "class": "temporal", "query": "2016년 tvN 액션 드라마", "expected": ["pied-piper", "the-k2"]}
-{"id": "g0281", "class": "temporal", "query": "2013년 KBS 멜로 드라마", "expected": ["ruby-ring", "secret-love"]}
-{"id": "g0282", "class": "temporal", "query": "2012년에 SBS에서 한 액션 드라마", "expected": ["the-chaser"]}
-{"id": "g0283", "class": "temporal", "query": "2026년 MBC 멜로 드라마", "expected": ["family-resister"]}
-{"id": "g0284", "class": "temporal", "query": "2015년에 tvN에서 한 스릴러 드라마", "expected": ["oh-my-ghostess"]}
-{"id": "g0285", "class": "temporal", "query": "2024년에 tvN에서 한 스릴러 드라마", "expected": ["player-2-master-of-swindlers"]}
-{"id": "g0286", "class": "temporal", "query": "2012년 SBS 코미디 드라마", "expected": ["a-gentleman-s-dignity", "history-of-a-salaryman", "rooftop-prince", "salamander-guru-and-the-shadows"]}
-{"id": "g0287", "class": "temporal", "query": "2019년 JTBC 판타지 드라마", "expected": ["the-light-in-your-eyes"]}
-{"id": "g0288", "class": "temporal", "query": "2025년에 MBC에서 한 법정 드라마", "expected": ["oh-my-ghost-clients"]}
-{"id": "g0289", "class": "temporal", "query": "2013년 KBS 의학 드라마", "expected": ["good-doctor"]}
-{"id": "g0290", "class": "temporal", "query": "2023년 tvN 미스터리 드라마", "expected": ["delightfully-deceitful", "maestra-strings-of-truth", "my-lovely-liar"]}
-{"id": "g0291", "class": "temporal", "query": "2021년에 KBS에서 한 가족 드라마", "expected": ["red-shoes", "the-all-round-wife"]}
-{"id": "g0292", "class": "temporal", "query": "2019년 SBS 사극 드라마", "expected": ["haechi"]}
-{"id": "g0293", "class": "temporal", "query": "2011년 MBC 코미디 드라마", "expected": ["can-you-hear-my-heart", "high-kick-revenge-of-the-short-legged", "the-duo"]}
-{"id": "g0294", "class": "temporal", "query": "2018년 JTBC 스릴러 드라마", "expected": ["misty"]}
-{"id": "g0295", "class": "temporal", "query": "2013년 SBS 멜로 드라마", "expected": ["queen-of-ambition"]}
-{"id": "g0296", "class": "temporal", "query": "2017년 KBS 액션 드라마", "expected": ["naked-fireman"]}
-{"id": "g0297", "class": "temporal", "query": "2025년에 tvN에서 한 오피스 드라마", "expected": ["my-dearest-nemesis", "the-divorce-insurance", "typhoon-family"]}
-{"id": "g0298", "class": "temporal", "query": "2026년에 JTBC에서 한 범죄 드라마", "expected": ["reborn-rookie"]}
-{"id": "g0299", "class": "temporal", "query": "2025년에 tvN에서 한 드라마", "expected": ["love-take-two", "shin-s-project"]}
-{"id": "g0300", "class": "temporal", "query": "2025년 MBC 멜로 드라마", "expected": ["first-man", "the-woman-who-swallowed-the-sun"]}
+{"id": "g0266", "class": "temporal", "query": "2023년에 JTBC에서 한 스릴러 드라마", "expected": ["behind-your-touch"]}
+{"id": "g0267", "class": "temporal", "query": "2022년에 KBS에서 한 드라마", "expected": ["curtain-call", "if-you-wish-upon-me", "it-s-beautiful-now", "leemujin-service"]}
+{"id": "g0268", "class": "temporal", "query": "2021년 KBS 가족 드라마", "expected": ["red-shoes", "the-all-round-wife"]}
+{"id": "g0269", "class": "temporal", "query": "2017년에 SBS에서 한 범죄 드라마", "expected": ["band-of-sisters", "suspicious-partner"]}
+{"id": "g0270", "class": "temporal", "query": "2022년에 SBS에서 한 스릴러 드라마", "expected": ["woori-the-virgin"]}
+{"id": "g0271", "class": "temporal", "query": "2011년에 KBS에서 한 미스터리 드라마", "expected": ["white-christmas"]}
+{"id": "g0272", "class": "temporal", "query": "2018년에 tvN에서 한 액션 드라마", "expected": ["100-days-my-prince", "mr-sunshine"]}
+{"id": "g0273", "class": "temporal", "query": "2018년에 tvN에서 한 법정 드라마", "expected": ["lawless-lawyer"]}
+{"id": "g0274", "class": "temporal", "query": "2017년 tvN SF 드라마", "expected": ["circle"]}
+{"id": "g0275", "class": "temporal", "query": "2025년에 tvN에서 한 사극 드라마", "expected": ["the-queen-who-crowns"]}
+{"id": "g0276", "class": "temporal", "query": "2020년 tvN 의학 드라마", "expected": ["hospital-playlist"]}
+{"id": "g0277", "class": "temporal", "query": "2017년 JTBC 판타지 드라마", "expected": ["strong-woman-do-bong-soon"]}
+{"id": "g0278", "class": "temporal", "query": "2023년 tvN 미스터리 드라마", "expected": ["delightfully-deceitful", "maestra-strings-of-truth", "my-lovely-liar"]}
+{"id": "g0279", "class": "temporal", "query": "2017년 JTBC 코미디 드라마", "expected": ["makpan-romaenseu", "strong-woman-do-bong-soon"]}
+{"id": "g0280", "class": "temporal", "query": "2018년 JTBC 의학 드라마", "expected": ["life"]}
+{"id": "g0281", "class": "temporal", "query": "2023년에 SBS에서 한 범죄 드라마", "expected": ["the-escape-of-the-seven", "the-killing-vote"]}
+{"id": "g0282", "class": "temporal", "query": "2014년에 tvN에서 한 스릴러 드라마", "expected": ["liar-game"]}
+{"id": "g0283", "class": "temporal", "query": "2022년에 MBC에서 한 판타지 드라마", "expected": ["from-now-on-showtime", "the-golden-spoon"]}
+{"id": "g0284", "class": "temporal", "query": "2013년 SBS 판타지 드라마", "expected": ["i-can-hear-your-voice", "master-s-sun", "my-love-from-the-star"]}
+{"id": "g0285", "class": "temporal", "query": "2014년에 JTBC에서 한 청춘 드라마", "expected": ["seonam-girls-high-school-investigators"]}
+{"id": "g0286", "class": "temporal", "query": "2015년 KBS 미스터리 드라마", "expected": ["hello-monster", "who-are-you-school-2015"]}
+{"id": "g0287", "class": "temporal", "query": "2011년 MBC 코미디 드라마", "expected": ["can-you-hear-my-heart", "high-kick-revenge-of-the-short-legged", "the-duo"]}
+{"id": "g0288", "class": "temporal", "query": "2024년에 JTBC에서 한 판타지 드라마", "expected": ["the-atypical-family"]}
+{"id": "g0289", "class": "temporal", "query": "2026년 MBC 법정 드라마", "expected": ["the-judge-returns"]}
+{"id": "g0290", "class": "temporal", "query": "2016년에 JTBC에서 한 코미디 드라마", "expected": ["fantastic"]}
+{"id": "g0291", "class": "temporal", "query": "2009년 MBC 액션 드라마", "expected": ["queen-seondeok"]}
+{"id": "g0292", "class": "temporal", "query": "2021년 tvN 공포 드라마", "expected": ["happiness"]}
+{"id": "g0293", "class": "temporal", "query": "2013년에 KBS에서 한 의학 드라마", "expected": ["good-doctor"]}
+{"id": "g0294", "class": "temporal", "query": "2020년 MBC 범죄 드라마", "expected": ["365-repeat-the-year", "the-game-towards-zero"]}
+{"id": "g0295", "class": "temporal", "query": "2019년에 SBS에서 한 멜로 드라마", "expected": ["doctor-john"]}
+{"id": "g0296", "class": "temporal", "query": "2023년에 tvN에서 한 사극 드라마", "expected": ["arthdal-chronicles-the-sword-of-aramoon", "our-blooming-youth"]}
+{"id": "g0297", "class": "temporal", "query": "2015년 SBS 코미디 드라마", "expected": ["the-time-we-were-not-in-love"]}
+{"id": "g0298", "class": "temporal", "query": "2015년 MBC 멜로 드라마", "expected": ["angry-mom", "glamorous-temptation", "queen-s-flower"]}
+{"id": "g0299", "class": "temporal", "query": "2015년에 tvN에서 한 멜로 드라마", "expected": ["reply-1988"]}
+{"id": "g0300", "class": "temporal", "query": "2026년 SBS 액션 드라마", "expected": ["agent-kim-reactivated"]}
