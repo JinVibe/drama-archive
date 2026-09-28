@@ -49,6 +49,14 @@ SOURCES: dict[str, SourceConfig] = {
         min_interval_seconds=1.0,
         discovered=True,
     ),
+    # Korean Wikipedia REST summaries (CC BY-SA 4.0). Used by synopsis_enrich_kowiki only.
+    "kowiki": SourceConfig(
+        code="kowiki",
+        allowed_url_prefixes=("https://ko.wikipedia.org/",),
+        pool="source_kowiki_pool",
+        request_timeout_seconds=30.0,
+        min_interval_seconds=0.25,
+    ),
     # First vertical slice target (docs/IMPLEMENTATION_GUIDE.md §1).
     # Collectors stay disabled until site terms are confirmed; manifests are manual for now.
     "tvn_official": SourceConfig(

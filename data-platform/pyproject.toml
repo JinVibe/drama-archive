@@ -35,3 +35,4 @@ select = ["E", "F", "I", "B", "UP"]
 # Cypher/SQL text blocks are clearer unwrapped.
 "src/dramamemory_data/graph/projection.py" = ["E501"]
 "src/dramamemory_data/parsers/wikidata_sparql.py" = ["E501"]
+"dags/synopsis_enrich_kowiki.py" = ["E501"]

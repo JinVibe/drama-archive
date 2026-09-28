@@ -23,5 +23,10 @@
     "slots": 1,
     "description": "Wikidata Query Service (~1 req/s)",
     "include_deferred": false
+  },
+  "source_kowiki_pool": {
+    "slots": 1,
+    "description": "Korean Wikipedia REST API (~4 req/s)",
+    "include_deferred": false
   }
 }
