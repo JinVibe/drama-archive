@@ -16,18 +16,20 @@ rebuilds it entirely from PostgreSQL.
 from __future__ import annotations
 
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-from airflow.sdk import Asset, dag, task
+from airflow.sdk import Asset, AssetAny, dag, task
 
 from dramamemory_data.graph import projection as proj
 
 POSTGRES_CONN_ID = "dramamemory_postgres"
 GOLD_ASSET = Asset(name="gold.catalog", uri="asset://gold/catalog")
+# Enrichment can change AIRED_BY (broadcaster inferred from kowiki categories).
+ENRICHED_ASSET = Asset(name="enrich.synopsis", uri="asset://enrich/synopsis")
 GRAPH_ASSET = Asset(name="graph.canonical", uri="asset://graph/canonical")
 
 
 @dag(
     dag_id="graph_materialization",
-    schedule=[GOLD_ASSET],
+    schedule=AssetAny(GOLD_ASSET, ENRICHED_ASSET),
     catchup=False,
     max_active_runs=1,
     tags=["graph", "neo4j"],

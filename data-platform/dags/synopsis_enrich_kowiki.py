@@ -6,9 +6,13 @@ Wikidata has no plot text. For published dramas without a synopsis, this DAG:
     2. fetches the page's lead-section extract from the Wikipedia REST summary API
     3. stores the raw response as a source_record snapshot (provenance) and writes
        drama.synopsis + synopsis_source/url/license in one transaction per drama
+    4. (infer_broadcasters) for published dramas still without a channel, reads the
+       article's categories and sets broadcaster_id when they name exactly one channel
+       (drama.broadcaster_source = 'kowiki:category', V15)
 
 Emits asset://enrich/synopsis so search_document_build re-renders the changed
-dramas (and embedding_refresh re-embeds them).
+dramas (and embedding_refresh re-embeds them) and graph_materialization refreshes
+their AIRED_BY edge.
 
 This is an enrichment writer, not the publish DAG: it touches exactly the four
 synopsis columns, records provenance for every write, and bumps updated_at so
@@ -23,7 +27,7 @@ from __future__ import annotations
 import os
 import time
 from datetime import UTC, datetime
-from urllib.parse import quote
+from urllib.parse import quote, unquote
 
 import httpx
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
@@ -32,6 +36,8 @@ from airflow.sdk import Asset, dag, task
 from airflow.timetables.assets import AssetOrTimeSchedule
 from airflow.timetables.trigger import CronTriggerTimetable
 
+from dramamemory_data.discovery.wikidata import page_categories
+from dramamemory_data.enrichment.broadcaster import infer_broadcaster
 from dramamemory_data.ingestion.snapshot import content_hash, object_key
 from dramamemory_data.sources import get_source
 
@@ -84,7 +90,7 @@ UPDATE drama
     doc_md=__doc__,
 )
 def synopsis_enrich_kowiki():
-    @task(pool=get_source(SOURCE).pool, outlets=[ENRICHED_ASSET])
+    @task(pool=get_source(SOURCE).pool)
     def enrich() -> dict[str, int]:
         source = get_source(SOURCE)
         wikidata = get_source("wikidata")
@@ -177,7 +183,72 @@ def synopsis_enrich_kowiki():
         print(f"kowiki synopsis: {summary}")
         return summary
 
-    enrich()
+    @task(pool=get_source(SOURCE).pool, outlets=[ENRICHED_ASSET])
+    def infer_broadcasters(_: dict[str, int]) -> dict[str, int]:
+        """Published dramas without a channel whose kowiki article we already know:
+        read the article's categories and let enrichment.broadcaster decide."""
+        source = get_source(SOURCE)
+        pg = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
+        rows = pg.get_records(SELECT_BROADCASTER_TARGETS)
+        title_by_id = {
+            int(drama_id): unquote(url.rsplit("/wiki/", 1)[1]).replace("_", " ")
+            for drama_id, url in rows
+        }
+        inferred = unresolved = 0
+        with httpx.Client(timeout=source.request_timeout_seconds, follow_redirects=True) as client:
+            cats = page_categories(
+                client, list(title_by_id.values()), user_agent=source.user_agent,
+                min_interval=source.min_interval_seconds,
+            ) if title_by_id else {}
+        with pg.get_conn() as conn, conn.cursor() as cur:
+            for drama_id, title in title_by_id.items():
+                code, category = infer_broadcaster(cats.get(title, []))
+                if code is None:
+                    cur.execute(
+                        "UPDATE drama SET broadcaster_source = 'kowiki:none' WHERE id = %s",
+                        (drama_id,),
+                    )
+                    unresolved += 1
+                    continue
+                cur.execute(UPDATE_BROADCASTER, (code, drama_id))
+                if cur.rowcount:
+                    cur.execute(
+                        """
+                        INSERT INTO outbox_event (aggregate_type, aggregate_id, event_type, payload)
+                        VALUES ('DRAMA', %s, 'DRAMA_CANONICAL_UPDATED',
+                                jsonb_build_object('drama_id', %s, 'field', 'broadcaster',
+                                                   'value', %s, 'source', 'kowiki:category',
+                                                   'category', %s))
+                        """,
+                        (str(drama_id), drama_id, code, category),
+                    )
+                    inferred += 1
+                else:
+                    unresolved += 1  # category names a channel we do not have in the taxonomy
+            conn.commit()
+        summary = {"candidates": len(title_by_id), "inferred": inferred, "unresolved": unresolved}
+        print(f"kowiki broadcaster inference: {summary}")
+        return summary
+
+    infer_broadcasters(enrich())
+
+
+# Channel missing, article known (synopsis step stored its URL), not checked before.
+SELECT_BROADCASTER_TARGETS = """
+SELECT id, synopsis_source_url
+  FROM drama
+ WHERE status = 'PUBLISHED' AND broadcaster_id IS NULL AND broadcaster_source IS NULL
+   AND synopsis_source_url LIKE 'https://ko.wikipedia.org/wiki/%'
+ ORDER BY id
+"""
+
+UPDATE_BROADCASTER = """
+UPDATE drama d
+   SET broadcaster_id = b.id, broadcaster_source = 'kowiki:category',
+       canonical_version = canonical_version + 1, updated_at = now()
+  FROM broadcaster b
+ WHERE b.code = %s AND d.id = %s AND d.broadcaster_id IS NULL
+"""
 
 
 def _mark_checked(conn, drama_id: int, cur=None) -> None:
