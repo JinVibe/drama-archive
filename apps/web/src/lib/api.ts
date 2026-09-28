@@ -25,6 +25,8 @@ export type DramaSummary = {
   endDate?: string;
   episodeCount?: number;
   genres: string[];
+  /** Popularity proxy: Korean Wikipedia page views over the trailing year. */
+  popularity?: number | null;
 };
 export type Page<T> = { items: T[]; page: number; size: number; total: number };
 export type Credit = {

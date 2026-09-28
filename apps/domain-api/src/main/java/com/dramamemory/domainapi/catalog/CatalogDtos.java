@@ -20,7 +20,9 @@ public final class CatalogDtos {
             LocalDate startDate,
             LocalDate endDate,
             Integer episodeCount,
-            List<String> genres) {}
+            List<String> genres,
+            /** Popularity proxy: Korean Wikipedia page views over the trailing year (null = unknown). */
+            Double popularity) {}
 
     public record Page<T>(List<T> items, int page, int size, long total) {}
 

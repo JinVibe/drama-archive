@@ -159,6 +159,10 @@ write     entity_resolution.resolve_song(같은 작품 내 제목 일치 → AUT
   → asset enrich.synopsis → search_document_build(OST가 본문에), graph_materialization(HAS_OST/PERFORMED)
 ```
 
+## 구현 현황 — `popularity_refresh_kowiki` (주간)
+
+카탈로그에는 시청률이 없다. "그해의 인기작"에는 **한국어 위키백과 문서의 최근 12개월 조회수**(Wikimedia pageviews API, 공개)를 대리 지표로 쓴다 — 오래 읽히는 작품이 곧 기억에 남은 작품이라는 가정이고, UI에는 "위키백과 조회수 기준"으로 표기한다. 발행 작품의 문서 제목(줄거리 단계 URL 또는 Wikidata sitelink) → 문서당 1회 조회 → `drama.popularity_score` / `popularity_source='kowiki:pageviews:365d'` / `popularity_updated_at`(V19). canonical_version은 올리지 않는다(표시용 데이터).
+
 첫 실행(2026-09-28): 1,926편 중 203편에 OST 섹션이 있어 2,298곡·977명 기록. 나머지 문서에는 OST 절 자체가 없다(소스 한계). 첫 시도에서 드러난 문제 두 가지 — 앨범의 "Various Artists"가 가수로 들어가고 전곡 앨범의 score cue 수십 곡이 딸려온 것 — 를 규칙으로 막고 전체를 다시 돌렸다(재실행은 멱등).
 
 ---

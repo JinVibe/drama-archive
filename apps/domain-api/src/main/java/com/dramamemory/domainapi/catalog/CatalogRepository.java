@@ -75,6 +75,7 @@ public class CatalogRepository {
 
     private static final String SUMMARY_SELECT = """
             SELECT d.id, d.slug, d.title_ko, d.title_en, d.start_date, d.end_date, d.episode_count,
+                   d.popularity_score,
                    b.code, b.name_ko, b.name_en, b.official_url,
                    (SELECT string_agg(g.code, ',' ORDER BY g.code)
                       FROM drama_genre dg JOIN genre g ON g.id = dg.genre_id
@@ -116,7 +117,14 @@ public class CatalogRepository {
                 rs.getObject("start_date", java.time.LocalDate.class),
                 rs.getObject("end_date", java.time.LocalDate.class),
                 rs.getObject("episode_count", Integer.class),
-                csv(rs.getString("genres")));
+                csv(rs.getString("genres")),
+                popularity(rs));
+    }
+
+    /** NUMERIC(14,2) -> Double; the JDBC driver refuses getObject(..., Double.class) on numeric. */
+    private static Double popularity(ResultSet rs) throws SQLException {
+        java.math.BigDecimal v = rs.getBigDecimal("popularity_score");
+        return v == null ? null : v.doubleValue();
     }
 
     // ------------------------------------------------------------------ drama detail
