@@ -130,6 +130,21 @@ manifests/wikidata/excluded.json   NOT_DRAMA / foreign 항목과 근거
 
 `publish_gold_catalog.retire_excluded`가 매 실행마다 `excluded.json`에 있는 이미 발행된 작품을 `HIDDEN`으로(outbox `DRAMA_HIDDEN`), 다시 manifest에 들어온 작품을 `PUBLISHED`로 되돌린다. search_document·graph 프로젝션은 PUBLISHED만 보므로 자동으로 빠진다.
 
+## 구현 현황 — `synopsis_enrich_kowiki` (매일 03:00 UTC + gold.catalog)
+
+publish DAG가 아닌 **enrichment writer**: canonical 행의 정해진 컬럼만 쓰고, 모든 쓰기에 provenance를 남긴다.
+
+```text
+enrich               줄거리 없는 발행 작품 → Wikidata sitelink → ko.wikipedia REST summary
+                     → source_record 스냅샷 + source_entity_map → drama.synopsis/synopsis_source/url/license
+                     (CC BY-SA 4.0, 웹은 출처 링크·라이선스 표기. 문서 없으면 synopsis_source='kowiki:none')
+infer_broadcasters   채널 없는 발행 작품 중 문서를 아는 것 → 문서 분류 조회(50건/요청)
+                     → enrichment/broadcaster.py: 채널을 하나만 이름한 분류만 투표, "…드라마" 분류 우선,
+                       충돌하면 추론하지 않음 → drama.broadcaster_id + broadcaster_source='kowiki:category'(V15)
+                       + outbox DRAMA_CANONICAL_UPDATED
+  → asset enrich.synopsis → search_document_build, graph_materialization
+```
+
 ---
 
 # 5. DAG: `ingest_source_records`
