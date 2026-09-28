@@ -501,6 +501,48 @@ def hide_upcoming(cur) -> tuple[int, int]:
     return len(hidden), len(restored)
 
 
+def apply_scope(cur, broadcaster_codes: list[str]) -> tuple[int, int]:
+    """The archive covers a fixed set of channels for now (product decision, 2026-09-28:
+    KBS, MBC, SBS, tvN, JTBC — platforms mostly re-run what those aired). PUBLISHED
+    dramas on another channel, or with no channel, -> HIDDEN ('out_of_scope');
+    when the scope widens or a channel gets inferred, they come back.
+    Returns (hidden, restored)."""
+    cur.execute(
+        """
+        UPDATE drama d
+        SET status = 'HIDDEN', hidden_reason = 'out_of_scope',
+            canonical_version = canonical_version + 1, updated_at = now()
+        FROM (SELECT d2.id, b.code
+                FROM drama d2 LEFT JOIN broadcaster b ON b.id = d2.broadcaster_id
+               WHERE d2.status = 'PUBLISHED'
+                 AND (b.code IS NULL OR NOT (b.code = ANY(%s)))) x
+        WHERE d.id = x.id
+        RETURNING d.id, x.code
+        """,
+        (broadcaster_codes,),
+    )
+    hidden = cur.fetchall()
+    for drama_id, code in hidden:
+        _status_event(cur, drama_id, "HIDDEN", {"reason": "out_of_scope", "broadcaster": code})
+    cur.execute(
+        """
+        UPDATE drama d
+        SET status = 'PUBLISHED', hidden_reason = NULL,
+            canonical_version = canonical_version + 1, updated_at = now()
+        FROM broadcaster b
+        WHERE b.id = d.broadcaster_id AND b.code = ANY(%s)
+          AND d.status = 'HIDDEN' AND d.hidden_reason = 'out_of_scope'
+          AND (d.start_date IS NULL OR d.start_date <= CURRENT_DATE)
+        RETURNING d.id, b.code
+        """,
+        (broadcaster_codes,),
+    )
+    restored = cur.fetchall()
+    for drama_id, code in restored:
+        _status_event(cur, drama_id, "PUBLISHED", {"reason": "in_scope", "broadcaster": code})
+    return len(hidden), len(restored)
+
+
 def _status_event(cur, drama_id: int, status: str, payload: dict[str, Any]) -> None:
     cur.execute(
         """

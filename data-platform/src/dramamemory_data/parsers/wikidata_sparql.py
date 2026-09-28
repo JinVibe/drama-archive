@@ -77,6 +77,20 @@ BROADCASTER_BY_QID: dict[str, str] = {
     "Q64822152": "naver_tv",
 }
 
+# Original networks first, then cable, then platforms: when P449 lists several,
+# the archive files the drama under the earliest tier it aired on.
+NETWORK_PRIORITY: list[str] = [
+    "kbs", "mbc", "sbs", "tvn", "jtbc",
+    "ocn", "mbn", "channel_a", "tv_chosun", "ena", "mnet", "mbc_every1", "ebs",
+    "netflix", "disney_plus", "tving", "wavve", "coupang_play", "genie_tv", "kakao_tv",
+    "naver_tv",
+]
+
+
+def _broadcaster_priority(code: str) -> int:
+    return NETWORK_PRIORITY.index(code) if code in NETWORK_PRIORITY else len(NETWORK_PRIORITY)
+
+
 # Genre label keywords (ko/en, lowercase) -> genre.code. First match wins per label.
 GENRE_KEYWORDS: list[tuple[tuple[str, ...], str]] = [
     (("로맨틱 코미디", "romantic comedy"), "romance"),
@@ -205,12 +219,14 @@ def parse(body: bytes) -> NormalizedDrama:
         except ValueError:
             continue
 
-    broadcaster_code = None
-    for r in props.get("P449", []):
-        code = BROADCASTER_BY_QID.get(_qid(r["o"]["value"]) or "")
-        if code:
-            broadcaster_code = code
-            break
+    # A drama often lists its network and the OTT that streams it (P449: KBS, Netflix).
+    # The archive is organised by the original network, so those win over platforms.
+    mapped = [
+        code
+        for code in (BROADCASTER_BY_QID.get(_qid(r["o"]["value"]) or "") for r in props.get("P449", []))
+        if code
+    ]
+    broadcaster_code = min(mapped, key=_broadcaster_priority) if mapped else None
 
     genre_labels = [g for g in (label_of(r) for r in props.get("P136", [])) if g]
     genres = genre_codes(genre_labels)

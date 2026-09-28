@@ -29,12 +29,23 @@ from airflow.timetables.assets import AssetOrTimeSchedule
 from airflow.timetables.trigger import CronTriggerTimetable
 
 from dramamemory_data import staging
-from dramamemory_data.publish.gold import hide_upcoming, publish_record, set_drama_status
+from dramamemory_data.publish.gold import (
+    apply_scope,
+    hide_upcoming,
+    publish_record,
+    set_drama_status,
+)
 from dramamemory_data.quality.checks import check_drama, gate_batch, has_errors
 from dramamemory_data.sources import SOURCES
 
 POSTGRES_CONN_ID = "dramamemory_postgres"
 S3_CONN_ID = "dramamemory_s3"
+# Channels the archive covers for now (README 진행 상태). Widen by env when asked.
+SCOPE_BROADCASTERS = [
+    c.strip()
+    for c in os.environ.get("DRAMAMEMORY_SCOPE_BROADCASTERS", "kbs,mbc,sbs,tvn,jtbc").split(",")
+    if c.strip()
+]
 RESOLVED_ASSET = Asset(name="silver.resolved", uri="asset://silver/resolved")
 GOLD_ASSET = Asset(name="gold.catalog", uri="asset://gold/catalog")
 
@@ -125,10 +136,14 @@ def publish_gold_catalog():
                     )
             # Not aired yet -> not in the archive; back the day it airs.
             upcoming_hidden, aired = hide_upcoming(cur)
+            # Channel scope (KBS/MBC/SBS/tvN/JTBC for now).
+            scope_hidden, scope_restored = apply_scope(cur, SCOPE_BROADCASTERS)
             conn.commit()
         summary = {
             "hidden": hidden, "restored": restored,
             "upcoming_hidden": upcoming_hidden, "aired_restored": aired,
+            "out_of_scope_hidden": scope_hidden, "in_scope_restored": scope_restored,
+            "scope": SCOPE_BROADCASTERS,
         }
         print(f"retire excluded: {summary}")
         return summary

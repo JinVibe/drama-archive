@@ -203,3 +203,14 @@ def test_program_kind_from_classes_and_genres():
 
     bare = [_row("label", "스트릿댄스 걸스 파이터", lang="ko"), series]
     assert parse(_doc(bare)).program_kind == "UNKNOWN"
+
+
+def test_original_network_wins_over_streaming_platform():
+    rows = [
+        _row("label", "동백꽃 필 무렵", lang="ko"),
+        _row("P449", "http://www.wikidata.org/entity/Q907311", o_type="uri", label="넷플릭스"),
+        _row("P449", "http://www.wikidata.org/entity/Q498825", o_type="uri", label="KBS"),
+    ]
+    assert parse(_doc(rows)).broadcaster_code == "kbs"
+    only_ott = [rows[0], rows[1]]
+    assert parse(_doc(only_ott)).broadcaster_code == "netflix"
