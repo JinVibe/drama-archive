@@ -6,13 +6,15 @@ without anyone emitting an asset event.
 
     quality_gate    : per-record checks; ERROR -> REJECTED. Batch-level gate blocks
                       the run when most of the batch is broken.
-    retire_excluded : dramas that a discovery DAG now lists in
+    publish         : each RESOLVED record in its own transaction:
+                      canonical rows + provenance + canonical_version + outbox.
+    retire_excluded : (after publish, so a fresh record is judged in the same run)
+                      dramas that a discovery DAG now lists in
                       manifests/{source}/excluded.json (not a drama / foreign) go
                       PUBLISHED -> HIDDEN; ones back in the manifest go HIDDEN -> PUBLISHED.
                       Dramas whose start_date is still in the future are hidden as
                       'upcoming' and restored the day they air (drama.hidden_reason, V16).
-    publish         : each RESOLVED record in its own transaction:
-                      canonical rows + provenance + canonical_version + outbox.
+                      Channel scope (DRAMAMEMORY_SCOPE_BROADCASTERS) is applied the same way.
 
 Emits asset://gold/catalog for search/graph downstream.
 """
@@ -100,8 +102,8 @@ def publish_gold_catalog():
         print(f"quality gate summary: {summary}")
         return summary
 
-    @task
-    def retire_excluded(gate: dict[str, int]) -> dict[str, int]:
+    @task(outlets=[GOLD_ASSET])
+    def retire_excluded(published: dict[str, int]) -> dict[str, int]:
         """Apply discovery verdicts to rows already in gold. Only discovered sources
         write manifests, so the S3 read is scoped to those."""
         s3 = S3Hook(aws_conn_id=S3_CONN_ID)
@@ -148,7 +150,7 @@ def publish_gold_catalog():
         print(f"retire excluded: {summary}")
         return summary
 
-    @task(outlets=[GOLD_ASSET])
+    @task
     def publish(gate: dict[str, int]) -> dict[str, int]:
         pg = PostgresHook(postgres_conn_id=POSTGRES_CONN_ID)
         created = updated = 0
@@ -182,7 +184,7 @@ def publish_gold_catalog():
         print(f"publish summary: {summary}")
         return summary
 
-    publish(retire_excluded(quality_gate()))
+    retire_excluded(publish(quality_gate()))
 
 
 publish_gold_catalog()
