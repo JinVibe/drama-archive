@@ -31,39 +31,60 @@ class PostgresRepo:
         row = self.cur.fetchone()
         return int(row[0]) if row else None
 
-    def dramas_by_title(self, title_normalized: str) -> list[DramaCandidate]:
+    # External refs this source has already mapped onto a canonical row (matching
+    # treats a candidate known under a different id as a different entity).
+    _REFS = """
+        (SELECT array_agg(DISTINCT m.external_ref)
+           FROM source_entity_map m
+           JOIN source_record sr ON sr.id = m.source_record_id
+          WHERE m.canonical_type = %s AND m.canonical_id = {alias}.id
+            AND m.external_ref IS NOT NULL AND sr.source_id = %s)
+    """
+
+    def dramas_by_title(
+        self, title_normalized: str, source_id: int | None = None
+    ) -> list[DramaCandidate]:
         if not title_normalized:
             return []
         self.cur.execute(
-            """
-            SELECT d.id, d.title_normalized, b.code, EXTRACT(YEAR FROM d.start_date)::int
+            f"""
+            SELECT d.id, d.title_normalized, b.code, EXTRACT(YEAR FROM d.start_date)::int,
+                   {self._REFS.format(alias="d")} AS refs
             FROM drama d
             LEFT JOIN broadcaster b ON b.id = d.broadcaster_id
-            WHERE d.status = 'PUBLISHED'
+            WHERE d.status IN ('PUBLISHED', 'HIDDEN')
               AND (d.title_normalized = %s
                    OR EXISTS (SELECT 1 FROM drama_alias a
                               WHERE a.drama_id = d.id AND a.alias_normalized = %s))
             ORDER BY d.id
             """,
-            (title_normalized, title_normalized),
+            ("DRAMA", source_id, title_normalized, title_normalized),
         )
-        return [DramaCandidate(int(r[0]), r[1], r[2], r[3]) for r in self.cur.fetchall()]
+        return [
+            DramaCandidate(int(r[0]), r[1], r[2], r[3], frozenset(r[4] or ()))
+            for r in self.cur.fetchall()
+        ]
 
-    def persons_by_name(self, name_normalized: str) -> list[PersonCandidate]:
+    def persons_by_name(
+        self, name_normalized: str, source_id: int | None = None
+    ) -> list[PersonCandidate]:
         self.cur.execute(
-            """
+            f"""
             SELECT p.id, p.name_normalized, p.birth_date,
-                   COALESCE(array_agg(c.drama_id) FILTER (WHERE c.drama_id IS NOT NULL), '{}')
+                   COALESCE(array_agg(c.drama_id) FILTER (WHERE c.drama_id IS NOT NULL), '{{}}'),
+                   {self._REFS.format(alias="p")} AS refs
             FROM person p
             LEFT JOIN credit c ON c.person_id = p.id
             WHERE p.status = 'PUBLISHED' AND p.name_normalized = %s
             GROUP BY p.id
             ORDER BY p.id
             """,
-            (name_normalized,),
+            ("PERSON", source_id, name_normalized),
         )
         return [
-            PersonCandidate(int(r[0]), r[1], r[2], frozenset(int(x) for x in r[3]))
+            PersonCandidate(
+                int(r[0]), r[1], r[2], frozenset(int(x) for x in r[3]), frozenset(r[4] or ())
+            )
             for r in self.cur.fetchall()
         ]
 

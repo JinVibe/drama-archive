@@ -31,10 +31,10 @@ class FakeRepo:
     def mapped_canonical_id(self, source_id, canonical_type, external_ref):
         return self.mapped.get((source_id, canonical_type, external_ref))
 
-    def dramas_by_title(self, t):
+    def dramas_by_title(self, t, source_id=None):
         return list(self.dramas.get(t, []))
 
-    def persons_by_name(self, n):
+    def persons_by_name(self, n, source_id=None):
         return list(self.persons.get(n, []))
 
     def songs_by_title(self, t):
@@ -42,6 +42,36 @@ class FakeRepo:
 
     def artist_by_name(self, n):
         return self.artists.get(n)
+
+
+def test_candidate_known_under_another_id_of_the_same_source_is_a_different_entity():
+    # 박소현 the actress (Q6783618) is already mapped; the director 박소현 arrives as
+    # Q109120194 with no birth date: name-only match must not open a review.
+    actress = PersonCandidate(
+        971, "박소현", date(1971, 2, 11), external_refs=frozenset({"Q6783618"})
+    )
+    repo = FakeRepo(persons={"박소현": [actress]})
+    director = NormalizedPerson(
+        external_id="Q109120194", name_ko="박소현", name_normalized="박소현"
+    )
+    m = resolve_person(director, 1, repo, None)
+    assert m.decision == "CREATE_NEW" and m.canonical_id is None
+    # without any external id on the candidate the old name-only rule still applies
+    plain = PersonCandidate(971, "박소현", None)
+    assert (
+        resolve_person(director, 1, FakeRepo(persons={"박소현": [plain]}), None).decision
+        == "REVIEW"
+    )
+    # same for dramas: 연애시대 (SBS 2006, Q97971216) vs a new item Q623446 with the same title
+    sbs = DramaCandidate(1661, "연애시대", "sbs", 2006, external_refs=frozenset({"Q97971216"}))
+    other = _drama(
+        external_id="Q623446",
+        title_ko="연애시대",
+        title_normalized="연애시대",
+        broadcaster_code=None,
+        start_date=None,
+    )
+    assert resolve_drama(other, 1, FakeRepo(dramas={"연애시대": [sbs]})).decision == "CREATE_NEW"
 
 
 def _drama(**kw) -> NormalizedDrama:
@@ -112,9 +142,9 @@ def test_drama_empty_alias_key_is_ignored():
     from dramamemory_data.normalization.models import NormalizedAlias
 
     class Boom(FakeRepo):
-        def dramas_by_title(self, t):
+        def dramas_by_title(self, t, source_id=None):
             assert t != "", "empty key must never be looked up"
-            return super().dramas_by_title(t)
+            return super().dramas_by_title(t, source_id)
 
     d = _drama(aliases=[NormalizedAlias(alias="怪異", alias_normalized="")])
     assert resolve_drama(d, 1, Boom()).decision == "CREATE_NEW"

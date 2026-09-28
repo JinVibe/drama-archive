@@ -36,6 +36,9 @@ class DramaCandidate:
     title_normalized: str
     broadcaster_code: str | None
     start_year: int | None
+    # External ids the *same source* already mapped onto this row. A candidate the
+    # source knows under a different id is a different entity, not a review case.
+    external_refs: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)
@@ -44,6 +47,16 @@ class PersonCandidate:
     name_normalized: str
     birth_date: date | None
     drama_ids: frozenset[int] = frozenset()
+    external_refs: frozenset[str] = frozenset()
+
+
+def _distinct_by_source(candidates: list, external_id: str | None) -> list:
+    """Drop candidates the source already identifies as something else (동명이인:
+    Wikidata has one item per person, so a candidate mapped to another Q-id is
+    another person)."""
+    if not external_id:
+        return candidates
+    return [c for c in candidates if not c.external_refs or external_id in c.external_refs]
 
 
 @dataclass(frozen=True)
@@ -105,15 +118,20 @@ def resolve_drama(drama: NormalizedDrama, source_id: int, repo: Repo) -> Match:
     if m := _by_external_ref(repo, source_id, "DRAMA", drama.external_id):
         return m
 
-    candidates = repo.dramas_by_title(drama.title_normalized) if drama.title_normalized else []
+    candidates = (
+        repo.dramas_by_title(drama.title_normalized, source_id) if drama.title_normalized else []
+    )
     for alias in drama.aliases:
         if (
             not alias.alias_normalized
         ):  # Cyrillic/CJK aliases normalize to '' and would match everything
             continue
         candidates += [
-            c for c in repo.dramas_by_title(alias.alias_normalized) if c not in candidates
+            c
+            for c in repo.dramas_by_title(alias.alias_normalized, source_id)
+            if c not in candidates
         ]
+    candidates = _distinct_by_source(candidates, drama.external_id)
     if not candidates:
         return CREATE_NEW
 
@@ -152,7 +170,9 @@ def resolve_person(
     if m := _by_external_ref(repo, source_id, "PERSON", person.external_id):
         return m
 
-    candidates = repo.persons_by_name(person.name_normalized)
+    candidates = _distinct_by_source(
+        repo.persons_by_name(person.name_normalized, source_id), person.external_id
+    )
     if not candidates:
         return CREATE_NEW
 
