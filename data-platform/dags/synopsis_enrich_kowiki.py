@@ -7,6 +7,9 @@ Wikidata has no plot text. For published dramas without a synopsis, this DAG:
     3. stores the raw response as a source_record snapshot (provenance) and writes
        drama.synopsis + synopsis_source/url/license in one transaction per drama
 
+Emits asset://enrich/synopsis so search_document_build re-renders the changed
+dramas (and embedding_refresh re-embeds them).
+
 This is an enrichment writer, not the publish DAG: it touches exactly the four
 synopsis columns, records provenance for every write, and bumps updated_at so
 search_document_build re-renders the document (and embedding_refresh re-embeds).
@@ -35,6 +38,7 @@ from dramamemory_data.sources import get_source
 POSTGRES_CONN_ID = "dramamemory_postgres"
 S3_CONN_ID = "dramamemory_s3"
 GOLD_ASSET = Asset(name="gold.catalog", uri="asset://gold/catalog")
+ENRICHED_ASSET = Asset(name="enrich.synopsis", uri="asset://enrich/synopsis")
 SOURCE = "kowiki"
 LICENSE = "CC BY-SA 4.0"
 BATCH = 200
@@ -80,7 +84,7 @@ UPDATE drama
     doc_md=__doc__,
 )
 def synopsis_enrich_kowiki():
-    @task(pool=get_source(SOURCE).pool)
+    @task(pool=get_source(SOURCE).pool, outlets=[ENRICHED_ASSET])
     def enrich() -> dict[str, int]:
         source = get_source(SOURCE)
         wikidata = get_source("wikidata")
