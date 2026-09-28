@@ -83,6 +83,8 @@ class HybridRetriever:
                 vec = self.embedder.embed([p.text])[0]
                 latency["embed"] = latency.get("embed", 0) + int((time.perf_counter() - t) * 1000)
                 timed("vector", lambda: self.store.vector(vec, filters, self.candidates))
+                timed("vector_synopsis",
+                      lambda: self.store.vector_synopsis(vec, filters, self.candidates))
             if use_graph and self.graph is not None and p.text:
                 nonlocal graph_match
                 t = time.perf_counter()
@@ -134,7 +136,7 @@ class HybridRetriever:
 
 def _strategy(lists: dict[str, list]) -> str:
     lexical = bool(lists.get("fts") or lists.get("fts_any") or lists.get("trigram"))
-    vector = bool(lists.get("vector"))
+    vector = bool(lists.get("vector") or lists.get("vector_synopsis"))
     graph = bool(lists.get("graph"))
     if graph and (lexical or vector):
         return "hybrid+graph"

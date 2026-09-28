@@ -19,7 +19,7 @@ GENRE_LABEL = {
     "youth": "청춘", "office": "오피스", "sf": "SF", "horror": "공포", "daily": "일일",
 }
 
-DOCUMENT_VERSION = 1
+DOCUMENT_VERSION = 2  # 2: synopsis is its own field (V14)
 
 
 @dataclass(frozen=True)
@@ -51,6 +51,7 @@ class SearchDocument:
     title: str
     aliases: str
     body: str
+    synopsis: str
     metadata: dict[str, Any]
     content_hash: str
 
@@ -76,9 +77,9 @@ def render_drama(d: DramaSource) -> SearchDocument:
         lines.append(f"{label}: {name}")
     if d.osts:
         lines.append("OST: " + ", ".join(f"{t} - {', '.join(a)}" if a else t for t, a in d.osts))
-    if d.synopsis:
-        lines.append(f"줄거리: {d.synopsis}")
     body = "\n".join(lines)
+    # The plot stays out of body: it is weighted C in fts and embedded separately (V14).
+    synopsis = (d.synopsis or "").strip()
 
     metadata = {
         "slug": d.slug,
@@ -97,10 +98,12 @@ def render_drama(d: DramaSource) -> SearchDocument:
     alias_text = "\n".join(aliases)
     digest = hashlib.sha256(
         json.dumps(
-            [d.title_ko, alias_text, body, metadata], ensure_ascii=False, sort_keys=True
+            [d.title_ko, alias_text, body, synopsis, metadata], ensure_ascii=False, sort_keys=True
         ).encode()
     ).hexdigest()
-    return SearchDocument("DRAMA", d.id, d.title_ko, alias_text, body, metadata, digest)
+    return SearchDocument(
+        "DRAMA", d.id, d.title_ko, alias_text, body, synopsis, metadata, digest
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -145,12 +148,14 @@ SELECT d.id, d.slug, d.title_ko, d.title_en,
 """
 
 UPSERT_DOCUMENT = """
-INSERT INTO search_document (entity_type, entity_id, title, aliases, body, metadata, content_hash)
-VALUES (%s, %s, %s, %s, %s, %s::jsonb, %s)
+INSERT INTO search_document (entity_type, entity_id, title, aliases, body, synopsis, metadata,
+                             content_hash)
+VALUES (%s, %s, %s, %s, %s, %s, %s::jsonb, %s)
 ON CONFLICT (entity_type, entity_id) DO UPDATE SET
     title = EXCLUDED.title,
     aliases = EXCLUDED.aliases,
     body = EXCLUDED.body,
+    synopsis = EXCLUDED.synopsis,
     metadata = EXCLUDED.metadata,
     content_hash = EXCLUDED.content_hash,
     document_version = search_document.document_version + 1,
@@ -183,7 +188,7 @@ def upsert_document(cur, doc: SearchDocument) -> bool:
     """Returns True when a row was written (new or changed content)."""
     cur.execute(
         UPSERT_DOCUMENT,
-        (doc.entity_type, doc.entity_id, doc.title, doc.aliases, doc.body,
+        (doc.entity_type, doc.entity_id, doc.title, doc.aliases, doc.body, doc.synopsis,
          json.dumps(doc.metadata, ensure_ascii=False), doc.content_hash),
     )
     return cur.fetchone() is not None

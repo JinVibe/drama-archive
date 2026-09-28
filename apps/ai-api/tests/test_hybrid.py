@@ -40,6 +40,12 @@ class FakeStore:
             return []
         return self._c(3, 1)
 
+    def vector_synopsis(self, vec, filters, limit):
+        self.calls.append(("vector_synopsis", None, filters))
+        if filters.get("year_from") == 1988:
+            return []
+        return self._c(1)
+
     def filter_only(self, filters, limit):
         self.calls.append(("filter", None, filters))
         return self._c(1, 2)
@@ -59,9 +65,9 @@ def test_hybrid_fuses_and_reports_evidence():
     r = _retriever()
     res = r.search("공유 판타지", limit=5)
     assert res.strategy == "hybrid"
-    assert res.lists == {"fts": 1, "fts_any": 0, "trigram": 0, "vector": 2}
-    assert [h.drama_id for h in res.hits] == [4, 9]        # 4 in fts+vector beats 9 (vector only)
-    assert res.hits[0].ranks == {"fts": 1, "vector": 2}
+    assert res.lists == {"fts": 1, "fts_any": 0, "trigram": 0, "vector": 2, "vector_synopsis": 1}
+    assert [h.drama_id for h in res.hits] == [4, 9]        # 4 in three lists beats 9 (vector only)
+    assert res.hits[0].ranks == {"fts": 1, "vector": 2, "vector_synopsis": 1}
     assert res.hits[0].metadata["slug"] == "goblin"
     assert set(res.latency_ms) >= {"fts", "trigram", "embed", "vector", "fuse"}
     assert res.embedding_model == "fake/hash-embedder"

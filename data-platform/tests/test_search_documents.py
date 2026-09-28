@@ -30,11 +30,12 @@ def test_render_body_uses_human_words():
         "연출: 이응복",
         "극본: 김은숙",
         "OST: Stay With Me - 찬열, 펀치, Beautiful - 크러쉬",
-        "줄거리: 불멸의 도깨비와 저승사자",
     ]
+    # the plot is its own field (weight C, separate embedding), not part of body
+    assert doc.synopsis == "불멸의 도깨비와 저승사자"
     assert doc.metadata["year"] == 2016
     assert doc.metadata["cast"] == ["공유", "김고은"]
-    assert doc.metadata["document_version"] == 1
+    assert doc.metadata["document_version"] == 2
 
 
 def test_hash_changes_only_with_content():
@@ -52,7 +53,7 @@ def test_render_tolerates_missing_optional_fields():
         start_date=None, synopsis=None, genres=[], cast=[], crew=[], osts=[],
     ))
     assert doc.aliases == ""
-    assert doc.body == ""
+    assert doc.body == "" and doc.synopsis == ""
     assert doc.metadata["year"] is None
 
 

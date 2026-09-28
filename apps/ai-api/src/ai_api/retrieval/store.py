@@ -59,6 +59,17 @@ SELECT sd.id, 1 - (sd.embedding <=> %(vec)s) AS score
  LIMIT %(limit)s
 """
 
+# Plot-only embedding (V14): what "제목이 기억 안 나는데 …" queries should match, kept
+# apart from the cast/year embedding so long synopses do not dilute those signals.
+VECTOR_SYNOPSIS_SQL = f"""
+SELECT sd.id, 1 - (sd.embedding_synopsis <=> %(vec)s) AS score
+  FROM search_document sd
+ WHERE sd.entity_type = 'DRAMA' AND sd.embedding_synopsis IS NOT NULL
+ {_FILTER}
+ ORDER BY sd.embedding_synopsis <=> %(vec)s, sd.id
+ LIMIT %(limit)s
+"""
+
 # Filter-only fallback: when the query is nothing but constraints ("2016년 tvN").
 FILTER_SQL = f"""
 SELECT sd.id, 0.0 AS score
@@ -118,6 +129,15 @@ class SearchStore:
         import numpy as np
 
         return self._candidates(VECTOR_SQL, {"vec": np.array(vec), "limit": limit, **filters})
+
+    def vector_synopsis(
+        self, vec: list[float], filters: dict[str, Any], limit: int
+    ) -> list[Candidate]:
+        import numpy as np
+
+        return self._candidates(
+            VECTOR_SYNOPSIS_SQL, {"vec": np.array(vec), "limit": limit, **filters}
+        )
 
     def filter_only(self, filters: dict[str, Any], limit: int) -> list[Candidate]:
         return self._candidates(FILTER_SQL, {"limit": limit, **filters})
