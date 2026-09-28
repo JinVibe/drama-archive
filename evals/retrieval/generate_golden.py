@@ -26,15 +26,39 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 GENRE_LABEL = {
-    "romance": "로맨스", "comedy": "코미디", "melodrama": "멜로", "fantasy": "판타지",
-    "thriller": "스릴러", "mystery": "미스터리", "crime": "범죄", "action": "액션",
-    "medical": "의학", "legal": "법정", "historical": "사극", "family": "가족",
-    "youth": "청춘", "office": "오피스", "sf": "SF", "horror": "공포", "daily": "일일",
+    "romance": "로맨스",
+    "comedy": "코미디",
+    "melodrama": "멜로",
+    "fantasy": "판타지",
+    "thriller": "스릴러",
+    "mystery": "미스터리",
+    "crime": "범죄",
+    "action": "액션",
+    "medical": "의학",
+    "legal": "법정",
+    "historical": "사극",
+    "family": "가족",
+    "youth": "청춘",
+    "office": "오피스",
+    "sf": "SF",
+    "horror": "공포",
+    "daily": "일일",
 }
 BROADCASTER_LABEL = {
-    "kbs": "KBS", "mbc": "MBC", "sbs": "SBS", "jtbc": "JTBC", "tvn": "tvN", "ocn": "OCN",
-    "netflix": "넷플릭스", "tving": "티빙", "disney_plus": "디즈니+", "mbn": "MBN",
-    "channel_a": "채널A", "tv_chosun": "TV조선", "ena": "ENA", "wavve": "웨이브",
+    "kbs": "KBS",
+    "mbc": "MBC",
+    "sbs": "SBS",
+    "jtbc": "JTBC",
+    "tvn": "tvN",
+    "ocn": "OCN",
+    "netflix": "넷플릭스",
+    "tving": "티빙",
+    "disney_plus": "디즈니+",
+    "mbn": "MBN",
+    "channel_a": "채널A",
+    "tv_chosun": "TV조선",
+    "ena": "ENA",
+    "wavve": "웨이브",
 }
 
 
@@ -58,7 +82,11 @@ def generate(dramas: list[dict], *, seed: int, per_class: int) -> list[dict]:
 
     # ---- entity_lookup
     for d in rng.sample(unique, min(per_class, len(unique))):
-        variants = [d["title"]] + [a for a in d.get("aliases", []) if a] + ([d["title_en"]] if d.get("title_en") else [])
+        variants = (
+            [d["title"]]
+            + [a for a in d.get("aliases", []) if a]
+            + ([d["title_en"]] if d.get("title_en") else [])
+        )
         add("entity_lookup", rng.choice(variants), [d["slug"]])
 
     # ---- person: actors with 1-3 works (so expected sets stay small), writers/directors
@@ -84,19 +112,40 @@ def generate(dramas: list[dict], *, seed: int, per_class: int) -> list[dict]:
     for d in dramas:
         actors = [c["name"] for c in d.get("credits", []) if c["type"] == "ACTOR"]
         for i, a in enumerate(actors):
-            for b in actors[i + 1:]:
+            for b in actors[i + 1 :]:
                 pairs[tuple(sorted((a, b)))].add(d["slug"])
-    hard = [(p, s) for p, s in pairs.items() if len(s) == 1 and len(works[p[0]]) >= 2 and len(works[p[1]]) >= 2]
+    hard = [
+        (p, s) for p, s in pairs.items() if len(s) == 1 and len(works[p[0]]) >= 2 and len(works[p[1]]) >= 2
+    ]
     rng.shuffle(hard)
     for (a, b), slugs in hard[:per_class]:
-        add("multi_hop", rng.choice([f"{a}랑 {b} 같이 나온 드라마", f"{a} {b} 공동 출연작", f"{a}이랑 {b} 나온 작품"]), sorted(slugs))
+        add(
+            "multi_hop",
+            rng.choice([f"{a}랑 {b} 같이 나온 드라마", f"{a} {b} 공동 출연작", f"{a}이랑 {b} 나온 작품"]),
+            sorted(slugs),
+        )
 
     # ---- character: named characters (unique across catalog)
     char_count = Counter(c["character"] for d in dramas for c in d.get("credits", []) if c.get("character"))
-    char_pool = [(d, c) for d in dramas for c in d.get("credits", []) if c.get("character") and char_count[c["character"]] == 1]
+    char_pool = [
+        (d, c)
+        for d in dramas
+        for c in d.get("credits", [])
+        if c.get("character") and char_count[c["character"]] == 1
+    ]
     rng.shuffle(char_pool)
     for d, c in char_pool[:per_class]:
-        add("character", rng.choice([f"{c['character']} 역 {c['name']}", f"{c['character']} 나오는 드라마", f"{c['name']} {c['character']}"]), [d["slug"]])
+        add(
+            "character",
+            rng.choice(
+                [
+                    f"{c['character']} 역 {c['name']}",
+                    f"{c['character']} 나오는 드라마",
+                    f"{c['name']} {c['character']}",
+                ]
+            ),
+            [d["slug"]],
+        )
 
     # ---- temporal: year + broadcaster (+ genre) combos whose answer set is 1-4 dramas
     combos: dict[tuple, list[str]] = defaultdict(list)
@@ -109,7 +158,16 @@ def generate(dramas: list[dict], *, seed: int, per_class: int) -> list[dict]:
     rng.shuffle(small)
     for (year, bc, g), slugs in small[:per_class]:
         genre = f" {GENRE_LABEL.get(g, g)}" if g else ""
-        add("temporal", rng.choice([f"{year}년 {BROADCASTER_LABEL[bc]}{genre} 드라마", f"{year}년에 {BROADCASTER_LABEL[bc]}에서 한{genre} 드라마"]), sorted(slugs))
+        add(
+            "temporal",
+            rng.choice(
+                [
+                    f"{year}년 {BROADCASTER_LABEL[bc]}{genre} 드라마",
+                    f"{year}년에 {BROADCASTER_LABEL[bc]}에서 한{genre} 드라마",
+                ]
+            ),
+            sorted(slugs),
+        )
 
     return out
 
@@ -123,7 +181,9 @@ def main(argv: list[str] | None = None) -> int:
     args = p.parse_args(argv)
     dramas = load(Path(args.dump))
     queries = generate(dramas, seed=args.seed, per_class=args.per_class)
-    Path(args.out).write_text("\n".join(json.dumps(q, ensure_ascii=False) for q in queries) + "\n", encoding="utf-8")
+    Path(args.out).write_text(
+        "\n".join(json.dumps(q, ensure_ascii=False) for q in queries) + "\n", encoding="utf-8"
+    )
     by_class = Counter(q["class"] for q in queries)
     print(f"{len(queries)} queries -> {args.out}: {dict(by_class)}")
     return 0
