@@ -65,7 +65,14 @@ Personal    사용자 시청 기록
 
 클래스별: multi_hop MRR 0.320 → 0.939, person 0.622 → 0.943 (graph 효과), entity_lookup 0.98, character 0.96, temporal 0.96. (2,782편·범위 제한 전: 0.806 / 0.968 / 0.927 — 채널 5곳으로 좁히자 동명 작품·후보가 줄어 전 클래스가 올랐다. 생성셋은 카탈로그마다 새로 뽑히므로 ±0.01은 표본 차이다.) 렉시컬이 `person`에서 0.05인 이유는 "배우 X", "X 출연작"의 부가 단어가 AND 조건에 걸리기 때문 — OR 리스트와 그래프가 이를 메운다.
 
-**Reranker(DM-605)**: bge-reranker-v2-m3를 RRF 상위 30에 적용하면 이 CPU에서 **질의당 16~20초** — 대화형 경로에 넣을 수 없어 기본 꺼짐. 품질 측정치는 `reports/rerank-latest.json`(측정 중이면 없음) — 채택 조건은 "GPU 또는 경량 reranker로 p95 < 800ms(§16) 이면서 semantic_memory/ost recall@1 개선".
+**Reranker(DM-605)** — bge-reranker-v2-m3를 RRF 상위 30에 적용, 손으로 쓴 132질의(`reports/rerank-latest.json`, 1,924편):
+
+| | recall@1 | recall@5 | MRR | p50 | p95 |
+|---|---|---|---|---|---|
+| hybrid | 0.767 | 0.912 | 0.841 | 104ms | 132ms |
+| hybrid + rerank | **0.839** | 0.908 | **0.885** | **20.5s** | 42.7s |
+
+클래스별 recall@1: semantic_memory 0.852 → **1.000**, ost 0.417 → **0.917**, character 0.917 → 1.000, entity_lookup 0.958 → 1.000; 반면 temporal 0.455 → 0.409(recall@5 0.68 → 0.58), genre 0.17 → 0.03 — cross-encoder가 연도·장르 조건은 읽지 못한다. **결론: 품질 이득은 실재하지만(top-1 +7pt, MRR +4pt) CPU에서 질의당 20초라 대화형 경로에 넣을 수 없다 → 기본 꺼짐.** 채택 조건: GPU 또는 경량 reranker(bge-reranker-base 등)로 p95 < 800ms(§16)를 만족하고, temporal/genre 회귀를 막기 위해 조건이 있는 질의(§4 `has_constraints`)는 rerank를 건너뛰는 라우팅과 함께.
 
 이전 측정(24편, 120질의): lexical 0.554 / vector 0.914 / hybrid 0.992 recall@5 — 문서 3~24개 규모의 수치는 참고용.
 

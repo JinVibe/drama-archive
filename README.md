@@ -136,7 +136,7 @@ docs/            설계 문서
   - [x] **채널 범위** — 당장은 KBS·MBC·SBS·tvN·JTBC만(OTT는 대부분 재방영). 다른 채널·채널 미상은 `out_of_scope`로 HIDDEN, `DRAMAMEMORY_SCOPE_BROADCASTERS`를 넓히면 자동 복귀. 파서는 P449에 방송사와 OTT가 함께 있으면 방송사를 택함
   - [x] 채널 추론 — Wikidata에 방송사가 없는 작품은 kowiki 분류("SBS 금토드라마")에서 추론(V15 provenance), 81편
   - [x] 줄거리 분리 — V14 `synopsis` 필드(fts weight C) + 별도 임베딩. 측정 결과 메타데이터 전용 벡터 리스트는 잡음이라 기본 `AI_API_LIST_WEIGHTS=vector:0`(recall@1 0.59 → 0.74, 범위 제한 후 0.77)
-  - [x] DM-605 reranker 실험 — `AI_API_RERANKER=bge` + `?rerank=true`(bge-reranker-v2-m3): CPU에서 질의당 16~20초라 기본 꺼짐, 채택 조건은 RAG_DESIGN
+  - [x] DM-605 reranker 실험 — `AI_API_RERANKER=bge` + `?rerank=true`(bge-reranker-v2-m3): recall@1 0.77 → 0.84, MRR 0.84 → 0.89(semantic_memory·OST top-1 크게 개선)지만 CPU에서 **질의당 20초** → 기본 꺼짐, 채택 조건은 RAG_DESIGN(GPU/경량 모델 + 조건 질의 우회)
   - [ ] OST 소스 · 파싱 실패 잔여(제목 없는 항목 7) · 리뷰 큐 10건(동명이인) · 타 채널(드라마큐브·투니버스·U+ TV 등) 분류 추가 · `embedding` 컬럼 제거
   - [ ] DM-903 graph benchmark 확대 · collaboration score · Character/Platform 노드
 - [x] Phase 6 일부 — **`apps/mcp-server`**: MCP 2026-07-28 stateless streamable HTTP, 공개 tools 6종 + resources 4종 + prompts 2종(MCP_SPEC 구현 현황). 보호 도구는 OAuth 전까지 미등록

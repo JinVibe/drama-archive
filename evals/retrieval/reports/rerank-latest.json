@@ -1,0 +1,777 @@
+{
+  "generated_at": "2026-09-28T08:17:19.076161+00:00",
+  "golden_set": "/evals/retrieval/golden_queries.jsonl",
+  "n_queries": 132,
+  "targets": {
+    "hybrid": {
+      "overall": {
+        "recall@1": 0.7666666666666667,
+        "recall@3": 0.8487373737373737,
+        "recall@5": 0.9118686868686868,
+        "recall@10": 0.9323232323232323,
+        "mrr": 0.8405393217893218,
+        "ndcg@1": 0.7954545454545454,
+        "ndcg@3": 0.8255432882549764,
+        "ndcg@5": 0.8522133216740965,
+        "ndcg@10": 0.8594873651595117,
+        "latency_p50_ms": 103.52465699907043,
+        "latency_p95_ms": 132.27567400463158,
+        "errors": 0,
+        "n": 132
+      },
+      "by_class": {
+        "character": {
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9166666666666666,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9333333333333332,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9166666666666666,
+          "ndcg@5": 0.9489044006028785,
+          "ndcg@10": 0.9489044006028785,
+          "latency_p50_ms": 98.97602400451433,
+          "latency_p95_ms": 106.48132299684221,
+          "errors": 0,
+          "n": 12
+        },
+        "entity_lookup": {
+          "recall@1": 0.9583333333333334,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9722222222222222,
+          "ndcg@1": 0.9583333333333334,
+          "ndcg@3": 0.9791666666666666,
+          "ndcg@5": 0.9791666666666666,
+          "ndcg@10": 0.9791666666666666,
+          "latency_p50_ms": 101.10929800066515,
+          "latency_p95_ms": 136.08840200322447,
+          "errors": 0,
+          "n": 24
+        },
+        "genre": {
+          "recall@1": 0.17142857142857143,
+          "recall@3": 0.17142857142857143,
+          "recall@5": 0.26666666666666666,
+          "recall@10": 0.2952380952380952,
+          "mrr": 0.32142857142857145,
+          "ndcg@1": 0.2857142857142857,
+          "ndcg@3": 0.20989696086039378,
+          "ndcg@5": 0.24611562061593092,
+          "ndcg@10": 0.2614003538112543,
+          "latency_p50_ms": 92.1511689957697,
+          "latency_p95_ms": 98.48482999950647,
+          "errors": 0,
+          "n": 7
+        },
+        "multi_hop": {
+          "recall@1": 0.9583333333333334,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 112.68334449778195,
+          "latency_p95_ms": 127.23733699385775,
+          "errors": 0,
+          "n": 12
+        },
+        "ost": {
+          "recall@1": 0.4166666666666667,
+          "recall@3": 0.5833333333333334,
+          "recall@5": 0.75,
+          "recall@10": 0.8333333333333334,
+          "mrr": 0.535515873015873,
+          "ndcg@1": 0.4166666666666667,
+          "ndcg@3": 0.5109108127976215,
+          "ndcg@5": 0.5790382599066161,
+          "ndcg@10": 0.6068160376843937,
+          "latency_p50_ms": 102.46422750060447,
+          "latency_p95_ms": 109.7241009993013,
+          "errors": 0,
+          "n": 12
+        },
+        "person": {
+          "recall@1": 0.7962962962962963,
+          "recall@3": 0.9629629629629629,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9166666666666666,
+          "ndcg@1": 0.8518518518518519,
+          "ndcg@3": 0.9219551578042361,
+          "ndcg@5": 0.937906141436584,
+          "ndcg@10": 0.937906141436584,
+          "latency_p50_ms": 102.4430690013105,
+          "latency_p95_ms": 120.37512000097195,
+          "errors": 0,
+          "n": 27
+        },
+        "semantic_memory": {
+          "recall@1": 0.8518518518518519,
+          "recall@3": 0.9259259259259259,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.9012345679012346,
+          "ndcg@1": 0.8518518518518519,
+          "ndcg@3": 0.8937381390211651,
+          "ndcg@5": 0.9256401062858609,
+          "ndcg@10": 0.9256401062858609,
+          "latency_p50_ms": 114.81857400212903,
+          "latency_p95_ms": 150.7574850038509,
+          "errors": 0,
+          "n": 27
+        },
+        "temporal": {
+          "recall@1": 0.45454545454545453,
+          "recall@3": 0.5303030303030303,
+          "recall@5": 0.6818181818181818,
+          "recall@10": 0.8181818181818182,
+          "mrr": 0.6053030303030303,
+          "ndcg@1": 0.5454545454545454,
+          "ndcg@3": 0.531616959616076,
+          "ndcg@5": 0.6016625910953889,
+          "ndcg@10": 0.6489214342203176,
+          "latency_p50_ms": 76.6182419974939,
+          "latency_p95_ms": 111.65815399726853,
+          "errors": 0,
+          "n": 11
+        }
+      },
+      "failures": [
+        {
+          "id": "q084",
+          "class": "ost",
+          "query": "스테이 위드 미 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "love-me",
+            "face-me",
+            "standby",
+            "by-my-side",
+            "made-in-u"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q089",
+          "class": "ost",
+          "query": "다비치 This Love",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "because-this-is-my-first-life",
+            "love-rain",
+            "love-on-the-menu",
+            "listen-to-love",
+            "beloved-eun-dong"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q091",
+          "class": "ost",
+          "query": "거미 OST 군인 의사",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [
+            "w-two-worlds",
+            "doctor-stranger",
+            "dr-romantic-2",
+            "doctors",
+            "poong-the-joseon-psychiatrist"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q134",
+          "class": "temporal",
+          "query": "2016년 MBC 드라마",
+          "expected": [
+            "w-two-worlds",
+            "shopping-king-louie"
+          ],
+          "got": [
+            "one-more-happy-ending",
+            "happy-home",
+            "marriage-contract",
+            "my-little-baby",
+            "goodbye-mr-black"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q135",
+          "class": "temporal",
+          "query": "2016년 KBS 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [
+            "jang-yeong-sil",
+            "hwarang-the-poet-warrior-youth",
+            "imjin-war-1592",
+            "the-gentlemen-of-wolgyesu-tailor-shop",
+            "the-sound-of-your-heart"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q137",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러 tvN",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "signal",
+            "liar-game",
+            "oh-my-ghostess",
+            "the-good-wife",
+            "bring-it-on-ghost"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q138",
+          "class": "temporal",
+          "query": "2015년 tvN 드라마",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "미생물",
+            "heart-to-heart",
+            "hogu-s-love",
+            "super-daddy-yeol",
+            "let-s-eat-2"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "the-legend-of-the-blue-sea",
+            "three-color-fantasy",
+            "another-miss-oh",
+            "romance-town",
+            "wild-romance"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q151",
+          "class": "genre",
+          "query": "범죄 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "buried-hearts",
+            "stranger",
+            "designated-survivor-60-days",
+            "inspector-koo",
+            "psychopath-diary"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q152",
+          "class": "genre",
+          "query": "법정 드라마",
+          "expected": [
+            "the-good-wife",
+            "memory"
+          ],
+          "got": [
+            "witch-s-court",
+            "lawless-lawyer",
+            "suspicious-partner",
+            "payback-money-and-power",
+            "one-dollar-lawyer"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q153",
+          "class": "genre",
+          "query": "사극 로맨스",
+          "expected": [
+            "love-in-the-moonlight",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "shining-romance",
+            "risky-romance",
+            "wild-romance",
+            "로맨스-파파",
+            "romance-town"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q155",
+          "class": "genre",
+          "query": "청춘 드라마",
+          "expected": [
+            "age-of-youth",
+            "cheese-in-the-trap",
+            "reply-1988"
+          ],
+          "got": [
+            "forever-young",
+            "잘-지내나요-청춘",
+            "youth-of-may",
+            "age-of-youth",
+            "reply-1988"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q156",
+          "class": "genre",
+          "query": "가족 드라마",
+          "expected": [
+            "reply-1988",
+            "dear-my-friends",
+            "memory"
+          ],
+          "got": [
+            "641-가족",
+            "perfect-family",
+            "dandelion-family",
+            "save-the-family",
+            "21세기-가족"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        }
+      ]
+    },
+    "rerank": {
+      "overall": {
+        "recall@1": 0.8386363636363636,
+        "recall@3": 0.8866161616161616,
+        "recall@5": 0.908080808080808,
+        "recall@10": 0.9131313131313131,
+        "mrr": 0.8847222222222222,
+        "ndcg@1": 0.8560606060606061,
+        "ndcg@3": 0.8747327537430736,
+        "ndcg@5": 0.8841830097110743,
+        "ndcg@10": 0.8866344240820878,
+        "latency_p50_ms": 20501.055796499713,
+        "latency_p95_ms": 42686.96211199858,
+        "errors": 0,
+        "n": 132
+      },
+      "by_class": {
+        "character": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 35461.44356250079,
+          "latency_p95_ms": 49509.32679000107,
+          "errors": 0,
+          "n": 12
+        },
+        "entity_lookup": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 20944.665333001467,
+          "latency_p95_ms": 26670.683657001064,
+          "errors": 0,
+          "n": 24
+        },
+        "genre": {
+          "recall@1": 0.028571428571428574,
+          "recall@3": 0.07619047619047618,
+          "recall@5": 0.07619047619047618,
+          "recall@10": 0.07619047619047618,
+          "mrr": 0.21428571428571427,
+          "ndcg@1": 0.14285714285714285,
+          "ndcg@3": 0.10933723385551739,
+          "ndcg@5": 0.09074887374849734,
+          "ndcg@10": 0.09074887374849734,
+          "latency_p50_ms": 16400.937373000488,
+          "latency_p95_ms": 20973.852691000502,
+          "errors": 0,
+          "n": 7
+        },
+        "multi_hop": {
+          "recall@1": 0.9583333333333334,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 20557.788237998466,
+          "latency_p95_ms": 24517.082256999856,
+          "errors": 0,
+          "n": 12
+        },
+        "ost": {
+          "recall@1": 0.9166666666666666,
+          "recall@3": 0.9166666666666666,
+          "recall@5": 0.9166666666666666,
+          "recall@10": 0.9166666666666666,
+          "mrr": 0.9166666666666666,
+          "ndcg@1": 0.9166666666666666,
+          "ndcg@3": 0.9166666666666666,
+          "ndcg@5": 0.9166666666666666,
+          "ndcg@10": 0.9166666666666666,
+          "latency_p50_ms": 20248.57716849874,
+          "latency_p95_ms": 41038.09985800035,
+          "errors": 0,
+          "n": 12
+        },
+        "person": {
+          "recall@1": 0.7592592592592593,
+          "recall@3": 0.9259259259259259,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 0.8641975308641975,
+          "ndcg@1": 0.7777777777777778,
+          "ndcg@3": 0.868714292991118,
+          "ndcg@5": 0.9032306779324246,
+          "ndcg@10": 0.9032306779324246,
+          "latency_p50_ms": 23487.547017000907,
+          "latency_p95_ms": 42686.96211199858,
+          "errors": 0,
+          "n": 27
+        },
+        "semantic_memory": {
+          "recall@1": 1.0,
+          "recall@3": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr": 1.0,
+          "ndcg@1": 1.0,
+          "ndcg@3": 1.0,
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "latency_p50_ms": 17720.155283997883,
+          "latency_p95_ms": 21376.473298994824,
+          "errors": 0,
+          "n": 27
+        },
+        "temporal": {
+          "recall@1": 0.4090909090909091,
+          "recall@3": 0.5,
+          "recall@5": 0.5757575757575757,
+          "recall@10": 0.6363636363636364,
+          "mrr": 0.5409090909090909,
+          "ndcg@1": 0.45454545454545453,
+          "ndcg@3": 0.47673426784881057,
+          "ndcg@5": 0.5172442601315327,
+          "ndcg@10": 0.5466612325836953,
+          "latency_p50_ms": 9080.51186400553,
+          "latency_p95_ms": 18101.158110999677,
+          "errors": 0,
+          "n": 11
+        }
+      },
+      "failures": [
+        {
+          "id": "q084",
+          "class": "ost",
+          "query": "스테이 위드 미 드라마",
+          "expected": [
+            "guardian-the-lonely-and-great-god"
+          ],
+          "got": [
+            "drama-stage",
+            "my-id-is-gangnam-beauty",
+            "designated-survivor-60-days",
+            "misty",
+            "come-and-hug-me"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q131",
+          "class": "temporal",
+          "query": "2016년 초 tvN 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "signal",
+            "dear-my-friends",
+            "guardian-the-lonely-and-great-god",
+            "memory",
+            "drinking-solo"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q133",
+          "class": "temporal",
+          "query": "2016년 JTBC 드라마",
+          "expected": [
+            "age-of-youth",
+            "fantastic",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "solomon-s-perjury",
+            "listen-to-love",
+            "ms-temper-and-nam-jung-gi",
+            "madame-antoine",
+            "fantastic"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q134",
+          "class": "temporal",
+          "query": "2016년 MBC 드라마",
+          "expected": [
+            "w-two-worlds",
+            "shopping-king-louie"
+          ],
+          "got": [
+            "monster-2016",
+            "start-again",
+            "flowers-of-the-prison",
+            "my-little-baby",
+            "good-person"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q135",
+          "class": "temporal",
+          "query": "2016년 KBS 사극",
+          "expected": [
+            "love-in-the-moonlight"
+          ],
+          "got": [
+            "hwarang-the-poet-warrior-youth",
+            "jang-yeong-sil",
+            "imjin-war-1592",
+            "the-gentlemen-of-wolgyesu-tailor-shop",
+            "descendants-of-the-sun"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q137",
+          "class": "temporal",
+          "query": "2010년대 중반 범죄 스릴러 tvN",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "guardian-the-lonely-and-great-god",
+            "the-good-wife",
+            "misaeng",
+            "pied-piper",
+            "crazy-love"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q138",
+          "class": "temporal",
+          "query": "2015년 tvN 드라마",
+          "expected": [
+            "reply-1988"
+          ],
+          "got": [
+            "second-20s",
+            "heart-to-heart",
+            "super-daddy-yeol",
+            "a-bird-that-doesn-t-sing",
+            "oh-my-ghostess"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "q150",
+          "class": "genre",
+          "query": "판타지 로맨스",
+          "expected": [
+            "guardian-the-lonely-and-great-god",
+            "the-legend-of-the-blue-sea",
+            "w-two-worlds",
+            "bring-it-on-ghost",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "the-legend-of-the-blue-sea",
+            "my-love-from-the-star",
+            "kokdu-season-of-deity",
+            "iron-man",
+            "tomorrow-with-you"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q151",
+          "class": "genre",
+          "query": "범죄 스릴러",
+          "expected": [
+            "signal",
+            "pied-piper"
+          ],
+          "got": [
+            "designated-survivor-60-days",
+            "the-escape-of-the-seven",
+            "stranger",
+            "doubt",
+            "mouse"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q152",
+          "class": "genre",
+          "query": "법정 드라마",
+          "expected": [
+            "the-good-wife",
+            "memory"
+          ],
+          "got": [
+            "witch-s-court",
+            "the-law-cafe",
+            "payback-money-and-power",
+            "lawless-lawyer",
+            "misty"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q153",
+          "class": "genre",
+          "query": "사극 로맨스",
+          "expected": [
+            "love-in-the-moonlight",
+            "mirror-of-the-witch"
+          ],
+          "got": [
+            "bloody-heart",
+            "my-dearest",
+            "moon-embracing-the-sun",
+            "gu-family-book",
+            "our-blooming-youth"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q154",
+          "class": "genre",
+          "query": "의학 드라마",
+          "expected": [
+            "doctors"
+          ],
+          "got": [
+            "syndrome",
+            "the-king-s-doctor",
+            "new-heart",
+            "jejungwon",
+            "blood"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q155",
+          "class": "genre",
+          "query": "청춘 드라마",
+          "expected": [
+            "age-of-youth",
+            "cheese-in-the-trap",
+            "reply-1988"
+          ],
+          "got": [
+            "record-of-youth",
+            "age-of-youth",
+            "shut-up-flower-boy-band",
+            "hello-my-twenties-2",
+            "forever-young"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "q156",
+          "class": "genre",
+          "query": "가족 드라마",
+          "expected": [
+            "reply-1988",
+            "dear-my-friends",
+            "memory"
+          ],
+          "got": [
+            "641-가족",
+            "my-unfamiliar-family",
+            "save-the-family",
+            "perfect-family",
+            "the-secret-of-the-family"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        }
+      ]
+    }
+  }
+}
