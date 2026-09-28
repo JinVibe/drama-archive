@@ -97,6 +97,14 @@ export function MemoryNote({ dramaId }: { dramaId: number }) {
         className="w-full rounded-md border border-line bg-card px-3 py-2 focus:border-accent focus:outline-none"
       />
       <div className="flex items-center gap-3">
+        <span className="text-xs text-muted">{draft.length}/500 · 비공개</span>
+        <button
+          type="button"
+          className="ml-auto text-muted hover:text-foreground"
+          onClick={() => setEditing(false)}
+        >
+          취소
+        </button>
         <button
           type="submit"
           disabled={busy || !draft.trim()}
@@ -104,10 +112,6 @@ export function MemoryNote({ dramaId }: { dramaId: number }) {
         >
           저장
         </button>
-        <button type="button" className="text-muted hover:text-foreground" onClick={() => setEditing(false)}>
-          취소
-        </button>
-        <span className="ml-auto text-xs text-muted">{draft.length}/500 · 비공개</span>
       </div>
       {error && <p className="text-xs text-accent">{error}</p>}
     </form>
