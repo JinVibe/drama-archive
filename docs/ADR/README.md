@@ -17,3 +17,4 @@
 | ADR-009 | No Kafka in MVP | 예정 |
 | ADR-010 | No Kubernetes in MVP | 예정 |
 | [ADR-011](ADR-011-guest-first-auth.md) | Guest-first Authentication | Accepted |
+| [ADR-012](ADR-012-catalog-scope.md) | Catalog Scope (dramas only · aired · KBS/MBC/SBS/tvN/JTBC) as reversible status | Accepted |
