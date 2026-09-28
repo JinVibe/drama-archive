@@ -25,10 +25,10 @@ Personal    사용자 시청 기록
 |---|---|---|
 | §4 Query Understanding | 결정적 규칙: 연도(`2016년`, `16년쯤`±1, `2010년대 초반`, `90년대 후반`), 방송사 별칭, 필러/조사 제거. LLM 추출기는 같은 `QueryPlan` 뒤로 교체 가능 | `retrieval/query.py` |
 | §5.2 Full-text | `websearch_to_tsquery('simple')`, title/alias weight A, body weight B + `pg_trgm` 부분 일치 | `retrieval/store.py` |
-| §5.3 Vector | BGE-M3(1024, cosine, normalized) + pgvector HNSW. 임베딩은 `embedding_refresh` DAG가 ai-api `/internal/embed`로 생성 | V11, `store.py`, DAG |
+| §5.3 Vector | BGE-M3(1024, cosine, normalized) + pgvector HNSW, 문서당 **두 벡터**: `embedding`(제목·별칭·채널·연도·출연진) + `embedding_synopsis`(제목+줄거리, V14) → `vector`, `vector_synopsis` 두 리스트. 임베딩은 `embedding_refresh` DAG가 ai-api `/internal/embed`로 생성 | V11/V14, `store.py`, DAG |
 | §6 Fusion | RRF k=60, 리스트별 rank/raw score를 evidence로 응답에 포함 | `retrieval/fusion.py` |
-| §7 Metadata-aware | 연도 범위·방송사 필터를 세 retriever 모두에 동일 적용, 조건만 있는 질의는 filter-only | `hybrid.py` |
-| §8 Reranking | 미구현 (DM-605) | — |
+| §7 Metadata-aware | 연도 범위·방송사 필터를 모든 retriever에 동일 적용, 조건만 있는 질의는 filter-only. `year_from/year_to/broadcaster` 파라미터가 텍스트 해석보다 우선(MCP 등 구조화 호출) | `hybrid.py` |
+| §8 Reranking | `AI_API_RERANKER=bge` + `?rerank=true`: RRF 상위 30을 bge-reranker-v2-m3 cross-encoder로 재정렬(제목·별칭·본문·줄거리 600자). **기본 꺼짐** — 측정치는 아래 | `reranker.py`, `hybrid.py` |
 | §9~§10 Context/Answer | 미구현 (DM-703~706) — `/v1/search`는 retrieval-only | — |
 | §15 Versioning | `retrieval_version`, `embedding_model`을 응답과 eval 보고서에 기록 | `config.py` |
 | §18 Evaluation | 손으로 쓴 골든 132질의 / 8클래스 + 카탈로그에서 생성한 300질의 / 5클래스, lexical·no-graph·hybrid 비교 보고서 | `evals/retrieval/` |
