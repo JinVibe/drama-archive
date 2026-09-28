@@ -49,6 +49,8 @@ def entity_resolution():
             for row in rows:
                 was_review = row.resolution is not None and row.resolution.get("needs_review")
                 resolution = resolve_record(row.payload, row.source_id, repo)
+                if was_review:
+                    keep_manual_decisions(row.resolution, resolution)
                 status = "REVIEW" if resolution["needs_review"] else "RESOLVED"
                 if was_review and status == "REVIEW":
                     continue  # still ambiguous: keep the queue entry untouched
@@ -65,6 +67,21 @@ def entity_resolution():
         return summary
 
     resolve_new_records()
+
+
+def keep_manual_decisions(old: dict, new: dict) -> None:
+    """An admin decision (method=MANUAL) on one entity must survive re-resolution of
+    the record's other entities; only the resolver's own verdicts are recomputed."""
+    if old.get("drama", {}).get("method") == "MANUAL":
+        new["drama"] = old["drama"]
+    for kind in ("persons", "songs", "artists"):
+        for key, match in old.get(kind, {}).items():
+            if match.get("method") == "MANUAL" and key in new.get(kind, {}):
+                new[kind][key] = match
+    all_matches = [
+        new["drama"], *new["persons"].values(), *new["songs"].values(), *new["artists"].values()
+    ]
+    new["needs_review"] = any(m.get("decision") == "REVIEW" for m in all_matches)
 
 
 entity_resolution()
