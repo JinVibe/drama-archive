@@ -98,3 +98,28 @@ def test_wikitable_fallback():
 
 def test_no_section_means_no_songs():
     assert parse("== 줄거리 ==\n어쩌고", qid="Q1") == []
+
+
+FULL_ALBUM = """
+== 사운드트랙 ==
+{{음반 정보
+| 음반명 = 정도전 OST
+| 가수명 = Various Artists
+| 발매년월일 = 2014년 5월 23일
+}}
+{{곡 목록
+| 제목1 = 의로운 삶
+| 주1 =
+| 제목2 = 다정가
+| 주2 = [[김윤아]]
+}}
+"""
+
+
+def test_various_artists_is_not_an_artist_and_score_cues_are_skipped():
+    assert split_artists("Various Artists") == []
+    assert split_artists("효린, Various Artists") == ["효린"]
+    songs = parse(FULL_ALBUM, qid="Q9")
+    # 의로운 삶: no singer and no part -> a score cue, dropped; 다정가 has a singer
+    got = [(s.title, [a.artist.name for a in s.artists]) for s in songs]
+    assert got == [("다정가", ["김윤아"])]

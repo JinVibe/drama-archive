@@ -128,11 +128,14 @@ def _split_params(body: str) -> dict[str, str]:
     return params
 
 
+_NOT_AN_ARTIST = re.compile(r"^(various artists|v\.?a\.?|여러 가수|various)$", re.I)
+
+
 def split_artists(value: str) -> list[str]:
     names = [strip_wiki(n) for n in _ARTIST_SPLIT.split(strip_wiki(value)) if n and n.strip()]
     seen: list[str] = []
     for n in names:
-        if n and normalize_key(n) and n not in seen:
+        if n and normalize_key(n) and n not in seen and not _NOT_AN_ARTIST.match(n):
             seen.append(n)
     return seen
 
@@ -237,6 +240,8 @@ def parse(wikitext: str, *, qid: str) -> list[NormalizedSong]:
         nonlocal track_no
         if not title or _INSTRUMENTAL.search(title):
             return
+        if not artists and part is None:
+            return  # score cue on a full-soundtrack album: no singer, no part
         key = (normalize_key(title), part)
         if not key[0] or key in seen:
             return

@@ -51,17 +51,25 @@ LICENSE = "CC BY-SA 4.0"
 BATCH = 300
 API = "https://ko.wikipedia.org/w/api.php"
 
+# Published dramas with a Wikidata Q-id not yet checked. The article title comes from
+# the synopsis step's URL when it stored one, otherwise from the Wikidata sitelink.
 SELECT_TARGETS = """
 SELECT d.id, d.synopsis_source_url, m.external_ref
   FROM drama d
   JOIN source_entity_map m ON m.canonical_type = 'DRAMA' AND m.canonical_id = d.id
   JOIN source_record sr ON sr.id = m.source_record_id
   JOIN source s ON s.id = sr.source_id AND s.code = 'wikidata'
- WHERE d.status = 'PUBLISHED' AND d.ost_source IS NULL
-   AND d.synopsis_source_url LIKE 'https://ko.wikipedia.org/wiki/%%'
+ WHERE d.status = 'PUBLISHED' AND d.ost_source IS NULL AND m.external_ref LIKE 'Q%%'
  GROUP BY d.id, d.synopsis_source_url, m.external_ref
  ORDER BY d.id
  LIMIT %s
+"""
+
+SITELINKS_QUERY = """
+SELECT ?item ?title WHERE {
+  VALUES ?item { %s }
+  ?article schema:about ?item ; schema:isPartOf <https://ko.wikipedia.org/> ; schema:name ?title .
+}
 """
 
 MARK = """
@@ -102,10 +110,39 @@ def ost_enrich_kowiki():
                 if not targets:
                     break
                 progressed = False
+                # Article titles: from the stored kowiki URL, else the Wikidata sitelink.
+                titles: dict[str, str] = {}
+                missing = [qid for _, url, qid in targets if not url]
+                if missing:
+                    wikidata = get_source("wikidata")
+                    resp = client.get(
+                        "https://query.wikidata.org/sparql",
+                        params={"format": "json",
+                                "query": SITELINKS_QUERY % " ".join(f"wd:{q}" for q in missing)},
+                        headers={"User-Agent": wikidata.user_agent,
+                                 "Accept": "application/sparql-results+json"},
+                        timeout=120,
+                    )
+                    resp.raise_for_status()
+                    titles = {
+                        r["item"]["value"].rsplit("/", 1)[1]: r["title"]["value"]
+                        for r in resp.json()["results"]["bindings"]
+                    }
                 conn = pg.get_conn()
                 try:
                     for drama_id, url, qid in targets:
-                        title = unquote(url.rsplit("/wiki/", 1)[1]).replace("_", " ")
+                        if url:
+                            title = unquote(url.rsplit("/wiki/", 1)[1]).replace("_", " ")
+                        elif qid in titles:
+                            title = titles[qid]
+                            url = f"https://ko.wikipedia.org/wiki/{title.replace(' ', '_')}"
+                        else:
+                            with conn.cursor() as cur:
+                                cur.execute(MARK, ("kowiki:none", drama_id))
+                            conn.commit()
+                            without += 1
+                            progressed = True
+                            continue
                         try:
                             resp = client.get(
                                 API,
