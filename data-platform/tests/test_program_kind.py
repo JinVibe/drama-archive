@@ -52,17 +52,27 @@ def test_kowiki_drama_category_beats_wikidata_signals():
     assert classify(classes={TV_SERIES}, genre_labels=mixed)[0] == "UNKNOWN"
 
 
-def test_film_only_is_not_a_drama_but_film_plus_web_series_is_open():
+def test_film_class_alone_is_only_a_hint():
+    # KBS 드라마 스페셜 단막극 are often "film" on Wikidata: the categories decide
+    assert classify(classes={FILM})[0] == "UNKNOWN"
+    assert classify(classes={FILM}, kowiki_categories=["2014년 텔레비전 드라마"])[0] == "DRAMA"
     assert classify(classes={FILM}, genre_labels=["다큐멘터리 영화"])[0] == "NOT_DRAMA"
-    assert classify(classes={FILM})[0] == "NOT_DRAMA"
     assert classify(classes={FILM, WEB_SERIES}, genre_labels=["로맨스 영화"])[0] == "DRAMA"
 
 
 def test_webcomic_sharing_an_item_with_its_web_drama():
     assert classify(classes={WEBCOMIC, WEB_SERIES})[0] == "UNKNOWN"
-    assert classify(classes={WEBCOMIC})[0] == "NOT_DRAMA"
+    assert classify(classes={WEBCOMIC})[0] == "UNKNOWN"
 
 
 def test_episode_and_list_articles_are_never_dramas():
-    assert classify(classes={"Q21191270"}, genre_labels=["텔레비전 드라마"])[0] == "UNKNOWN"
+    assert classify(classes={"Q21191270"}, genre_labels=["텔레비전 드라마"])[0] == "NOT_DRAMA"
     assert classify(classes={"Q13406463"})[0] == "NOT_DRAMA"
+    # "2016년 대한민국의 텔레비전 드라마 목록" sits in a drama category on kowiki
+    assert classify(
+        classes={"Q13406463"}, kowiki_categories=["2016년 텔레비전 드라마"]
+    )[0] == "NOT_DRAMA"
+    # a "…목록" category is a list signal, not a drama signal
+    assert classify(
+        classes={TV_SERIES}, kowiki_categories=["대한민국의 텔레비전 드라마 목록"]
+    )[0] == "NOT_DRAMA"

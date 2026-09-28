@@ -100,6 +100,7 @@ NON_DRAMA_GENRE = re.compile(
 # Korean Wikipedia categories. "…드라마" categories are curated by people and
 # beat every Wikidata signal.
 KOWIKI_DRAMA_CATEGORY = re.compile(r"드라마")
+KOWIKI_LIST_CATEGORY = re.compile(r"목록")
 KOWIKI_NON_DRAMA_CATEGORY = re.compile(
     r"예능|리얼리티|버라이어티|토크 ?쇼|음악 프로그램|오디션|다큐멘터리|시사|교양|뉴스|스포츠"
     r"|퀴즈|게임 쇼|경연|서바이벌|애니메이션|영화|만화|소설|웹툰|목록"
@@ -117,8 +118,18 @@ def classify(
     drama: list[str] = []
     non: list[str] = []
 
+    # An episode, a list article, a variety show: never a drama, whatever kowiki
+    # files it under ("2016년 대한민국의 텔레비전 드라마 목록" sits in a drama category).
+    strong = cls & STRONG_NON_DRAMA_CLASSES
+    if strong:
+        return "NOT_DRAMA", [f"class {sorted(strong)[0]}"]
+
     if kowiki_categories:
-        if any(KOWIKI_DRAMA_CATEGORY.search(c) for c in kowiki_categories):
+        drama_cats = [
+            c for c in kowiki_categories
+            if KOWIKI_DRAMA_CATEGORY.search(c) and not KOWIKI_LIST_CATEGORY.search(c)
+        ]
+        if drama_cats:
             return "DRAMA", ["kowiki category"]
         hits = [c for c in kowiki_categories if KOWIKI_NON_DRAMA_CATEGORY.search(c)]
         if hits:
@@ -126,12 +137,9 @@ def classify(
 
     if cls & DRAMA_CLASSES:
         drama.append(f"class {sorted(cls & DRAMA_CLASSES)[0]}")
-    strong = cls & STRONG_NON_DRAMA_CLASSES
-    if strong:
-        non.append(f"class {sorted(strong)[0]}")
-    weak = cls & WEAK_NON_DRAMA_CLASSES
-    if weak and not cls & SERIES_CLASSES:
-        non.append(f"class {sorted(weak)[0]} without a series class")
+    # Film / comic / novel classes without a series class are only a hint: a 단막극
+    # is often filed as "film" on Wikidata yet sits in kowiki's drama categories, so
+    # on their own they leave the verdict UNKNOWN for the categories to settle.
 
     for label in genre_labels:
         if DRAMA_GENRE.search(label):
