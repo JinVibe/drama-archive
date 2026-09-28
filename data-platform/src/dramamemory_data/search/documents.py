@@ -96,9 +96,12 @@ def render_drama(d: DramaSource) -> SearchDocument:
         "document_version": DOCUMENT_VERSION,
     }
     alias_text = "\n".join(aliases)
+    # canonical_version is bookkeeping, not content: a re-publish that changes nothing the
+    # reader sees must not rewrite (and re-embed) every document.
+    hashed = {k: v for k, v in metadata.items() if k != "canonical_version"}
     digest = hashlib.sha256(
         json.dumps(
-            [d.title_ko, alias_text, body, synopsis, metadata], ensure_ascii=False, sort_keys=True
+            [d.title_ko, alias_text, body, synopsis, hashed], ensure_ascii=False, sort_keys=True
         ).encode()
     ).hexdigest()
     return SearchDocument(
