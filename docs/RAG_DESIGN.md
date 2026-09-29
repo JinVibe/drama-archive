@@ -25,7 +25,7 @@ Personal    사용자 시청 기록
 |---|---|---|
 | §4 Query Understanding | 결정적 규칙: 연도(`2016년`, `16년쯤`±1, `2010년대 초반`, `90년대 후반`), 방송사 별칭, 필러/조사 제거. LLM 추출기는 같은 `QueryPlan` 뒤로 교체 가능 | `retrieval/query.py` |
 | §5.2 Full-text | `websearch_to_tsquery('simple')`, title/alias weight A, body weight B + `pg_trgm` 부분 일치 | `retrieval/store.py` |
-| §5.3 Vector | BGE-M3(1024, cosine, normalized) + pgvector HNSW, 문서당 **두 벡터**: `embedding`(제목·별칭·채널·연도·출연진) + `embedding_synopsis`(제목+줄거리, V14) → `vector`, `vector_synopsis` 두 리스트. 임베딩은 `embedding_refresh` DAG가 ai-api `/internal/embed`로 생성 | V11/V14, `store.py`, DAG |
+| §5.3 Vector | BGE-M3(1024, cosine, normalized) + pgvector HNSW, 문서당 **벡터 하나**: `embedding_synopsis`(제목+줄거리, V14) → `vector_synopsis` 리스트. 메타데이터 전용 `embedding`(제목·별칭·채널·연도·출연진)은 측정 결과 잡음이라 V20에서 제거. 임베딩은 `embedding_refresh` DAG가 ai-api `/internal/embed`로 생성 | V11/V14/V20, `store.py`, DAG |
 | §6 Fusion | RRF k=60, 리스트별 rank/raw score를 evidence로 응답에 포함 | `retrieval/fusion.py` |
 | §7 Metadata-aware | 연도 범위·방송사 필터를 모든 retriever에 동일 적용, 조건만 있는 질의는 filter-only. `year_from/year_to/broadcaster` 파라미터가 텍스트 해석보다 우선(MCP 등 구조화 호출) | `hybrid.py` |
 | §8 Reranking | `AI_API_RERANKER=bge` + `?rerank=true`: RRF 상위 30을 bge-reranker-v2-m3 cross-encoder로 재정렬(제목·별칭·본문·줄거리 600자). **기본 꺼짐** — 측정치는 아래 | `reranker.py`, `hybrid.py` |
@@ -53,7 +53,7 @@ Personal    사용자 시청 기록
 | graph 2.0 | 0.606 | 0.853 | 0.718 |
 | **메타 벡터 0 (줄거리 벡터만)** | **0.736** | **0.902** | **0.821** |
 
-→ 기본값 `AI_API_LIST_WEIGHTS=vector:0`(가중치 0인 리스트는 조회도 하지 않음). 생성 골든셋에서도 MRR 0.916 → 0.927, recall@5는 0.974 → 0.968(2질의 차, temporal)로 손해가 없었다. `embedding` 컬럼은 남겨 두되 검색에는 쓰지 않는다 — 다음 임베딩 모델 교체 때 제거 후보.
+→ 먼저 `AI_API_LIST_WEIGHTS=vector:0`으로 리스트를 끄고(가중치 0인 리스트는 조회도 하지 않음) 생성 골든셋에서도 MRR 0.916 → 0.927, recall@5는 0.974 → 0.968(2질의 차, temporal)로 손해가 없음을 확인한 뒤, **V20에서 `embedding` 컬럼과 `vector` 리스트를 제거**했다. 문서당 벡터는 `embedding_synopsis` 하나(제목 + 줄거리)이고, 줄거리가 없는 문서는 벡터 없이 FTS/trigram/graph로만 찾는다. 임베딩 작업량은 절반.
 
 **데이터 생성 골든셋** (`evals/retrieval/generate_golden.py`, 1,981편 카탈로그에서 기계적으로 뽑은 300질의 / 5클래스, 손으로 쓴 편향 없음, `reports/generated-latest.json`):
 
@@ -301,7 +301,7 @@ FROM search_document sd
 JOIN drama d ON ...
 WHERE d.start_date >= '2015-01-01'
   AND d.start_date < '2018-01-01'
-ORDER BY sd.embedding <=> :query_embedding
+ORDER BY sd.embedding_synopsis <=> :query_embedding
 LIMIT 50;
 ```
 

@@ -20,34 +20,25 @@ EMBEDDINGS_ASSET = Asset(name="search.embeddings", uri="asset://search/embedding
 BATCH = 16
 
 SELECT_PENDING = """
-SELECT id, title, aliases, body, synopsis
+SELECT id, title, synopsis
   FROM search_document
- WHERE embedding IS NULL OR embedding_updated_at < updated_at OR embedding_model IS DISTINCT FROM %s
+ WHERE embedding_updated_at IS NULL OR embedding_updated_at < updated_at
+    OR embedding_model IS DISTINCT FROM %s
  ORDER BY id
  LIMIT %s
 """
 
 UPDATE_EMBEDDING = """
 UPDATE search_document
-   SET embedding = %s::vector, embedding_synopsis = %s::vector,
-       embedding_model = %s, embedding_updated_at = now()
+   SET embedding_synopsis = %s::vector, embedding_model = %s, embedding_updated_at = now()
  WHERE id = %s
 """
 
 
-def embed_text(title: str, aliases: str, body: str) -> str:
-    """What gets embedded: the same words a user would type, title first."""
-    parts = [title]
-    if aliases:
-        parts.append(aliases.replace("\n", " / "))
-    if body:
-        parts.append(body)
-    return "\n".join(parts)
-
-
 def embed_synopsis_text(title: str, synopsis: str) -> str | None:
-    """Second vector (V14): the plot on its own, so long synopses do not drown the
-    cast/year signals in the first one. None when the drama has no synopsis."""
+    """The one vector per document (V14, V20): the plot with its title. The
+    metadata-only vector measured as noise next to FTS and the graph and was dropped.
+    None when the drama has no synopsis — such a document has no vector at all."""
     if not synopsis:
         return None
     return f"{title}\n줄거리: {synopsis}"
@@ -78,20 +69,21 @@ def embedding_refresh():
                     rows = cur.fetchall()
                     if not rows:
                         break
-                    texts = [embed_text(t, a, b) for _, t, a, b, _s in rows]
-                    synopsis_texts = [embed_synopsis_text(t, s) for _, t, _a, _b, s in rows]
+                    synopsis_texts = [embed_synopsis_text(t, s) for _, t, s in rows]
                     with_synopsis = [x for x in synopsis_texts if x]
-                    resp = client.post("/internal/embed", json={"texts": texts + with_synopsis})
-                    resp = resp.raise_for_status().json()
-                    if resp["model"] != model:
-                        raise RuntimeError(f"model changed mid-run: {resp['model']} != {model}")
-                    vectors = resp["vectors"]
-                    body_vecs, syn_vecs = vectors[: len(texts)], iter(vectors[len(texts) :])
-                    for (doc_id, *_), vec, syn_text in zip(
-                        rows, body_vecs, synopsis_texts, strict=True
-                    ):
+                    vectors: list = []
+                    if with_synopsis:
+                        resp = client.post("/internal/embed", json={"texts": with_synopsis})
+                        resp = resp.raise_for_status().json()
+                        if resp["model"] != model:
+                            raise RuntimeError(
+                                f"model changed mid-run: {resp['model']} != {model}"
+                            )
+                        vectors = resp["vectors"]
+                    syn_vecs = iter(vectors)
+                    for (doc_id, *_), syn_text in zip(rows, synopsis_texts, strict=True):
                         syn_vec = str(next(syn_vecs)) if syn_text else None
-                        cur.execute(UPDATE_EMBEDDING, (str(vec), syn_vec, model, doc_id))
+                        cur.execute(UPDATE_EMBEDDING, (syn_vec, model, doc_id))
                     conn.commit()  # checkpoint per batch (docs §20)
                     embedded += len(rows)
         summary = {"embedded": embedded, "model": model}

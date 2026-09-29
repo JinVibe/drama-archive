@@ -95,7 +95,6 @@ class HybridRetriever:
                 t = time.perf_counter()
                 vec = self.embedder.embed([p.text])[0]
                 latency["embed"] = latency.get("embed", 0) + int((time.perf_counter() - t) * 1000)
-                timed("vector", lambda: self.store.vector(vec, filters, self.candidates))
                 timed("vector_synopsis",
                       lambda: self.store.vector_synopsis(vec, filters, self.candidates))
             if use_graph and self.graph is not None and p.text:

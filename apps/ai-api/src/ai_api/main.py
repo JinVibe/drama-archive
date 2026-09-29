@@ -60,7 +60,7 @@ async def lifespan(app: FastAPI):
     if state.embedder.dim != s.embedding_dim:
         raise RuntimeError(
             f"embedder dim {state.embedder.dim} != configured {s.embedding_dim}; "
-            "search_document.embedding column would not match"
+            "search_document.embedding_synopsis column would not match"
         )
     runner: Neo4jRunner | None = None
     if s.neo4j_uri:

@@ -147,12 +147,13 @@ DRY_RUN=1 apps/web/scripts/deploy-pages.sh   # 빌드만 (apps/web/out)
   - [x] 방송 예정작 제외 — 시작일이 미래면 HIDDEN(`hidden_reason='upcoming'`, V16), 방영일에 자동 복귀
   - [x] **채널 범위** — KBS·MBC·SBS·tvN·JTBC + **넷플릭스·디즈니+ 오리지널**(방송사 방영이 없는 작품만; 파서가 P449에 방송사와 OTT가 함께 있으면 방송사를 택하므로 플랫폼 채널 = 오리지널). 다른 채널·채널 미상은 `out_of_scope`로 HIDDEN, `DRAMAMEMORY_SCOPE_BROADCASTERS`를 넓히면 자동 복귀
   - [x] 채널 추론 — Wikidata에 방송사가 없는 작품은 kowiki 분류("SBS 금토드라마")에서 추론(V15 provenance), 81편
-  - [x] 줄거리 분리 — V14 `synopsis` 필드(fts weight C) + 별도 임베딩. 측정 결과 메타데이터 전용 벡터 리스트는 잡음이라 기본 `AI_API_LIST_WEIGHTS=vector:0`(recall@1 0.59 → 0.74, 범위 제한 후 0.77)
+  - [x] 줄거리 분리 — V14 `synopsis` 필드(fts weight C) + 별도 임베딩. 측정 결과 메타데이터 전용 벡터 리스트는 잡음이라 끔(recall@1 0.59 → 0.74, 범위 제한 후 0.77)
   - [x] DM-605 reranker 실험 — `AI_API_RERANKER=bge` + `?rerank=true`(bge-reranker-v2-m3): recall@1 0.77 → 0.84, MRR 0.84 → 0.89(semantic_memory·OST top-1 크게 개선)지만 CPU에서 **질의당 20초** → 기본 꺼짐, 채택 조건은 RAG_DESIGN(GPU/경량 모델 + 조건 질의 우회)
   - [x] **그해의 인기작** — 연도 페이지 상단에 5편. 시청률 데이터가 없어 `popularity_refresh_kowiki` DAG(주간)가 한국어 위키백과 문서 최근 1년 조회수(V19)를 대리 지표로 저장하고, UI에 "위키백과 조회수 기준"으로 표기
   - [x] **OST 소스** — `ost_enrich_kowiki` DAG: 한국어 위키백과 문서의 OST 섹션(`{{음반 정보}}`/`{{곡 목록}}`·표)을 파싱해 song/artist/drama_ost에 provenance와 함께 기록. 1,926편 중 **203편에 2,298곡·아티스트 977명**(나머지 문서엔 OST 섹션이 없음 — 소스의 한계). 연주곡·score cue 제외, 재실행 시 같은 곡에 매핑(합성 external id). seed 24편의 손으로 적은 OST 초안은 이 소스로 대체
   - [x] 리뷰 큐 10 → 0 — 남은 6건은 모두 "같은 소스가 다른 ID로 아는 동명이인/동명작품"이라 규칙화(`_distinct_by_source`): 이후 같은 유형은 리뷰 없이 새 행
-  - [ ] 파싱 실패 잔여(제목 없는 항목 7) · `embedding` 컬럼 제거 · 범위 밖 채널은 요청 시 `DRAMAMEMORY_SCOPE_BROADCASTERS`로 확장
+  - [x] 메타데이터 전용 `embedding` 컬럼·`vector` 리스트 제거(V20) — 문서당 벡터는 줄거리 하나
+  - [ ] 파싱 실패 잔여(제목 없는 항목 7) · 범위 밖 채널은 요청 시 `DRAMAMEMORY_SCOPE_BROADCASTERS`로 확장
   - [ ] DM-903 graph benchmark 확대 · collaboration score · Character/Platform 노드
 - [x] Phase 6 일부 — **`apps/mcp-server`**: MCP 2026-07-28 stateless streamable HTTP, 공개 tools 6종 + resources 4종 + prompts 2종(MCP_SPEC 구현 현황). 보호 도구는 OAuth 전까지 미등록
   - [ ] OpenTelemetry · 운영 하드닝(Phase 6 나머지)

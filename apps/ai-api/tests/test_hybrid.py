@@ -34,17 +34,11 @@ class FakeStore:
         self.calls.append(("trigram", text, filters))
         return self._c(1) if text.startswith("도깨") else []
 
-    def vector(self, vec, filters, limit):
-        self.calls.append(("vector", None, filters))
-        if filters.get("year_from") == 1988:
-            return []
-        return self._c(3, 1)
-
     def vector_synopsis(self, vec, filters, limit):
         self.calls.append(("vector_synopsis", None, filters))
         if filters.get("year_from") == 1988:
             return []
-        return self._c(1)
+        return self._c(1, 3)   # the plot vector: 도깨비 first, 호텔 델루나 second
 
     def filter_only(self, filters, limit):
         self.calls.append(("filter", None, filters))
@@ -65,11 +59,11 @@ def test_hybrid_fuses_and_reports_evidence():
     r = _retriever()
     res = r.search("공유 판타지", limit=5)
     assert res.strategy == "hybrid"
-    assert res.lists == {"fts": 1, "fts_any": 0, "trigram": 0, "vector": 2, "vector_synopsis": 1}
-    assert [h.drama_id for h in res.hits] == [4, 9]        # 4 in three lists beats 9 (vector only)
-    assert res.hits[0].ranks == {"fts": 1, "vector": 2, "vector_synopsis": 1}
+    assert res.lists == {"fts": 1, "fts_any": 0, "trigram": 0, "vector_synopsis": 2}
+    assert [h.drama_id for h in res.hits] == [4, 9]        # 4 in two lists beats 9 (vector only)
+    assert res.hits[0].ranks == {"fts": 1, "vector_synopsis": 1}
     assert res.hits[0].metadata["slug"] == "goblin"
-    assert set(res.latency_ms) >= {"fts", "trigram", "embed", "vector", "fuse"}
+    assert set(res.latency_ms) >= {"fts", "trigram", "embed", "vector_synopsis", "fuse"}
     assert res.embedding_model == "fake/hash-embedder"
 
 
@@ -97,7 +91,7 @@ def test_explicit_filters_override_the_text():
 def test_modes_skip_retrievers():
     store = FakeStore()
     res = _retriever(store).search("공유", use_vector=False)
-    assert res.strategy == "lexical" and "vector" not in res.lists
+    assert res.strategy == "lexical" and "vector_synopsis" not in res.lists
     store = FakeStore()
     res = _retriever(store).search("공유", use_lexical=False)
     assert res.strategy == "vector" and "fts" not in res.lists
@@ -127,7 +121,7 @@ def test_rerank_reorders_fused_top_n_and_records_evidence():
     from ai_api.reranker import FakeReranker
 
     store = FakeStore()
-    # doc 3 (호텔 델루나, 출연: 아이유) only appears in vector lists; without reranking doc 1 wins.
+    # doc 3 (호텔 델루나) only appears in the vector list; without reranking doc 1 wins.
     r = HybridRetriever(store, FAKE, reranker=FakeReranker(), rrf_k=60, candidates=10,
                         rerank_candidates=5)
     plain = r.search("아이유 호텔", limit=2)
@@ -135,7 +129,7 @@ def test_rerank_reorders_fused_top_n_and_records_evidence():
     res = r.search("아이유 호텔", limit=2, rerank=True)
     assert [h.drama_id for h in res.hits] == [9, 4]          # overlap with "아이유"/"호텔" wins
     assert res.hits[0].ranks["rerank"] == 1 and res.hits[0].scores["rerank"] > 0
-    assert res.hits[0].ranks["vector"] == 1                  # RRF evidence is kept
+    assert res.hits[0].ranks["vector_synopsis"] == 2         # RRF evidence is kept
     assert res.reranker == "fake/overlap-reranker" and "rerank" in res.latency_ms
     assert res.lists["rerank"] == 2
     # rerank=True without a configured reranker is a no-op
@@ -144,14 +138,15 @@ def test_rerank_reorders_fused_top_n_and_records_evidence():
 
 def test_zero_weight_list_is_not_queried_and_weights_change_order():
     store = FakeStore()
-    r = HybridRetriever(store, FAKE, rrf_k=60, candidates=10, list_weights={"vector": 0})
+    r = HybridRetriever(store, FAKE, rrf_k=60, candidates=10,
+                        list_weights={"vector_synopsis": 0})
     res = r.search("공유 판타지", limit=5)
-    assert "vector" not in res.lists and "vector" not in res.latency_ms
-    assert [c[0] for c in store.calls] == ["fts", "fts_any", "trigram", "vector_synopsis"]
-    # request-time weights override the defaults: vector only -> its order (9 before 4)
-    only_vector = {"vector": 1.0, "fts": 0, "fts_any": 0, "trigram": 0, "vector_synopsis": 0}
+    assert "vector_synopsis" not in res.lists and "vector_synopsis" not in res.latency_ms
+    assert [c[0] for c in store.calls] == ["fts", "fts_any", "trigram"]
+    # request-time weights override the defaults: vector only -> its own order
+    only_vector = {"vector_synopsis": 1.0, "fts": 0, "fts_any": 0, "trigram": 0}
     res = r.search("공유 판타지", limit=5, weights=only_vector)
-    assert res.lists == {"vector": 2} and [h.drama_id for h in res.hits] == [9, 4]
+    assert res.lists == {"vector_synopsis": 2} and [h.drama_id for h in res.hits] == [4, 9]
 
 
 def test_no_embedder_means_lexical_only():

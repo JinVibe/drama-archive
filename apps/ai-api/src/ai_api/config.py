@@ -24,10 +24,9 @@ class Settings(BaseSettings):
     rrf_k: int = 60
     candidates_per_list: int = 50
     # Per-list RRF weights as "name:weight,name:weight" (lists absent here weigh 1.0; 0 = the
-    # list is not even queried). Chosen from golden-set measurement, never by feel:
-    # the metadata-only vector list hurt every class once the plot had its own vector
-    # (hand-written set recall@5 0.860 -> 0.902, MRR 0.712 -> 0.821; RAG_DESIGN 구현 현황).
-    list_weights: str = "vector:0"
+    # list is not even queried). Change only from golden-set measurement (RAG_DESIGN 구현
+    # 현황): the metadata-only vector list was weighted 0 this way and then removed (V20).
+    list_weights: str = ""
 
     # Optional cross-encoder rerank of the fused top-N (RAG_DESIGN §8, DM-605).
     # "none" | "bge" (sentence-transformers CrossEncoder) | "fake" (tests). Applied only when a
