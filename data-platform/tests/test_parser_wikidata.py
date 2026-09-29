@@ -205,6 +205,32 @@ def test_program_kind_from_classes_and_genres():
     assert parse(_doc(bare)).program_kind == "UNKNOWN"
 
 
+def test_sitelink_title_stands_in_for_a_missing_label_and_becomes_an_alias():
+    # an item with no labels at all, only a kowiki article "퍽 (드라마)"
+    rows = [
+        _row("sitelink", "퍽 (드라마)"),
+        _row("P580", "2016-01-01T00:00:00Z", label="2016-01-01T00:00:00Z"),
+    ]
+    d = parse(_doc(rows))
+    assert d.title_ko == "퍽" and d.aliases == []
+    # with a label, the article title (minus disambiguation) is one more alias
+    d = parse(_doc(GOBLIN + [_row("sitelink", "도깨비 (2016년 드라마)")]))
+    assert "도깨비" in [a.alias for a in d.aliases]
+
+
+def test_official_website_and_netflix_id_become_links():
+    rows = GOBLIN + [
+        _row("P856", "https://tvn.cjenm.com/ko/goblin/", label="https://tvn.cjenm.com/ko/goblin/"),
+        _row("P856", "http://insecure.example/", label="http://insecure.example/"),
+        _row("P1874", "80126024", label="80126024"),
+    ]
+    d = parse(_doc(rows))
+    assert [(x.provider_code, x.link_type, x.url) for x in d.links] == [
+        ("tvn", "BROADCASTER_PAGE", "https://tvn.cjenm.com/ko/goblin/"),
+        ("netflix", "OTT_DETAIL", "https://www.netflix.com/title/80126024"),
+    ]
+
+
 def test_original_network_wins_over_streaming_platform():
     rows = [
         _row("label", "동백꽃 필 무렵", lang="ko"),

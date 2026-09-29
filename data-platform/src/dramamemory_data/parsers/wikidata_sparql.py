@@ -20,22 +20,25 @@ from dramamemory_data.normalization.models import (
     NormalizedAlias,
     NormalizedCredit,
     NormalizedDrama,
+    NormalizedLink,
     NormalizedPerson,
 )
 from dramamemory_data.normalization.program_kind import classify
 from dramamemory_data.normalization.text import clean, normalize_key
 
-PARSER_VERSION = "wikidata_sparql/3"
+PARSER_VERSION = "wikidata_sparql/4"
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 
-# Statements we ask for, per item. Label/alias rows come through the UNION branches.
+# Statements we ask for, per item. Label/alias rows and the Korean Wikipedia sitelink
+# come through the UNION branches. P856 (official website) and P1874 (Netflix ID)
+# become official links; the sitelink title stands in when the item has no label.
 DETAIL_QUERY = """
 SELECT ?item ?p ?o ?oLabel ?charLabel ?birth ?ord ?lang WHERE {
   BIND(wd:%s AS ?item)
   {
     ?item ?p ?st . ?st ?ps ?o .
     ?prop wikibase:claim ?p ; wikibase:statementProperty ?ps .
-    FILTER(?prop IN (wd:P31, wd:P580, wd:P582, wd:P449, wd:P1113, wd:P136, wd:P161, wd:P57, wd:P58, wd:P1476))
+    FILTER(?prop IN (wd:P31, wd:P580, wd:P582, wd:P449, wd:P1113, wd:P136, wd:P161, wd:P57, wd:P58, wd:P1476, wd:P856, wd:P1874))
     OPTIONAL { ?st pq:P453 ?char }
     OPTIONAL { ?st pq:P1545 ?ord }
     OPTIONAL { ?o wdt:P569 ?birth }
@@ -44,9 +47,14 @@ SELECT ?item ?p ?o ?oLabel ?charLabel ?birth ?ord ?lang WHERE {
     ?item rdfs:label ?o . FILTER(LANG(?o) IN ("ko","en")) BIND(LANG(?o) AS ?lang) BIND("label" AS ?p)
   } UNION {
     ?item skos:altLabel ?o . FILTER(LANG(?o) IN ("ko","en")) BIND(LANG(?o) AS ?lang) BIND("alias" AS ?p)
+  } UNION {
+    ?article schema:about ?item ; schema:isPartOf <https://ko.wikipedia.org/> ; schema:name ?o . BIND("sitelink" AS ?p)
   }
 }
 """
+
+# " (드라마)", " (2016년 드라마)" and the like on Korean Wikipedia article titles.
+_DISAMBIG = re.compile(r"\s*\((?:\d{4}년 )?(?:드라마|텔레비전 드라마|영화|웹 드라마|웹드라마)\)$")
 
 # Wikidata broadcaster / platform items -> broadcaster.code (V5 + V12 seeds).
 BROADCASTER_BY_QID: dict[str, str] = {
@@ -178,12 +186,15 @@ def parse(body: bytes) -> NormalizedDrama:
     labels: dict[str, str] = {}
     aliases: list[str] = []
     props: dict[str, list[dict]] = defaultdict(list)
+    sitelink: str | None = None
     for r in rows:
         p = r["p"]["value"]
         if p == "label":
             labels[r["lang"]["value"]] = r["o"]["value"]
         elif p == "alias":
             aliases.append(r["o"]["value"])
+        elif p == "sitelink":
+            sitelink = clean(_DISAMBIG.sub("", r["o"]["value"]))
         else:
             props[p.rsplit("/", 1)[1]].append(r)
 
@@ -195,15 +206,20 @@ def parse(body: bytes) -> NormalizedDrama:
         return None if not lab or _QID.match(lab) else lab
 
     original = [clean(v) for v in values("P1476")]
+    # Korean label, else the original title, else the kowiki article title (items created
+    # from a sitelink alone often have no label at all), else the English label.
     title_ko = (
-        clean(labels.get("ko")) or (original[0] if original else None) or clean(labels.get("en"))
+        clean(labels.get("ko"))
+        or (original[0] if original else None)
+        or sitelink
+        or clean(labels.get("en"))
     )
     if not title_ko:
         raise WikidataParseError(f"{item}: no usable title")
     title_en = clean(labels.get("en"))
     alias_set: list[NormalizedAlias] = []
     seen = {normalize_key(title_ko)}
-    for a in [*original, *aliases]:
+    for a in [*original, *aliases, *([sitelink] if sitelink else [])]:
         a = clean(a)
         if a and normalize_key(a) and normalize_key(a) not in seen and not a.startswith("-"):
             seen.add(normalize_key(a))
@@ -278,5 +294,38 @@ def parse(body: bytes) -> NormalizedDrama:
             *credits_for("P57", "DIRECTOR"),
             *credits_for("P58", "WRITER"),
         ],
+        links=official_links(values("P856"), values("P1874"), broadcaster_code),
         program_kind=program_kind,
     )
+
+
+def official_links(
+    websites: list[str], netflix_ids: list[str], broadcaster_code: str | None
+) -> list[NormalizedLink]:
+    """P856 official website -> the broadcaster's page (or a generic official page);
+    P1874 Netflix ID -> the title page on Netflix. https only (quality gate rule);
+    the link validator checks them afterwards."""
+    out: list[NormalizedLink] = []
+    seen: set[str] = set()
+    for url in websites:
+        url = clean(url) or ""
+        if not url.startswith("https://") or url in seen:
+            continue
+        seen.add(url)
+        out.append(
+            NormalizedLink(
+                provider_code=broadcaster_code or "official",
+                url=url,
+                link_type="BROADCASTER_PAGE",
+            )
+        )
+    for nid in netflix_ids:
+        nid = (clean(nid) or "").strip()
+        if not nid.isdigit():
+            continue
+        url = f"https://www.netflix.com/title/{nid}"
+        if url in seen:
+            continue
+        seen.add(url)
+        out.append(NormalizedLink(provider_code="netflix", url=url, link_type="OTT_DETAIL"))
+    return out
