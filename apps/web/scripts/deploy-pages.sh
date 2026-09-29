@@ -76,17 +76,22 @@ if [ "${DRY_RUN:-0}" = "1" ]; then
 fi
 
 echo "==> publishing to gh-pages"
+# A throwaway worktree on a fresh orphan branch (a unique name: `--orphan gh-pages` fails
+# once a local gh-pages exists, and then every git command below would hit the main
+# worktree). The commit is pushed straight to origin/gh-pages; nothing touches main.
 PUB="$(mktemp -d)"
-git -C "$ROOT" worktree add --detach "$PUB" >/dev/null 2>&1 || true
+TMP_BRANCH="pages-$(date -u +%Y%m%d%H%M%S)"
+rmdir "$PUB"
+git -C "$ROOT" worktree add --detach "$PUB" HEAD >/dev/null
 (
-  cd "$PUB"
-  git checkout --orphan gh-pages >/dev/null 2>&1
-  git rm -rfq . >/dev/null 2>&1 || true
+  cd "$PUB" || exit 1
+  git switch --orphan "$TMP_BRANCH" >/dev/null
   cp -r "$WEB/out/." .
   git add -A
   git -c user.name="deploy-pages" -c user.email="deploy-pages@users.noreply.github.com" \
     commit -qm "deploy: static catalog $(date -u +%Y-%m-%dT%H:%MZ) from $(git -C "$ROOT" rev-parse --short HEAD)"
-  git push -f origin gh-pages
+  git push -f origin "HEAD:gh-pages"
 )
 git -C "$ROOT" worktree remove --force "$PUB"
+git -C "$ROOT" branch -D "$TMP_BRANCH" >/dev/null 2>&1 || true
 echo "==> pushed gh-pages. Site: $SITE_URL/ (enable Pages: Settings → Pages → Branch gh-pages / root)"
