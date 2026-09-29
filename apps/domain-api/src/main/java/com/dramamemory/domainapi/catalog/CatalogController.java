@@ -50,6 +50,12 @@ public class CatalogController {
         return catalog.byYear(year, broadcaster.map(String::toLowerCase), page, size);
     }
 
+    /** Most-read dramas (popularity proxy); a literal path, so it wins over /dramas/{slug}. */
+    @GetMapping("/dramas/popular")
+    public List<DramaSummary> popular(@RequestParam(defaultValue = "10") @Min(1) @Max(50) int limit) {
+        return catalog.popular(limit);
+    }
+
     @GetMapping("/dramas/{slug}")
     public DramaDetail drama(@PathVariable String slug) {
         return catalog.dramaBySlug(slug);

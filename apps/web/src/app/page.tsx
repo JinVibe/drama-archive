@@ -5,7 +5,11 @@ import { api, BASE_PATH } from "@/lib/api";
 // `next build` never needs the Domain API. Static export: rendered once at build time.
 
 export default async function HomePage() {
-  const [years, broadcasters] = await Promise.all([api.years(), api.broadcasters()]);
+  const [years, broadcasters, popular] = await Promise.all([
+    api.years(),
+    api.broadcasters(),
+    api.popular(8).catch(() => []),
+  ]);
   const total = years.reduce((n, y) => n + y.count, 0);
   const span = years.length ? `${years[years.length - 1].year}–${years[0].year}` : "";
 
@@ -39,6 +43,33 @@ export default async function HomePage() {
           </p>
         )}
       </section>
+
+      {popular.length >= 4 && (
+        <section>
+          <div className="mb-4 flex items-baseline justify-between">
+            <h2 className="eyebrow">요즘 많이 찾는 드라마</h2>
+            <span className="text-[11px] text-muted" title="한국어 위키백과 문서의 최근 1년 조회수 기준 — 시청률이 아닙니다">
+              위키백과 조회수 기준
+            </span>
+          </div>
+          <ol className="grid gap-2 sm:grid-cols-4">
+            {popular.slice(0, 8).map((d, i) => (
+              <li key={d.id}>
+                <Link
+                  href={`/dramas/${d.slug}`}
+                  className="group flex h-full flex-col justify-between rounded-lg border border-line bg-card px-4 py-3 transition hover:border-line-strong hover:bg-card-2"
+                >
+                  <span className="display text-2xl text-accent">{i + 1}</span>
+                  <span className="mt-2 text-base font-semibold tracking-tight group-hover:text-accent">{d.titleKo}</span>
+                  <span className="mt-1 text-xs text-muted">
+                    {[d.startDate?.slice(0, 4), d.broadcaster?.nameKo].filter(Boolean).join(" · ")}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       <section>
         <div className="mb-4 flex items-baseline justify-between">

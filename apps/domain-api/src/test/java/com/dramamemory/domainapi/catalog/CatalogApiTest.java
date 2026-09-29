@@ -62,6 +62,8 @@ class CatalogApiTest {
                         '2016-12-02', NULL, NULL, NULL, NULL)
                 """).update();
         jdbc.sql("UPDATE drama SET status = 'HIDDEN' WHERE id = 3").update();
+        jdbc.sql("UPDATE drama SET popularity_score = CASE id WHEN 1 THEN 16869 WHEN 2 THEN 9000 WHEN 3 THEN 99999 END")
+                .update();
         jdbc.sql("UPDATE drama SET status = 'MERGED', merged_into_id = 1 WHERE id = 4").update();
         jdbc.sql("""
                 INSERT INTO drama_alias (drama_id, alias, alias_normalized) VALUES
@@ -178,6 +180,18 @@ class CatalogApiTest {
         mvc.perform(get("/api/v1/dramas/goblin-old"))
                 .andExpect(status().isMovedPermanently())
                 .andExpect(header().string("Location", endsWith("/api/v1/dramas/goblin")));
+    }
+
+    @Test
+    void popular_lists_published_dramas_by_page_views() throws Exception {
+        // hidden drama 3 has the highest score but is not published; merged drama 4 has none
+        mvc.perform(get("/api/v1/dramas/popular").param("limit", "5"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].slug").value("goblin"))
+                .andExpect(jsonPath("$[0].popularity").value(16869.0))
+                .andExpect(jsonPath("$[1].slug").value("signal"))
+                .andExpect(jsonPath("$", hasSize(2)));
+        mvc.perform(get("/api/v1/dramas/popular").param("limit", "0")).andExpect(status().isBadRequest());
     }
 
     @Test

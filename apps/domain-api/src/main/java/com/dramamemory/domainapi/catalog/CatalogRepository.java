@@ -107,6 +107,18 @@ public class CatalogRepository {
         return new Page<>(items, page, size, total);
     }
 
+    /** Most-read dramas across the catalog (Korean Wikipedia page views, trailing year). */
+    public List<DramaSummary> popular(int limit) {
+        return jdbc.sql(SUMMARY_SELECT + """
+                        WHERE d.status = 'PUBLISHED' AND d.popularity_score > 0
+                        ORDER BY d.popularity_score DESC, d.id
+                        LIMIT :limit
+                        """)
+                .param("limit", limit)
+                .query((rs, i) -> summary(rs))
+                .list();
+    }
+
     private static DramaSummary summary(ResultSet rs) throws SQLException {
         return new DramaSummary(
                 rs.getLong("id"),

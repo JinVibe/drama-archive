@@ -111,6 +111,8 @@ async function get<T>(path: string, pageForSlug?: (slug: string) => string): Pro
 export const api = {
   broadcasters: () => get<Broadcaster[]>("/api/v1/broadcasters"),
   years: () => get<YearCount[]>("/api/v1/years"),
+  /** Most-read dramas (Korean Wikipedia page views, trailing year). */
+  popular: (limit = 10) => get<DramaSummary[]>(`/api/v1/dramas/popular?limit=${limit}`),
   year: (year: number, broadcaster?: string, page = 0, size = 100) => {
     const q = new URLSearchParams({ page: String(page), size: String(size) });
     if (broadcaster) q.set("broadcaster", broadcaster);
