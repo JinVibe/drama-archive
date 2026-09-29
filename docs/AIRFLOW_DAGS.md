@@ -163,6 +163,10 @@ write     entity_resolution.resolve_song(같은 작품 내 제목 일치 → AUT
 
 raw 스냅샷은 재생 로그다. 파서·해소 규칙이 바뀌면 다시 수집하지 않고 `backfill_reparse`(params: `source_code`, `mode` = stale | all | failed)가 해당 staging 행을 `PARSE_FAILED`로 되돌리고 raw asset을 발행해 normalize → entity_resolution → publish → search/graph 체인이 저장된 스냅샷 위에서 다시 돈다. 같은 `source_record_id`에 upsert하고 publish는 `external_ref`로 같은 canonical 행에 매핑되므로 삭제되는 것은 없다. (detail 질의 자체가 바뀐 경우 — 예: P856 공식 웹사이트·P1874 넷플릭스 ID·kowiki 문서 제목 추가 — 는 스냅샷 내용이 달라져야 하므로 **`source_discovery_wikidata`부터** 다시 돌린다. manifest의 item URL 자체가 detail 질의를 담고 있어서 discovery를 건너뛰고 ingest만 돌리면 옛 질의로 다시 받아 content hash가 그대로다 — 2026-09-29에 그렇게 한 번 헛돌았다.)
 
+## 구현 현황 — `official_link_validator` (매일)
+
+링크 소스는 Wikidata P856(공식 웹사이트 → `BROADCASTER_PAGE`, provider는 작품의 방송사 코드)과 P1874(넷플릭스 ID → `OTT_DETAIL`). 2026-09-29 재수집 후 발행 1,981편 중 694편에 링크가 붙었고(넷플릭스 529, 방송사 페이지 355) 첫 검증 결과는 AVAILABLE 744 · NOT_FOUND 84(넷플릭스 404 82건 — 스트리밍이 끝난 작품, 위키데이터엔 ID가 남아 있음) · REDIRECTED 8(오래된 방송사 URL이 홈으로 감) · ACCESS_DENIED 1 · TEMPORARY_ERROR 2. 발행되지 않은 작품의 링크는 검증하지 않아 UNKNOWN으로 남는다(183). domain-api는 NOT_FOUND/ACCESS_DENIED를 응답에서 제외하고, 검증은 `max_age_days`(기본 7)보다 오래된 링크만 다시 본다. 넷플릭스 529건은 provider당 1초 간격이라 약 35분.
+
 ## 구현 현황 — `popularity_refresh_kowiki` (주간)
 
 카탈로그에는 시청률이 없다. "그해의 인기작"에는 **한국어 위키백과 문서의 최근 12개월 조회수**(Wikimedia pageviews API, 공개)를 대리 지표로 쓴다 — 오래 읽히는 작품이 곧 기억에 남은 작품이라는 가정이고, UI에는 "위키백과 조회수 기준"으로 표기한다. 발행 작품의 문서 제목(줄거리 단계 URL 또는 Wikidata sitelink) → 문서당 1회 조회 → `drama.popularity_score` / `popularity_source='kowiki:pageviews:365d'` / `popularity_updated_at`(V19). canonical_version은 올리지 않는다(표시용 데이터).

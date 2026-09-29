@@ -120,7 +120,7 @@ DRY_RUN=1 apps/web/scripts/deploy-pages.sh   # 빌드만 (apps/web/out)
   - [x] DM-202 raw snapshot DAG (`ingest_source_records__{source}`)
   - [x] DM-203 `normalize_catalog` · DM-204 `entity_resolution` · DM-205/206 `publish_gold_catalog`
   - [x] DM-104 admin review queue — `/admin/review` (병합/새로 만들기), `/admin/problems`, `ADMIN_TOKEN` 게이트, publish DAG asset-or-15분 스케줄
-  - [x] DM-207 link validator (`official_link_validator` DAG; 링크 소스가 아직 없어 검증 대상 0) · [ ] DM-208 backfill
+  - [x] DM-207 공식 링크 — Wikidata P856(공식 웹사이트)·P1874(넷플릭스 ID)에서 발행 1,981편 중 **694편에 링크**(넷플릭스 529, 방송사 페이지 355). `official_link_validator` DAG가 HEAD/GET으로 검증: AVAILABLE 744, NOT_FOUND 84(넷플릭스에서 내려간 작품 82), REDIRECTED 8 — NOT_FOUND/ACCESS_DENIED는 API가 숨김 · [x] DM-208 `backfill_reparse`
   - [ ] 실제 방송사 collector/parser (약관 확인 후) — 지금은 curated `dramamemory.drama.v1` JSON만
 - [x] Phase 2 / M1 — 공개 아카이브 + watched timeline + 검색 v1 (M1 DoD 충족)
   - [x] `apps/domain-api` Spring Boot 4 / Java 17 — 공개 read API, `/me/*` (watched, note, timeline), `/search`
