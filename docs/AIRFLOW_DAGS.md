@@ -161,7 +161,7 @@ write     entity_resolution.resolve_song(같은 작품 내 제목 일치 → AUT
 
 ## 구현 현황 — `backfill_reparse` (수동, DM-208)
 
-raw 스냅샷은 재생 로그다. 파서·해소 규칙이 바뀌면 다시 수집하지 않고 `backfill_reparse`(params: `source_code`, `mode` = stale | all | failed)가 해당 staging 행을 `PARSE_FAILED`로 되돌리고 raw asset을 발행해 normalize → entity_resolution → publish → search/graph 체인이 저장된 스냅샷 위에서 다시 돈다. 같은 `source_record_id`에 upsert하고 publish는 `external_ref`로 같은 canonical 행에 매핑되므로 삭제되는 것은 없다. (detail 질의 자체가 바뀐 경우 — 예: P856 공식 웹사이트·P1874 넷플릭스 ID·kowiki 문서 제목 추가 — 는 스냅샷 내용이 달라져야 하므로 `ingest_source_records__wikidata`를 다시 돌린다.)
+raw 스냅샷은 재생 로그다. 파서·해소 규칙이 바뀌면 다시 수집하지 않고 `backfill_reparse`(params: `source_code`, `mode` = stale | all | failed)가 해당 staging 행을 `PARSE_FAILED`로 되돌리고 raw asset을 발행해 normalize → entity_resolution → publish → search/graph 체인이 저장된 스냅샷 위에서 다시 돈다. 같은 `source_record_id`에 upsert하고 publish는 `external_ref`로 같은 canonical 행에 매핑되므로 삭제되는 것은 없다. (detail 질의 자체가 바뀐 경우 — 예: P856 공식 웹사이트·P1874 넷플릭스 ID·kowiki 문서 제목 추가 — 는 스냅샷 내용이 달라져야 하므로 **`source_discovery_wikidata`부터** 다시 돌린다. manifest의 item URL 자체가 detail 질의를 담고 있어서 discovery를 건너뛰고 ingest만 돌리면 옛 질의로 다시 받아 content hash가 그대로다 — 2026-09-29에 그렇게 한 번 헛돌았다.)
 
 ## 구현 현황 — `popularity_refresh_kowiki` (주간)
 
