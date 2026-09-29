@@ -52,8 +52,8 @@ drama.status = 'HIDDEN' + drama.hidden_reason ∈ { not_a_drama | foreign | upco
   38 Disney+ originals); hidden 733 out of scope (channel or pre-2006), 267 not a
   drama, 14 upcoming. Retrieval quality rose on both golden sets
   (fewer same-title distractors).
-- Netflix/Disney+ originals with no network run are hidden too. That is accepted
-  for now and is the first thing to revisit.
+- Originals on other platforms (TVING, Watcha, Coupang Play, cable-only) stay
+  hidden; they are the next candidates if the product wants them.
 - The Wikidata parser prefers the original network when P449 lists a network and
   a platform, so a KBS drama streamed on Netflix files under KBS.
 
