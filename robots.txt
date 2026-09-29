@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /my
+Disallow: /api/
+Disallow: /share/
+Disallow: /search
+Disallow: /admin
+
+Sitemap: https://jinvibe.github.io/drama-archive/sitemap.xml
