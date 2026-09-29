@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-09-28T07:58:13.064284+00:00",
+  "generated_at": "2026-09-29T07:25:39.273175+00:00",
   "golden_set": "evals/retrieval/golden_generated.jsonl",
   "n_queries": 300,
   "targets": {
     "lexical": {
       "overall": {
-        "recall@1": 0.3497222222222222,
-        "recall@3": 0.3661111111111111,
-        "recall@5": 0.3672222222222222,
-        "recall@10": 0.36833333333333335,
-        "mrr": 0.37333333333333335,
-        "ndcg@1": 0.36333333333333334,
-        "ndcg@3": 0.36403649049453013,
-        "ndcg@5": 0.36431568826937866,
-        "ndcg@10": 0.3648728897859327,
-        "latency_p50_ms": 43.145100004039705,
-        "latency_p95_ms": 59.23569994047284,
+        "recall@1": 0.34777777777777774,
+        "recall@3": 0.3622222222222222,
+        "recall@5": 0.3622222222222222,
+        "recall@10": 0.3622222222222222,
+        "mrr": 0.365,
+        "ndcg@1": 0.3566666666666667,
+        "ndcg@3": 0.359138894741121,
+        "ndcg@5": 0.359138894741121,
+        "ndcg@10": 0.359138894741121,
+        "latency_p50_ms": 29.43565003806725,
+        "latency_p95_ms": 48.72300010174513,
         "errors": 0,
         "n": 300
       },
       "by_class": {
         "character": {
-          "recall@1": 0.6333333333333333,
-          "recall@3": 0.6333333333333333,
-          "recall@5": 0.6333333333333333,
-          "recall@10": 0.6333333333333333,
-          "mrr": 0.6333333333333333,
-          "ndcg@1": 0.6333333333333333,
-          "ndcg@3": 0.6333333333333333,
-          "ndcg@5": 0.6333333333333333,
-          "ndcg@10": 0.6333333333333333,
-          "latency_p50_ms": 39.38079992076382,
-          "latency_p95_ms": 53.18970000371337,
+          "recall@1": 0.6833333333333333,
+          "recall@3": 0.6833333333333333,
+          "recall@5": 0.6833333333333333,
+          "recall@10": 0.6833333333333333,
+          "mrr": 0.6833333333333333,
+          "ndcg@1": 0.6833333333333333,
+          "ndcg@3": 0.6833333333333333,
+          "ndcg@5": 0.6833333333333333,
+          "ndcg@10": 0.6833333333333333,
+          "latency_p50_ms": 25.524199998471886,
+          "latency_p95_ms": 45.73219991289079,
           "errors": 0,
           "n": 60
         },
         "entity_lookup": {
-          "recall@1": 0.95,
+          "recall@1": 0.9666666666666667,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.975,
-          "ndcg@1": 0.95,
-          "ndcg@3": 0.9815464876785729,
-          "ndcg@5": 0.9815464876785729,
-          "ndcg@10": 0.9815464876785729,
-          "latency_p50_ms": 41.91555001307279,
-          "latency_p95_ms": 56.02789996191859,
+          "mrr": 0.9833333333333333,
+          "ndcg@1": 0.9666666666666667,
+          "ndcg@3": 0.9876976584523819,
+          "ndcg@5": 0.9876976584523819,
+          "ndcg@10": 0.9876976584523819,
+          "latency_p50_ms": 32.52134996000677,
+          "latency_p95_ms": 49.63799996767193,
           "errors": 0,
           "n": 60
         },
@@ -60,8 +60,8 @@
           "ndcg@3": 0.0,
           "ndcg@5": 0.0,
           "ndcg@10": 0.0,
-          "latency_p50_ms": 43.70310006197542,
-          "latency_p95_ms": 54.488499998115,
+          "latency_p50_ms": 29.966100002638996,
+          "latency_p95_ms": 48.72300010174513,
           "errors": 0,
           "n": 60
         },
@@ -75,23 +75,23 @@
           "ndcg@3": 0.051373765313136914,
           "ndcg@5": 0.051373765313136914,
           "ndcg@10": 0.051373765313136914,
-          "latency_p50_ms": 40.31834995839745,
-          "latency_p95_ms": 56.02979997638613,
+          "latency_p50_ms": 29.887350043281913,
+          "latency_p95_ms": 49.55090000294149,
           "errors": 0,
           "n": 60
         },
         "temporal": {
-          "recall@1": 0.11805555555555555,
-          "recall@3": 0.15,
-          "recall@5": 0.15555555555555556,
-          "recall@10": 0.1611111111111111,
-          "mrr": 0.19166666666666668,
-          "ndcg@1": 0.16666666666666666,
-          "ndcg@3": 0.15392886614760756,
-          "ndcg@5": 0.15532485502185034,
-          "ndcg@10": 0.15811086260462037,
-          "latency_p50_ms": 48.82779996842146,
-          "latency_p95_ms": 64.34759998228401,
+          "recall@1": 0.041666666666666664,
+          "recall@3": 0.08055555555555555,
+          "recall@5": 0.08055555555555555,
+          "recall@10": 0.08055555555555555,
+          "mrr": 0.09166666666666666,
+          "ndcg@1": 0.06666666666666667,
+          "ndcg@3": 0.07328971660675258,
+          "ndcg@5": 0.07328971660675258,
+          "ndcg@10": 0.07328971660675258,
+          "latency_p50_ms": 28.866500011645257,
+          "latency_p95_ms": 45.78919999767095,
           "errors": 0,
           "n": 60
         }
@@ -100,13 +100,13 @@
         {
           "id": "g0061",
           "class": "person",
-          "query": "배우 한희",
+          "query": "배우 조아람",
           "expected": [
-            "empress-ki",
-            "oasis"
+            "the-auditors",
+            "to-the-moon"
           ],
           "got": [
-            "empress-ki"
+            "to-the-moon"
           ],
           "strategy": "FTS",
           "error": null
@@ -114,10 +114,22 @@
         {
           "id": "g0062",
           "class": "person",
-          "query": "찬성 나온 드라마",
+          "query": "정진 출연작",
           "expected": [
-            "bitter-sweet-hell",
-            "suspicious-partner"
+            "the-princess-man"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0063",
+          "class": "person",
+          "query": "박혜련 작가 드라마",
+          "expected": [
+            "i-can-hear-your-voice",
+            "pinocchio",
+            "while-you-were-sleeping-2017"
           ],
           "got": [
             "the-good-wife",
@@ -130,23 +142,23 @@
           "error": null
         },
         {
-          "id": "g0063",
+          "id": "g0064",
           "class": "person",
-          "query": "정유민 출연작",
+          "query": "이승협 출연작",
           "expected": [
-            "connection"
+            "love-next-door",
+            "spring-of-youth"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0064",
+          "id": "g0065",
           "class": "person",
-          "query": "갈소원 나온 드라마",
+          "query": "김영신 (작가) 작가 드라마",
           "expected": [
-            "a-korean-odyssey",
-            "the-legend-of-the-blue-sea"
+            "chief-detective-1958"
           ],
           "got": [
             "the-good-wife",
@@ -161,26 +173,21 @@
         {
           "id": "g0066",
           "class": "person",
-          "query": "김은수 나온 드라마",
+          "query": "배우 최종훈",
           "expected": [
-            "my-id-is-gangnam-beauty"
+            "pinocchio"
           ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0067",
           "class": "person",
-          "query": "배우 마이클 리",
+          "query": "최민영 출연작",
           "expected": [
-            "a-korean-odyssey"
+            "radio-romance",
+            "weak-hero-class-2"
           ],
           "got": [],
           "strategy": "NONE",
@@ -189,9 +196,9 @@
         {
           "id": "g0068",
           "class": "person",
-          "query": "지우 출연작",
+          "query": "이세나 출연작",
           "expected": [
-            "hello-my-twenties-2"
+            "jekyll-and-me"
           ],
           "got": [],
           "strategy": "NONE",
@@ -200,27 +207,24 @@
         {
           "id": "g0069",
           "class": "person",
-          "query": "김원해 나온 드라마",
+          "query": "배우 한예슬",
           "expected": [
-            "a-virtuous-business",
-            "hwarang-the-poet-warrior-youth"
+            "couple-or-trouble",
+            "madame-antoine",
+            "spy-myung-wol"
           ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0070",
           "class": "person",
-          "query": "김혜준 출연작",
+          "query": "김우석 출연작",
           "expected": [
-            "inspector-koo"
+            "bulgasal-immortal-souls",
+            "military-prosecutor-doberman",
+            "the-forbidden-marriage"
           ],
           "got": [],
           "strategy": "NONE",
@@ -229,54 +233,10 @@
         {
           "id": "g0071",
           "class": "person",
-          "query": "배우 이도경",
+          "query": "김상중 나온 드라마",
           "expected": [
-            "gu-family-book",
-            "the-king-2-hearts"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0072",
-          "class": "person",
-          "query": "배우 김금순",
-          "expected": [
-            "love-next-door"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0073",
-          "class": "person",
-          "query": "한동희 출연작",
-          "expected": [
-            "the-legend-of-kitchen-soldier"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0074",
-          "class": "person",
-          "query": "배우 김혜인",
-          "expected": [
-            "resident-playbook"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0075",
-          "class": "person",
-          "query": "하서윤 나온 드라마",
-          "expected": [
-            "the-dream-life-of-mr-kim"
+            "my-husband-s-woman",
+            "the-jingbirok-a-memoir-of-imjin-war"
           ],
           "got": [
             "the-good-wife",
@@ -289,24 +249,92 @@
           "error": null
         },
         {
-          "id": "g0076",
+          "id": "g0072",
           "class": "person",
-          "query": "선우용여 출연작",
+          "query": "김동영 나온 드라마",
           "expected": [
-            "beautiful-gong-shim",
-            "left-handed-wife"
+            "drinking-solo"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0073",
+          "class": "person",
+          "query": "이혜인 나온 드라마",
+          "expected": [
+            "passionate-love"
+          ],
+          "got": [
+            "lee-san-wind-of-the-palace",
+            "the-good-wife",
+            "queen-seondeok",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0074",
+          "class": "person",
+          "query": "최규석 작가 드라마",
+          "expected": [
+            "hellbound"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0075",
+          "class": "person",
+          "query": "김민희 출연작",
+          "expected": [
+            "goodbye-solo"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
+          "id": "g0076",
+          "class": "person",
+          "query": "이수연 작가 드라마",
+          "expected": [
+            "grid"
+          ],
+          "got": [
+            "lee-san-wind-of-the-palace",
+            "the-good-wife",
+            "queen-seondeok",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
           "id": "g0077",
           "class": "person",
-          "query": "이유미 출연작",
+          "query": "이정효 연출 작품",
           "expected": [
-            "mental-coach-je-gal-gil",
-            "strong-girl-nam-soon"
+            "crash-landing-on-you",
+            "the-good-wife",
+            "the-price-of-confession"
           ],
           "got": [],
           "strategy": "NONE",
@@ -315,10 +343,28 @@
         {
           "id": "g0078",
           "class": "person",
-          "query": "조덕현 나온 드라마",
+          "query": "봉태규 나온 드라마",
           "expected": [
-            "master-god-of-noodles",
-            "pinocchio"
+            "pandora-beneath-the-paradise",
+            "the-penthouse-war-in-life"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0079",
+          "class": "person",
+          "query": "박해영 작가 드라마",
+          "expected": [
+            "my-liberation-notes",
+            "my-mister"
           ],
           "got": [
             "the-good-wife",
@@ -333,16 +379,14 @@
         {
           "id": "g0080",
           "class": "person",
-          "query": "이정신 나온 드라마",
+          "query": "임윤아 나온 드라마",
           "expected": [
-            "cinderella-and-four-knights",
-            "my-sassy-girl",
-            "sh-ting-stars"
+            "the-k2"
           ],
           "got": [
-            "lee-san-wind-of-the-palace",
             "the-good-wife",
             "queen-seondeok",
+            "lee-san-wind-of-the-palace",
             "jejungwon",
             "chuno"
           ],
@@ -352,114 +396,18 @@
         {
           "id": "g0081",
           "class": "person",
-          "query": "서수민 (2007년) 출연작",
+          "query": "이영아 출연작",
           "expected": [
-            "agent-kim-reactivated"
+            "bread-love-and-dreams",
+            "iljimae",
+            "love-can-t-wait"
           ],
-          "got": [
-            "겨울새-2007년-드라마"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0082",
-          "class": "person",
-          "query": "김도우 작가 드라마",
-          "expected": [
-            "what-s-up-fox"
-          ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0083",
-          "class": "person",
-          "query": "추예진 나온 드라마",
-          "expected": [
-            "when-the-weather-is-fine"
-          ],
-          "got": [
-            "chuno",
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0084",
-          "class": "person",
-          "query": "이정흠 연출 작품",
-          "expected": [
-            "inspector-koo"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0085",
-          "class": "person",
-          "query": "오상진 나온 드라마",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [
-            "when-spring-comes",
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0086",
-          "class": "person",
-          "query": "나영석 연출 작품",
-          "expected": [
-            "gbrb-joypopslaughpops"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0087",
-          "class": "person",
-          "query": "유재이 출연작",
-          "expected": [
-            "andante",
-            "extraordinary-you"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0088",
-          "class": "person",
-          "query": "배우 정한용",
-          "expected": [
-            "your-neighbor-s-wife"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0089",
           "class": "person",
           "query": "권은성 나온 드라마",
           "expected": [
@@ -476,12 +424,94 @@
           "error": null
         },
         {
+          "id": "g0084",
+          "class": "person",
+          "query": "양대혁 출연작",
+          "expected": [
+            "beauty-and-mr-romantic",
+            "sweet-munchies"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0085",
+          "class": "person",
+          "query": "김병수 연출 작품",
+          "expected": [
+            "he-is-psychometric",
+            "rookie-cops"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0086",
+          "class": "person",
+          "query": "주민경 나온 드라마",
+          "expected": [
+            "jirisan",
+            "jirisan-2021",
+            "something-in-the-rain"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0087",
+          "class": "person",
+          "query": "정승혜 출연작",
+          "expected": [
+            "my-id-is-gangnam-beauty"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0088",
+          "class": "person",
+          "query": "김병춘 나온 드라마",
+          "expected": [
+            "bad-papa",
+            "the-secret-life-of-my-secretary"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0089",
+          "class": "person",
+          "query": "배우 임지규",
+          "expected": [
+            "radio-romance"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
           "id": "g0090",
           "class": "person",
-          "query": "배우 노정의",
+          "query": "배우 세븐",
           "expected": [
-            "crushology-101",
-            "our-universe"
+            "goong-s"
           ],
           "got": [],
           "strategy": "NONE",
@@ -490,20 +520,24 @@
         {
           "id": "g0091",
           "class": "person",
-          "query": "서혜진 출연작",
+          "query": "배우 태인호",
           "expected": [
-            "the-princess-man"
+            "about-time",
+            "descendants-of-the-sun",
+            "may-i-help-you"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "may-i-help-you"
+          ],
+          "strategy": "FTS",
           "error": null
         },
         {
           "id": "g0092",
           "class": "person",
-          "query": "배우 한여울",
+          "query": "박민우 (배우) 출연작",
           "expected": [
-            "heart-to-heart"
+            "flower-boy-ramen-shop"
           ],
           "got": [],
           "strategy": "NONE",
@@ -512,11 +546,9 @@
         {
           "id": "g0093",
           "class": "person",
-          "query": "배우 진영",
+          "query": "심소연 연출 작품",
           "expected": [
-            "love-in-the-moonlight",
-            "warm-and-cozy",
-            "who-is-she"
+            "may-i-help-you"
           ],
           "got": [],
           "strategy": "NONE",
@@ -525,11 +557,9 @@
         {
           "id": "g0094",
           "class": "person",
-          "query": "한상진 출연작",
+          "query": "배우 김송이",
           "expected": [
-            "jekyll-and-me",
-            "six-flying-dragons",
-            "the-all-round-wife"
+            "typhoon-family"
           ],
           "got": [],
           "strategy": "NONE",
@@ -538,9 +568,9 @@
         {
           "id": "g0095",
           "class": "person",
-          "query": "최소은 출연작",
+          "query": "엄수정 출연작",
           "expected": [
-            "to-my-beloved-thief"
+            "goodbye-solo"
           ],
           "got": [],
           "strategy": "NONE",
@@ -549,9 +579,9 @@
         {
           "id": "g0096",
           "class": "person",
-          "query": "송의준 출연작",
+          "query": "배우 신소율",
           "expected": [
-            "heart-to-heart"
+            "sweet-secret"
           ],
           "got": [],
           "strategy": "NONE",
@@ -560,11 +590,10 @@
         {
           "id": "g0097",
           "class": "person",
-          "query": "배우 이솜",
+          "query": "배우 노영학",
           "expected": [
-            "because-this-is-my-first-life",
-            "phantom-lawyer",
-            "taxi-driver"
+            "masked-prosecutor",
+            "the-jingbirok-a-memoir-of-imjin-war"
           ],
           "got": [],
           "strategy": "NONE",
@@ -573,32 +602,45 @@
         {
           "id": "g0098",
           "class": "person",
-          "query": "이종재 연출 작품",
+          "query": "정재광 나온 드라마",
           "expected": [
-            "our-blooming-youth"
+            "connection",
+            "the-trauma-code-heroes-on-call"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
           "id": "g0099",
           "class": "person",
-          "query": "배우 서예화",
+          "query": "이우정 작가 드라마",
           "expected": [
-            "vincenzo",
-            "when-flowers-bloom-i-think-of-the-moon"
+            "hospital-playlist",
+            "reply-1988"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "lee-san-wind-of-the-palace",
+            "how-to-buy-a-friend",
+            "the-good-wife",
+            "queen-seondeok",
+            "jejungwon"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
           "id": "g0100",
           "class": "person",
-          "query": "유지안 출연작",
+          "query": "정철민 연출 작품",
           "expected": [
-            "agent-kim-reactivated"
+            "apartment-404"
           ],
           "got": [],
           "strategy": "NONE",
@@ -607,10 +649,9 @@
         {
           "id": "g0101",
           "class": "person",
-          "query": "수현 출연작",
+          "query": "이영란 출연작",
           "expected": [
-            "queen-of-the-game",
-            "the-atypical-family"
+            "when-the-weather-is-fine"
           ],
           "got": [],
           "strategy": "NONE",
@@ -619,21 +660,22 @@
         {
           "id": "g0102",
           "class": "person",
-          "query": "배우 솔빈",
+          "query": "이윤정 연출 작품",
           "expected": [
-            "idol-the-coup"
+            "cheese-in-the-trap",
+            "heart-to-heart",
+            "triple"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0103",
+          "id": "g0104",
           "class": "person",
-          "query": "남경읍 나온 드라마",
+          "query": "윤학 나온 드라마",
           "expected": [
-            "crash-landing-on-you",
-            "military-prosecutor-doberman"
+            "my-unfortunate-boyfriend"
           ],
           "got": [
             "the-good-wife",
@@ -646,65 +688,26 @@
           "error": null
         },
         {
-          "id": "g0104",
-          "class": "person",
-          "query": "배우 유호정",
-          "expected": [
-            "heard-it-through-the-grapevine",
-            "recipe-for-love"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
           "id": "g0105",
           "class": "person",
-          "query": "에일리 출연작",
+          "query": "박정수 나온 드라마",
           "expected": [
-            "dream-high-2"
+            "jealousy-incarnate"
           ],
-          "got": [],
-          "strategy": "NONE",
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
           "error": null
         },
         {
           "id": "g0106",
           "class": "person",
-          "query": "홍경민 출연작",
-          "expected": [
-            "love-can-t-wait"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0107",
-          "class": "person",
-          "query": "배우 강예서",
-          "expected": [
-            "abyss"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0108",
-          "class": "person",
-          "query": "배건우 출연작",
-          "expected": [
-            "empress-ki"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0109",
-          "class": "person",
-          "query": "한그루 출연작",
+          "query": "이현경 연출 작품",
           "expected": [
             "cinderella-game"
           ],
@@ -713,44 +716,67 @@
           "error": null
         },
         {
-          "id": "g0110",
+          "id": "g0107",
           "class": "person",
-          "query": "배우 신승환",
+          "query": "김소진 출연작",
           "expected": [
-            "empress-ki",
-            "save-the-family",
-            "the-all-round-wife"
-          ],
-          "got": [
-            "empress-ki"
-          ],
-          "strategy": "FTS",
-          "error": null
-        },
-        {
-          "id": "g0111",
-          "class": "person",
-          "query": "신동미 출연작",
-          "expected": [
-            "sold-out-on-you",
-            "welcome-to-samdalri"
+            "through-the-darkness",
+            "vigilante"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0112",
+          "id": "g0108",
           "class": "person",
-          "query": "이해영 나온 드라마",
+          "query": "배우 홍수주",
           "expected": [
-            "buried-hearts",
-            "i-m-not-a-robot"
+            "the-impossible-heir"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0109",
+          "class": "person",
+          "query": "도은비 출연작",
+          "expected": [
+            "chief-of-staff"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0110",
+          "class": "person",
+          "query": "오세영 나온 드라마",
+          "expected": [
+            "the-third-marriage"
           ],
           "got": [
-            "lee-san-wind-of-the-palace",
+            "when-spring-comes",
             "the-good-wife",
             "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0111",
+          "class": "person",
+          "query": "설리 나온 드라마",
+          "expected": [
+            "to-the-beautiful-you"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
             "jejungwon",
             "chuno"
           ],
@@ -758,11 +784,24 @@
           "error": null
         },
         {
+          "id": "g0112",
+          "class": "person",
+          "query": "김광식 연출 작품",
+          "expected": [
+            "arthdal-chronicles-the-sword-of-aramoon"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
           "id": "g0113",
           "class": "person",
-          "query": "장진영 나온 드라마",
+          "query": "권현상 나온 드라마",
           "expected": [
-            "lobbyist"
+            "my-absolute-boyfriend",
+            "the-king-2-hearts",
+            "the-princess-man"
           ],
           "got": [
             "the-good-wife",
@@ -777,9 +816,10 @@
         {
           "id": "g0114",
           "class": "person",
-          "query": "황희 (배우) 나온 드라마",
+          "query": "배우 임기홍",
           "expected": [
-            "tale-of-the-nine-tailed"
+            "business-proposal",
+            "the-art-of-sarah"
           ],
           "got": [],
           "strategy": "NONE",
@@ -788,9 +828,9 @@
         {
           "id": "g0115",
           "class": "person",
-          "query": "박진주 출연작",
+          "query": "박보람 연출 작품",
           "expected": [
-            "it-s-okay-to-not-be-okay"
+            "through-the-darkness"
           ],
           "got": [],
           "strategy": "NONE",
@@ -799,16 +839,14 @@
         {
           "id": "g0116",
           "class": "person",
-          "query": "박혜련 작가 드라마",
+          "query": "이하율 나온 드라마",
           "expected": [
-            "i-can-hear-your-voice",
-            "pinocchio",
-            "while-you-were-sleeping-2017"
+            "designated-survivor-60-days"
           ],
           "got": [
+            "lee-san-wind-of-the-palace",
             "the-good-wife",
             "queen-seondeok",
-            "lee-san-wind-of-the-palace",
             "jejungwon",
             "chuno"
           ],
@@ -818,26 +856,22 @@
         {
           "id": "g0117",
           "class": "person",
-          "query": "정지순 나온 드라마",
+          "query": "송덕호 출연작",
           "expected": [
-            "bring-it-on-ghost"
+            "all-of-us-are-dead",
+            "cheer-up-2022",
+            "may-i-help-you"
           ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0118",
           "class": "person",
-          "query": "정유안 나온 드라마",
+          "query": "지일주 나온 드라마",
           "expected": [
-            "come-and-hug-me"
+            "crash-course-in-romance"
           ],
           "got": [
             "the-good-wife",
@@ -852,9 +886,9 @@
         {
           "id": "g0119",
           "class": "person",
-          "query": "옥예린 출연작",
+          "query": "배우 이민영",
           "expected": [
-            "designated-survivor-60-days"
+            "you-re-only-mine"
           ],
           "got": [],
           "strategy": "NONE",
@@ -863,11 +897,9 @@
         {
           "id": "g0120",
           "class": "person",
-          "query": "배우 고주원",
+          "query": "배우 김종태 (1975년)",
           "expected": [
-            "live-your-own-life",
-            "run-jang-mi",
-            "you-re-the-best-lee-soon-shin"
+            "the-art-of-sarah"
           ],
           "got": [],
           "strategy": "NONE",
@@ -876,9 +908,9 @@
         {
           "id": "g0121",
           "class": "multi_hop",
-          "query": "김광규랑 김산호 같이 나온 드라마",
+          "query": "김의성이랑 안석환 나온 작품",
           "expected": [
-            "mr-good-bye"
+            "six-flying-dragons"
           ],
           "got": [],
           "strategy": "NONE",
@@ -887,9 +919,9 @@
         {
           "id": "g0122",
           "class": "multi_hop",
-          "query": "정재민랑 조희봉 같이 나온 드라마",
+          "query": "강영석이랑 김재영 나온 작품",
           "expected": [
-            "six-flying-dragons"
+            "100-days-my-prince"
           ],
           "got": [],
           "strategy": "NONE",
@@ -898,9 +930,9 @@
         {
           "id": "g0123",
           "class": "multi_hop",
-          "query": "박형식이랑 유동근 나온 작품",
+          "query": "박훈랑 한상진 같이 나온 드라마",
           "expected": [
-            "what-happens-to-my-family"
+            "six-flying-dragons"
           ],
           "got": [],
           "strategy": "NONE",
@@ -909,9 +941,9 @@
         {
           "id": "g0124",
           "class": "multi_hop",
-          "query": "구혜선랑 김현중 같이 나온 드라마",
+          "query": "윤박랑 정만식 같이 나온 드라마",
           "expected": [
-            "boys-over-flowers"
+            "good-doctor"
           ],
           "got": [],
           "strategy": "NONE",
@@ -920,9 +952,9 @@
         {
           "id": "g0125",
           "class": "multi_hop",
-          "query": "이레 한예리 공동 출연작",
+          "query": "김정영이랑 정성일 나온 작품",
           "expected": [
-            "six-flying-dragons"
+            "the-glory"
           ],
           "got": [],
           "strategy": "NONE",
@@ -931,601 +963,7 @@
         {
           "id": "g0126",
           "class": "multi_hop",
-          "query": "김영훈이랑 오승아 나온 작품",
-          "expected": [
-            "pinocchio"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0127",
-          "class": "multi_hop",
-          "query": "박해진이랑 유인영 나온 작품",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0128",
-          "class": "multi_hop",
-          "query": "육성재이랑 이엘 나온 작품",
-          "expected": [
-            "guardian-the-lonely-and-great-god"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0129",
-          "class": "multi_hop",
-          "query": "이기영 황선희 공동 출연작",
-          "expected": [
-            "masked-prosecutor"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0130",
-          "class": "multi_hop",
-          "query": "박상면랑 이미숙 같이 나온 드라마",
-          "expected": [
-            "cinderella-s-sister"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0131",
-          "class": "multi_hop",
-          "query": "김광규 이유비 공동 출연작",
-          "expected": [
-            "pinocchio"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0132",
-          "class": "multi_hop",
-          "query": "이순재이랑 정재민 나온 작품",
-          "expected": [
-            "six-flying-dragons"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0133",
-          "class": "multi_hop",
-          "query": "이원종이랑 한혜린 나온 작품",
-          "expected": [
-            "empress-ki"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0134",
-          "class": "multi_hop",
-          "query": "윤종훈이랑 이재욱 (1998년) 나온 작품",
-          "expected": [
-            "extraordinary-you"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0135",
-          "class": "multi_hop",
-          "query": "박시은 진기주 공동 출연작",
-          "expected": [
-            "moon-lovers-scarlet-heart-ryeo"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0136",
-          "class": "multi_hop",
-          "query": "연우진 최웅 공동 출연작",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0137",
-          "class": "multi_hop",
-          "query": "김동균이랑 신정근 나온 작품",
-          "expected": [
-            "mr-sunshine"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0138",
-          "class": "multi_hop",
-          "query": "서지혜랑 이원정 같이 나온 드라마",
-          "expected": [
-            "my-perfect-stranger"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0139",
-          "class": "multi_hop",
-          "query": "배그린이랑 이슬비 나온 작품",
-          "expected": [
-            "you-re-the-best-lee-soon-shin"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0140",
-          "class": "multi_hop",
-          "query": "안효섭 이대연 공동 출연작",
-          "expected": [
-            "abyss"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0141",
-          "class": "multi_hop",
-          "query": "송하윤 이레 공동 출연작",
-          "expected": [
-            "six-flying-dragons"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0142",
-          "class": "multi_hop",
-          "query": "김소현이랑 예지원 나온 작품",
-          "expected": [
-            "page-turner"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0143",
-          "class": "multi_hop",
-          "query": "민호이랑 최원영 나온 작품",
-          "expected": [
-            "hwarang-the-poet-warrior-youth"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0144",
-          "class": "multi_hop",
-          "query": "안효섭이랑 양세종 나온 작품",
-          "expected": [
-            "still-17"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0145",
-          "class": "multi_hop",
-          "query": "류화영이랑 박인환 나온 작품",
-          "expected": [
-            "mad-dog"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0146",
-          "class": "multi_hop",
-          "query": "김병철이랑 임세미 나온 작품",
-          "expected": [
-            "mr-sunshine"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0147",
-          "class": "multi_hop",
-          "query": "김민석 송중기 공동 출연작",
-          "expected": [
-            "descendants-of-the-sun"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0148",
-          "class": "multi_hop",
-          "query": "김수현이랑 조희봉 나온 작품",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0149",
-          "class": "multi_hop",
-          "query": "이재원 이호재 공동 출연작",
-          "expected": [
-            "the-legend-of-the-blue-sea"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0150",
-          "class": "multi_hop",
-          "query": "김도훈이랑 여진구 나온 작품",
-          "expected": [
-            "my-absolute-boyfriend"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0151",
-          "class": "multi_hop",
-          "query": "데이비드 맥기니스이랑 유동근 나온 작품",
-          "expected": [
-            "gu-family-book"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0152",
-          "class": "multi_hop",
-          "query": "강하늘 박지영 공동 출연작",
-          "expected": [
-            "moon-lovers-scarlet-heart-ryeo"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0153",
-          "class": "multi_hop",
-          "query": "권나라이랑 심은우 나온 작품",
-          "expected": [
-            "suspicious-partner"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0154",
-          "class": "multi_hop",
-          "query": "공명 김광규 공동 출연작",
-          "expected": [
-            "splendid-politics"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0155",
-          "class": "multi_hop",
-          "query": "안길강 정윤석 공동 출연작",
-          "expected": [
-            "six-flying-dragons"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0156",
-          "class": "multi_hop",
-          "query": "박아인이랑 신동미 나온 작품",
-          "expected": [
-            "sold-out-on-you"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0157",
-          "class": "multi_hop",
-          "query": "이규형이랑 지성 나온 작품",
-          "expected": [
-            "doctor-john"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0158",
-          "class": "multi_hop",
-          "query": "이민호 임주환 공동 출연작",
-          "expected": [
-            "boys-over-flowers"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0159",
-          "class": "multi_hop",
-          "query": "김창완이랑 김희원 나온 작품",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0160",
-          "class": "multi_hop",
-          "query": "이기우랑 이민기 같이 나온 드라마",
-          "expected": [
-            "my-liberation-notes"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0161",
-          "class": "multi_hop",
-          "query": "변우석 윤선우 공동 출연작",
-          "expected": [
-            "moon-lovers-scarlet-heart-ryeo"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0162",
-          "class": "multi_hop",
-          "query": "김태리랑 윤경호 같이 나온 드라마",
-          "expected": [
-            "mr-sunshine"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0163",
-          "class": "multi_hop",
-          "query": "강미나랑 황영희 같이 나온 드라마",
-          "expected": [
-            "tale-of-fairy"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0164",
-          "class": "multi_hop",
-          "query": "서현철이랑 한상진 나온 작품",
-          "expected": [
-            "six-flying-dragons"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0165",
-          "class": "multi_hop",
-          "query": "김윤서 유인나 공동 출연작",
-          "expected": [
-            "you-re-the-best-lee-soon-shin"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0166",
-          "class": "multi_hop",
-          "query": "지창욱 최태준 공동 출연작",
-          "expected": [
-            "suspicious-partner"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0167",
-          "class": "multi_hop",
-          "query": "박진영이랑 이승준 나온 작품",
-          "expected": [
-            "he-is-psychometric"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0168",
-          "class": "multi_hop",
-          "query": "박지일이랑 이희준 나온 작품",
-          "expected": [
-            "the-legend-of-the-blue-sea"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0169",
-          "class": "multi_hop",
-          "query": "류화영 한예리 공동 출연작",
-          "expected": [
-            "age-of-youth"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0170",
-          "class": "multi_hop",
-          "query": "박영규 정애리 공동 출연작",
-          "expected": [
-            "masked-prosecutor"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0171",
-          "class": "multi_hop",
-          "query": "수지 이도경 공동 출연작",
-          "expected": [
-            "gu-family-book"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0172",
-          "class": "multi_hop",
-          "query": "김희애랑 박해준 같이 나온 드라마",
-          "expected": [
-            "the-world-of-the-married"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0173",
-          "class": "multi_hop",
-          "query": "전국환 정경순 공동 출연작",
-          "expected": [
-            "empress-ki"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0174",
-          "class": "multi_hop",
-          "query": "박민영이랑 유지태 나온 작품",
-          "expected": [
-            "healer"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0175",
-          "class": "multi_hop",
-          "query": "나영희랑 로운 같이 나온 드라마",
-          "expected": [
-            "about-time"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0176",
-          "class": "multi_hop",
-          "query": "김혜은 윤두준 공동 출연작",
-          "expected": [
-            "radio-romance"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0177",
-          "class": "multi_hop",
-          "query": "송승헌이랑 윤다훈 나온 작품",
-          "expected": [
-            "saimdang-memoir-of-colors"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0178",
-          "class": "multi_hop",
-          "query": "이유리 정찬 공동 출연작",
-          "expected": [
-            "yellow-boots"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0179",
-          "class": "multi_hop",
-          "query": "김광규랑 이필모 같이 나온 드라마",
-          "expected": [
-            "pinocchio"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0180",
-          "class": "multi_hop",
-          "query": "남보라랑 최명길 같이 나온 드라마",
+          "query": "박민영이랑 이기영 나온 작품",
           "expected": [
             "glory-jane"
           ],
@@ -1534,9 +972,603 @@
           "error": null
         },
         {
-          "id": "g0182",
+          "id": "g0127",
+          "class": "multi_hop",
+          "query": "김종수랑 이준혁 같이 나온 드라마",
+          "expected": [
+            "six-flying-dragons"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0128",
+          "class": "multi_hop",
+          "query": "이보영이랑 장광 나온 작품",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0129",
+          "class": "multi_hop",
+          "query": "김명민랑 류혜영 같이 나온 드라마",
+          "expected": [
+            "law-school"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0130",
+          "class": "multi_hop",
+          "query": "김우빈 김의성 공동 출연작",
+          "expected": [
+            "black-knight"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0131",
+          "class": "multi_hop",
+          "query": "김다솜 전미선 공동 출연작",
+          "expected": [
+            "he-is-psychometric"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0132",
+          "class": "multi_hop",
+          "query": "박인환 박지영 공동 출연작",
+          "expected": [
+            "iron-family"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0133",
+          "class": "multi_hop",
+          "query": "이승준 현쥬니 공동 출연작",
+          "expected": [
+            "descendants-of-the-sun"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0134",
+          "class": "multi_hop",
+          "query": "김보미 (1987년)랑 손은서 같이 나온 드라마",
+          "expected": [
+            "my-love-from-the-star"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0135",
+          "class": "multi_hop",
+          "query": "고경표 김뢰하 공동 출연작",
+          "expected": [
+            "connect"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0136",
+          "class": "multi_hop",
+          "query": "김미경이랑 주진모 (1958년) 나온 작품",
+          "expected": [
+            "goodbye-solo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0137",
+          "class": "multi_hop",
+          "query": "안도규 유인영 공동 출연작",
+          "expected": [
+            "empress-ki"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0138",
+          "class": "multi_hop",
+          "query": "김가은 이다희 공동 출연작",
+          "expected": [
+            "i-can-hear-your-voice"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0139",
+          "class": "multi_hop",
+          "query": "김광규 장광 공동 출연작",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0140",
+          "class": "multi_hop",
+          "query": "김민재랑 윤시윤 같이 나온 드라마",
+          "expected": [
+            "hit-the-top"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0141",
+          "class": "multi_hop",
+          "query": "김남길이랑 이원종 나온 작품",
+          "expected": [
+            "goodbye-solo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0142",
+          "class": "multi_hop",
+          "query": "김형묵 소이현 공동 출연작",
+          "expected": [
+            "recipe-for-love"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0143",
+          "class": "multi_hop",
+          "query": "남경읍랑 전국환 같이 나온 드라마",
+          "expected": [
+            "crash-landing-on-you"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0144",
+          "class": "multi_hop",
+          "query": "백지원이랑 장영남 나온 작품",
+          "expected": [
+            "cheer-up-2022"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0145",
+          "class": "multi_hop",
+          "query": "김현주 이혜영 공동 출연작",
+          "expected": [
+            "boys-over-flowers"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0146",
+          "class": "multi_hop",
+          "query": "유인나랑 전지현 같이 나온 드라마",
+          "expected": [
+            "my-love-from-the-star"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0147",
+          "class": "multi_hop",
+          "query": "김영훈이랑 유인영 나온 작품",
+          "expected": [
+            "empress-ki"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0148",
+          "class": "multi_hop",
+          "query": "배다빈 최성원 공동 출연작",
+          "expected": [
+            "my-id-is-gangnam-beauty"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0149",
+          "class": "multi_hop",
+          "query": "고윤랑 이준기 같이 나온 드라마",
+          "expected": [
+            "criminal-minds"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0150",
+          "class": "multi_hop",
+          "query": "김선영이랑 이준 나온 작품",
+          "expected": [
+            "the-silent-sea"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0151",
+          "class": "multi_hop",
+          "query": "변희봉이랑 이유비 나온 작품",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0152",
+          "class": "multi_hop",
+          "query": "김지은 조한철 공동 출연작",
+          "expected": [
+            "love-next-door"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0153",
+          "class": "multi_hop",
+          "query": "유인나랑 이슬비 같이 나온 드라마",
+          "expected": [
+            "you-re-the-best-lee-soon-shin"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0154",
+          "class": "multi_hop",
+          "query": "김도완 (배우) 차미경 공동 출연작",
+          "expected": [
+            "spooky-in-love"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0155",
+          "class": "multi_hop",
+          "query": "우현랑 장항준 같이 나온 드라마",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0156",
+          "class": "multi_hop",
+          "query": "손석구 이도엽 공동 출연작",
+          "expected": [
+            "designated-survivor-60-days"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0157",
+          "class": "multi_hop",
+          "query": "유선이랑 이준기 나온 작품",
+          "expected": [
+            "criminal-minds"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0158",
+          "class": "multi_hop",
+          "query": "류승룡랑 박신양 같이 나온 드라마",
+          "expected": [
+            "painter-of-the-wind"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0159",
+          "class": "multi_hop",
+          "query": "방은희 서효림 공동 출연작",
+          "expected": [
+            "beautiful-gong-shim"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0160",
+          "class": "multi_hop",
+          "query": "류승룡이랑 유인영 나온 작품",
+          "expected": [
+            "my-love-from-the-star"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0161",
+          "class": "multi_hop",
+          "query": "강영석이랑 김선호 나온 작품",
+          "expected": [
+            "100-days-my-prince"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0162",
+          "class": "multi_hop",
+          "query": "박인환이랑 최원영 나온 작품",
+          "expected": [
+            "mad-dog"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0163",
+          "class": "multi_hop",
+          "query": "성동일이랑 홍종현 나온 작품",
+          "expected": [
+            "moon-lovers-scarlet-heart-ryeo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0164",
+          "class": "multi_hop",
+          "query": "고윤정랑 엄효섭 같이 나온 드라마",
+          "expected": [
+            "he-is-psychometric"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0165",
+          "class": "multi_hop",
+          "query": "남보라이랑 선우재덕 나온 작품",
+          "expected": [
+            "moon-embracing-the-sun"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0166",
+          "class": "multi_hop",
+          "query": "김영대 (배우)랑 정건주 같이 나온 드라마",
+          "expected": [
+            "extraordinary-you"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0167",
+          "class": "multi_hop",
+          "query": "김영민 (1971년)이랑 현빈 나온 작품",
+          "expected": [
+            "crash-landing-on-you"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0168",
+          "class": "multi_hop",
+          "query": "로몬이랑 이수민 나온 작품",
+          "expected": [
+            "revenge-of-others"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0169",
+          "class": "multi_hop",
+          "query": "박시연랑 이유비 같이 나온 드라마",
+          "expected": [
+            "the-innocent-man"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0170",
+          "class": "multi_hop",
+          "query": "박유천이랑 전태수 나온 작품",
+          "expected": [
+            "sungkyunkwan-scandal"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0171",
+          "class": "multi_hop",
+          "query": "고보결이랑 변요한 나온 작품",
+          "expected": [
+            "black-out"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0172",
+          "class": "multi_hop",
+          "query": "아이유 택연 공동 출연작",
+          "expected": [
+            "dream-high"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0173",
+          "class": "multi_hop",
+          "query": "김의성랑 전미선 같이 나온 드라마",
+          "expected": [
+            "six-flying-dragons"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0174",
+          "class": "multi_hop",
+          "query": "아이유랑 진기주 같이 나온 드라마",
+          "expected": [
+            "moon-lovers-scarlet-heart-ryeo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0175",
+          "class": "multi_hop",
+          "query": "정동환이랑 정수정 나온 작품",
+          "expected": [
+            "the-bride-of-habaek"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0176",
+          "class": "multi_hop",
+          "query": "오희준 차은우 공동 출연작",
+          "expected": [
+            "my-id-is-gangnam-beauty"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0177",
+          "class": "multi_hop",
+          "query": "양경원랑 택연 같이 나온 드라마",
+          "expected": [
+            "vincenzo"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0178",
+          "class": "multi_hop",
+          "query": "데이비드 맥기니스이랑 이승기 나온 작품",
+          "expected": [
+            "gu-family-book"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0179",
+          "class": "multi_hop",
+          "query": "이정은이랑 주지훈 나온 작품",
+          "expected": [
+            "light-shop"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0180",
+          "class": "multi_hop",
+          "query": "신은정랑 이필립 같이 나온 드라마",
+          "expected": [
+            "faith"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0181",
           "class": "character",
-          "query": "김종서 나오는 드라마",
+          "query": "김승유 (조선) 나오는 드라마",
           "expected": [
             "the-princess-man"
           ],
@@ -1545,29 +1577,70 @@
           "error": null
         },
         {
+          "id": "g0182",
+          "class": "character",
+          "query": "이소혜 나오는 드라마",
+          "expected": [
+            "fantastic"
+          ],
+          "got": [
+            "lee-san-wind-of-the-palace"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0183",
+          "class": "character",
+          "query": "박완 나오는 드라마",
+          "expected": [
+            "dear-my-friends"
+          ],
+          "got": [
+            "the-good-wife",
+            "queen-seondeok",
+            "lee-san-wind-of-the-palace",
+            "jejungwon",
+            "chuno"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0184",
+          "class": "character",
+          "query": "류해성 나오는 드라마",
+          "expected": [
+            "fantastic"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
           "id": "g0185",
           "class": "character",
-          "query": "고정원 나오는 드라마",
+          "query": "김은갑 나오는 드라마",
           "expected": [
-            "jealousy-incarnate"
+            "entourage"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0189",
+          "id": "g0187",
           "class": "character",
-          "query": "무령왕 나오는 드라마",
+          "query": "강모연 나오는 드라마",
           "expected": [
-            "the-king-s-daughter-soo-baek-hyang"
+            "descendants-of-the-sun"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0190",
+          "id": "g0197",
           "class": "character",
           "query": "금성대군 나오는 드라마",
           "expected": [
@@ -1578,18 +1651,18 @@
           "error": null
         },
         {
-          "id": "g0193",
+          "id": "g0198",
           "class": "character",
-          "query": "Vice-captain 나오는 드라마",
+          "query": "조남두 나오는 드라마",
           "expected": [
-            "trans-siberian-pathfinders"
+            "the-legend-of-the-blue-sea"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0195",
+          "id": "g0202",
           "class": "character",
           "query": "홍지홍 나오는 드라마",
           "expected": [
@@ -1602,102 +1675,22 @@
           "error": null
         },
         {
-          "id": "g0199",
+          "id": "g0212",
           "class": "character",
-          "query": "정진 나오는 드라마",
+          "query": "차중원 나오는 드라마",
           "expected": [
-            "memory"
-          ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0205",
-          "class": "character",
-          "query": "지은탁 나오는 드라마",
-          "expected": [
-            "guardian-the-lonely-and-great-god"
+            "shopping-king-louie"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0207",
+          "id": "g0214",
           "class": "character",
-          "query": "이시애 나오는 드라마",
+          "query": "진서우 나오는 드라마",
           "expected": [
-            "the-princess-man"
-          ],
-          "got": [
-            "lee-san-wind-of-the-palace"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0208",
-          "class": "character",
-          "query": "황진이 나오는 드라마",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0209",
-          "class": "character",
-          "query": "김제하 나오는 드라마",
-          "expected": [
-            "the-k2"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0210",
-          "class": "character",
-          "query": "유정 나오는 드라마",
-          "expected": [
-            "cheese-in-the-trap"
-          ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0215",
-          "class": "character",
-          "query": "최유진 나오는 드라마",
-          "expected": [
-            "the-k2"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0216",
-          "class": "character",
-          "query": "조남두 나오는 드라마",
-          "expected": [
-            "the-legend-of-the-blue-sea"
+            "doctors"
           ],
           "got": [],
           "strategy": "NONE",
@@ -1706,31 +1699,7 @@
         {
           "id": "g0217",
           "class": "character",
-          "query": "성선우 나오는 드라마",
-          "expected": [
-            "reply-1988"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0225",
-          "class": "character",
-          "query": "오연주 나오는 드라마",
-          "expected": [
-            "w-two-worlds"
-          ],
-          "got": [
-            "when-spring-comes"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0226",
-          "class": "character",
-          "query": "조선 태조 나오는 드라마",
+          "query": "정도전 나오는 드라마",
           "expected": [
             "jeong-do-jeon"
           ],
@@ -1739,28 +1708,44 @@
           "error": null
         },
         {
-          "id": "g0227",
+          "id": "g0218",
           "class": "character",
-          "query": "공명 나오는 드라마",
+          "query": "성삼문 나오는 드라마",
           "expected": [
-            "drinking-solo"
+            "the-princess-man"
           ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0230",
+          "id": "g0227",
           "class": "character",
-          "query": "류동룡 나오는 드라마",
+          "query": "윤명주 나오는 드라마",
           "expected": [
-            "reply-1988"
+            "descendants-of-the-sun"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0228",
+          "class": "character",
+          "query": "은하원 나오는 드라마",
+          "expected": [
+            "cinderella-and-four-knights"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0229",
+          "class": "character",
+          "query": "김윤성 나오는 드라마",
+          "expected": [
+            "love-in-the-moonlight"
           ],
           "got": [],
           "strategy": "NONE",
@@ -1769,26 +1754,9 @@
         {
           "id": "g0231",
           "class": "character",
-          "query": "심청 나오는 드라마",
+          "query": "신빈 김씨 나오는 드라마",
           "expected": [
-            "the-legend-of-the-blue-sea"
-          ],
-          "got": [
-            "the-good-wife",
-            "queen-seondeok",
-            "lee-san-wind-of-the-palace",
-            "jejungwon",
-            "chuno"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0232",
-          "class": "character",
-          "query": "박하나 나오는 드라마",
-          "expected": [
-            "drinking-solo"
+            "king-sejong-the-great"
           ],
           "got": [],
           "strategy": "NONE",
@@ -1797,28 +1765,61 @@
         {
           "id": "g0234",
           "class": "character",
-          "query": "이화신 나오는 드라마",
+          "query": "소현세자 나오는 드라마",
           "expected": [
-            "jealousy-incarnate"
+            "the-three-musketeers"
           ],
-          "got": [
-            "lee-san-wind-of-the-palace"
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0239",
+          "class": "character",
+          "query": "박해영 나오는 드라마",
+          "expected": [
+            "signal"
           ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0241",
           "class": "temporal",
-          "query": "2024년 KBS 미스터리 드라마",
+          "query": "2023년 JTBC 오피스 드라마",
           "expected": [
-            "dog-knows-everything",
-            "face-me",
-            "perfect-family"
+            "agency"
           ],
           "got": [
-            "perfect-family",
-            "snow-white-s-revenge",
+            "jtbc-drama-festa"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0242",
+          "class": "temporal",
+          "query": "2010년 MBC 멜로 드라마",
+          "expected": [
+            "golden-fish"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0243",
+          "class": "temporal",
+          "query": "2008년 KBS 사극 드라마",
+          "expected": [
+            "king-sejong-the-great",
+            "strongest-chil-woo"
+          ],
+          "got": [
+            "king-sejong-the-great",
+            "iljimae",
+            "돈꽃-2008년-드라마",
             "kbs-drama-special",
             "kbs-drama-special-series"
           ],
@@ -1826,43 +1827,313 @@
           "error": null
         },
         {
-          "id": "g0242",
-          "class": "temporal",
-          "query": "2008년에 SBS에서 한 사극 드라마",
-          "expected": [
-            "iljimae",
-            "painter-of-the-wind"
-          ],
-          "got": [
-            "iljimae",
-            "돈꽃-2008년-드라마"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0243",
-          "class": "temporal",
-          "query": "2014년에 KBS에서 한 일일 드라마",
-          "expected": [
-            "you-are-the-only-one"
-          ],
-          "got": [
-            "the-full-sun",
-            "endless-love",
-            "birth-of-a-beauty",
-            "valid-love"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
           "id": "g0244",
           "class": "temporal",
-          "query": "2022년 MBC 법정 드라마",
+          "query": "2009년에 tvN에서 한 코미디 드라마",
           "expected": [
-            "big-mouth",
-            "doctor-lawyer"
+            "three-men"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0245",
+          "class": "temporal",
+          "query": "2016년 tvN 판타지 드라마",
+          "expected": [
+            "another-miss-oh",
+            "guardian-the-lonely-and-great-god",
+            "signal"
+          ],
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "still-loving-you",
+            "drama-stage"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0246",
+          "class": "temporal",
+          "query": "2025년 MBC 오피스 드라마",
+          "expected": [
+            "oh-my-ghost-clients",
+            "to-the-moon"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0247",
+          "class": "temporal",
+          "query": "2011년 MBC 로맨스 드라마",
+          "expected": [
+            "can-you-hear-my-heart",
+            "my-princess",
+            "the-duo"
+          ],
+          "got": [
+            "white-christmas"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0248",
+          "class": "temporal",
+          "query": "2025년에 MBC에서 한 청춘 드라마",
+          "expected": [
+            "crushology-101",
+            "motel-california"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0249",
+          "class": "temporal",
+          "query": "2019년에 MBC에서 한 미스터리 드라마",
+          "expected": [
+            "welcome-2-life"
+          ],
+          "got": [
+            "big-issue",
+            "designated-survivor-60-days",
+            "the-wind-blows"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0251",
+          "class": "temporal",
+          "query": "2022년 SBS 미스터리 드라마",
+          "expected": [
+            "cheer-up-2022",
+            "through-the-darkness",
+            "trolley",
+            "why-her"
+          ],
+          "got": [
+            "eve",
+            "blind",
+            "war-of-the-roses",
+            "my-love-by-my-side",
+            "love-and-ambition"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0252",
+          "class": "temporal",
+          "query": "2026년 tvN 코미디 드라마",
+          "expected": [
+            "love-in-disguise",
+            "mad-concrete-dreams",
+            "spring-fever",
+            "the-legend-of-kitchen-soldier"
+          ],
+          "got": [
+            "drama-stage"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0253",
+          "class": "temporal",
+          "query": "2023년 넷플릭스 SF 드라마",
+          "expected": [
+            "black-knight"
+          ],
+          "got": [
+            "snow-white-s-revenge"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0254",
+          "class": "temporal",
+          "query": "2008년 MBC 코미디 드라마",
+          "expected": [
+            "elephant",
+            "that-person-is-coming",
+            "the-secret-of-keu-keu-island"
+          ],
+          "got": [
+            "iljimae",
+            "the-secret-of-keu-keu-island",
+            "돈꽃-2008년-드라마"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "g0255",
+          "class": "temporal",
+          "query": "2013년에 SBS에서 한 코미디 드라마",
+          "expected": [
+            "i-can-hear-your-voice",
+            "incarnation-of-money",
+            "master-s-sun",
+            "the-heirs"
+          ],
+          "got": [
+            "the-fugitive-of-joseon"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0256",
+          "class": "temporal",
+          "query": "2018년에 SBS에서 한 로맨스 드라마",
+          "expected": [
+            "my-strange-hero",
+            "should-we-kiss-first",
+            "still-17",
+            "the-undateables"
+          ],
+          "got": [
+            "matrimonial-chaos",
+            "life"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0257",
+          "class": "temporal",
+          "query": "2018년 MBC 코미디 드라마",
+          "expected": [
+            "dae-jang-geum-is-watching",
+            "my-secret-terrius"
+          ],
+          "got": [
+            "matrimonial-chaos",
+            "life"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0258",
+          "class": "temporal",
+          "query": "2013년에 MBC에서 한 코미디 드라마",
+          "expected": [
+            "miss-korea"
+          ],
+          "got": [
+            "the-fugitive-of-joseon"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0259",
+          "class": "temporal",
+          "query": "2021년에 SBS에서 한 드라마",
+          "expected": [
+            "joseon-exorcist",
+            "let-me-be-your-knight",
+            "one-the-woman",
+            "racket-boys"
+          ],
+          "got": [
+            "mine",
+            "lost",
+            "snow-white-s-revenge"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0260",
+          "class": "temporal",
+          "query": "2025년에 JTBC에서 한 멜로 드라마",
+          "expected": [
+            "a-hundred-memories",
+            "love-me"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0261",
+          "class": "temporal",
+          "query": "2022년 KBS 법정 드라마",
+          "expected": [
+            "bad-prosecutor",
+            "the-law-cafe"
+          ],
+          "got": [
+            "eve",
+            "blind",
+            "kbs-drama-special",
+            "kbs-drama-special-series"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0263",
+          "class": "temporal",
+          "query": "2023년 넷플릭스 코미디 드라마",
+          "expected": [
+            "doona",
+            "love-to-hate-you",
+            "mask-girl"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0264",
+          "class": "temporal",
+          "query": "2023년 tvN 액션 드라마",
+          "expected": [
+            "arthdal-chronicles-the-sword-of-aramoon",
+            "pandora-beneath-the-paradise",
+            "stealer-the-treasure-keeper",
+            "tale-of-the-nine-tailed-1938"
+          ],
+          "got": [
+            "drama-stage"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0265",
+          "class": "temporal",
+          "query": "2018년 JTBC 판타지 드라마",
+          "expected": [
+            "the-beauty-inside"
+          ],
+          "got": [
+            "matrimonial-chaos",
+            "life",
+            "jtbc-drama-festa"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0266",
+          "class": "temporal",
+          "query": "2022년 MBC 범죄 드라마",
+          "expected": [
+            "big-mouth"
           ],
           "got": [
             "eve",
@@ -1872,11 +2143,115 @@
           "error": null
         },
         {
-          "id": "g0245",
+          "id": "g0268",
           "class": "temporal",
-          "query": "2015년에 tvN에서 한 스릴러 드라마",
+          "query": "2016년에 MBC에서 한 사극 드라마",
           "expected": [
-            "oh-my-ghostess"
+            "flowers-of-the-prison"
+          ],
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "still-loving-you"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0269",
+          "class": "temporal",
+          "query": "2024년에 KBS에서 한 미스터리 드라마",
+          "expected": [
+            "dog-knows-everything",
+            "face-me",
+            "perfect-family"
+          ],
+          "got": [
+            "snow-white-s-revenge"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0270",
+          "class": "temporal",
+          "query": "2012년에 KBS에서 한 코미디 드라마",
+          "expected": [
+            "big",
+            "family"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0271",
+          "class": "temporal",
+          "query": "2019년에 SBS에서 한 범죄 드라마",
+          "expected": [
+            "the-fiery-priest",
+            "vagabond"
+          ],
+          "got": [
+            "big-issue",
+            "designated-survivor-60-days",
+            "the-wind-blows"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0272",
+          "class": "temporal",
+          "query": "2010년에 SBS에서 한 판타지 드라마",
+          "expected": [
+            "my-girlfriend-is-a-nine-tailed-fox"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0273",
+          "class": "temporal",
+          "query": "2008년 SBS 사극 드라마",
+          "expected": [
+            "iljimae",
+            "painter-of-the-wind"
+          ],
+          "got": [
+            "iljimae",
+            "돈꽃-2008년-드라마",
+            "war-of-the-roses",
+            "my-love-by-my-side",
+            "love-and-ambition"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "g0274",
+          "class": "temporal",
+          "query": "2021년에 넷플릭스에서 한 판타지 드라마",
+          "expected": [
+            "hellbound"
+          ],
+          "got": [
+            "mine",
+            "lost"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0275",
+          "class": "temporal",
+          "query": "2015년에 KBS에서 한 사극 드라마",
+          "expected": [
+            "snowy-road",
+            "the-god-of-trade-gaekju-2015",
+            "the-jingbirok-a-memoir-of-imjin-war"
           ],
           "got": [
             "late-night-restaurant"
@@ -1885,44 +2260,294 @@
           "error": null
         },
         {
-          "id": "g0246",
+          "id": "g0276",
           "class": "temporal",
-          "query": "2020년 MBC 멜로 드라마",
+          "query": "2024년 디즈니+ SF 드라마",
           "expected": [
-            "find-me-in-your-memory"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0247",
-          "class": "temporal",
-          "query": "2020년 tvN 범죄 드라마",
-          "expected": [
-            "flower-of-evil"
+            "blood-free"
           ],
           "got": [
-            "drama-stage"
+            "snow-white-s-revenge"
           ],
           "strategy": "TRIGRAM",
           "error": null
         },
         {
-          "id": "g0248",
+          "id": "g0277",
           "class": "temporal",
-          "query": "2009년에 MBC에서 한 로맨스 드라마",
+          "query": "2015년 KBS 가족 드라마",
           "expected": [
-            "cinderella-man",
-            "queen-seondeok",
-            "what-s-for-dinner"
+            "all-about-my-mom"
+          ],
+          "got": [
+            "save-the-family",
+            "late-night-restaurant",
+            "kbs-drama-special",
+            "kbs-drama-special-series",
+            "perfect-family"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "g0278",
+          "class": "temporal",
+          "query": "2022년에 넷플릭스에서 한 청춘 드라마",
+          "expected": [
+            "weak-hero-class-1"
+          ],
+          "got": [
+            "eve",
+            "blind"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0279",
+          "class": "temporal",
+          "query": "2022년에 넷플릭스에서 한 액션 드라마",
+          "expected": [
+            "weak-hero-class-1"
+          ],
+          "got": [
+            "eve",
+            "blind"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0280",
+          "class": "temporal",
+          "query": "2025년 KBS 드라마",
+          "expected": [
+            "last-summer",
+            "marie-and-her-three-daddies",
+            "the-first-night-with-the-duke",
+            "대운을-지켜라"
+          ],
+          "got": [
+            "kbs-drama-special",
+            "kbs-drama-special-series",
+            "late-night-restaurant",
+            "mine",
+            "lost"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0281",
+          "class": "temporal",
+          "query": "2026년에 MBC에서 한 가족 드라마",
+          "expected": [
+            "family-resister"
           ],
           "got": [],
           "strategy": "NONE",
           "error": null
         },
         {
-          "id": "g0249",
+          "id": "g0282",
+          "class": "temporal",
+          "query": "2024년 SBS 법정 드라마",
+          "expected": [
+            "good-partner",
+            "the-judge-from-hell"
+          ],
+          "got": [
+            "snow-white-s-revenge",
+            "war-of-the-roses",
+            "my-love-by-my-side",
+            "love-and-ambition"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0283",
+          "class": "temporal",
+          "query": "2011년에 SBS에서 한 코미디 드라마",
+          "expected": [
+            "lie-to-me",
+            "protect-the-boss",
+            "welcome-to-the-show"
+          ],
+          "got": [
+            "white-christmas"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0284",
+          "class": "temporal",
+          "query": "2017년 SBS 범죄 드라마",
+          "expected": [
+            "band-of-sisters",
+            "suspicious-partner"
+          ],
+          "got": [
+            "suspicious-partner",
+            "the-most-beautiful-goodbye",
+            "war-of-the-roses",
+            "my-love-by-my-side",
+            "love-and-ambition"
+          ],
+          "strategy": "FUSED",
+          "error": null
+        },
+        {
+          "id": "g0285",
+          "class": "temporal",
+          "query": "2021년 넷플릭스 드라마",
+          "expected": [
+            "d-p",
+            "move-to-heaven"
+          ],
+          "got": [
+            "mine",
+            "lost",
+            "white-christmas",
+            "eve",
+            "blind"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0286",
+          "class": "temporal",
+          "query": "2025년에 SBS에서 한 코미디 드라마",
+          "expected": [
+            "dynamite-kiss",
+            "would-you-marry-me"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0287",
+          "class": "temporal",
+          "query": "2011년에 KBS에서 한 로맨스 드라마",
+          "expected": [
+            "baby-faced-beauty",
+            "dream-high",
+            "glory-jane",
+            "spy-myung-wol"
+          ],
+          "got": [
+            "white-christmas"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0288",
+          "class": "temporal",
+          "query": "2016년에 MBC에서 한 스릴러 드라마",
+          "expected": [
+            "goodbye-mr-black",
+            "w-two-worlds"
+          ],
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "still-loving-you"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0289",
+          "class": "temporal",
+          "query": "2024년에 JTBC에서 한 미스터리 드라마",
+          "expected": [
+            "hide"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0290",
+          "class": "temporal",
+          "query": "2025년 MBC 코미디 드라마",
+          "expected": [
+            "crushology-101",
+            "mary-kills-people",
+            "to-the-moon"
+          ],
+          "got": [],
+          "strategy": "NONE",
+          "error": null
+        },
+        {
+          "id": "g0291",
+          "class": "temporal",
+          "query": "2019년 SBS 사극 드라마",
+          "expected": [
+            "haechi"
+          ],
+          "got": [
+            "big-issue",
+            "designated-survivor-60-days",
+            "the-wind-blows",
+            "war-of-the-roses",
+            "my-love-by-my-side"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0292",
+          "class": "temporal",
+          "query": "2017년에 MBC에서 한 스릴러 드라마",
+          "expected": [
+            "lookout"
+          ],
+          "got": [
+            "the-most-beautiful-goodbye"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0293",
+          "class": "temporal",
+          "query": "2024년 MBC 스릴러 드라마",
+          "expected": [
+            "bitter-sweet-hell",
+            "doubt",
+            "wonderful-world"
+          ],
+          "got": [
+            "snow-white-s-revenge"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0294",
+          "class": "temporal",
+          "query": "2016년 MBC 판타지 드라마",
+          "expected": [
+            "w-two-worlds"
+          ],
+          "got": [
+            "the-good-wife",
+            "monster-2016",
+            "good-person",
+            "still-loving-you"
+          ],
+          "strategy": "TRIGRAM",
+          "error": null
+        },
+        {
+          "id": "g0295",
           "class": "temporal",
           "query": "2022년에 MBC에서 한 드라마",
           "expected": [
@@ -1936,169 +2561,7 @@
           "error": null
         },
         {
-          "id": "g0250",
-          "class": "temporal",
-          "query": "2017년에 JTBC에서 한 로맨스 드라마",
-          "expected": [
-            "just-between-lovers",
-            "makpan-romaenseu",
-            "strong-woman-do-bong-soon"
-          ],
-          "got": [
-            "the-most-beautiful-goodbye"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0252",
-          "class": "temporal",
-          "query": "2012년에 SBS에서 한 코미디 드라마",
-          "expected": [
-            "a-gentleman-s-dignity",
-            "history-of-a-salaryman",
-            "rooftop-prince",
-            "salamander-guru-and-the-shadows"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0253",
-          "class": "temporal",
-          "query": "2014년에 SBS에서 한 사극 드라마",
-          "expected": [
-            "endless-love",
-            "secret-door"
-          ],
-          "got": [
-            "endless-love",
-            "valid-love",
-            "the-full-sun",
-            "birth-of-a-beauty"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0254",
-          "class": "temporal",
-          "query": "2010년 SBS 사극 드라마",
-          "expected": [
-            "giant"
-          ],
-          "got": [
-            "war-of-the-roses",
-            "my-love-by-my-side",
-            "love-and-ambition",
-            "endless-love",
-            "valid-love"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0255",
-          "class": "temporal",
-          "query": "2015년 MBC 사극 드라마",
-          "expected": [
-            "shine-or-go-crazy",
-            "splendid-politics"
-          ],
-          "got": [
-            "late-night-restaurant",
-            "endless-love",
-            "valid-love"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0256",
-          "class": "temporal",
-          "query": "2006년 SBS 로맨스 드라마",
-          "expected": [
-            "101st-proposal",
-            "alone-in-love",
-            "smile-again",
-            "tree-of-heaven"
-          ],
-          "got": [
-            "101st-proposal",
-            "snow-flower",
-            "alone-in-love",
-            "your-lady",
-            "war-of-the-roses"
-          ],
-          "strategy": "FUSED",
-          "error": null
-        },
-        {
-          "id": "g0257",
-          "class": "temporal",
-          "query": "2021년 SBS 액션 드라마",
-          "expected": [
-            "taxi-driver"
-          ],
-          "got": [
-            "mine",
-            "lost",
-            "war-of-the-roses",
-            "my-love-by-my-side",
-            "love-and-ambition"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0258",
-          "class": "temporal",
-          "query": "2018년 tvN 스릴러 드라마",
-          "expected": [
-            "the-smile-has-left-your-eyes"
-          ],
-          "got": [
-            "matrimonial-chaos",
-            "life",
-            "drama-stage"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0259",
-          "class": "temporal",
-          "query": "2025년 tvN 드라마",
-          "expected": [
-            "love-take-two",
-            "shin-s-project"
-          ],
-          "got": [
-            "drama-stage",
-            "the-queen-who-crowns",
-            "late-night-restaurant",
-            "mine",
-            "lost"
-          ],
-          "strategy": "FUSED",
-          "error": null
-        },
-        {
-          "id": "g0260",
-          "class": "temporal",
-          "query": "2007년에 MBC에서 한 의학 드라마",
-          "expected": [
-            "behind-the-white-tower"
-          ],
-          "got": [
-            "겨울새-2007년-드라마"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0261",
+          "id": "g0296",
           "class": "temporal",
           "query": "2022년에 SBS에서 한 판타지 드라마",
           "expected": [
@@ -2112,444 +2575,11 @@
           "error": null
         },
         {
-          "id": "g0262",
+          "id": "g0297",
           "class": "temporal",
-          "query": "2018년에 tvN에서 한 멜로 드라마",
-          "expected": [
-            "encounter"
-          ],
-          "got": [
-            "matrimonial-chaos",
-            "life"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0263",
-          "class": "temporal",
-          "query": "2023년에 JTBC에서 한 판타지 드라마",
-          "expected": [
-            "destined-with-you",
-            "miracle-brothers"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0265",
-          "class": "temporal",
-          "query": "2012년 tvN 멜로 드라마",
-          "expected": [
-            "glass-mask",
-            "yellow-boots"
-          ],
-          "got": [
-            "drama-stage"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0266",
-          "class": "temporal",
-          "query": "2023년에 JTBC에서 한 스릴러 드라마",
-          "expected": [
-            "behind-your-touch"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0267",
-          "class": "temporal",
-          "query": "2022년에 KBS에서 한 드라마",
-          "expected": [
-            "curtain-call",
-            "if-you-wish-upon-me",
-            "it-s-beautiful-now",
-            "leemujin-service"
-          ],
-          "got": [
-            "eve",
-            "blind"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0268",
-          "class": "temporal",
-          "query": "2021년 KBS 가족 드라마",
-          "expected": [
-            "red-shoes",
-            "the-all-round-wife"
-          ],
-          "got": [
-            "mine",
-            "lost",
-            "kbs-drama-special",
-            "kbs-drama-special-series",
-            "perfect-family"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0269",
-          "class": "temporal",
-          "query": "2017년에 SBS에서 한 범죄 드라마",
-          "expected": [
-            "band-of-sisters",
-            "suspicious-partner"
-          ],
-          "got": [
-            "the-most-beautiful-goodbye"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0270",
-          "class": "temporal",
-          "query": "2022년에 SBS에서 한 스릴러 드라마",
-          "expected": [
-            "woori-the-virgin"
-          ],
-          "got": [
-            "eve",
-            "blind"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0272",
-          "class": "temporal",
-          "query": "2018년에 tvN에서 한 액션 드라마",
-          "expected": [
-            "100-days-my-prince",
-            "mr-sunshine"
-          ],
-          "got": [
-            "matrimonial-chaos",
-            "life"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0273",
-          "class": "temporal",
-          "query": "2018년에 tvN에서 한 법정 드라마",
-          "expected": [
-            "lawless-lawyer"
-          ],
-          "got": [
-            "matrimonial-chaos",
-            "life"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0274",
-          "class": "temporal",
-          "query": "2017년 tvN SF 드라마",
-          "expected": [
-            "circle"
-          ],
-          "got": [
-            "the-most-beautiful-goodbye",
-            "drama-stage",
-            "our-gap-soon"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0275",
-          "class": "temporal",
-          "query": "2025년에 tvN에서 한 사극 드라마",
-          "expected": [
-            "the-queen-who-crowns"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0276",
-          "class": "temporal",
-          "query": "2020년 tvN 의학 드라마",
+          "query": "2020년에 tvN에서 한 의학 드라마",
           "expected": [
             "hospital-playlist"
-          ],
-          "got": [
-            "drama-stage"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0277",
-          "class": "temporal",
-          "query": "2017년 JTBC 판타지 드라마",
-          "expected": [
-            "strong-woman-do-bong-soon"
-          ],
-          "got": [
-            "the-most-beautiful-goodbye",
-            "jtbc-drama-festa"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0278",
-          "class": "temporal",
-          "query": "2023년 tvN 미스터리 드라마",
-          "expected": [
-            "delightfully-deceitful",
-            "maestra-strings-of-truth",
-            "my-lovely-liar"
-          ],
-          "got": [
-            "drama-stage",
-            "maestra-strings-of-truth"
-          ],
-          "strategy": "FUSED",
-          "error": null
-        },
-        {
-          "id": "g0279",
-          "class": "temporal",
-          "query": "2017년 JTBC 코미디 드라마",
-          "expected": [
-            "makpan-romaenseu",
-            "strong-woman-do-bong-soon"
-          ],
-          "got": [
-            "the-most-beautiful-goodbye",
-            "jtbc-drama-festa"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0281",
-          "class": "temporal",
-          "query": "2023년에 SBS에서 한 범죄 드라마",
-          "expected": [
-            "the-escape-of-the-seven",
-            "the-killing-vote"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0282",
-          "class": "temporal",
-          "query": "2014년에 tvN에서 한 스릴러 드라마",
-          "expected": [
-            "liar-game"
-          ],
-          "got": [
-            "the-full-sun",
-            "endless-love",
-            "birth-of-a-beauty",
-            "valid-love"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0283",
-          "class": "temporal",
-          "query": "2022년에 MBC에서 한 판타지 드라마",
-          "expected": [
-            "from-now-on-showtime",
-            "the-golden-spoon"
-          ],
-          "got": [
-            "eve",
-            "blind"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0284",
-          "class": "temporal",
-          "query": "2013년 SBS 판타지 드라마",
-          "expected": [
-            "i-can-hear-your-voice",
-            "master-s-sun",
-            "my-love-from-the-star"
-          ],
-          "got": [
-            "the-fugitive-of-joseon",
-            "master-s-sun",
-            "war-of-the-roses",
-            "my-love-from-the-star",
-            "my-love-by-my-side"
-          ],
-          "strategy": "FUSED",
-          "error": null
-        },
-        {
-          "id": "g0285",
-          "class": "temporal",
-          "query": "2014년에 JTBC에서 한 청춘 드라마",
-          "expected": [
-            "seonam-girls-high-school-investigators"
-          ],
-          "got": [
-            "the-full-sun",
-            "endless-love",
-            "birth-of-a-beauty",
-            "valid-love"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0286",
-          "class": "temporal",
-          "query": "2015년 KBS 미스터리 드라마",
-          "expected": [
-            "hello-monster",
-            "who-are-you-school-2015"
-          ],
-          "got": [
-            "who-are-you-school-2015",
-            "late-night-restaurant",
-            "kbs-drama-special",
-            "kbs-drama-special-series"
-          ],
-          "strategy": "FUSED",
-          "error": null
-        },
-        {
-          "id": "g0287",
-          "class": "temporal",
-          "query": "2011년 MBC 코미디 드라마",
-          "expected": [
-            "can-you-hear-my-heart",
-            "high-kick-revenge-of-the-short-legged",
-            "the-duo"
-          ],
-          "got": [
-            "white-christmas"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0288",
-          "class": "temporal",
-          "query": "2024년에 JTBC에서 한 판타지 드라마",
-          "expected": [
-            "the-atypical-family"
-          ],
-          "got": [
-            "snow-white-s-revenge"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0289",
-          "class": "temporal",
-          "query": "2026년 MBC 법정 드라마",
-          "expected": [
-            "the-judge-returns"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0290",
-          "class": "temporal",
-          "query": "2016년에 JTBC에서 한 코미디 드라마",
-          "expected": [
-            "fantastic"
-          ],
-          "got": [
-            "the-good-wife",
-            "monster-2016",
-            "good-person",
-            "still-loving-you"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0292",
-          "class": "temporal",
-          "query": "2021년 tvN 공포 드라마",
-          "expected": [
-            "happiness"
-          ],
-          "got": [
-            "mine",
-            "lost",
-            "drama-stage"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0293",
-          "class": "temporal",
-          "query": "2013년에 KBS에서 한 의학 드라마",
-          "expected": [
-            "good-doctor"
-          ],
-          "got": [
-            "the-fugitive-of-joseon"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0294",
-          "class": "temporal",
-          "query": "2020년 MBC 범죄 드라마",
-          "expected": [
-            "365-repeat-the-year",
-            "the-game-towards-zero"
-          ],
-          "got": [],
-          "strategy": "NONE",
-          "error": null
-        },
-        {
-          "id": "g0295",
-          "class": "temporal",
-          "query": "2019년에 SBS에서 한 멜로 드라마",
-          "expected": [
-            "doctor-john"
-          ],
-          "got": [
-            "big-issue",
-            "designated-survivor-60-days",
-            "the-wind-blows"
-          ],
-          "strategy": "TRIGRAM",
-          "error": null
-        },
-        {
-          "id": "g0296",
-          "class": "temporal",
-          "query": "2023년에 tvN에서 한 사극 드라마",
-          "expected": [
-            "arthdal-chronicles-the-sword-of-aramoon",
-            "our-blooming-youth"
           ],
           "got": [],
           "strategy": "NONE",
@@ -2558,27 +2588,24 @@
         {
           "id": "g0298",
           "class": "temporal",
-          "query": "2015년 MBC 멜로 드라마",
+          "query": "2026년에 KBS에서 한 미스터리 드라마",
           "expected": [
-            "angry-mom",
-            "glamorous-temptation",
-            "queen-s-flower"
+            "the-husband"
           ],
-          "got": [
-            "late-night-restaurant"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         },
         {
           "id": "g0299",
           "class": "temporal",
-          "query": "2015년에 tvN에서 한 멜로 드라마",
+          "query": "2026년 KBS 멜로 드라마",
           "expected": [
-            "reply-1988"
+            "a-love-other-than-yours"
           ],
           "got": [
-            "late-night-restaurant"
+            "kbs-drama-special",
+            "kbs-drama-special-series"
           ],
           "strategy": "TRIGRAM",
           "error": null
@@ -2586,50 +2613,46 @@
         {
           "id": "g0300",
           "class": "temporal",
-          "query": "2026년 SBS 액션 드라마",
+          "query": "2023년에 넷플릭스에서 한 드라마",
           "expected": [
-            "agent-kim-reactivated"
+            "daily-dose-of-sunshine",
+            "queenmaker"
           ],
-          "got": [
-            "war-of-the-roses",
-            "my-love-by-my-side",
-            "love-and-ambition",
-            "snow-white-s-revenge"
-          ],
-          "strategy": "TRIGRAM",
+          "got": [],
+          "strategy": "NONE",
           "error": null
         }
       ]
     },
     "nograph": {
       "overall": {
-        "recall@1": 0.6188888888888888,
-        "recall@3": 0.8091666666666667,
-        "recall@5": 0.8588888888888889,
-        "recall@10": 0.9263888888888889,
-        "mrr": 0.7728769841269841,
-        "ndcg@1": 0.69,
-        "ndcg@3": 0.7601160100887046,
-        "ndcg@5": 0.7817242187129921,
-        "ndcg@10": 0.8042966251538175,
-        "latency_p50_ms": 707.4105000356212,
-        "latency_p95_ms": 1943.0266000563279,
+        "recall@1": 0.5922222222222222,
+        "recall@3": 0.7655555555555555,
+        "recall@5": 0.8338888888888889,
+        "recall@10": 0.8977777777777777,
+        "mrr": 0.750910052910053,
+        "ndcg@1": 0.6766666666666666,
+        "ndcg@3": 0.7289673016040958,
+        "ndcg@5": 0.7584419724225614,
+        "ndcg@10": 0.7810889486756817,
+        "latency_p50_ms": 131.94619998103008,
+        "latency_p95_ms": 192.4079000018537,
         "errors": 0,
         "n": 300
       },
       "by_class": {
         "character": {
-          "recall@1": 0.9666666666666667,
+          "recall@1": 0.9833333333333333,
           "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9833333333333333,
-          "ndcg@1": 0.9666666666666667,
-          "ndcg@3": 0.9876976584523819,
-          "ndcg@5": 0.9876976584523819,
-          "ndcg@10": 0.9876976584523819,
-          "latency_p50_ms": 902.7973500196822,
-          "latency_p95_ms": 1886.2238998990506,
+          "mrr": 0.9888888888888889,
+          "ndcg@1": 0.9833333333333333,
+          "ndcg@3": 0.9916666666666667,
+          "ndcg@5": 0.9916666666666667,
+          "ndcg@10": 0.9916666666666667,
+          "latency_p50_ms": 139.68859997112304,
+          "latency_p95_ms": 191.48310006130487,
           "errors": 0,
           "n": 60
         },
@@ -2643,53 +2666,53 @@
           "ndcg@3": 0.9876976584523819,
           "ndcg@5": 0.9876976584523819,
           "ndcg@10": 0.9876976584523819,
-          "latency_p50_ms": 535.6520999921486,
-          "latency_p95_ms": 1662.5654000090435,
+          "latency_p50_ms": 144.63444997090846,
+          "latency_p95_ms": 200.4824000177905,
           "errors": 0,
           "n": 60
         },
         "multi_hop": {
           "recall@1": 0.08333333333333333,
-          "recall@3": 0.45,
-          "recall@5": 0.6166666666666667,
-          "recall@10": 0.9166666666666666,
-          "mrr": 0.32035714285714284,
+          "recall@3": 0.3,
+          "recall@5": 0.5,
+          "recall@10": 0.7333333333333333,
+          "mrr": 0.25482804232804235,
           "ndcg@1": 0.08333333333333333,
-          "ndcg@3": 0.29285261738095814,
-          "ndcg@5": 0.3631712520318953,
-          "ndcg@10": 0.4615552108360684,
-          "latency_p50_ms": 635.4514000122435,
-          "latency_p95_ms": 1931.5647999756038,
+          "ndcg@3": 0.20694180458333672,
+          "ndcg@5": 0.29015553280875855,
+          "ndcg@10": 0.367611074884081,
+          "latency_p50_ms": 142.97524996800348,
+          "latency_p95_ms": 283.65770005621016,
           "errors": 0,
           "n": 60
         },
         "person": {
-          "recall@1": 0.3555555555555555,
-          "recall@3": 0.6611111111111111,
-          "recall@5": 0.7194444444444444,
-          "recall@10": 0.7527777777777778,
-          "mrr": 0.6218055555555555,
-          "ndcg@1": 0.48333333333333334,
-          "ndcg@3": 0.5872668146738987,
-          "ndcg@5": 0.6164504341895044,
-          "ndcg@10": 0.6288759876832853,
-          "latency_p50_ms": 606.8129999330267,
-          "latency_p95_ms": 1538.2469999603927,
+          "recall@1": 0.41944444444444445,
+          "recall@3": 0.6361111111111111,
+          "recall@5": 0.7277777777777777,
+          "recall@10": 0.7805555555555556,
+          "mrr": 0.6561111111111111,
+          "ndcg@1": 0.5666666666666667,
+          "ndcg@3": 0.5959494241939025,
+          "ndcg@5": 0.6443155006614033,
+          "ndcg@10": 0.665060574399617,
+          "latency_p50_ms": 122.36400000983849,
+          "latency_p95_ms": 149.64669989421964,
           "errors": 0,
           "n": 60
         },
         "temporal": {
-          "recall@1": 0.7222222222222222,
-          "recall@3": 0.9347222222222222,
-          "recall@5": 0.9583333333333334,
-          "recall@10": 0.9625,
-          "mrr": 0.9555555555555556,
-          "ndcg@1": 0.95,
-          "ndcg@3": 0.9450653014839022,
-          "ndcg@5": 0.953604090438797,
-          "ndcg@10": 0.9556566103449698,
-          "latency_p50_ms": 923.3869999879971,
-          "latency_p95_ms": 2584.6432000398636,
+          "recall@1": 0.5083333333333333,
+          "recall@3": 0.8916666666666667,
+          "recall@5": 0.9416666666666667,
+          "recall@10": 0.975,
+          "mrr": 0.8713888888888889,
+          "ndcg@1": 0.7833333333333333,
+          "ndcg@3": 0.8625809541241918,
+          "ndcg@5": 0.8783745035235966,
+          "ndcg@10": 0.8934087689756622,
+          "latency_p50_ms": 96.08244994888082,
+          "latency_p95_ms": 132.39039992913604,
           "errors": 0,
           "n": 60
         }
@@ -2698,307 +2721,23 @@
         {
           "id": "g0061",
           "class": "person",
-          "query": "배우 한희",
+          "query": "배우 조아람",
           "expected": [
-            "empress-ki",
-            "oasis"
+            "the-auditors",
+            "to-the-moon"
           ],
           "got": [
-            "empress-ki",
-            "beautiful-gong-shim",
-            "unstoppable-marriage",
-            "eunhui",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0067",
-          "class": "person",
-          "query": "배우 마이클 리",
-          "expected": [
-            "a-korean-odyssey"
-          ],
-          "got": [
-            "come-and-hug-me",
-            "the-crowned-clown",
-            "i-am-sam",
-            "entourage",
-            "empress-ki"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0071",
-          "class": "person",
-          "query": "배우 이도경",
-          "expected": [
-            "gu-family-book",
-            "the-king-2-hearts"
-          ],
-          "got": [
-            "i-am-sam",
-            "another-miss-oh",
-            "empress-ki",
-            "poseidon",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0072",
-          "class": "person",
-          "query": "배우 김금순",
-          "expected": [
-            "love-next-door"
-          ],
-          "got": [
-            "what-s-wrong-with-secretary-kim",
-            "the-forbidden-marriage",
-            "empress-ki",
-            "agent-kim-reactivated",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0074",
-          "class": "person",
-          "query": "배우 김혜인",
-          "expected": [
-            "resident-playbook"
-          ],
-          "got": [
-            "what-s-wrong-with-secretary-kim",
-            "empress-ki",
-            "under-the-queen-s-umbrella",
-            "jekyll-and-me",
-            "heavenly-ever-after"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0081",
-          "class": "person",
-          "query": "서수민 (2007년) 출연작",
-          "expected": [
-            "agent-kim-reactivated"
-          ],
-          "got": [
-            "my-husband-s-woman",
-            "unstoppable-marriage",
-            "sa-yug-shin",
-            "crazy-for-you",
-            "capital-scandal"
-          ],
-          "strategy": "vector",
-          "error": null
-        },
-        {
-          "id": "g0088",
-          "class": "person",
-          "query": "배우 정한용",
-          "expected": [
-            "your-neighbor-s-wife"
-          ],
-          "got": [
-            "what-s-wrong-with-secretary-kim",
-            "the-crowned-clown",
-            "i-am-sam",
-            "unstoppable-marriage",
-            "empress-ki"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0090",
-          "class": "person",
-          "query": "배우 노정의",
-          "expected": [
-            "crushology-101",
-            "our-universe"
-          ],
-          "got": [
-            "unstoppable-marriage",
-            "empress-ki",
-            "oh-my-ghost-clients",
-            "drinking-solo",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0092",
-          "class": "person",
-          "query": "배우 한여울",
-          "expected": [
-            "heart-to-heart"
-          ],
-          "got": [
-            "beautiful-gong-shim",
-            "unstoppable-marriage",
+            "to-the-moon",
             "i-am-sam",
             "empress-ki",
-            "resident-playbook"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0093",
-          "class": "person",
-          "query": "배우 진영",
-          "expected": [
-            "love-in-the-moonlight",
-            "warm-and-cozy",
-            "who-is-she"
-          ],
-          "got": [
-            "beautiful-gong-shim",
-            "unstoppable-marriage",
-            "the-woman-who-still-wants-to-marry",
-            "empress-ki",
+            "dear-hongrang",
             "jekyll-and-me"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0094",
-          "class": "person",
-          "query": "한상진 출연작",
-          "expected": [
-            "jekyll-and-me",
-            "six-flying-dragons",
-            "the-all-round-wife"
-          ],
-          "got": [
-            "unstoppable-marriage",
-            "jekyll-and-me",
-            "six-flying-dragons",
-            "하이에나",
-            "the-miracle-we-met"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0097",
-          "class": "person",
-          "query": "배우 이솜",
-          "expected": [
-            "because-this-is-my-first-life",
-            "phantom-lawyer",
-            "taxi-driver"
-          ],
-          "got": [
-            "because-this-is-my-first-life",
-            "i-am-sam",
-            "unstoppable-marriage",
-            "empress-ki",
-            "my-mister"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0099",
-          "class": "person",
-          "query": "배우 서예화",
-          "expected": [
-            "vincenzo",
-            "when-flowers-bloom-i-think-of-the-moon"
-          ],
-          "got": [
-            "beautiful-gong-shim",
-            "fantastic",
-            "empress-ki",
-            "a-thousand-days-promise",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0102",
-          "class": "person",
-          "query": "배우 솔빈",
-          "expected": [
-            "idol-the-coup"
-          ],
-          "got": [
-            "unstoppable-marriage",
-            "empress-ki",
-            "wednesday-3-30-pm",
-            "poseidon",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0104",
-          "class": "person",
-          "query": "배우 유호정",
-          "expected": [
-            "heard-it-through-the-grapevine",
-            "recipe-for-love"
-          ],
-          "got": [
-            "i-am-sam",
-            "unstoppable-marriage",
-            "empress-ki",
-            "절정",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0107",
-          "class": "person",
-          "query": "배우 강예서",
-          "expected": [
-            "abyss"
-          ],
-          "got": [
-            "what-s-wrong-with-secretary-kim",
-            "beautiful-gong-shim",
-            "queen-of-the-game",
-            "empress-ki",
-            "jekyll-and-me"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0110",
-          "class": "person",
-          "query": "배우 신승환",
-          "expected": [
-            "empress-ki",
-            "save-the-family",
-            "the-all-round-wife"
-          ],
-          "got": [
-            "empress-ki",
-            "unstoppable-marriage",
-            "i-am-sam",
-            "my-girlfriend-is-a-nine-tailed-fox",
-            "brain"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0116",
+          "id": "g0063",
           "class": "person",
           "query": "박혜련 작가 드라마",
           "expected": [
@@ -3010,8 +2749,292 @@
             "fantastic",
             "닿을-듯-말-듯",
             "age-of-feeling",
-            "my-sweet-city",
-            "love-rain"
+            "love-rain",
+            "goodbye-to-goodbye"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0066",
+          "class": "person",
+          "query": "배우 최종훈",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [
+            "unstoppable-marriage",
+            "uncle-samsik",
+            "empress-ki",
+            "weak-hero-class-1",
+            "jekyll-and-me"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0069",
+          "class": "person",
+          "query": "배우 한예슬",
+          "expected": [
+            "couple-or-trouble",
+            "madame-antoine",
+            "spy-myung-wol"
+          ],
+          "got": [
+            "doona",
+            "unstoppable-marriage",
+            "empress-ki",
+            "the-school-nurse-files",
+            "fantastic"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0070",
+          "class": "person",
+          "query": "김우석 출연작",
+          "expected": [
+            "bulgasal-immortal-souls",
+            "military-prosecutor-doberman",
+            "the-forbidden-marriage"
+          ],
+          "got": [
+            "bulgasal-immortal-souls",
+            "under-the-queen-s-umbrella",
+            "suits",
+            "military-prosecutor-doberman",
+            "kim-su-ro-the-iron-king"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0076",
+          "class": "person",
+          "query": "이수연 작가 드라마",
+          "expected": [
+            "grid"
+          ],
+          "got": [
+            "fantastic",
+            "닿을-듯-말-듯",
+            "age-of-feeling",
+            "love-rain",
+            "a-thousand-days-promise"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0079",
+          "class": "person",
+          "query": "박해영 작가 드라마",
+          "expected": [
+            "my-liberation-notes",
+            "my-mister"
+          ],
+          "got": [
+            "fantastic",
+            "adolescence-medley",
+            "my-first-first-love",
+            "signal",
+            "another-miss-oh"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0089",
+          "class": "person",
+          "query": "배우 임지규",
+          "expected": [
+            "radio-romance"
+          ],
+          "got": [
+            "doona",
+            "jekyll-and-me",
+            "i-am-sam",
+            "what-s-wrong-with-secretary-kim",
+            "unstoppable-marriage"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0090",
+          "class": "person",
+          "query": "배우 세븐",
+          "expected": [
+            "goong-s"
+          ],
+          "got": [
+            "uncle-samsik",
+            "unstoppable-marriage",
+            "three-men",
+            "empress-ki",
+            "three-sisters"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0091",
+          "class": "person",
+          "query": "배우 태인호",
+          "expected": [
+            "about-time",
+            "descendants-of-the-sun",
+            "may-i-help-you"
+          ],
+          "got": [
+            "may-i-help-you",
+            "alchemy-of-souls",
+            "unstoppable-marriage",
+            "uncle-samsik",
+            "empress-ki"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0094",
+          "class": "person",
+          "query": "배우 김송이",
+          "expected": [
+            "typhoon-family"
+          ],
+          "got": [
+            "doona",
+            "what-s-wrong-with-secretary-kim",
+            "uncle-samsik",
+            "empress-ki",
+            "dr-romantic-2"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0096",
+          "class": "person",
+          "query": "배우 신소율",
+          "expected": [
+            "sweet-secret"
+          ],
+          "got": [
+            "doona",
+            "beautiful-gong-shim",
+            "unstoppable-marriage",
+            "empress-ki",
+            "ms-perfect"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0097",
+          "class": "person",
+          "query": "배우 노영학",
+          "expected": [
+            "masked-prosecutor",
+            "the-jingbirok-a-memoir-of-imjin-war"
+          ],
+          "got": [
+            "i-am-sam",
+            "empress-ki",
+            "my-holo-love",
+            "jekyll-and-me",
+            "the-school-nurse-files"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0099",
+          "class": "person",
+          "query": "이우정 작가 드라마",
+          "expected": [
+            "hospital-playlist",
+            "reply-1988"
+          ],
+          "got": [
+            "fantastic",
+            "age-of-feeling",
+            "adolescence-medley",
+            "reply-1988",
+            "절정"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0108",
+          "class": "person",
+          "query": "배우 홍수주",
+          "expected": [
+            "the-impossible-heir"
+          ],
+          "got": [
+            "beautiful-gong-shim",
+            "doona",
+            "unstoppable-marriage",
+            "empress-ki",
+            "wednesday-3-30-pm"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0114",
+          "class": "person",
+          "query": "배우 임기홍",
+          "expected": [
+            "business-proposal",
+            "the-art-of-sarah"
+          ],
+          "got": [
+            "i-am-sam",
+            "doona",
+            "unstoppable-marriage",
+            "empress-ki",
+            "jekyll-and-me"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0117",
+          "class": "person",
+          "query": "송덕호 출연작",
+          "expected": [
+            "all-of-us-are-dead",
+            "cheer-up-2022",
+            "may-i-help-you"
+          ],
+          "got": [
+            "cheer-up-2022",
+            "uncle-samsik",
+            "unstoppable-marriage",
+            "may-i-help-you",
+            "yeon-gaesomun"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0119",
+          "class": "person",
+          "query": "배우 이민영",
+          "expected": [
+            "you-re-only-mine"
+          ],
+          "got": [
+            "doona",
+            "from-now-on-showtime",
+            "i-am-sam",
+            "unstoppable-marriage",
+            "empress-ki"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3019,35 +3042,16 @@
         {
           "id": "g0120",
           "class": "person",
-          "query": "배우 고주원",
+          "query": "배우 김종태 (1975년)",
           "expected": [
-            "live-your-own-life",
-            "run-jang-mi",
-            "you-re-the-best-lee-soon-shin"
+            "the-art-of-sarah"
           ],
           "got": [
-            "you-re-the-best-lee-soon-shin",
-            "jumong",
+            "종착역-드라마",
             "empress-ki",
+            "i-am-happy",
             "jekyll-and-me",
-            "gogh-the-starry-night"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0122",
-          "class": "multi_hop",
-          "query": "정재민랑 조희봉 같이 나온 드라마",
-          "expected": [
-            "six-flying-dragons"
-          ],
-          "got": [
-            "another-miss-oh",
-            "marry-me-now",
-            "happy-ending",
-            "dinner-mate",
-            "good-doctor"
+            "entourage"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3055,16 +3059,16 @@
         {
           "id": "g0123",
           "class": "multi_hop",
-          "query": "박형식이랑 유동근 나온 작품",
+          "query": "박훈랑 한상진 같이 나온 드라마",
           "expected": [
-            "what-happens-to-my-family"
+            "six-flying-dragons"
           ],
           "got": [
-            "yeon-gaesomun",
-            "두근두근-달콤",
-            "i-am-sam",
-            "gu-family-book",
-            "w-two-worlds"
+            "another-miss-oh",
+            "marry-me-now",
+            "tamra-the-island",
+            "dinner-mate",
+            "phantom"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3072,16 +3076,33 @@
         {
           "id": "g0124",
           "class": "multi_hop",
-          "query": "구혜선랑 김현중 같이 나온 드라마",
+          "query": "윤박랑 정만식 같이 나온 드라마",
           "expected": [
-            "boys-over-flowers"
+            "good-doctor"
           ],
           "got": [
-            "모단걸",
+            "entourage",
             "marry-me-now",
-            "the-miracle-we-met",
-            "the-world-that-they-live-in",
-            "dinner-mate"
+            "dinner-mate",
+            "dear-hongrang",
+            "phantom"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0125",
+          "class": "multi_hop",
+          "query": "김정영이랑 정성일 나온 작품",
+          "expected": [
+            "the-glory"
+          ],
+          "got": [
+            "when-flowers-bloom-i-think-of-the-moon",
+            "jeongnyeon-the-star-is-born",
+            "the-school-nurse-files",
+            "made-in-korea",
+            "the-red-sleeve"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3089,16 +3110,33 @@
         {
           "id": "g0127",
           "class": "multi_hop",
-          "query": "박해진이랑 유인영 나온 작품",
+          "query": "김종수랑 이준혁 같이 나온 드라마",
           "expected": [
-            "my-love-from-the-star"
+            "six-flying-dragons"
+          ],
+          "got": [
+            "모단걸",
+            "i-am-happy",
+            "marry-me-now",
+            "dinner-mate",
+            "enjoy-life"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0129",
+          "class": "multi_hop",
+          "query": "김명민랑 류혜영 같이 나온 드라마",
+          "expected": [
+            "law-school"
           ],
           "got": [
             "another-miss-oh",
-            "empress-ki",
-            "happy-ending",
-            "the-three-musketeers",
-            "cheese-in-the-trap"
+            "marry-me-now",
+            "dinner-mate",
+            "enjoy-life",
+            "reply-1988"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3106,50 +3144,67 @@
         {
           "id": "g0130",
           "class": "multi_hop",
-          "query": "박상면랑 이미숙 같이 나온 드라마",
+          "query": "김우빈 김의성 공동 출연작",
           "expected": [
-            "cinderella-s-sister"
+            "black-knight"
           ],
           "got": [
+            "genie-make-a-wish",
+            "나를-쏘다",
+            "entourage",
+            "uncontrollably-fond",
+            "the-miracle-we-met"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0135",
+          "class": "multi_hop",
+          "query": "고경표 김뢰하 공동 출연작",
+          "expected": [
+            "connect"
+          ],
+          "got": [
+            "reply-1988",
+            "gyeongseong-creature",
             "jealousy-incarnate",
-            "you-re-the-best-lee-soon-shin",
-            "another-miss-oh",
-            "marry-me-now",
-            "goodbye-to-goodbye"
+            "고마워-웃게해줘서",
+            "the-king-2-hearts"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0137",
+          "id": "g0140",
           "class": "multi_hop",
-          "query": "김동균이랑 신정근 나온 작품",
+          "query": "김민재랑 윤시윤 같이 나온 드라마",
           "expected": [
-            "mr-sunshine"
+            "hit-the-top"
           ],
           "got": [
-            "i-am-sam",
-            "the-time-we-were-not-in-love",
-            "age-of-feeling",
-            "hotel-del-luna",
-            "three-men"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0138",
-          "class": "multi_hop",
-          "query": "서지혜랑 이원정 같이 나온 드라마",
-          "expected": [
-            "my-perfect-stranger"
-          ],
-          "got": [
-            "fantastic",
+            "mirror-of-the-witch",
             "marry-me-now",
-            "another-miss-oh",
+            "enjoy-life",
             "dinner-mate",
-            "cheese-in-the-trap"
+            "하이에나"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0141",
+          "class": "multi_hop",
+          "query": "김남길이랑 이원종 나온 작품",
+          "expected": [
+            "goodbye-solo"
+          ],
+          "got": [
+            "empress-ki",
+            "dr-romantic-2",
+            "i-am-happy",
+            "masked-prosecutor",
+            "fantastic"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3157,33 +3212,33 @@
         {
           "id": "g0143",
           "class": "multi_hop",
-          "query": "민호이랑 최원영 나온 작품",
+          "query": "남경읍랑 전국환 같이 나온 드라마",
           "expected": [
-            "hwarang-the-poet-warrior-youth"
+            "crash-landing-on-you"
           ],
           "got": [
-            "hello-monster",
-            "another-miss-oh",
-            "mystic-pop-up-bar",
-            "최고의-엔딩",
-            "when-flowers-bloom-i-think-of-the-moon"
+            "hometown-over-the-hill",
+            "marry-me-now",
+            "i-live-without-incident",
+            "dinner-mate",
+            "phantom"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0145",
+          "id": "g0144",
           "class": "multi_hop",
-          "query": "류화영이랑 박인환 나온 작품",
+          "query": "백지원이랑 장영남 나온 작품",
           "expected": [
-            "mad-dog"
+            "cheer-up-2022"
           ],
           "got": [
-            "another-miss-oh",
-            "it-s-okay-daddy-s-girl",
-            "fantastic",
-            "brilliant-heritage",
-            "big-thing"
+            "glory-jane",
+            "jang-yeong-sil",
+            "entourage",
+            "moon-embracing-the-sun",
+            "shut-up-flower-boy-band"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3191,184 +3246,82 @@
         {
           "id": "g0146",
           "class": "multi_hop",
-          "query": "김병철이랑 임세미 나온 작품",
-          "expected": [
-            "mr-sunshine"
-          ],
-          "got": [
-            "love-on-a-rooftop",
-            "dr-romantic-2",
-            "age-of-feeling",
-            "two-cops",
-            "three-brothers"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0148",
-          "class": "multi_hop",
-          "query": "김수현이랑 조희봉 나온 작품",
+          "query": "유인나랑 전지현 같이 나온 드라마",
           "expected": [
             "my-love-from-the-star"
           ],
           "got": [
-            "another-miss-oh",
-            "good-doctor",
-            "kim-su-ro-the-iron-king",
-            "six-flying-dragons",
-            "fantastic"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0150",
-          "class": "multi_hop",
-          "query": "김도훈이랑 여진구 나온 작품",
-          "expected": [
-            "my-absolute-boyfriend"
-          ],
-          "got": [
-            "another-miss-oh",
-            "moon-embracing-the-sun",
-            "orange-marmalade",
-            "reply-1994",
-            "the-royal-gambler"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0157",
-          "class": "multi_hop",
-          "query": "이규형이랑 지성 나온 작품",
-          "expected": [
-            "doctor-john"
-          ],
-          "got": [
-            "fantastic",
-            "new-heart",
-            "another-miss-oh",
-            "swallow-the-sun",
-            "jealousy-incarnate"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0159",
-          "class": "multi_hop",
-          "query": "김창완이랑 김희원 나온 작품",
-          "expected": [
-            "my-love-from-the-star"
-          ],
-          "got": [
-            "gu-family-book",
-            "heavenly-ever-after",
-            "money-flower",
-            "하이에나",
-            "the-crowned-clown"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0160",
-          "class": "multi_hop",
-          "query": "이기우랑 이민기 같이 나온 드라마",
-          "expected": [
-            "my-liberation-notes"
-          ],
-          "got": [
-            "because-this-is-my-first-life",
-            "my-girlfriend-is-a-nine-tailed-fox",
+            "hwang-jini",
             "marry-me-now",
-            "another-miss-oh",
-            "dinner-mate"
+            "하이에나",
+            "dinner-mate",
+            "move-to-heaven"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0162",
+          "id": "g0149",
           "class": "multi_hop",
-          "query": "김태리랑 윤경호 같이 나온 드라마",
+          "query": "고윤랑 이준기 같이 나온 드라마",
           "expected": [
-            "mr-sunshine"
+            "criminal-minds"
           ],
           "got": [
+            "i-am-happy",
+            "hero",
             "entourage",
             "marry-me-now",
-            "when-a-man-falls-in-love",
-            "dinner-mate",
-            "gogh-the-starry-night"
+            "because-this-is-my-first-life"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0163",
+          "id": "g0151",
           "class": "multi_hop",
-          "query": "강미나랑 황영희 같이 나온 드라마",
+          "query": "변희봉이랑 이유비 나온 작품",
           "expected": [
-            "tale-of-fairy"
-          ],
-          "got": [
-            "tamra-the-island",
-            "marry-me-now",
-            "my-girlfriend-is-a-nine-tailed-fox",
-            "dinner-mate",
-            "hwang-jini"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0167",
-          "class": "multi_hop",
-          "query": "박진영이랑 이승준 나온 작품",
-          "expected": [
-            "he-is-psychometric"
-          ],
-          "got": [
-            "descendants-of-the-sun",
-            "두근두근-달콤",
-            "the-woman-who-still-wants-to-marry",
-            "jekyll-and-me",
-            "another-miss-oh"
-          ],
-          "strategy": "hybrid",
-          "error": null
-        },
-        {
-          "id": "g0172",
-          "class": "multi_hop",
-          "query": "김희애랑 박해준 같이 나온 드라마",
-          "expected": [
-            "the-world-of-the-married"
+            "pinocchio"
           ],
           "got": [
             "another-miss-oh",
-            "marry-me-now",
-            "dinner-mate",
-            "하이에나",
-            "the-miracle-we-met"
+            "the-innocent-man",
+            "gu-family-book",
+            "goodbye-to-goodbye",
+            "the-good-wife"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0175",
+          "id": "g0153",
           "class": "multi_hop",
-          "query": "나영희랑 로운 같이 나온 드라마",
+          "query": "유인나랑 이슬비 같이 나온 드라마",
           "expected": [
-            "about-time"
+            "you-re-the-best-lee-soon-shin"
           ],
           "got": [
             "marry-me-now",
-            "delightfully-deceitful",
-            "나야-할머니",
+            "doona",
+            "cheese-in-the-trap",
+            "dinner-mate",
+            "bridal-mask"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0155",
+          "class": "multi_hop",
+          "query": "우현랑 장항준 같이 나온 드라마",
+          "expected": [
+            "pinocchio"
+          ],
+          "got": [
+            "marry-me-now",
+            "두근두근-달콤",
+            "jang-yeong-sil",
             "dinner-mate",
             "w-two-worlds"
           ],
@@ -3376,18 +3329,222 @@
           "error": null
         },
         {
-          "id": "g0177",
+          "id": "g0157",
           "class": "multi_hop",
-          "query": "송승헌이랑 윤다훈 나온 작품",
+          "query": "유선이랑 이준기 나온 작품",
           "expected": [
-            "saimdang-memoir-of-colors"
+            "criminal-minds"
           ],
           "got": [
-            "jealousy-incarnate",
-            "brain",
+            "i-am-happy",
+            "hero",
             "fantastic",
-            "you-re-the-best-lee-soon-shin",
-            "look-back-with-a-smile"
+            "arang-and-the-magistrate",
+            "time-between-dog-and-wolf"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0158",
+          "class": "multi_hop",
+          "query": "류승룡랑 박신양 같이 나온 드라마",
+          "expected": [
+            "painter-of-the-wind"
+          ],
+          "got": [
+            "another-miss-oh",
+            "marry-me-now",
+            "poseidon",
+            "dinner-mate",
+            "war-of-money"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0160",
+          "class": "multi_hop",
+          "query": "류승룡이랑 유인영 나온 작품",
+          "expected": [
+            "my-love-from-the-star"
+          ],
+          "got": [
+            "another-miss-oh",
+            "empress-ki",
+            "fantastic",
+            "the-three-musketeers",
+            "cheese-in-the-trap"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0162",
+          "class": "multi_hop",
+          "query": "박인환이랑 최원영 나온 작품",
+          "expected": [
+            "mad-dog"
+          ],
+          "got": [
+            "another-miss-oh",
+            "hello-monster",
+            "mystic-pop-up-bar",
+            "weak-hero-class-1",
+            "when-flowers-bloom-i-think-of-the-moon"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0163",
+          "class": "multi_hop",
+          "query": "성동일이랑 홍종현 나온 작품",
+          "expected": [
+            "moon-lovers-scarlet-heart-ryeo"
+          ],
+          "got": [
+            "dong-yi",
+            "to-my-beloved",
+            "종착역-드라마",
+            "dating-agency-cyrano",
+            "fantastic"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0164",
+          "class": "multi_hop",
+          "query": "고윤정랑 엄효섭 같이 나온 드라마",
+          "expected": [
+            "he-is-psychometric"
+          ],
+          "got": [
+            "모단걸",
+            "just-run",
+            "marry-me-now",
+            "entourage",
+            "dinner-mate"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0169",
+          "class": "multi_hop",
+          "query": "박시연랑 이유비 같이 나온 드라마",
+          "expected": [
+            "the-innocent-man"
+          ],
+          "got": [
+            "모단걸",
+            "a-thousand-days-promise",
+            "marry-me-now",
+            "another-miss-oh",
+            "dinner-mate"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0171",
+          "class": "multi_hop",
+          "query": "고보결이랑 변요한 나온 작품",
+          "expected": [
+            "black-out"
+          ],
+          "got": [
+            "another-miss-oh",
+            "six-flying-dragons",
+            "fantastic",
+            "ex-girlfriend-club",
+            "dae-jo-yeong"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0172",
+          "class": "multi_hop",
+          "query": "아이유 택연 공동 출연작",
+          "expected": [
+            "dream-high"
+          ],
+          "got": [
+            "when-life-gives-you-tangerines",
+            "persona",
+            "bring-it-on-ghost",
+            "my-mister",
+            "나를-쏘다"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0173",
+          "class": "multi_hop",
+          "query": "김의성랑 전미선 같이 나온 드라마",
+          "expected": [
+            "six-flying-dragons"
+          ],
+          "got": [
+            "모단걸",
+            "another-miss-oh",
+            "marry-me-now",
+            "the-king-and-i",
+            "dinner-mate"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0174",
+          "class": "multi_hop",
+          "query": "아이유랑 진기주 같이 나온 드라마",
+          "expected": [
+            "moon-lovers-scarlet-heart-ryeo"
+          ],
+          "got": [
+            "wednesday-3-30-pm",
+            "i-do-i-do",
+            "marry-me-now",
+            "my-girlfriend-is-a-nine-tailed-fox",
+            "dinner-mate"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0177",
+          "class": "multi_hop",
+          "query": "양경원랑 택연 같이 나온 드라마",
+          "expected": [
+            "vincenzo"
+          ],
+          "got": [
+            "bring-it-on-ghost",
+            "모단걸",
+            "jealousy-incarnate",
+            "marry-me-now",
+            "descendants-of-the-sun"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0178",
+          "class": "multi_hop",
+          "query": "데이비드 맥기니스이랑 이승기 나온 작품",
+          "expected": [
+            "gu-family-book"
+          ],
+          "got": [
+            "my-girlfriend-is-a-nine-tailed-fox",
+            "the-king-2-hearts",
+            "descendants-of-the-sun",
+            "all-my-love",
+            "jealousy-incarnate"
           ],
           "strategy": "hybrid",
           "error": null
@@ -3395,39 +3552,120 @@
         {
           "id": "g0179",
           "class": "multi_hop",
-          "query": "김광규랑 이필모 같이 나온 드라마",
+          "query": "이정은이랑 주지훈 나온 작품",
           "expected": [
-            "pinocchio"
+            "light-shop"
           ],
           "got": [
-            "marry-me-now",
-            "dr-romantic-2",
-            "dinner-mate",
-            "역사야-놀자",
-            "reply-1988"
+            "personal-taste",
+            "princess-hours",
+            "fantastic",
+            "five-fingers",
+            "mask"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0180",
-          "class": "multi_hop",
-          "query": "남보라랑 최명길 같이 나온 드라마",
+          "id": "g0255",
+          "class": "temporal",
+          "query": "2013년에 SBS에서 한 코미디 드라마",
           "expected": [
-            "glory-jane"
+            "i-can-hear-your-voice",
+            "incarnation-of-money",
+            "master-s-sun",
+            "the-heirs"
           ],
           "got": [
-            "i-trusted-him",
-            "entourage",
-            "marry-me-now",
-            "the-reputable-family-2010",
-            "dinner-mate"
+            "incarnation-of-money",
+            "my-love-from-the-star",
+            "jang-ok-jung-living-by-love",
+            "i-can-hear-your-voice",
+            "the-heirs"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0249",
+          "id": "g0256",
+          "class": "temporal",
+          "query": "2018년에 SBS에서 한 로맨스 드라마",
+          "expected": [
+            "my-strange-hero",
+            "should-we-kiss-first",
+            "still-17",
+            "the-undateables"
+          ],
+          "got": [
+            "should-we-kiss-first",
+            "still-17",
+            "the-undateables",
+            "fates-furies",
+            "the-last-empress"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0259",
+          "class": "temporal",
+          "query": "2021년에 SBS에서 한 드라마",
+          "expected": [
+            "joseon-exorcist",
+            "let-me-be-your-knight",
+            "one-the-woman",
+            "racket-boys"
+          ],
+          "got": [
+            "one-the-woman",
+            "lovers-of-the-red-sky",
+            "now-we-are-breaking-up",
+            "racket-boys",
+            "let-me-be-your-knight"
+          ],
+          "strategy": "vector",
+          "error": null
+        },
+        {
+          "id": "g0280",
+          "class": "temporal",
+          "query": "2025년 KBS 드라마",
+          "expected": [
+            "last-summer",
+            "marie-and-her-three-daddies",
+            "the-first-night-with-the-duke",
+            "대운을-지켜라"
+          ],
+          "got": [
+            "for-eagle-brothers",
+            "kick-kick-kick-kick",
+            "villains-everywhere",
+            "대운을-지켜라",
+            "good-luck"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "g0285",
+          "class": "temporal",
+          "query": "2021년 넷플릭스 드라마",
+          "expected": [
+            "d-p",
+            "move-to-heaven"
+          ],
+          "got": [
+            "hellbound",
+            "move-to-heaven",
+            "squid-game",
+            "so-not-worth-it",
+            "the-silent-sea"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0295",
           "class": "temporal",
           "query": "2022년에 MBC에서 한 드라마",
           "expected": [
@@ -3444,74 +3682,54 @@
           "error": null
         },
         {
-          "id": "g0259",
+          "id": "g0300",
           "class": "temporal",
-          "query": "2025년 tvN 드라마",
+          "query": "2023년에 넷플릭스에서 한 드라마",
           "expected": [
-            "love-take-two",
-            "shin-s-project"
+            "daily-dose-of-sunshine",
+            "queenmaker"
           ],
           "got": [
-            "when-the-stars-gossip",
-            "the-queen-who-crowns",
-            "my-dearest-nemesis",
-            "the-potato-lab",
-            "the-divorce-insurance"
+            "a-time-called-you",
+            "black-knight",
+            "gyeongseong-creature",
+            "bloodhounds",
+            "daily-dose-of-sunshine"
           ],
-          "strategy": "filter",
-          "error": null
-        },
-        {
-          "id": "g0267",
-          "class": "temporal",
-          "query": "2022년에 KBS에서 한 드라마",
-          "expected": [
-            "curtain-call",
-            "if-you-wish-upon-me",
-            "it-s-beautiful-now",
-            "leemujin-service"
-          ],
-          "got": [
-            "bloody-heart",
-            "the-love-in-your-eyes",
-            "leemujin-service",
-            "curtain-call",
-            "three-bold-siblings"
-          ],
-          "strategy": "vector",
+          "strategy": "hybrid",
           "error": null
         }
       ]
     },
     "hybrid": {
       "overall": {
-        "recall@1": 0.8472222222222222,
-        "recall@3": 0.9736111111111111,
-        "recall@5": 0.985,
-        "recall@10": 0.9891666666666666,
-        "mrr": 0.9566666666666667,
-        "ndcg@1": 0.9333333333333333,
-        "ndcg@3": 0.9590221400945533,
-        "ndcg@5": 0.9633089166004292,
-        "ndcg@10": 0.9646829700027234,
-        "latency_p50_ms": 678.9232000010088,
-        "latency_p95_ms": 1934.7804000135511,
+        "recall@1": 0.8027777777777778,
+        "recall@3": 0.9694444444444443,
+        "recall@5": 0.9805555555555556,
+        "recall@10": 0.995,
+        "mrr": 0.9427592592592593,
+        "ndcg@1": 0.9033333333333333,
+        "ndcg@3": 0.9451114450306295,
+        "ndcg@5": 0.9489438460655123,
+        "ndcg@10": 0.954474883412419,
+        "latency_p50_ms": 135.45504998182878,
+        "latency_p95_ms": 242.4070000415668,
         "errors": 0,
         "n": 300
       },
       "by_class": {
         "character": {
-          "recall@1": 0.9333333333333333,
-          "recall@3": 0.9833333333333333,
+          "recall@1": 0.95,
+          "recall@3": 1.0,
           "recall@5": 1.0,
           "recall@10": 1.0,
-          "mrr": 0.9616666666666667,
-          "ndcg@1": 0.9333333333333333,
-          "ndcg@3": 0.9648798210119062,
-          "ndcg@5": 0.9713273677991485,
-          "ndcg@10": 0.9713273677991485,
-          "latency_p50_ms": 671.511200023815,
-          "latency_p95_ms": 1809.147399966605,
+          "mrr": 0.9694444444444444,
+          "ndcg@1": 0.95,
+          "ndcg@3": 0.9771821625595243,
+          "ndcg@5": 0.9771821625595243,
+          "ndcg@10": 0.9771821625595243,
+          "latency_p50_ms": 150.4698499920778,
+          "latency_p95_ms": 266.81460009422153,
           "errors": 0,
           "n": 60
         },
@@ -3525,94 +3743,211 @@
           "ndcg@3": 0.9876976584523819,
           "ndcg@5": 0.9876976584523819,
           "ndcg@10": 0.9876976584523819,
-          "latency_p50_ms": 708.0547500518151,
-          "latency_p95_ms": 2140.1658999966457,
+          "latency_p50_ms": 122.16565001290292,
+          "latency_p95_ms": 162.06190001685172,
           "errors": 0,
           "n": 60
         },
         "multi_hop": {
           "recall@1": 0.9,
           "recall@3": 0.9833333333333333,
-          "recall@5": 1.0,
+          "recall@5": 0.9833333333333333,
           "recall@10": 1.0,
-          "mrr": 0.9394444444444444,
+          "mrr": 0.9407407407407408,
           "ndcg@1": 0.9,
-          "ndcg@3": 0.9482131543452396,
-          "ndcg@5": 0.9546607011324819,
-          "ndcg@10": 0.9546607011324819,
-          "latency_p50_ms": 621.0576999583282,
-          "latency_p95_ms": 1389.0317999757826,
+          "ndcg@3": 0.9503953169047639,
+          "ndcg@5": 0.9503953169047639,
+          "ndcg@10": 0.9554124834991635,
+          "latency_p50_ms": 138.34265002515167,
+          "latency_p95_ms": 162.17070003040135,
           "errors": 0,
           "n": 60
         },
         "person": {
-          "recall@1": 0.7138888888888889,
-          "recall@3": 0.9666666666666667,
-          "recall@5": 0.9666666666666667,
-          "recall@10": 0.9833333333333333,
-          "mrr": 0.9433333333333334,
+          "recall@1": 0.6888888888888889,
+          "recall@3": 0.9722222222222222,
+          "recall@5": 0.9777777777777777,
+          "recall@10": 1.0,
+          "mrr": 0.9488888888888888,
           "ndcg@1": 0.9166666666666666,
-          "ndcg@3": 0.9492547651793365,
-          "ndcg@5": 0.9492547651793365,
-          "ndcg@10": 0.9540725122846345,
-          "latency_p50_ms": 716.5235000429675,
-          "latency_p95_ms": 2104.913100018166,
+          "ndcg@3": 0.9477011331122855,
+          "ndcg@5": 0.9510695888872946,
+          "ndcg@10": 0.9586733435753628,
+          "latency_p50_ms": 140.73985000140965,
+          "latency_p95_ms": 247.44639999698848,
           "errors": 0,
           "n": 60
         },
         "temporal": {
-          "recall@1": 0.7222222222222222,
-          "recall@3": 0.9347222222222222,
-          "recall@5": 0.9583333333333334,
-          "recall@10": 0.9625,
-          "mrr": 0.9555555555555556,
-          "ndcg@1": 0.95,
-          "ndcg@3": 0.9450653014839022,
-          "ndcg@5": 0.953604090438797,
-          "ndcg@10": 0.9556566103449698,
-          "latency_p50_ms": 662.4700499814935,
-          "latency_p95_ms": 1494.5953000569716,
+          "recall@1": 0.5083333333333333,
+          "recall@3": 0.8916666666666667,
+          "recall@5": 0.9416666666666667,
+          "recall@10": 0.975,
+          "mrr": 0.8713888888888889,
+          "ndcg@1": 0.7833333333333333,
+          "ndcg@3": 0.8625809541241918,
+          "ndcg@5": 0.8783745035235966,
+          "ndcg@10": 0.8934087689756622,
+          "latency_p50_ms": 124.06990001909435,
+          "latency_p95_ms": 217.78010006528348,
           "errors": 0,
           "n": 60
         }
       },
       "failures": [
         {
-          "id": "g0067",
+          "id": "g0070",
           "class": "person",
-          "query": "배우 마이클 리",
+          "query": "김우석 출연작",
           "expected": [
-            "a-korean-odyssey"
+            "bulgasal-immortal-souls",
+            "military-prosecutor-doberman",
+            "the-forbidden-marriage"
           ],
           "got": [
-            "come-and-hug-me",
-            "the-crowned-clown",
-            "i-am-sam",
-            "entourage",
-            "empress-ki"
+            "bulgasal-immortal-souls",
+            "under-the-queen-s-umbrella",
+            "suits",
+            "military-prosecutor-doberman",
+            "kim-su-ro-the-iron-king"
+          ],
+          "strategy": "hybrid+graph",
+          "error": null
+        },
+        {
+          "id": "g0120",
+          "class": "person",
+          "query": "배우 김종태 (1975년)",
+          "expected": [
+            "the-art-of-sarah"
+          ],
+          "got": [
+            "종착역-드라마",
+            "empress-ki",
+            "i-am-happy",
+            "jekyll-and-me",
+            "entourage"
           ],
           "strategy": "hybrid",
           "error": null
         },
         {
-          "id": "g0081",
-          "class": "person",
-          "query": "서수민 (2007년) 출연작",
+          "id": "g0136",
+          "class": "multi_hop",
+          "query": "김미경이랑 주진모 (1958년) 나온 작품",
           "expected": [
-            "agent-kim-reactivated"
+            "goodbye-solo"
           ],
           "got": [
-            "my-husband-s-woman",
-            "unstoppable-marriage",
-            "sa-yug-shin",
-            "crazy-for-you",
-            "capital-scandal"
+            "phantom-lawyer",
+            "as-you-stood-by",
+            "welcome-to-samdalri",
+            "it-s-okay-to-not-be-okay",
+            "the-sound-of-your-heart"
+          ],
+          "strategy": "graph",
+          "error": null
+        },
+        {
+          "id": "g0255",
+          "class": "temporal",
+          "query": "2013년에 SBS에서 한 코미디 드라마",
+          "expected": [
+            "i-can-hear-your-voice",
+            "incarnation-of-money",
+            "master-s-sun",
+            "the-heirs"
+          ],
+          "got": [
+            "incarnation-of-money",
+            "my-love-from-the-star",
+            "jang-ok-jung-living-by-love",
+            "i-can-hear-your-voice",
+            "the-heirs"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0256",
+          "class": "temporal",
+          "query": "2018년에 SBS에서 한 로맨스 드라마",
+          "expected": [
+            "my-strange-hero",
+            "should-we-kiss-first",
+            "still-17",
+            "the-undateables"
+          ],
+          "got": [
+            "should-we-kiss-first",
+            "still-17",
+            "the-undateables",
+            "fates-furies",
+            "the-last-empress"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0259",
+          "class": "temporal",
+          "query": "2021년에 SBS에서 한 드라마",
+          "expected": [
+            "joseon-exorcist",
+            "let-me-be-your-knight",
+            "one-the-woman",
+            "racket-boys"
+          ],
+          "got": [
+            "one-the-woman",
+            "lovers-of-the-red-sky",
+            "now-we-are-breaking-up",
+            "racket-boys",
+            "let-me-be-your-knight"
           ],
           "strategy": "vector",
           "error": null
         },
         {
-          "id": "g0249",
+          "id": "g0280",
+          "class": "temporal",
+          "query": "2025년 KBS 드라마",
+          "expected": [
+            "last-summer",
+            "marie-and-her-three-daddies",
+            "the-first-night-with-the-duke",
+            "대운을-지켜라"
+          ],
+          "got": [
+            "for-eagle-brothers",
+            "kick-kick-kick-kick",
+            "villains-everywhere",
+            "대운을-지켜라",
+            "good-luck"
+          ],
+          "strategy": "filter",
+          "error": null
+        },
+        {
+          "id": "g0285",
+          "class": "temporal",
+          "query": "2021년 넷플릭스 드라마",
+          "expected": [
+            "d-p",
+            "move-to-heaven"
+          ],
+          "got": [
+            "hellbound",
+            "move-to-heaven",
+            "squid-game",
+            "so-not-worth-it",
+            "the-silent-sea"
+          ],
+          "strategy": "hybrid",
+          "error": null
+        },
+        {
+          "id": "g0295",
           "class": "temporal",
           "query": "2022년에 MBC에서 한 드라마",
           "expected": [
@@ -3629,41 +3964,21 @@
           "error": null
         },
         {
-          "id": "g0259",
+          "id": "g0300",
           "class": "temporal",
-          "query": "2025년 tvN 드라마",
+          "query": "2023년에 넷플릭스에서 한 드라마",
           "expected": [
-            "love-take-two",
-            "shin-s-project"
+            "daily-dose-of-sunshine",
+            "queenmaker"
           ],
           "got": [
-            "when-the-stars-gossip",
-            "the-queen-who-crowns",
-            "my-dearest-nemesis",
-            "the-potato-lab",
-            "the-divorce-insurance"
+            "a-time-called-you",
+            "black-knight",
+            "gyeongseong-creature",
+            "bloodhounds",
+            "daily-dose-of-sunshine"
           ],
-          "strategy": "filter",
-          "error": null
-        },
-        {
-          "id": "g0267",
-          "class": "temporal",
-          "query": "2022년에 KBS에서 한 드라마",
-          "expected": [
-            "curtain-call",
-            "if-you-wish-upon-me",
-            "it-s-beautiful-now",
-            "leemujin-service"
-          ],
-          "got": [
-            "bloody-heart",
-            "the-love-in-your-eyes",
-            "leemujin-service",
-            "curtain-call",
-            "three-bold-siblings"
-          ],
-          "strategy": "vector",
+          "strategy": "hybrid",
           "error": null
         }
       ]

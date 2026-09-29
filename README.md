@@ -139,10 +139,10 @@ DRY_RUN=1 apps/web/scripts/deploy-pages.sh   # 빌드만 (apps/web/out)
   - [x] DM-801 Neo4j 2026.01 compose + Airflow 이미지(neo4j 드라이버) · DM-802 `graph_materialization` DAG(per-aggregate replace, 멱등) · DM-803 integrity test
   - [x] DM-804/805 ai-api `/v1/graph/*` (공동출연·작품 이웃·OST 가수 경유) + retrieval `graph` 리스트(RRF) · DM-806 작품/인물 페이지 관계 섹션
   - 측정: 24편에선 효과 없음 → 2,347편에서 multi_hop recall@1 0.71→0.96, MRR 0.81→1.00으로 유지 조건 충족(GRAPH_MODEL 구현 현황)
-- [x] 카탈로그 확대 — **Wikidata(CC0) 수집기**: 2006년 이후 한국 드라마를 SPARQL ∪ 한국어 위키백과 연도별 드라마 분류에서 발견(2,838건) → **1,924편 발행**(KBS·MBC·SBS·tvN·JTBC, 2006년 이후; 비드라마 190·방송 예정 14·범위 밖 861은 HIDDEN, 사유 기록), 인물 2,453+(생년월일 91%), seed 24편 중 21편 자동 병합. `source_discovery_wikidata`(주간) → `ingest_source_records__wikidata`(청크 매핑, 풀 3슬롯 × 1 req/s) → 기존 체인
-  - 검색 재측정(손으로 쓴 132질의): lexical recall@5 0.47 → **hybrid 0.91 / MRR 0.84** (RAG_DESIGN 구현 현황). 리뷰 큐 71 → ER 재해소로 44(사람당 1회 결정)
+- [x] 카탈로그 확대 — **Wikidata(CC0) 수집기**: 2006년 이후 한국 드라마를 SPARQL ∪ 한국어 위키백과 연도별 드라마 분류에서 발견(2,838건) → **1,981편 발행**(KBS 607 · MBC 464 · SBS 393 · tvN 294 · JTBC 168 · 넷플릭스 94 · 디즈니+ 38, 2006년 이후; 비드라마 267·방송 예정 14·범위 밖 733은 HIDDEN, 사유 기록), 인물 2,453+(생년월일 91%), seed 24편 중 21편 자동 병합. `source_discovery_wikidata`(주간) → `ingest_source_records__wikidata`(청크 매핑, 풀 3슬롯 × 1 req/s) → 기존 체인
+  - 검색 재측정(손으로 쓴 132질의): lexical recall@5 0.47 → **hybrid 0.91 / MRR 0.83** (RAG_DESIGN 구현 현황). 리뷰 큐 71 → ER 재해소로 44(사람당 1회 결정)
   - [x] 줄거리 — `synopsis_enrich_kowiki` DAG: 한국어 위키백과 요약(CC BY-SA 4.0, 출처·라이선스 표기) 약 94% 채움, semantic_memory recall@5 0.81 → 1.00 · 리뷰 큐 44 → 1(사람당 1회 결정 + 빈 별칭 버그 수정) → 재수집 후 10
-  - [x] 데이터 생성 골든셋 300질의(`generate_golden.py`, 1,924편 기준) — hybrid recall@5 0.985 / MRR 0.957, graph 리스트 효과 재확인(multi_hop MRR 0.32 → 0.94)
+  - [x] 데이터 생성 골든셋 300질의(`generate_golden.py`, 1,981편 기준) — hybrid recall@5 0.981 / MRR 0.943, graph 리스트 효과 재확인(multi_hop MRR 0.26 → 0.94)
   - [x] **드라마/비드라마 판정** — Wikidata "television series"에 섞인 예능·리얼리티(《런닝맨》, 《스트릿댄스 걸스 파이터》)를 `program_kind`(클래스·장르·kowiki 분류 규칙)로 걸러 발행분 190편 HIDDEN, 발견 단계에서 1,713건 제외. 목록 문서·단막극(episode 클래스) 규칙은 첫 실행이 잡아내 수정
   - [x] 방송 예정작 제외 — 시작일이 미래면 HIDDEN(`hidden_reason='upcoming'`, V16), 방영일에 자동 복귀
   - [x] **채널 범위** — KBS·MBC·SBS·tvN·JTBC + **넷플릭스·디즈니+ 오리지널**(방송사 방영이 없는 작품만; 파서가 P449에 방송사와 OTT가 함께 있으면 방송사를 택하므로 플랫폼 채널 = 오리지널). 다른 채널·채널 미상은 `out_of_scope`로 HIDDEN, `DRAMAMEMORY_SCOPE_BROADCASTERS`를 넓히면 자동 복귀

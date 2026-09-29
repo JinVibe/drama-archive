@@ -48,8 +48,9 @@ drama.status = 'HIDDEN' + drama.hidden_reason ∈ { not_a_drama | foreign | upco
 
 ## Consequences
 
-- 2026-09-28 run: 2,989 canonical dramas → 1,924 published; hidden 861 out of
-  scope (channel or pre-2006), 190 not a drama, 14 upcoming. Retrieval quality rose on both golden sets
+- 2026-09-29 state: 2,995 canonical dramas → 1,981 published (incl. 94 Netflix and
+  38 Disney+ originals); hidden 733 out of scope (channel or pre-2006), 267 not a
+  drama, 14 upcoming. Retrieval quality rose on both golden sets
   (fewer same-title distractors).
 - Netflix/Disney+ originals with no network run are hidden too. That is accepted
   for now and is the first thing to revisit.
